@@ -1,6 +1,13 @@
-import type { Episode, Pose, Scene } from "./types";
+import type { Episode, Pose, Scene, SceneBody } from "./types";
 import { POSES } from "./types";
 import raw from "../episodes/ep01.json";
+import {
+  durationSecFromText,
+  FLAGSHIP_MAX_SEC,
+  FLAGSHIP_MIN_SEC,
+  flagshipDurationSec,
+  sceneVisibleText,
+} from "./timing";
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null;
@@ -14,7 +21,10 @@ function requireString(record: Record<string, unknown>, key: string): string {
   return value;
 }
 
-function requireStringArray(record: Record<string, unknown>, key: string): string[] {
+function requireStringArray(
+  record: Record<string, unknown>,
+  key: string,
+): string[] {
   const value = record[key];
   if (!Array.isArray(value) || value.some((item) => typeof item !== "string")) {
     throw new Error(`${key} must be a string array`);
@@ -23,7 +33,32 @@ function requireStringArray(record: Record<string, unknown>, key: string): strin
 }
 
 function isPose(value: unknown): value is Pose {
-  return typeof value === "string" && (POSES as readonly string[]).includes(value);
+  return (
+    typeof value === "string" && (POSES as readonly string[]).includes(value)
+  );
+}
+
+function optionalPositiveNumber(
+  record: Record<string, unknown>,
+  key: string,
+): number | undefined {
+  if (!(key in record) || record[key] === undefined) {
+    return undefined;
+  }
+  const value = record[key];
+  if (typeof value !== "number" || !Number.isFinite(value) || value <= 0) {
+    throw new Error(`${key} must be a positive number`);
+  }
+  return value;
+}
+
+function withDuration(
+  record: Record<string, unknown>,
+  scene: SceneBody,
+): Scene {
+  const override = optionalPositiveNumber(record, "durationSec");
+  const durationSec = override ?? durationSecFromText(sceneVisibleText(scene));
+  return { ...scene, durationSec };
 }
 
 function parseScene(value: unknown): Scene {
@@ -40,48 +75,56 @@ function parseScene(value: unknown): Scene {
       if (!isPose(pose)) {
         throw new Error(`Scene ${id} needs pose still|listen|point`);
       }
-      return {
+      return withDuration(value, {
         id,
         type,
         pose,
         caption: requireString(value, "caption"),
-      };
+      });
     }
     case "citeCard":
-      return { id, type, lines: requireStringArray(value, "lines") };
+      return withDuration(value, {
+        id,
+        type,
+        lines: requireStringArray(value, "lines"),
+      });
     case "namedFrame":
-      return {
+      return withDuration(value, {
         id,
         type,
         left: requireString(value, "left"),
         right: requireString(value, "right"),
         caption: requireString(value, "caption"),
-      };
+      });
     case "quoteCard":
-      return {
+      return withDuration(value, {
         id,
         type,
         quote: requireString(value, "quote"),
         attr: requireString(value, "attr"),
-      };
+      });
     case "numberCard":
-      return {
+      return withDuration(value, {
         id,
         type,
         kicker: requireString(value, "kicker"),
         stat: requireString(value, "stat"),
         note: requireString(value, "note"),
-      };
+      });
     case "limitsCard":
-      return { id, type, items: requireStringArray(value, "items") };
+      return withDuration(value, {
+        id,
+        type,
+        items: requireStringArray(value, "items"),
+      });
     case "endCard":
-      return {
+      return withDuration(value, {
         id,
         type,
         title: requireString(value, "title"),
         cite: requireString(value, "cite"),
         cta: requireString(value, "cta"),
-      };
+      });
     default: {
       throw new Error(`Unknown scene type: ${type}`);
     }
@@ -141,6 +184,13 @@ function parseEpisode(value: unknown): Episode {
 }
 
 export const episode = parseEpisode(raw);
+
+const flagshipSec = flagshipDurationSec(episode.scenes);
+if (flagshipSec < FLAGSHIP_MIN_SEC || flagshipSec > FLAGSHIP_MAX_SEC) {
+  throw new Error(
+    `Flagship duration ${flagshipSec}s is outside the 8–12 minute bar (${FLAGSHIP_MIN_SEC}–${FLAGSHIP_MAX_SEC})`,
+  );
+}
 
 export function sceneById(id: string): Scene {
   const scene = episode.scenes.find((item) => item.id === id);

@@ -2,7 +2,7 @@
   "id": "ep01",
   "slug": "find-it-or-develop-it",
   "title": "Find it or develop it",
-  "durationTargetSec": 540,
+  "durationTargetSec": 590,
   "paper": {
     "authors": "O’Keefe, Dweck & Walton",
     "year": 2018,
@@ -26,13 +26,15 @@
       "id": "hook",
       "type": "cairnCaption",
       "pose": "still",
-      "caption": "I had a side project I was sure was the one."
+      "caption": "I had a side project I was sure was the one.",
+      "durationSec": 35
     },
     {
       "id": "hook2",
       "type": "cairnCaption",
       "pose": "listen",
-      "caption": "Tuesday it felt like a calling. Thursday it felt like homework."
+      "caption": "Tuesday it felt like a calling. Thursday it felt like homework.",
+      "durationSec": 35
     },
     {
       "id": "cite",
@@ -41,61 +43,70 @@
         "O’Keefe, Dweck & Walton, 2018",
         "Psychological Science 29(10): 1653–1664",
         "DOI 10.1177/0956797618780643"
-      ]
+      ],
+      "durationSec": 34
     },
     {
       "id": "frame",
       "type": "namedFrame",
       "left": "FIND",
       "right": "DEVELOP",
-      "caption": "Do you find an interest, or develop it?"
+      "caption": "Do you find an interest, or develop it?",
+      "durationSec": 34
     },
     {
       "id": "quote",
       "type": "quoteCard",
       "quote": "Urging people to find their passion may lead them to put all their eggs in one basket but then to drop that basket when it becomes difficult to carry.",
-      "attr": "O’Keefe, Dweck & Walton, 2018"
+      "attr": "O’Keefe, Dweck & Walton, 2018",
+      "durationSec": 57
     },
     {
       "id": "s12",
       "type": "numberCard",
       "kicker": "Studies 1 & 2",
       "stat": "N = 126 · 141",
-      "note": "Mismatching article got less interest under find-your-passion."
+      "note": "Mismatching article got less interest under find-your-passion.",
+      "durationSec": 37
     },
     {
       "id": "s3",
       "type": "numberCard",
       "kicker": "Study 3 · N = 89",
       "stat": "2.04 vs 2.64",
-      "note": "Mismatching-article interest (1–7). Fixed 2.04 · growth 2.64. p = 0.016"
+      "note": "Mismatching-article interest (1–7). Fixed 2.04 · growth 2.64. p = 0.016",
+      "durationSec": 40
     },
     {
       "id": "s4",
       "type": "numberCard",
       "kicker": "Study 4 · N = 44 · underpowered",
       "stat": "N = 44",
-      "note": "Fixed theory expects boundless motivation and little friction."
+      "note": "Fixed theory expects boundless motivation and little friction.",
+      "durationSec": 39
     },
     {
       "id": "s5setup",
       "type": "cairnCaption",
       "pose": "listen",
-      "caption": "Study 5 is the money shot. A spark, then a wall."
+      "caption": "Study 5 is the money shot. A spark, then a wall.",
+      "durationSec": 35
     },
     {
       "id": "s5n",
       "type": "numberCard",
       "kicker": "Study 5",
       "stat": "N = 70 · Mage 26",
-      "note": "Community-college students. Theory induced, then Hawking video, then a Science paper."
+      "note": "Community-college students. Theory induced, then Hawking video, then a Science paper.",
+      "durationSec": 41
     },
     {
       "id": "s5gap",
       "type": "numberCard",
       "kicker": "When the article was hard",
       "stat": "2.75 vs 3.59",
-      "note": "Predicted interest, 6-point scale. Fixed 2.75 · growth 3.59."
+      "note": "Predicted interest, 6-point scale. Fixed 2.75 · growth 3.59.",
+      "durationSec": 40
     },
     {
       "id": "sources",
@@ -103,7 +114,8 @@
       "lines": [
         "Begelman, 2003. Evidence for black holes. Science.",
         "Jha, Hill & Boyd, 2013. Hawking’s big ideas. The Guardian."
-      ]
+      ],
+      "durationSec": 40
     },
     {
       "id": "limits",
@@ -113,20 +125,23 @@
         "MTurk S5 pilot N=116, Mage 37: no theory × difficulty effect.",
         "Self-reported interest, not weeks of a real project.",
         "Study 4 is underpowered."
-      ]
+      ],
+      "durationSec": 51
     },
     {
       "id": "rule",
       "type": "cairnCaption",
       "pose": "point",
-      "caption": "Finish the session anyway. Put the stone on the pile."
+      "caption": "Finish the session anyway. Put the stone on the pile.",
+      "durationSec": 34
     },
     {
       "id": "end",
       "type": "endCard",
       "title": "Find it or develop it",
       "cite": "DOI 10.1177/0956797618780643",
-      "cta": "Subscribe. Next week we stack another stone."
+      "cta": "Subscribe. Next week we stack another stone.",
+      "durationSec": 38
     }
   ]
 }

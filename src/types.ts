@@ -1,50 +1,48 @@
 export const POSES = ["still", "listen", "point"] as const;
 export type Pose = (typeof POSES)[number];
 
-export type CairnCaptionScene = {
+type SceneTiming = {
   id: string;
+  durationSec: number;
+};
+
+export type CairnCaptionScene = SceneTiming & {
   type: "cairnCaption";
   pose: Pose;
   caption: string;
 };
 
-export type CiteCardScene = {
-  id: string;
+export type CiteCardScene = SceneTiming & {
   type: "citeCard";
   lines: string[];
 };
 
-export type NamedFrameScene = {
-  id: string;
+export type NamedFrameScene = SceneTiming & {
   type: "namedFrame";
   left: string;
   right: string;
   caption: string;
 };
 
-export type QuoteCardScene = {
-  id: string;
+export type QuoteCardScene = SceneTiming & {
   type: "quoteCard";
   quote: string;
   attr: string;
 };
 
-export type NumberCardScene = {
-  id: string;
+export type NumberCardScene = SceneTiming & {
   type: "numberCard";
   kicker: string;
   stat: string;
   note: string;
 };
 
-export type LimitsCardScene = {
-  id: string;
+export type LimitsCardScene = SceneTiming & {
   type: "limitsCard";
   items: string[];
 };
 
-export type EndCardScene = {
-  id: string;
+export type EndCardScene = SceneTiming & {
   type: "endCard";
   title: string;
   cite: string;
@@ -59,6 +57,12 @@ export type Scene =
   | NumberCardScene
   | LimitsCardScene
   | EndCardScene;
+
+type DistributiveOmit<T, K extends PropertyKey> = T extends unknown
+  ? Omit<T, K>
+  : never;
+
+export type SceneBody = DistributiveOmit<Scene, "durationSec">;
 
 export type EpisodePaper = {
   authors: string;
