@@ -6,7 +6,13 @@ import { Stage, cardStyle } from "../components/Stage";
 export const NumberCard = ({ scene }: { scene: NumberCardScene }) => {
   return (
     <Stage>
-      <div style={cardStyle({ maxWidth: 1500, width: "100%", textAlign: "center" })}>
+      <div
+        style={cardStyle({
+          maxWidth: 1500,
+          width: "100%",
+          textAlign: "center",
+        })}
+      >
         <div
           style={{
             fontFamily: bodyFont,

@@ -4,31 +4,25 @@ import { spawnSync } from "node:child_process";
 mkdirSync("out", { recursive: true });
 
 const jobs = [
-  ["ep01", "out/ep01.mp4"],
-  ["ep01-hook", "out/ep01-hook.mp4"],
-  ["ep01-rule", "out/ep01-rule.mp4"],
+  { id: "ep01", out: "out/ep01.mp4", muted: false },
+  { id: "ep01-hook", out: "out/ep01-hook.mp4", muted: true },
+  { id: "ep01-rule", out: "out/ep01-rule.mp4", muted: true },
 ];
 
 for (const job of jobs) {
-  const id = job[0];
-  const out = job[1];
-  if (!id || !out) {
-    throw new Error("render job is missing id or path");
+  const args = [
+    "remotion",
+    "render",
+    job.id,
+    job.out,
+    "--concurrency=1",
+    "--gl=angle",
+  ];
+  if (job.muted) {
+    args.push("--muted");
   }
 
-  const result = spawnSync(
-    "npx",
-    [
-      "remotion",
-      "render",
-      id,
-      out,
-      "--concurrency=1",
-      "--gl=angle",
-      "--muted",
-    ],
-    { stdio: "inherit" },
-  );
+  const result = spawnSync("npx", args, { stdio: "inherit" });
 
   if (result.status !== 0) {
     process.exit(result.status ?? 1);
