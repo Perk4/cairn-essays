@@ -25,6 +25,7 @@ for (const job of jobs) {
       out,
       "--concurrency=1",
       "--gl=angle",
+      "--muted",
     ],
     { stdio: "inherit" },
   );
