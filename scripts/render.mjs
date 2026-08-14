@@ -1,0 +1,30 @@
+import { mkdirSync } from "node:fs";
+import { spawnSync } from "node:child_process";
+
+mkdirSync("out", { recursive: true });
+
+const jobs = [
+  { id: "ep01", out: "out/ep01.mp4", muted: false },
+  { id: "ep01-hook", out: "out/ep01-hook.mp4", muted: true },
+  { id: "ep01-rule", out: "out/ep01-rule.mp4", muted: true },
+];
+
+for (const job of jobs) {
+  const args = [
+    "remotion",
+    "render",
+    job.id,
+    job.out,
+    "--concurrency=1",
+    "--gl=angle",
+  ];
+  if (job.muted) {
+    args.push("--muted");
+  }
+
+  const result = spawnSync("npx", args, { stdio: "inherit" });
+
+  if (result.status !== 0) {
+    process.exit(result.status ?? 1);
+  }
+}
