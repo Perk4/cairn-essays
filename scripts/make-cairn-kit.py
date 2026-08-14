@@ -28,11 +28,6 @@ OPEN_EYES = """
   <circle cx="42" cy="-22" r="11" fill="#281D0E" stroke="none"/>
 """
 
-BLINK_EYES = """
-  <ellipse cx="-38" cy="-28" rx="16" ry="3" fill="#281D0E" stroke="none"/>
-  <ellipse cx="42" cy="-22" rx="11" ry="2.5" fill="#281D0E" stroke="none"/>
-"""
-
 ARMS_STILL = """
   <path d="M -210 -40 L -310 -90"/>
   <path d="M -310 -90 L -355 -70"/>
@@ -121,62 +116,9 @@ def main() -> None:
     write_pose("still", ARMS_STILL, 0)
     write_pose("listen", ARMS_LISTEN, -7)
     write_pose("point", ARMS_POINT, 5)
-
-    idle = [
-        ("idle0", ARMS_STILL, -4, OPEN_EYES),
-        ("idle1", ARMS_STILL, -2, OPEN_EYES),
-        ("idle2", ARMS_STILL, 0, OPEN_EYES),
-        ("idle3", ARMS_STILL, 2, BLINK_EYES),
-        ("idle4", ARMS_STILL, 3, BLINK_EYES),
-        ("idle5", ARMS_STILL, 1, OPEN_EYES),
-        ("idle6", ARMS_STILL, -1, OPEN_EYES),
-        ("idle7", ARMS_STILL, -3, OPEN_EYES),
-    ]
-    frames: list[Path] = []
-    for name, arms, rotate, eyes in idle:
-        html_path = TMP / f"{name}.html"
-        png_path = TMP / f"{name}.png"
-        html_path.write_text(html_wrap(svg_markup(arms, eyes, rotate)), encoding="utf-8")
-        screenshot(html_path, png_path)
-        frames.append(png_path)
-
-    palette = TMP / "palette.png"
-    gif_path = OUT / "idle.gif"
-    subprocess.run(
-        [
-            "ffmpeg",
-            "-y",
-            "-framerate",
-            "8",
-            "-i",
-            str(TMP / "idle%d.png"),
-            "-vf",
-            "palettegen=reserve_transparent=0",
-            str(palette),
-        ],
-        check=True,
-        capture_output=True,
-    )
-    subprocess.run(
-        [
-            "ffmpeg",
-            "-y",
-            "-framerate",
-            "8",
-            "-i",
-            str(TMP / "idle%d.png"),
-            "-i",
-            str(palette),
-            "-lavfi",
-            "paletteuse=dither=none",
-            "-loop",
-            "0",
-            str(gif_path),
-        ],
-        check=True,
-        capture_output=True,
-    )
-    print("wrote", OUT)
+    # Do not overwrite public/cairn/idle.gif. That file is the living
+    # 8-frame sway+blink loop used on cairnCaption scenes.
+    print("wrote pose pngs to", OUT)
 
 
 if __name__ == "__main__":
