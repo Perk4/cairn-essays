@@ -1,10 +1,5 @@
-import {
-  Easing,
-  interpolate,
-  spring,
-  useCurrentFrame,
-  useVideoConfig,
-} from "remotion";
+import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
+import { FloorPile } from "./cairn/verbs";
 import { bodyFont, displayFont } from "./fonts";
 import { palette } from "./palette";
 import type { Mood, Visual } from "./types";
@@ -40,11 +35,11 @@ export const SceneVisual = ({
     case "underpowered":
       return <UnderpoweredChip />;
     case "sparkWall":
-      return <SparkWall />;
+      return null;
     case "hawkingPaper":
       return <HawkingPaper />;
     case "stoneDrop":
-      return <StonePile dropping={drop} />;
+      return <FloorPile layout={layout} dropping={drop} />;
     default: {
       const exhaustive: never = visual;
       return exhaustive;
@@ -273,54 +268,6 @@ const UnderpoweredChip = () => (
   </div>
 );
 
-const SparkWall = () => {
-  const frame = useCurrentFrame();
-  const { fps, durationInFrames } = useVideoConfig();
-  const wallAt = Math.round(durationInFrames * 0.45);
-  const spark = 0.5 + Math.sin(frame / 6) * 0.5;
-  const wall = interpolate(
-    frame,
-    [wallAt, wallAt + Math.round(0.6 * fps)],
-    [0, 1],
-    {
-      extrapolateLeft: "clamp",
-      extrapolateRight: "clamp",
-      easing: Easing.bezier(0.16, 1, 0.3, 1),
-    },
-  );
-  return (
-    <div style={{ width: 280, height: 280, position: "relative" }}>
-      <div
-        style={{
-          position: "absolute",
-          left: 70,
-          top: 40,
-          width: 90,
-          height: 90,
-          borderRadius: "50%",
-          backgroundColor: palette.terracotta,
-          border: `4px solid ${palette.outline}`,
-          opacity: 0.35 + spark * 0.5,
-          transform: `scale(${0.85 + spark * 0.25})`,
-          boxShadow: `0 0 ${30 + spark * 40}px rgba(165, 83, 45, 0.8)`,
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          left: 40,
-          bottom: 0,
-          width: 200,
-          height: 200 * wall,
-          backgroundColor: palette.stone,
-          border: `5px solid ${palette.outline}`,
-          transformOrigin: "bottom",
-        }}
-      />
-    </div>
-  );
-};
-
 const HawkingPaper = () => {
   const frame = useCurrentFrame();
   const { durationInFrames } = useVideoConfig();
@@ -376,79 +323,6 @@ const HawkingPaper = () => {
     </div>
   );
 };
-
-const StonePile = ({ dropping }: { dropping: boolean }) => {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const drop = dropping
-    ? interpolate(
-        frame,
-        [Math.round(0.3 * fps), Math.round(1.4 * fps)],
-        [-160, 0],
-        {
-          extrapolateLeft: "clamp",
-          extrapolateRight: "clamp",
-          easing: Easing.bezier(0.16, 1, 0.3, 1),
-        },
-      )
-    : interpolate(
-        frame,
-        [Math.round(0.8 * fps), Math.round(2.2 * fps)],
-        [-160, 0],
-        {
-          extrapolateLeft: "clamp",
-          extrapolateRight: "clamp",
-          easing: Easing.bezier(0.16, 1, 0.3, 1),
-        },
-      );
-  return (
-    <div style={{ width: 220, height: 180, position: "relative" }}>
-      <Stone left={20} bottom={8} w={90} h={48} color={palette.terracotta} />
-      <Stone left={90} bottom={8} w={80} h={44} color={palette.stone} />
-      <Stone left={55} bottom={44} w={70} h={40} color={palette.olive} />
-      <div
-        style={{
-          position: "absolute",
-          left: 78,
-          bottom: 78,
-          width: 54,
-          height: 36,
-          backgroundColor: palette.terracotta,
-          border: `4px solid ${palette.outline}`,
-          borderRadius: "50%",
-          transform: `translateY(${drop}px)`,
-        }}
-      />
-    </div>
-  );
-};
-
-const Stone = ({
-  left,
-  bottom,
-  w,
-  h,
-  color,
-}: {
-  left: number;
-  bottom: number;
-  w: number;
-  h: number;
-  color: string;
-}) => (
-  <div
-    style={{
-      position: "absolute",
-      left,
-      bottom,
-      width: w,
-      height: h,
-      backgroundColor: color,
-      border: `4px solid ${palette.outline}`,
-      borderRadius: "50%",
-    }}
-  />
-);
 
 export const splitStat = (
   stat: string,

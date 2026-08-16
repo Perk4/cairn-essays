@@ -1,5 +1,5 @@
 import { interpolate, useCurrentFrame, useVideoConfig } from "remotion";
-import { CairnSlot } from "../cairn/CairnSlot";
+import { PlantedCairn } from "../cairn/CairnSlot";
 import { CaptionBar } from "../components/CaptionBar";
 import { Room } from "../components/Room";
 import { bodyFont, displayFont } from "../fonts";
@@ -13,35 +13,23 @@ export const LimitsCard = ({ scene }: { scene: LimitsCardScene }) => {
 
   return (
     <Room mood="default">
+      <PlantedCairn pose={pose} size={380} layout="flagship" left={20} />
       <div
         style={{
           position: "absolute",
-          right: 40,
-          top: 20,
-        }}
-      >
-        <CairnSlot pose={pose} size={280} />
-      </div>
-      <div
-        style={{
-          position: "absolute",
-          left: 80,
-          top: 80,
-          width: 1180,
-          backgroundColor: palette.stone,
-          color: palette.cream,
-          border: `5px solid ${palette.outline}`,
-          borderRadius: 28,
-          padding: "36px 40px",
-          boxShadow: `16px 16px 0 ${palette.olive}`,
+          left: 440,
+          top: 72,
+          right: 80,
         }}
       >
         <div
           style={{
             fontFamily: displayFont,
             fontWeight: 700,
-            fontSize: 56,
-            marginBottom: 24,
+            fontSize: 64,
+            color: palette.outline,
+            marginBottom: 28,
+            letterSpacing: "-0.03em",
           }}
         >
           Limits
@@ -60,19 +48,19 @@ export const LimitsCard = ({ scene }: { scene: LimitsCardScene }) => {
                 display: "flex",
                 gap: 16,
                 alignItems: "flex-start",
-                marginBottom: 16,
+                marginBottom: 18,
                 opacity: appear,
                 transform: `translateX(${(1 - appear) * 24}px)`,
               }}
             >
               <div
                 style={{
-                  width: 18,
-                  height: 18,
-                  marginTop: 12,
+                  width: 16,
+                  height: 16,
+                  marginTop: 14,
                   borderRadius: "50%",
                   backgroundColor: palette.terracotta,
-                  border: `3px solid ${palette.cream}`,
+                  border: `3px solid ${palette.outline}`,
                   flexShrink: 0,
                 }}
               />
@@ -82,6 +70,7 @@ export const LimitsCard = ({ scene }: { scene: LimitsCardScene }) => {
                   fontWeight: 600,
                   fontSize: 32,
                   lineHeight: 1.3,
+                  color: palette.outline,
                 }}
               >
                 {item}

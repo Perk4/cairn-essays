@@ -70,6 +70,7 @@ export type NumberCardScene = SceneTiming & {
   leftLabel?: string;
   rightLabel?: string;
   pose?: Pose;
+  beats?: SceneBeat[];
 };
 
 export type LimitsCardScene = SceneTiming & {

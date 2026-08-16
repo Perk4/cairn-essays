@@ -1,15 +1,18 @@
-import { interpolate, useCurrentFrame } from "remotion";
-import { CairnSlot } from "../cairn/CairnSlot";
+import { interpolate, useCurrentFrame, useVideoConfig } from "remotion";
+import { PlantedCairn } from "../cairn/CairnSlot";
 import { Room } from "../components/Room";
 import { bodyFont, displayFont } from "../fonts";
 import { palette } from "../palette";
+import { activeBeat } from "../timing";
 import type { NumberCardScene, Pose } from "../types";
 import { FINDING_TYPE_PX, splitStat } from "../visuals";
 
 export const NumberCard = ({ scene }: { scene: NumberCardScene }) => {
   const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
   const parts = splitStat(scene.stat);
-  const pose: Pose = scene.pose ?? "listen";
+  const beat = activeBeat(scene.beats, frame, fps);
+  const pose: Pose = beat?.pose ?? scene.pose ?? "listen";
   const leftEnter = interpolate(frame, [6, 18], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
@@ -21,26 +24,17 @@ export const NumberCard = ({ scene }: { scene: NumberCardScene }) => {
 
   return (
     <Room mood="default">
+      <PlantedCairn pose={pose} size={400} layout="flagship" left={8} />
       <div
         style={{
           position: "absolute",
-          left: 40,
-          top: 20,
-          zIndex: 2,
-        }}
-      >
-        <CairnSlot pose={pose} size={320} />
-      </div>
-      <div
-        style={{
-          position: "absolute",
-          left: 360,
-          right: 80,
-          top: 90,
+          left: 400,
+          right: 64,
+          top: 88,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          gap: 18,
+          gap: 16,
         }}
       >
         <div

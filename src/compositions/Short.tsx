@@ -1,13 +1,14 @@
-import { AbsoluteFill, Sequence } from "remotion";
+import { AbsoluteFill, Sequence, useVideoConfig } from "remotion";
 import { MusicBed } from "./MusicBed";
-import { CairnSlot } from "../cairn/CairnSlot";
+import { PlantedCairn } from "../cairn/CairnSlot";
+import { FloorPile } from "../cairn/verbs";
+import { handPosition } from "../cairn/stage";
 import { CaptionBar } from "../components/CaptionBar";
 import { Room } from "../components/Room";
 import { VoAudio } from "../components/VoAudio";
 import { episode } from "../episode";
 import type { ShortBeat } from "../types";
 import { secondsToFrames } from "../timing";
-import { SceneVisual } from "../visuals";
 
 export type ShortProps = {
   shortId: "hook" | "rule";
@@ -41,36 +42,35 @@ export const Short = ({ shortId }: ShortProps) => {
 };
 
 const ShortBeatView = ({ beat }: { beat: ShortBeat }) => {
+  const { height, width } = useVideoConfig();
   const drop = beat.id === "stone";
+  const size = 520;
+  const cairnLeft = Math.round((width - size) * 0.18);
+  const throwFrom = handPosition({
+    left: cairnLeft,
+    size,
+    layout: "short",
+    height,
+  });
+  const showPile = beat.visual === "stoneDrop";
+
   return (
     <Room mood={beat.mood} layout="short">
-      <div
-        style={{
-          position: "absolute",
-          left: "50%",
-          top: 80,
-          transform: "translateX(-50%)",
-        }}
-      >
-        <CairnSlot pose={beat.pose} size={560} />
-      </div>
-      {beat.visual ? (
-        <div
-          style={{
-            position: "absolute",
-            left: "50%",
-            top: 680,
-            transform: "translateX(-50%)",
-          }}
-        >
-          <SceneVisual
-            visual={beat.visual}
-            layout="short"
-            drop={drop}
-            mood={beat.mood}
-          />
-        </div>
+      {showPile ? (
+        <FloorPile
+          layout="short"
+          dropping={drop}
+          throwFrom={throwFrom}
+          pileLeft={width * 0.48}
+        />
       ) : null}
+      <PlantedCairn
+        pose={beat.pose}
+        size={size}
+        layout="short"
+        left={cairnLeft}
+        mood={beat.mood}
+      />
       <CaptionBar
         text={beat.caption}
         kicker={beat.kicker}

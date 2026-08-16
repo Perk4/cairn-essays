@@ -26,7 +26,7 @@ Writes:
 
 - `out/ep01.mp4` — 1920×1080 flagship, every scene in `episodes/ep01.json`, placeholder VO + CC0 music bed
 - `out/ep01-hook.mp4` — 1080×1920 Short, two beats (calling / homework), VO + bed
-- `out/ep01-rule.mp4` — 1080×1920 Short, two beats (finish / stone on the pile), VO + bed. Rule uses the **point** pose.
+- `out/ep01-rule.mp4` — 1080×1920 Short, two beats (finish / stone on the pile), VO + bed. Rule uses the **point** pose. Stack is a stone hitting the pile.
 
 Studio: `npm run dev`
 
@@ -44,9 +44,11 @@ Shorts are two or more beats. Each beat has its own `durationSec`. Total is clam
 
 ## Pictures
 
-Scenes are rooms, not cream cards that fade and freeze. Cairn uses `public/cairn/still.png`, `listen.png`, and `point.png`. Caption scenes do not substitute `idle.gif` for the named pose. The rule scene uses **point**.
+Scenes are rooms. Cairn stands on the floor. Captions support the line.
 
-Study 3 (`2.04 vs 2.64`) and Study 5 (`2.75 vs 3.59`) are the 120px type. Sample size and Mage are footnotes.
+Cairn uses `public/cairn/still.png`, `listen.png`, and `point.png` until the talking kit lands. See `public/cairn/KIT.md`. Caption scenes do not substitute `idle.gif`. The rule scene uses **point**. A stone leaves the hand and lands on the pile.
+
+Study 3 (`2.04 vs 2.64`) and Study 5 (`2.75 vs 3.59`) are the 120px type. Sample size and Mage are footnotes. He points at the number that just appeared.
 
 ## Music
 

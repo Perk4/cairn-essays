@@ -5,6 +5,7 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
+import { floorTopPct, type Layout } from "../cairn/stage";
 import { palette } from "../palette";
 import type { Mood } from "../types";
 
@@ -26,7 +27,7 @@ const washForMood = (mood: Mood): string | null => {
 type RoomProps = {
   children: ReactNode;
   mood?: Mood;
-  layout?: "flagship" | "short";
+  layout?: Layout;
   plain?: boolean;
 };
 
@@ -46,8 +47,9 @@ export const Room = ({
       extrapolateRight: "clamp",
     },
   );
-  const floorTop = layout === "short" ? "58%" : "70%";
+  const floorTop = `${floorTopPct(layout)}%`;
   const wash = washForMood(mood);
+  const short = layout === "short";
 
   return (
     <AbsoluteFill style={{ backgroundColor: "#F6E8B0", overflow: "hidden" }}>
@@ -73,26 +75,45 @@ export const Room = ({
             <div
               style={{
                 position: "absolute",
-                right: layout === "short" ? "8%" : "6%",
-                top: layout === "short" ? "10%" : "8%",
-                width: layout === "short" ? 200 : 260,
-                height: layout === "short" ? 240 : 300,
+                right: short ? "8%" : "6%",
+                top: short ? "10%" : "8%",
+                width: short ? 200 : 260,
+                height: short ? 240 : 300,
                 backgroundColor: mood === "cold" ? "#CDB889" : "#E8D7A4",
                 border: `5px solid ${palette.outline}`,
-                borderRadius: 18,
+                borderRadius: 8,
               }}
             />
             <div
               style={{
                 position: "absolute",
-                right: layout === "short" ? "11%" : "8%",
-                top: layout === "short" ? "14%" : "12%",
-                width: 70,
-                height: 70,
-                borderRadius: "50%",
-                backgroundColor:
-                  mood === "cold" ? palette.stone : palette.terracotta,
-                opacity: 0.7,
+                right: short ? "11%" : "9%",
+                top: short ? "14%" : "12%",
+                width: short ? 140 : 180,
+                height: short ? 160 : 200,
+                border: `4px solid ${palette.outline}`,
+                borderRadius: 4,
+                backgroundColor: mood === "cold" ? "#E8D7A4" : "#F6E8B0",
+              }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                right: short ? "11%" : "9%",
+                top: short ? `calc(14% + 80px)` : `calc(12% + 100px)`,
+                width: short ? 140 : 180,
+                height: 4,
+                backgroundColor: palette.outline,
+              }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                right: short ? `calc(11% + 70px)` : `calc(9% + 90px)`,
+                top: short ? "14%" : "12%",
+                width: 4,
+                height: short ? 160 : 200,
+                backgroundColor: palette.outline,
               }}
             />
           </>
@@ -108,20 +129,6 @@ export const Room = ({
             borderTop: `8px solid ${palette.outline}`,
           }}
         />
-        {plain ? null : (
-          <div
-            style={{
-              position: "absolute",
-              left: layout === "short" ? "18%" : "8%",
-              width: layout === "short" ? "64%" : "22%",
-              top: `calc(${floorTop} - 14px)`,
-              height: 22,
-              backgroundColor: palette.stone,
-              border: `4px solid ${palette.outline}`,
-              borderRadius: 6,
-            }}
-          />
-        )}
       </div>
       {wash ? (
         <AbsoluteFill

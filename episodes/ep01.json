@@ -30,7 +30,6 @@
         "kicker": "TUESDAY",
         "caption": "Tuesday it felt like a calling.",
         "mood": "warm",
-        "visual": "callingHomework",
         "vo": "Tuesday it felt like a calling.",
         "durationSec": 9
       },
@@ -40,7 +39,6 @@
         "kicker": "THURSDAY",
         "caption": "Thursday it felt like homework.",
         "mood": "cold",
-        "visual": "callingHomework",
         "vo": "Thursday it felt like homework.",
         "durationSec": 9
       }
@@ -153,7 +151,11 @@
       "note": "Mismatching-article interest. Same article. Different theory.",
       "footnote": "N = 89 · 1–7 scale · p = 0.016",
       "vo": "Study three is the comparison to keep. After a mismatching article, interest sat at two point zero four on a seven point scale for the fixed theory. Two point six four for growth. Same article. Different theory. The find people cooled off. That gap is the finding. The sample size is a footnote.",
-      "durationSec": 44
+      "durationSec": 44,
+      "beats": [
+        { "atSec": 0, "pose": "listen" },
+        { "atSec": 1.4, "pose": "point" }
+      ]
     },
     {
       "id": "s4",
@@ -209,7 +211,11 @@
       "note": "Predicted interest. Same wall. Develop still wanted to keep going.",
       "footnote": "N = 70 · Mage 26 · 6-point scale · community-college students",
       "vo": "When the article was hard, predicted interest was two point seven five for the fixed theory. Three point five nine for growth. Same wall. The develop people still wanted to keep going. That gap is the finding. Who was in the room is a footnote.",
-      "durationSec": 44
+      "durationSec": 44,
+      "beats": [
+        { "atSec": 0, "pose": "listen" },
+        { "atSec": 1.4, "pose": "point" }
+      ]
     },
     {
       "id": "limits",

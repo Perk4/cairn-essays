@@ -1,35 +1,47 @@
-import { Img, getStaticFiles, staticFile } from "remotion";
-import { spring, useCurrentFrame, useVideoConfig } from "remotion";
-import type { Pose } from "../types";
+import {
+  Img,
+  interpolate,
+  staticFile,
+  useCurrentFrame,
+  useVideoConfig,
+} from "remotion";
+import type { Mood, Pose } from "../types";
+import { resolveCairnFile } from "./kit";
+import { leanForPose, plantedTopStyle, type Layout } from "./stage";
 
 type CairnSlotProps = {
   pose: Pose;
   size: number;
+  lean?: number;
+  nod?: boolean;
+  nodAtSec?: number;
+  mood?: Mood;
+  facing?: 1 | -1;
 };
 
-function hasPublicFile(name: string): boolean {
-  return getStaticFiles().some((file) => file.name === name);
-}
-
-export const poseFileName = (pose: Pose): string => `cairn/${pose}.png`;
-
-export const CairnSlot = ({ pose, size }: CairnSlotProps) => {
+export const CairnSlot = ({
+  pose,
+  size,
+  lean,
+  nod = false,
+  nodAtSec = 0.45,
+  mood,
+  facing = 1,
+}: CairnSlotProps) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const poseFile = poseFileName(pose);
-  const usePose = hasPublicFile(poseFile);
-
-  const enter = spring({
-    frame,
-    fps,
-    config: { damping: 14, mass: 0.7, stiffness: 90 },
+  const poseFile = resolveCairnFile(pose, mood);
+  const settle = interpolate(frame, [0, 8], [-16, 0], {
+    extrapolateRight: "clamp",
   });
-  const bob = Math.sin(frame / 16) * 7;
-  const sway = Math.sin(frame / 22) * 1.4;
-
-  if (!usePose) {
-    return null;
-  }
+  const nodAt = Math.round(nodAtSec * fps);
+  const nodAngle = nod
+    ? interpolate(frame, [nodAt, nodAt + 6, nodAt + 16], [0, 13, 0], {
+        extrapolateLeft: "clamp",
+        extrapolateRight: "clamp",
+      })
+    : 0;
+  const poseLean = lean ?? leanForPose(pose);
 
   return (
     <Img
@@ -38,9 +50,43 @@ export const CairnSlot = ({ pose, size }: CairnSlotProps) => {
         width: size,
         height: size,
         objectFit: "contain",
-        transform: `translateY(${(1 - enter) * 40 + bob}px) rotate(${sway}deg) scale(${0.92 + enter * 0.08})`,
-        transformOrigin: "50% 85%",
+        transform: `translateY(${settle}px) rotate(${poseLean + nodAngle}deg) scaleX(${facing})`,
+        transformOrigin: "50% 85.8%",
       }}
     />
+  );
+};
+
+type PlantedCairnProps = CairnSlotProps & {
+  layout: Layout;
+  left?: number | string;
+  right?: number | string;
+  center?: boolean;
+};
+
+export const PlantedCairn = ({
+  layout,
+  left,
+  right,
+  center = false,
+  size,
+  ...slot
+}: PlantedCairnProps) => {
+  return (
+    <div
+      style={{
+        position: "absolute",
+        left: center ? "50%" : left,
+        right: center ? undefined : right,
+        top: plantedTopStyle(size, layout),
+        width: size,
+        height: size,
+        marginLeft: center ? -size / 2 : undefined,
+        zIndex: 2,
+        pointerEvents: "none",
+      }}
+    >
+      <CairnSlot size={size} {...slot} />
+    </div>
   );
 };

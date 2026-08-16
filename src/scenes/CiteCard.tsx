@@ -1,4 +1,4 @@
-import { CairnSlot } from "../cairn/CairnSlot";
+import { PlantedCairn } from "../cairn/CairnSlot";
 import { CaptionBar } from "../components/CaptionBar";
 import { Room } from "../components/Room";
 import { bodyFont } from "../fonts";
@@ -10,14 +10,12 @@ export const CiteCard = ({ scene }: { scene: CiteCardScene }) => {
 
   return (
     <Room mood="default">
-      <div style={{ position: "absolute", left: 48, top: 40 }}>
-        <CairnSlot pose={pose} size={360} />
-      </div>
+      <PlantedCairn pose={pose} size={380} layout="flagship" left={32} />
       <div
         style={{
           position: "absolute",
           right: 80,
-          top: 180,
+          top: 160,
           width: 720,
           backgroundColor: palette.stone,
           color: palette.cream,
