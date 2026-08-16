@@ -1,7 +1,10 @@
 export type Layout = "flagship" | "short";
 
-/** Opaque base of still/listen/point PNGs (measured, 800×800). */
-export const CAIRN_BASE_PCT = 0.858;
+/**
+ * Opaque base of still/listen/point is ~0.858 of the PNG.
+ * Sit a little lower so the oval reads as planted, not kissing a hover line.
+ */
+export const CAIRN_BASE_PCT = 0.8;
 
 export const FLOOR_TOP_PCT = {
   flagship: 70,

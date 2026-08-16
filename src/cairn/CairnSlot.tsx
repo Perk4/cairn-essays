@@ -51,7 +51,7 @@ export const CairnSlot = ({
         height: size,
         objectFit: "contain",
         transform: `translateY(${settle}px) rotate(${poseLean + nodAngle}deg) scaleX(${facing})`,
-        transformOrigin: "50% 85.8%",
+        transformOrigin: "50% 80%",
       }}
     />
   );

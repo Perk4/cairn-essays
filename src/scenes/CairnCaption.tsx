@@ -52,8 +52,8 @@ export const CairnCaption = ({ scene, layout }: Props) => {
         <FloorProp
           layout={layout}
           left={short ? "18%" : "58%"}
-          width={short ? 220 : 240}
-          height={150}
+          width={short ? 220 : 260}
+          height={120}
         >
           <SceneVisual visual={visual} layout={layout} mood={mood} />
         </FloorProp>

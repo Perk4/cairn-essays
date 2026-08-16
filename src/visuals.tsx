@@ -50,33 +50,54 @@ export const SceneVisual = ({
 const DeskStone = ({ layout }: { layout: "flagship" | "short" }) => {
   const frame = useCurrentFrame();
   const glow = 0.45 + Math.sin(frame / 10) * 0.25;
-  const size = layout === "short" ? 120 : 140;
+  const width = layout === "short" ? 220 : 260;
   return (
     <div
       style={{
-        width: size * 1.6,
-        height: size,
+        width,
+        height: 120,
         position: "relative",
       }}
     >
       <div
         style={{
           position: "absolute",
-          left: 0,
-          right: 0,
+          left: 18,
           bottom: 0,
-          height: 28,
+          width: 12,
+          height: 44,
           backgroundColor: palette.stone,
           border: `4px solid ${palette.outline}`,
-          borderRadius: 8,
-          transform: "skewX(-12deg)",
         }}
       />
       <div
         style={{
           position: "absolute",
-          left: "30%",
-          bottom: 22,
+          right: 18,
+          bottom: 0,
+          width: 12,
+          height: 44,
+          backgroundColor: palette.stone,
+          border: `4px solid ${palette.outline}`,
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          left: 0,
+          right: 0,
+          bottom: 40,
+          height: 18,
+          backgroundColor: palette.stone,
+          border: `4px solid ${palette.outline}`,
+          borderRadius: 6,
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          left: "38%",
+          bottom: 54,
           width: 64,
           height: 44,
           backgroundColor: palette.terracotta,
