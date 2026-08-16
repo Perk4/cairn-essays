@@ -4,9 +4,9 @@ import { spawnSync } from "node:child_process";
 mkdirSync("out", { recursive: true });
 
 const jobs = [
-  { id: "ep01", out: "out/ep01.mp4", muted: false },
-  { id: "ep01-hook", out: "out/ep01-hook.mp4", muted: true },
-  { id: "ep01-rule", out: "out/ep01-rule.mp4", muted: true },
+  { id: "ep01", out: "out/ep01.mp4" },
+  { id: "ep01-hook", out: "out/ep01-hook.mp4" },
+  { id: "ep01-rule", out: "out/ep01-rule.mp4" },
 ];
 
 for (const job of jobs) {
@@ -18,9 +18,6 @@ for (const job of jobs) {
     "--concurrency=1",
     "--gl=angle",
   ];
-  if (job.muted) {
-    args.push("--muted");
-  }
 
   const result = spawnSync("npx", args, { stdio: "inherit" });
 

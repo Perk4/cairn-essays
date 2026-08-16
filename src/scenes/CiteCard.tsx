@@ -1,41 +1,47 @@
-import { bodyFont, displayFont } from "../fonts";
+import { CairnSlot } from "../cairn/CairnSlot";
+import { CaptionBar } from "../components/CaptionBar";
+import { Room } from "../components/Room";
+import { bodyFont } from "../fonts";
 import { palette } from "../palette";
-import type { CiteCardScene } from "../types";
-import { Stage, cardStyle } from "../components/Stage";
+import type { CiteCardScene, Pose } from "../types";
 
 export const CiteCard = ({ scene }: { scene: CiteCardScene }) => {
+  const pose: Pose = scene.pose ?? "listen";
+
   return (
-    <Stage>
-      <div style={cardStyle({ maxWidth: 1400, width: "100%" })}>
-        <div
-          style={{
-            fontFamily: bodyFont,
-            fontSize: 28,
-            fontWeight: 700,
-            letterSpacing: "0.16em",
-            textTransform: "uppercase",
-            color: palette.terracotta,
-            marginBottom: 28,
-          }}
-        >
-          Paper
-        </div>
+    <Room mood="default">
+      <div style={{ position: "absolute", left: 48, top: 40 }}>
+        <CairnSlot pose={pose} size={360} />
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          right: 80,
+          top: 180,
+          width: 720,
+          backgroundColor: palette.stone,
+          color: palette.cream,
+          border: `4px solid ${palette.outline}`,
+          borderRadius: 20,
+          padding: "24px 28px",
+        }}
+      >
         {scene.lines.map((line) => (
           <div
             key={line}
             style={{
-              fontFamily: displayFont,
-              fontWeight: 600,
-              fontSize: 48,
-              lineHeight: 1.25,
-              color: palette.outline,
-              marginBottom: 12,
+              fontFamily: bodyFont,
+              fontWeight: 700,
+              fontSize: 28,
+              lineHeight: 1.35,
+              marginBottom: 8,
             }}
           >
             {line}
           </div>
         ))}
       </div>
-    </Stage>
+      <CaptionBar text={scene.lines[0] ?? "Paper"} layout="flagship" />
+    </Room>
   );
 };

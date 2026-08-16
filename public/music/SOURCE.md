@@ -1,6 +1,6 @@
 # bee-hive-pad.mp3
 
-Quiet ambient pad looped under the ep01 flagship. Not used on Shorts.
+Quiet ambient pad looped under the ep01 flagship and the Shorts, under the spoken track.
 
 |           |                                                                                         |
 | --------- | --------------------------------------------------------------------------------------- |
@@ -13,4 +13,4 @@ Quiet ambient pad looped under the ep01 flagship. Not used on Shorts.
 
 Vendored as 128 kbps MP3 from the Wikimedia Commons Ogg (itself imported from the Free Music Archive CC0 upload). YouTube Audio Library’s public `audiolibrary_download` endpoint 404s without Studio login, so this CC0 pad is the equivalent bed that can live in the repo.
 
-Issue #3: CC0 does not unregister Content ID fingerprints. This is not a famous commercial track. If a claim appears on upload, swap to a YouTube Audio Library “attribution not required” file from Studio. Shorts omit the bed so a flagship-only claim cannot block them.
+Issue #3: CC0 does not unregister Content ID fingerprints. This is not a famous commercial track. If a claim appears on upload, swap to a YouTube Audio Library “attribution not required” file from Studio.

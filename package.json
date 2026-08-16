@@ -25,6 +25,7 @@
     "build": "remotion bundle",
     "upgrade": "remotion upgrade",
     "lint": "eslint src && tsc",
+    "vo": "node scripts/make-vo.mjs",
     "render": "node scripts/render.mjs"
   }
 }

@@ -1,7 +1,7 @@
 import { AbsoluteFill, Sequence } from "remotion";
 import { MusicBed } from "./MusicBed";
+import { VoAudio } from "../components/VoAudio";
 import { episode } from "../episode";
-import { palette } from "../palette";
 import { renderScene } from "../scenes/registry";
 import { sceneFrameRanges } from "../timing";
 
@@ -9,8 +9,8 @@ export const Flagship = () => {
   const ranges = sceneFrameRanges(episode.scenes);
 
   return (
-    <AbsoluteFill style={{ backgroundColor: palette.cream }}>
-      <MusicBed />
+    <AbsoluteFill>
+      <MusicBed fadeInSec={1} fadeOutSec={4} volume={0.07} />
       {episode.scenes.map((scene, index) => {
         const range = ranges[index];
         if (!range) {
@@ -23,6 +23,7 @@ export const Flagship = () => {
             durationInFrames={range.durationInFrames}
             name={scene.id}
           >
+            <VoAudio name={scene.id} />
             {renderScene(scene, "flagship")}
           </Sequence>
         );

@@ -1,4 +1,4 @@
-import type { Scene, SceneBody } from "./types";
+import type { Scene, SceneBeat, SceneBody, ShortBeat } from "./types";
 
 export const FPS = 30;
 
@@ -7,14 +7,13 @@ export const FLAGSHIP_HEIGHT = 1080;
 export const SHORT_WIDTH = 1080;
 export const SHORT_HEIGHT = 1920;
 
-/** Essay hold, not a caption speed-read. One extra second per visible word. */
-export const ESSAY_BASE_HOLD_SEC = 24;
-export const MIN_SCENE_SEC = 28;
+export const ESSAY_BASE_HOLD_SEC = 12;
+export const MIN_SCENE_SEC = 16;
 export const MAX_SCENE_SEC = 72;
 export const FLAGSHIP_MIN_SEC = 480;
 export const FLAGSHIP_MAX_SEC = 720;
 export const SHORT_MIN_SEC = 12;
-export const SHORT_MAX_SEC = 25;
+export const SHORT_MAX_SEC = 30;
 
 export function sceneVisibleText(scene: SceneBody): string {
   switch (scene.type) {
@@ -25,7 +24,7 @@ export function sceneVisibleText(scene: SceneBody): string {
     case "namedFrame":
       return `${scene.left} ${scene.right} ${scene.caption}`;
     case "quoteCard":
-      return `${scene.quote} ${scene.attr}`;
+      return `${scene.caption ?? scene.quote} ${scene.attr}`;
     case "numberCard":
       return `${scene.kicker} ${scene.stat} ${scene.note}`;
     case "limitsCard":
@@ -50,10 +49,10 @@ export function clamp(value: number, min: number, max: number): number {
   return Math.min(max, Math.max(min, value));
 }
 
-/** Per-scene essay duration from on-screen text. Override in JSON wins. */
+/** Fallback if durationSec is missing: spoken words plus a short hold. */
 export function durationSecFromText(text: string): number {
   return clamp(
-    Math.round(ESSAY_BASE_HOLD_SEC + wordCount(text)),
+    Math.round(ESSAY_BASE_HOLD_SEC + wordCount(text) / 2.2),
     MIN_SCENE_SEC,
     MAX_SCENE_SEC,
   );
@@ -63,19 +62,20 @@ export function durationSecForScene(scene: Scene): number {
   if (Number.isFinite(scene.durationSec) && scene.durationSec > 0) {
     return scene.durationSec;
   }
-  return durationSecFromText(sceneVisibleText(scene));
+  return durationSecFromText(scene.vo || sceneVisibleText(scene));
 }
 
 export function secondsToFrames(sec: number): number {
   return Math.round(sec * FPS);
 }
 
-export function shortDurationSec(scene: Scene): number {
-  return clamp(durationSecForScene(scene), SHORT_MIN_SEC, SHORT_MAX_SEC);
+export function shortBeatsDurationSec(beats: readonly ShortBeat[]): number {
+  const total = beats.reduce((sum, beat) => sum + beat.durationSec, 0);
+  return clamp(total, SHORT_MIN_SEC, SHORT_MAX_SEC);
 }
 
-export function shortDurationInFrames(scene: Scene): number {
-  return secondsToFrames(shortDurationSec(scene));
+export function shortDurationInFrames(beats: readonly ShortBeat[]): number {
+  return secondsToFrames(shortBeatsDurationSec(beats));
 }
 
 export type SceneFrameRange = {
@@ -104,4 +104,22 @@ export function flagshipDurationInFrames(scenes: readonly Scene[]): number {
 
 export function flagshipDurationSec(scenes: readonly Scene[]): number {
   return scenes.reduce((sum, scene) => sum + durationSecForScene(scene), 0);
+}
+
+export function activeBeat(
+  beats: readonly SceneBeat[] | undefined,
+  frame: number,
+  fps: number,
+): SceneBeat | undefined {
+  if (!beats || beats.length === 0) {
+    return undefined;
+  }
+  const t = frame / fps;
+  let current = beats[0];
+  for (const beat of beats) {
+    if (t >= beat.atSec) {
+      current = beat;
+    }
+  }
+  return current;
 }
