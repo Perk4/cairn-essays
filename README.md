@@ -46,7 +46,7 @@ Shorts are two or more beats. Each beat has its own `durationSec`. Total is clam
 
 Scenes are rooms. Cairn stands on the floor. Captions support the line.
 
-Cairn uses `public/cairn/still.png`, `listen.png`, and `point.png` until the talking kit lands. See `public/cairn/KIT.md`. Caption scenes do not substitute `idle.gif`. The rule scene uses **point**. A stone leaves the hand and lands on the pile.
+Cairn uses the talking kit in `public/cairn/` (`still`, `listen`, `point`, mouth closed/mid/open, `tue-open`, `thu-slits`). Bottom stone is planted. Mouth follows the VO. See `public/cairn/KIT.md`. Caption scenes do not substitute `idle.gif`. The rule scene uses **point**. A stone leaves the hand and lands on the pile.
 
 The repeatable line is **Hard does not mean you picked the wrong thing. Finish the session anyway.** Study 5 (`2.75 vs 3.59`) and the news-desk **470** are the 120px type. He points at the number that just appeared. Sources sit on screen (APS, CNBC, O’Keefe, Dweck & Walton, 2018), not as a bibliography scene.
 

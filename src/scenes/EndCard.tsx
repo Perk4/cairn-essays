@@ -41,6 +41,7 @@ export const EndCard = ({ scene }: { scene: EndCardScene }) => {
         left={left}
         nod
         nodAtSec={1.6}
+        vo={scene.vo}
       />
       <FloorPile
         layout="flagship"

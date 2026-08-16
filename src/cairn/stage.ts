@@ -1,18 +1,18 @@
 export type Layout = "flagship" | "short";
 
 /**
- * Opaque base of still/listen/point is ~0.858 of the PNG.
- * Sit a little lower so the oval reads as planted, not kissing a hover line.
+ * Opaque base of the planted talking-kit PNGs (~0.80 of the sprite).
+ * Sit a little into the olive floor. No hover pad.
  */
-export const CAIRN_BASE_PCT = 0.8;
+export const CAIRN_BASE_PCT = 0.78;
 
 export const FLOOR_TOP_PCT = {
   flagship: 70,
   short: 58,
 } as const;
 
-/** Point pose: twig hand, top-right of the sprite. */
-export const POINT_HAND_PCT = { x: 0.94, y: 0.13 } as const;
+/** Point pose: twig hand, stage-right of the middle stone. */
+export const POINT_HAND_PCT = { x: 0.9, y: 0.42 } as const;
 
 export function floorTopPct(layout: Layout): number {
   return FLOOR_TOP_PCT[layout];
@@ -50,9 +50,9 @@ export function handPosition(args: {
 export function leanForPose(pose: "still" | "listen" | "point"): number {
   switch (pose) {
     case "listen":
-      return 7;
+      return 0;
     case "point":
-      return 3;
+      return 0;
     case "still":
       return 0;
     default: {
@@ -61,3 +61,6 @@ export function leanForPose(pose: "still" | "listen" | "point"): number {
     }
   }
 }
+
+/** CSS lean applied when listen talks with the still-body mouth sheets. */
+export const LISTEN_TALK_LEAN = 16;

@@ -24,7 +24,13 @@ export const NumberCard = ({ scene }: { scene: NumberCardScene }) => {
 
   return (
     <Room mood="default">
-      <PlantedCairn pose={pose} size={400} layout="flagship" left={8} />
+      <PlantedCairn
+        pose={pose}
+        size={400}
+        layout="flagship"
+        left={8}
+        vo={scene.vo}
+      />
       <div
         style={{
           position: "absolute",

@@ -77,6 +77,7 @@ export const CairnCaption = ({ scene, layout }: Props) => {
         layout={layout}
         left={cairnLeft}
         mood={mood}
+        vo={scene.vo}
       />
       <CaptionBar text={caption} layout={layout} />
     </Room>

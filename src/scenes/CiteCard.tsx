@@ -10,7 +10,13 @@ export const CiteCard = ({ scene }: { scene: CiteCardScene }) => {
 
   return (
     <Room mood="default">
-      <PlantedCairn pose={pose} size={380} layout="flagship" left={32} />
+      <PlantedCairn
+        pose={pose}
+        size={380}
+        layout="flagship"
+        left={32}
+        vo={scene.vo}
+      />
       <div
         style={{
           position: "absolute",

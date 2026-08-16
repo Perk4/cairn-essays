@@ -6,8 +6,13 @@ import {
   useVideoConfig,
 } from "remotion";
 import type { Mood, Pose } from "../types";
-import { resolveCairnFile } from "./kit";
-import { leanForPose, plantedTopStyle, type Layout } from "./stage";
+import { mouthViseme, resolveCairnFile } from "./kit";
+import {
+  LISTEN_TALK_LEAN,
+  leanForPose,
+  plantedTopStyle,
+  type Layout,
+} from "./stage";
 
 type CairnSlotProps = {
   pose: Pose;
@@ -17,6 +22,7 @@ type CairnSlotProps = {
   nodAtSec?: number;
   mood?: Mood;
   facing?: 1 | -1;
+  vo?: string;
 };
 
 export const CairnSlot = ({
@@ -27,10 +33,13 @@ export const CairnSlot = ({
   nodAtSec = 0.45,
   mood,
   facing = 1,
+  vo,
 }: CairnSlotProps) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const poseFile = resolveCairnFile(pose, mood);
+  const viseme =
+    pose === "point" ? null : mouthViseme(vo, frame, fps);
+  const poseFile = resolveCairnFile(pose, mood, viseme);
   const settle = interpolate(frame, [0, 8], [-16, 0], {
     extrapolateRight: "clamp",
   });
@@ -41,7 +50,9 @@ export const CairnSlot = ({
         extrapolateRight: "clamp",
       })
     : 0;
-  const poseLean = lean ?? leanForPose(pose);
+  const talkingListen =
+    pose === "listen" && poseFile.startsWith("cairn/mouth-");
+  const poseLean = lean ?? (talkingListen ? LISTEN_TALK_LEAN : leanForPose(pose));
 
   return (
     <Img

@@ -79,14 +79,14 @@ export const NamedFrame = ({ scene }: { scene: NamedFrameScene }) => {
         size={size}
         layout="flagship"
         left={Math.round(half / 2 - size / 2)}
-        lean={0}
+        vo={scene.vo}
       />
       <PlantedCairn
         pose="listen"
         size={size}
         layout="flagship"
         left={Math.round(half + half / 2 - size / 2)}
-        lean={-7}
+        vo={scene.vo}
       />
       <div
         style={{

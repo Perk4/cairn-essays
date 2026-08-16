@@ -13,7 +13,13 @@ export const LimitsCard = ({ scene }: { scene: LimitsCardScene }) => {
 
   return (
     <Room mood="default">
-      <PlantedCairn pose={pose} size={380} layout="flagship" left={20} />
+      <PlantedCairn
+        pose={pose}
+        size={380}
+        layout="flagship"
+        left={20}
+        vo={scene.vo}
+      />
       <div
         style={{
           position: "absolute",

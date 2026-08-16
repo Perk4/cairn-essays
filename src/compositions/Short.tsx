@@ -70,6 +70,7 @@ const ShortBeatView = ({ beat }: { beat: ShortBeat }) => {
         layout="short"
         left={cairnLeft}
         mood={beat.mood}
+        vo={beat.vo}
       />
       <CaptionBar
         text={beat.caption}

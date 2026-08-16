@@ -12,7 +12,13 @@ export const QuoteCard = ({ scene }: { scene: QuoteCardScene }) => {
 
   return (
     <Room mood="cold">
-      <PlantedCairn pose={pose} size={400} layout="flagship" left={24} />
+      <PlantedCairn
+        pose={pose}
+        size={400}
+        layout="flagship"
+        left={24}
+        vo={scene.vo}
+      />
       <EggsDrop layout="flagship" />
       <div
         style={{
