@@ -27,9 +27,10 @@ export const CairnCaption = ({ scene, layout }: Props) => {
   const drop =
     visual === "stoneDrop" &&
     Boolean(beat?.caption?.toLowerCase().includes("stone"));
-  const wallBeat = scene.beats?.find((item) =>
-    item.caption?.toLowerCase().includes("wall"),
-  );
+  const wallBeat =
+    scene.beats?.find((item) => item.mood === "cold") ??
+    scene.beats?.find((item) => item.caption?.toLowerCase().includes("wall")) ??
+    scene.beats?.[1];
   const throwFrom = handPosition({
     left: cairnLeft,
     size: cairnSize,

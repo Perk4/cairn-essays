@@ -2,7 +2,7 @@
   "id": "ep01",
   "slug": "find-it-or-develop-it",
   "title": "Find it or develop it",
-  "durationTargetSec": 572,
+  "durationTargetSec": 540,
   "paper": {
     "authors": "O’Keefe, Dweck & Walton",
     "year": 2018,
@@ -11,8 +11,8 @@
     "doi": "10.1177/0956797618780643",
     "title": "Implicit theories of interest: Finding your passion or developing it?"
   },
-  "thesis": "“Find your passion” is a fixed theory of interest. It makes you drop the side project the week it gets hard. Develop it instead.",
-  "rule": "This week, when the side project gets dull or hard, treat that as the development process. Not as evidence you found the wrong passion. Finish the session anyway.",
+  "thesis": "Hard does not mean you picked the wrong thing. Finish the session anyway.",
+  "rule": "This week, when the side project gets dull, that is the work. Finish the session. Put the stone on the pile.",
   "voice": "placeholder-espeak-ng",
   "voiceLabel": "espeak-ng en-us, 120 wpm. Placeholder system TTS. Not Perk. Not a clone. Not a human host. Cairn is the body.",
   "palette": {
@@ -28,9 +28,9 @@
         "id": "calling",
         "pose": "listen",
         "kicker": "TUESDAY",
-        "caption": "Tuesday it felt like a calling.",
+        "caption": "Tuesday it felt like the one.",
         "mood": "warm",
-        "vo": "Tuesday it felt like a calling.",
+        "vo": "Tuesday it felt like the one.",
         "durationSec": 9
       },
       {
@@ -70,35 +70,22 @@
     {
       "id": "hook",
       "type": "cairnCaption",
-      "pose": "still",
+      "pose": "listen",
       "visual": "deskStone",
       "mood": "warm",
-      "caption": "I had a side project I was sure was the one.",
-      "vo": "I had a side project I was sure was the one. The kind you mention at dinner like it already has a name. You can feel the whole staircase from the first step. Monday night you push the chair in and think: this is it. Finally. A thing that will not feel like the job.",
-      "durationSec": 42
+      "caption": "Tuesday it felt like the one.",
+      "vo": "Tuesday it felt like the one.",
+      "durationSec": 50
     },
     {
       "id": "hook2",
       "type": "cairnCaption",
-      "pose": "listen",
-      "visual": "callingHomework",
-      "caption": "Tuesday it felt like a calling. Thursday it felt like homework.",
-      "vo": "Then the week happened. Tuesday it felt like a calling. Thursday it felt like homework. Same desk. Same files. Same person. Different verdict. The spark did not survive contact with a hard paragraph.",
-      "durationSec": 40,
-      "beats": [
-        {
-          "atSec": 0,
-          "pose": "listen",
-          "caption": "Tuesday it felt like a calling.",
-          "mood": "warm"
-        },
-        {
-          "atSec": 10,
-          "pose": "still",
-          "caption": "Thursday it felt like homework.",
-          "mood": "cold"
-        }
-      ]
+      "pose": "still",
+      "visual": "deskStone",
+      "mood": "cold",
+      "caption": "Thursday it felt like homework.",
+      "vo": "Thursday it felt like homework.",
+      "durationSec": 50
     },
     {
       "id": "thesis",
@@ -106,99 +93,59 @@
       "pose": "listen",
       "visual": "citeChip",
       "mood": "default",
-      "caption": "Find your passion is a fixed theory of interest.",
-      "vo": "That swing is the whole problem. Find your passion is a fixed theory of interest. It makes you drop the side project the week it gets hard. The spark is treated like a verdict. If Tuesday felt like a calling, Thursday is not allowed to feel like homework. Hardness gets read as evidence you found the wrong passion. So you close the folder. You tell a friend it was not the one. Develop it instead. Interests are not soulmates. They are built. The test is not from a thread. It is a paper. O'Keefe, Dweck, and Walton, two thousand eighteen, Psychological Science. Implicit theories of interest: finding your passion, or developing it.",
-      "durationSec": 64
+      "caption": "Hard does not mean you picked the wrong thing.",
+      "vo": "Find your passion sounds like a treasure hunt. It makes you quit the week the work gets hard.",
+      "durationSec": 56,
+      "beats": [
+        {
+          "atSec": 0,
+          "pose": "listen",
+          "caption": "Find your passion sounds like a treasure hunt."
+        },
+        {
+          "atSec": 14,
+          "pose": "listen",
+          "caption": "Hard does not mean you picked the wrong thing. Finish the session anyway."
+        }
+      ]
     },
     {
       "id": "frame",
       "type": "namedFrame",
       "pose": "still",
       "left": "FIND",
-      "right": "DEVELOP",
-      "caption": "Do you find an interest, or develop it?",
-      "vo": "Two rooms. Find: an interest is out there, waiting. You have it or you do not. If Thursday feels like homework, you picked wrong. Develop: an interest is grown. Thursday feeling like homework is the work. Not the warning that you chose badly.",
-      "durationSec": 40
-    },
-    {
-      "id": "quote",
-      "type": "quoteCard",
-      "pose": "still",
-      "quote": "Urging people to find their passion may lead them to put all their eggs in one basket but then to drop that basket when it becomes difficult to carry.",
-      "caption": "Eggs in one basket. Then you drop it.",
-      "attr": "O’Keefe, Dweck & Walton, 2018",
-      "vo": "Their line, said once, not held on a slide. Urging people to find their passion may lead them to put all their eggs in one basket, then drop that basket when it becomes difficult to carry.",
-      "durationSec": 28
-    },
-    {
-      "id": "s12",
-      "type": "cairnCaption",
-      "pose": "listen",
-      "visual": "articles",
-      "mood": "default",
-      "caption": "The mismatching article got less interest.",
-      "vo": "Studies one and two put people in a find theory or a develop theory, then handed them an article that matched their interest, and one that did not. Under find your passion, the mismatching article got less interest. Once you believe the passion is found, everything outside the basket cools. You are not curious. You are loyal, until you are not.",
-      "durationSec": 42
-    },
-    {
-      "id": "s3",
-      "type": "numberCard",
-      "pose": "listen",
-      "kicker": "Study 3",
-      "stat": "2.04 vs 2.64",
-      "leftLabel": "fixed",
-      "rightLabel": "growth",
-      "note": "Mismatching-article interest. Same article. Different theory.",
-      "footnote": "N = 89 · 1–7 scale · p = 0.016",
-      "vo": "Study three is the comparison to keep. After a mismatching article, interest sat at two point zero four on a seven point scale for the fixed theory. Two point six four for growth. Same article. Different theory. The find people cooled off. That gap is the finding. The sample size is a footnote.",
-      "durationSec": 44,
-      "beats": [
-        { "atSec": 0, "pose": "listen" },
-        { "atSec": 1.4, "pose": "point" }
-      ]
-    },
-    {
-      "id": "s4",
-      "type": "cairnCaption",
-      "pose": "still",
-      "visual": "underpowered",
-      "mood": "cold",
-      "caption": "Study 4 was small. We will not lean on it.",
-      "vo": "Study four was small. We will not put the sample size in giant type. The idea it poked at still matters. A fixed theory expects boundless motivation and almost no friction. Real side projects have friction. That is not a glitch. That is Tuesday turning into Thursday.",
-      "durationSec": 32
-    },
-    {
-      "id": "s5setup",
-      "type": "cairnCaption",
-      "pose": "listen",
-      "visual": "sparkWall",
-      "caption": "Study 5 is the money shot. A spark, then a wall.",
-      "vo": "Study five is the money shot. Give people a spark. Then a wall.",
-      "durationSec": 28,
-      "beats": [
-        {
-          "atSec": 0,
-          "pose": "listen",
-          "caption": "A spark.",
-          "mood": "warm"
-        },
-        {
-          "atSec": 12,
-          "pose": "still",
-          "caption": "Then a wall.",
-          "mood": "cold"
-        }
-      ]
+      "right": "GROW",
+      "caption": "You do not find it like a coin. You grow it.",
+      "vo": "You do not find an interest like a coin on the sidewalk. You grow it.",
+      "durationSec": 48
     },
     {
       "id": "s5story",
       "type": "cairnCaption",
       "pose": "listen",
-      "visual": "hawkingPaper",
-      "mood": "default",
-      "caption": "Hawking, then a hard Science paper.",
-      "vo": "Community college students. A theory induced. Then a video of Hawking talking big ideas. That is the spark. Then a hard Science paper on black holes. That is the wall. The question was not whether they liked the video. Anyone can like a spark. The question was what they expected to feel after the hard article. Would the interest survive the wall?",
-      "durationSec": 42
+      "visual": "sparkWall",
+      "caption": "An easy Hawking video. Then a hard article.",
+      "vo": "They got people hooked with an easy Stephen Hawking video about black holes. Then they handed them a hard science article on the same thing.",
+      "durationSec": 64,
+      "beats": [
+        {
+          "atSec": 0,
+          "pose": "listen",
+          "caption": "An easy Hawking video about black holes.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 7,
+          "pose": "still",
+          "caption": "Then a hard article on the same thing.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 20,
+          "pose": "listen",
+          "caption": "You take some time, you hit a wall, over time you build that commitment."
+        }
+      ]
     },
     {
       "id": "s5gap",
@@ -206,29 +153,53 @@
       "pose": "listen",
       "kicker": "When the article was hard",
       "stat": "2.75 vs 3.59",
-      "leftLabel": "fixed",
-      "rightLabel": "growth",
-      "note": "Predicted interest. Same wall. Develop still wanted to keep going.",
-      "footnote": "N = 70 · Mage 26 · 6-point scale · community-college students",
-      "vo": "When the article was hard, predicted interest was two point seven five for the fixed theory. Three point five nine for growth. Same wall. The develop people still wanted to keep going. That gap is the finding. Who was in the room is a footnote.",
-      "durationSec": 44,
+      "leftLabel": "go find it",
+      "rightLabel": "you grow it",
+      "note": "The gap was biggest for people who found the article hard.",
+      "footnote": "N = 70",
+      "vo": "The go find it group cooled off. The you grow it group stayed a bit more. The gap was biggest for people who found the article hard.",
+      "durationSec": 52,
       "beats": [
         { "atSec": 0, "pose": "listen" },
         { "atSec": 1.4, "pose": "point" }
       ]
     },
     {
+      "id": "s3",
+      "type": "numberCard",
+      "pose": "listen",
+      "kicker": "Five experiments",
+      "stat": "470",
+      "note": "Stanford. Same pattern.",
+      "footnote": "CNBC · O’Keefe, Dweck & Walton, 2018",
+      "vo": "Five experiments. About 470 people. Stanford. Same pattern: matching stuff feels great, mismatching stuff dies faster if you think passion is a find.",
+      "durationSec": 52,
+      "beats": [
+        { "atSec": 0, "pose": "listen" },
+        { "atSec": 1.4, "pose": "point" }
+      ]
+    },
+    {
+      "id": "quote",
+      "type": "quoteCard",
+      "pose": "still",
+      "quote": "You put all your eggs in one basket, then drop the basket when it gets heavy.",
+      "caption": "Eggs in one basket. Then you drop it.",
+      "attr": "O’Keefe, Dweck & Walton, 2018",
+      "vo": "The researchers said you put all your eggs in one basket, then drop the basket when it gets heavy.",
+      "durationSec": 40
+    },
+    {
       "id": "limits",
       "type": "limitsCard",
       "pose": "still",
       "items": [
-        "Mostly US college students.",
-        "MTurk S5 pilot N=116, Mage 37: no theory × difficulty effect.",
-        "Self-reported interest, not weeks of a real project.",
-        "Study 4 is underpowered."
+        "Mostly college students.",
+        "One extra test with older adults did not show the same dip.",
+        "A useful push, not a law."
       ],
-      "vo": "Limits, because this is a paper, not a sermon. Mostly U S college students. An M Turk pilot with older adults did not show the theory by difficulty effect. Interest was self reported, not weeks of a real project. Study four is underpowered. Believe the pattern. Do not pretend it is a law of every desk.",
-      "durationSec": 48
+      "vo": "Mostly college students. One extra test with older adults did not show the same dip. This is a useful push, not a law.",
+      "durationSec": 40
     },
     {
       "id": "rule",
@@ -236,17 +207,22 @@
       "pose": "point",
       "visual": "stoneDrop",
       "mood": "default",
-      "caption": "Finish the session anyway. Put the stone on the pile.",
-      "vo": "So here is the rule for this week. When the side project gets dull or hard, treat that as the development process. Not as evidence you found the wrong passion. Finish the session anyway. Put the stone on the pile.",
-      "durationSec": 46,
+      "caption": "Finish the session. Put the stone on the pile.",
+      "vo": "This week, when the side project gets dull, that is the work. Finish the session. Put the stone on the pile.",
+      "durationSec": 52,
       "beats": [
         {
           "atSec": 0,
           "pose": "point",
+          "caption": "When it gets dull, that is the work."
+        },
+        {
+          "atSec": 6,
+          "pose": "point",
           "caption": "Finish the session anyway."
         },
         {
-          "atSec": 16,
+          "atSec": 8,
           "pose": "point",
           "caption": "Put the stone on the pile."
         }
@@ -256,12 +232,11 @@
       "id": "end",
       "type": "endCard",
       "pose": "still",
-      "title": "Find it or develop it",
-      "cite": "DOI 10.1177/0956797618780643",
+      "title": "Hard does not mean you picked the wrong thing.",
+      "cite": "O’Keefe, Dweck & Walton, 2018 · Association for Psychological Science",
       "cta": "Subscribe. Next week we stack another stone.",
-      "footnote": "Hawking video: Jha, Hill & Boyd, 2013, The Guardian. Wall: Begelman, 2003, Science.",
-      "vo": "Find it or develop it. Develop it. Subscribe. Next week we stack another stone.",
-      "durationSec": 32
+      "vo": "Subscribe. Next week we stack another stone.",
+      "durationSec": 36
     }
   ]
 }

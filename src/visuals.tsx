@@ -192,7 +192,7 @@ const CiteChip = () => {
           color: "#E8D7A4",
         }}
       >
-        Psychological Science · DOI 10.1177/0956797618780643
+        Association for Psychological Science
       </div>
     </div>
   );

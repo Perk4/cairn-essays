@@ -79,10 +79,7 @@ export const LimitsCard = ({ scene }: { scene: LimitsCardScene }) => {
           );
         })}
       </div>
-      <CaptionBar
-        text="Believe the pattern. Do not pretend it is a law."
-        layout="flagship"
-      />
+      <CaptionBar text="A useful push, not a law." layout="flagship" />
     </Room>
   );
 };

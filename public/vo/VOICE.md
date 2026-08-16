@@ -10,7 +10,7 @@ It is a **system TTS placeholder** so the cut has a spoken line to lock captions
 
 Cairn is the body. Replace these files with a chosen voice later. Do not clone Perk.
 
-If Strategy drops a new script in `episodes/ep01.json`, regenerate:
+The locked layman script is in `episodes/ep01.json`. Regenerate:
 
 ```
 npm run vo
