@@ -63,7 +63,12 @@ const ShortBeatView = ({ beat }: { beat: ShortBeat }) => {
             transform: "translateX(-50%)",
           }}
         >
-          <SceneVisual visual={beat.visual} layout="short" drop={drop} />
+          <SceneVisual
+            visual={beat.visual}
+            layout="short"
+            drop={drop}
+            mood={beat.mood}
+          />
         </div>
       ) : null}
       <CaptionBar

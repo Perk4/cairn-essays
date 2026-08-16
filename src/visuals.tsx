@@ -7,7 +7,7 @@ import {
 } from "remotion";
 import { bodyFont, displayFont } from "./fonts";
 import { palette } from "./palette";
-import type { Visual } from "./types";
+import type { Mood, Visual } from "./types";
 
 const FINDING_SIZE = 120;
 
@@ -17,16 +17,22 @@ type VisualProps = {
   visual: Visual;
   layout: "flagship" | "short";
   drop?: boolean;
+  mood?: Mood;
 };
 
-export const SceneVisual = ({ visual, layout, drop = false }: VisualProps) => {
+export const SceneVisual = ({
+  visual,
+  layout,
+  drop = false,
+  mood = "default",
+}: VisualProps) => {
   switch (visual) {
     case "none":
       return null;
     case "deskStone":
       return <DeskStone layout={layout} />;
     case "callingHomework":
-      return <CallingHomework layout={layout} />;
+      return <CallingHomework layout={layout} mood={mood} />;
     case "citeChip":
       return <CiteChip />;
     case "articles":
@@ -88,21 +94,19 @@ const DeskStone = ({ layout }: { layout: "flagship" | "short" }) => {
   );
 };
 
-const CallingHomework = ({ layout }: { layout: "flagship" | "short" }) => {
-  const { durationInFrames } = useVideoConfig();
-  const frame = useCurrentFrame();
-  const split = interpolate(frame, [0, durationInFrames], [0, 1], {
-    extrapolateRight: "clamp",
-  });
+const CallingHomework = ({
+  layout,
+  mood,
+}: {
+  layout: "flagship" | "short";
+  mood: Mood;
+}) => {
+  const calling = mood !== "cold";
   const width = layout === "short" ? 420 : 520;
   return (
     <div style={{ display: "flex", gap: 16, width }}>
-      <MoodCard
-        label="CALLING"
-        color={palette.terracotta}
-        active={split < 0.5}
-      />
-      <MoodCard label="HOMEWORK" color={palette.stone} active={split >= 0.5} />
+      <MoodCard label="CALLING" color={palette.terracotta} active={calling} />
+      <MoodCard label="HOMEWORK" color={palette.stone} active={!calling} />
     </div>
   );
 };

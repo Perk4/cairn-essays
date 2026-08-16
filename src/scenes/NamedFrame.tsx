@@ -16,7 +16,7 @@ export const NamedFrame = ({ scene }: { scene: NamedFrameScene }) => {
   });
 
   return (
-    <Room mood="default">
+    <Room mood="default" plain>
       <div
         style={{
           position: "absolute",

@@ -47,7 +47,7 @@ export const CairnCaption = ({ scene, layout }: Props) => {
           zIndex: 2,
         }}
       >
-        <SceneVisual visual={visual} layout={layout} drop={drop} />
+        <SceneVisual visual={visual} layout={layout} drop={drop} mood={mood} />
       </div>
       <CaptionBar text={caption} layout={layout} />
     </Room>

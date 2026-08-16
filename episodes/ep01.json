@@ -30,6 +30,7 @@
         "kicker": "TUESDAY",
         "caption": "Tuesday it felt like a calling.",
         "mood": "warm",
+        "visual": "callingHomework",
         "vo": "Tuesday it felt like a calling.",
         "durationSec": 9
       },
@@ -39,6 +40,7 @@
         "kicker": "THURSDAY",
         "caption": "Thursday it felt like homework.",
         "mood": "cold",
+        "visual": "callingHomework",
         "vo": "Thursday it felt like homework.",
         "durationSec": 9
       }
