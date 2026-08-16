@@ -1,16 +1,21 @@
 import { Html5Audio, interpolate, staticFile, useVideoConfig } from "remotion";
-import { episode } from "../episode";
-import { sceneFrameRanges } from "../timing";
 
 export const MUSIC_FILE = "music/bee-hive-pad.mp3";
-export const MUSIC_CAPTION_VOLUME = 0.18;
-export const MUSIC_CARD_VOLUME = 0.1;
 
-export const MusicBed = () => {
+type MusicBedProps = {
+  fadeInSec?: number;
+  fadeOutSec?: number;
+  volume?: number;
+};
+
+export const MusicBed = ({
+  fadeInSec = 1,
+  fadeOutSec = 4,
+  volume = 0.08,
+}: MusicBedProps) => {
   const { fps, durationInFrames } = useVideoConfig();
-  const ranges = sceneFrameRanges(episode.scenes);
-  const fadeIn = Math.round(2.5 * fps);
-  const fadeOut = Math.round(5 * fps);
+  const fadeIn = Math.max(1, Math.round(fadeInSec * fps));
+  const fadeOut = Math.max(1, Math.round(fadeOutSec * fps));
 
   return (
     <Html5Audio
@@ -19,7 +24,7 @@ export const MusicBed = () => {
       name="music-bed"
       loopVolumeCurveBehavior="extend"
       volume={(frame) => {
-        const fadeInAmt = interpolate(frame, [0, fadeIn], [0, 1], {
+        const fadeInAmt = interpolate(frame, [0, fadeIn], [0.35, 1], {
           extrapolateLeft: "clamp",
           extrapolateRight: "clamp",
         });
@@ -32,17 +37,7 @@ export const MusicBed = () => {
             extrapolateRight: "clamp",
           },
         );
-        const index = ranges.findIndex(
-          (range) =>
-            frame >= range.from && frame < range.from + range.durationInFrames,
-        );
-        const scene =
-          episode.scenes[index === -1 ? episode.scenes.length - 1 : index];
-        const bed =
-          scene?.type === "cairnCaption"
-            ? MUSIC_CAPTION_VOLUME
-            : MUSIC_CARD_VOLUME;
-        return fadeInAmt * fadeOutAmt * bed;
+        return fadeInAmt * fadeOutAmt * volume;
       }}
     />
   );

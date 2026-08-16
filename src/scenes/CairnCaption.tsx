@@ -1,8 +1,10 @@
 import { CairnSlot } from "../cairn/CairnSlot";
-import { bodyFont, displayFont } from "../fonts";
-import { palette } from "../palette";
-import type { CairnCaptionScene } from "../types";
-import { Stage } from "../components/Stage";
+import { CaptionBar } from "../components/CaptionBar";
+import { Room } from "../components/Room";
+import { activeBeat } from "../timing";
+import type { CairnCaptionScene, Mood, Pose, Visual } from "../types";
+import { SceneVisual } from "../visuals";
+import { useCurrentFrame, useVideoConfig } from "remotion";
 
 type Props = {
   scene: CairnCaptionScene;
@@ -10,60 +12,44 @@ type Props = {
 };
 
 export const CairnCaption = ({ scene, layout }: Props) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const beat = activeBeat(scene.beats, frame, fps);
+  const pose: Pose = beat?.pose ?? scene.pose;
+  const caption = beat?.caption ?? scene.caption;
+  const mood: Mood = beat?.mood ?? scene.mood ?? "default";
+  const visual: Visual = scene.visual ?? "none";
   const short = layout === "short";
-  const cairnSize = short ? 420 : 460;
-  const fontSize = short ? 64 : 72;
+  const cairnSize = short ? 520 : 500;
+  const drop =
+    visual === "stoneDrop" &&
+    Boolean(beat?.caption?.toLowerCase().includes("stone"));
 
   return (
-    <Stage pad={short ? 72 : 80}>
+    <Room mood={mood} layout={layout}>
       <div
         style={{
-          display: "flex",
-          flexDirection: short ? "column" : "row",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: short ? 48 : 72,
-          width: "100%",
-          maxWidth: short ? 900 : 1680,
+          position: "absolute",
+          left: short ? "50%" : "7%",
+          top: short ? "10%" : "6%",
+          transform: short ? "translateX(-50%)" : undefined,
+          zIndex: 2,
         }}
       >
-        <CairnSlot pose={scene.pose} live size={cairnSize} />
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: 20,
-            flex: 1,
-            alignItems: short ? "center" : "flex-start",
-          }}
-        >
-          <div
-            style={{
-              fontFamily: displayFont,
-              fontWeight: 600,
-              fontSize,
-              lineHeight: 1.15,
-              color: palette.outline,
-              letterSpacing: "-0.02em",
-              textAlign: short ? "center" : "left",
-            }}
-          >
-            {scene.caption}
-          </div>
-          <div
-            style={{
-              fontFamily: bodyFont,
-              fontSize: 22,
-              fontWeight: 600,
-              color: palette.olive,
-              letterSpacing: "0.12em",
-              textTransform: "uppercase",
-            }}
-          >
-            Cairn
-          </div>
-        </div>
+        <CairnSlot pose={pose} size={cairnSize} />
       </div>
-    </Stage>
+      <div
+        style={{
+          position: "absolute",
+          right: short ? "50%" : "8%",
+          top: short ? "46%" : "22%",
+          transform: short ? "translateX(50%)" : undefined,
+          zIndex: 2,
+        }}
+      >
+        <SceneVisual visual={visual} layout={layout} drop={drop} />
+      </div>
+      <CaptionBar text={caption} layout={layout} />
+    </Room>
   );
 };

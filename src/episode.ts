@@ -1,5 +1,14 @@
-import type { Episode, Pose, Scene, SceneBody } from "./types";
-import { POSES } from "./types";
+import type {
+  Episode,
+  Mood,
+  Pose,
+  Scene,
+  SceneBeat,
+  SceneBody,
+  ShortBeat,
+  Visual,
+} from "./types";
+import { MOODS, POSES, VISUALS } from "./types";
 import raw from "../episodes/ep01.json";
 import {
   durationSecFromText,
@@ -38,6 +47,18 @@ function isPose(value: unknown): value is Pose {
   );
 }
 
+function isMood(value: unknown): value is Mood {
+  return (
+    typeof value === "string" && (MOODS as readonly string[]).includes(value)
+  );
+}
+
+function isVisual(value: unknown): value is Visual {
+  return (
+    typeof value === "string" && (VISUALS as readonly string[]).includes(value)
+  );
+}
+
 function optionalPositiveNumber(
   record: Record<string, unknown>,
   key: string,
@@ -52,12 +73,85 @@ function optionalPositiveNumber(
   return value;
 }
 
+function optionalString(
+  record: Record<string, unknown>,
+  key: string,
+): string | undefined {
+  if (!(key in record) || record[key] === undefined) {
+    return undefined;
+  }
+  return requireString(record, key);
+}
+
+function optionalPose(record: Record<string, unknown>): Pose | undefined {
+  if (!("pose" in record) || record.pose === undefined) {
+    return undefined;
+  }
+  if (!isPose(record.pose)) {
+    throw new Error("pose must be still|listen|point");
+  }
+  return record.pose;
+}
+
+function optionalMood(record: Record<string, unknown>): Mood | undefined {
+  if (!("mood" in record) || record.mood === undefined) {
+    return undefined;
+  }
+  if (!isMood(record.mood)) {
+    throw new Error("mood must be default|warm|cold");
+  }
+  return record.mood;
+}
+
+function optionalVisual(record: Record<string, unknown>): Visual | undefined {
+  if (!("visual" in record) || record.visual === undefined) {
+    return undefined;
+  }
+  if (!isVisual(record.visual)) {
+    throw new Error(`Unknown visual: ${String(record.visual)}`);
+  }
+  return record.visual;
+}
+
+function parseBeats(value: unknown): SceneBeat[] | undefined {
+  if (value === undefined) {
+    return undefined;
+  }
+  if (!Array.isArray(value)) {
+    throw new Error("beats must be an array");
+  }
+  return value.map((item, index) => {
+    if (!isRecord(item)) {
+      throw new Error(`beats[${index}] must be an object`);
+    }
+    const atSec = item.atSec;
+    if (typeof atSec !== "number" || !Number.isFinite(atSec) || atSec < 0) {
+      throw new Error(`beats[${index}].atSec must be a non-negative number`);
+    }
+    const beat: SceneBeat = { atSec };
+    const pose = optionalPose(item);
+    if (pose) {
+      beat.pose = pose;
+    }
+    const caption = optionalString(item, "caption");
+    if (caption) {
+      beat.caption = caption;
+    }
+    const mood = optionalMood(item);
+    if (mood) {
+      beat.mood = mood;
+    }
+    return beat;
+  });
+}
+
 function withDuration(
   record: Record<string, unknown>,
   scene: SceneBody,
 ): Scene {
   const override = optionalPositiveNumber(record, "durationSec");
-  const durationSec = override ?? durationSecFromText(sceneVisibleText(scene));
+  const durationSec =
+    override ?? durationSecFromText(scene.vo || sceneVisibleText(scene));
   return { ...scene, durationSec };
 }
 
@@ -68,6 +162,7 @@ function parseScene(value: unknown): Scene {
 
   const type = requireString(value, "type");
   const id = requireString(value, "id");
+  const vo = requireString(value, "vo");
 
   switch (type) {
     case "cairnCaption": {
@@ -80,6 +175,10 @@ function parseScene(value: unknown): Scene {
         type,
         pose,
         caption: requireString(value, "caption"),
+        vo,
+        visual: optionalVisual(value),
+        mood: optionalMood(value),
+        beats: parseBeats(value.beats),
       });
     }
     case "citeCard":
@@ -87,6 +186,8 @@ function parseScene(value: unknown): Scene {
         id,
         type,
         lines: requireStringArray(value, "lines"),
+        vo,
+        pose: optionalPose(value),
       });
     case "namedFrame":
       return withDuration(value, {
@@ -95,6 +196,8 @@ function parseScene(value: unknown): Scene {
         left: requireString(value, "left"),
         right: requireString(value, "right"),
         caption: requireString(value, "caption"),
+        vo,
+        pose: optionalPose(value),
       });
     case "quoteCard":
       return withDuration(value, {
@@ -102,6 +205,9 @@ function parseScene(value: unknown): Scene {
         type,
         quote: requireString(value, "quote"),
         attr: requireString(value, "attr"),
+        caption: optionalString(value, "caption"),
+        vo,
+        pose: optionalPose(value),
       });
     case "numberCard":
       return withDuration(value, {
@@ -110,12 +216,19 @@ function parseScene(value: unknown): Scene {
         kicker: requireString(value, "kicker"),
         stat: requireString(value, "stat"),
         note: requireString(value, "note"),
+        footnote: optionalString(value, "footnote"),
+        leftLabel: optionalString(value, "leftLabel"),
+        rightLabel: optionalString(value, "rightLabel"),
+        vo,
+        pose: optionalPose(value),
       });
     case "limitsCard":
       return withDuration(value, {
         id,
         type,
         items: requireStringArray(value, "items"),
+        vo,
+        pose: optionalPose(value),
       });
     case "endCard":
       return withDuration(value, {
@@ -124,11 +237,58 @@ function parseScene(value: unknown): Scene {
         title: requireString(value, "title"),
         cite: requireString(value, "cite"),
         cta: requireString(value, "cta"),
+        footnote: optionalString(value, "footnote"),
+        vo,
+        pose: optionalPose(value),
       });
     default: {
       throw new Error(`Unknown scene type: ${type}`);
     }
   }
+}
+
+function parseShortBeat(value: unknown, index: string): ShortBeat {
+  if (!isRecord(value)) {
+    throw new Error(`Short beat ${index} must be an object`);
+  }
+  const pose = value.pose;
+  if (!isPose(pose)) {
+    throw new Error(`Short beat ${index} needs pose still|listen|point`);
+  }
+  const mood = value.mood;
+  if (!isMood(mood)) {
+    throw new Error(`Short beat ${index} needs mood default|warm|cold`);
+  }
+  const durationSec = optionalPositiveNumber(value, "durationSec");
+  if (!durationSec) {
+    throw new Error(`Short beat ${index} needs durationSec`);
+  }
+  return {
+    id: requireString(value, "id"),
+    pose,
+    kicker: requireString(value, "kicker"),
+    caption: requireString(value, "caption"),
+    mood,
+    vo: requireString(value, "vo"),
+    durationSec,
+    visual: optionalVisual(value),
+  };
+}
+
+function parseShorts(value: unknown): Episode["shorts"] {
+  if (!isRecord(value)) {
+    throw new Error("shorts must be an object");
+  }
+  if (!Array.isArray(value.hook) || value.hook.length < 2) {
+    throw new Error("shorts.hook needs at least two beats");
+  }
+  if (!Array.isArray(value.rule) || value.rule.length < 2) {
+    throw new Error("shorts.rule needs at least two beats");
+  }
+  return {
+    hook: value.hook.map((beat, i) => parseShortBeat(beat, `hook[${i}]`)),
+    rule: value.rule.map((beat, i) => parseShortBeat(beat, `rule[${i}]`)),
+  };
 }
 
 function parseEpisode(value: unknown): Episode {
@@ -172,6 +332,7 @@ function parseEpisode(value: unknown): Episode {
     thesis: requireString(value, "thesis"),
     rule: requireString(value, "rule"),
     voice: requireString(value, "voice"),
+    voiceLabel: requireString(value, "voiceLabel"),
     palette: {
       cream: requireString(value.palette, "cream"),
       terracotta: requireString(value.palette, "terracotta"),
@@ -179,6 +340,7 @@ function parseEpisode(value: unknown): Episode {
       stone: requireString(value.palette, "stone"),
       outline: requireString(value.palette, "outline"),
     },
+    shorts: parseShorts(value.shorts),
     scenes: value.scenes.map(parseScene),
   };
 }
@@ -198,4 +360,11 @@ export function sceneById(id: string): Scene {
     throw new Error(`No scene ${id}`);
   }
   return scene;
+}
+
+export function poseForScene(scene: Scene): Pose {
+  if ("pose" in scene && scene.pose) {
+    return scene.pose;
+  }
+  return "still";
 }

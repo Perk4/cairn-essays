@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Rasterize Cairn still/listen/point PNGs and an 8-frame idle.gif."""
+"""Rasterize Cairn still/listen/point PNGs with cream keyed out."""
 
 from __future__ import annotations
 
@@ -116,9 +116,25 @@ def main() -> None:
     write_pose("still", ARMS_STILL, 0)
     write_pose("listen", ARMS_LISTEN, -7)
     write_pose("point", ARMS_POINT, 5)
-    # Do not overwrite public/cairn/idle.gif. That file is the living
-    # 8-frame sway+blink loop used on cairnCaption scenes.
-    print("wrote pose pngs to", OUT)
+    for name in ("still", "listen", "point"):
+        png = OUT / f"{name}.png"
+        keyed = TMP / f"{name}-rgba.png"
+        subprocess.run(
+            [
+                "ffmpeg",
+                "-y",
+                "-i",
+                str(png),
+                "-vf",
+                "colorkey=0xFCF2C6:0.08:0.25,format=rgba",
+                str(keyed),
+            ],
+            check=True,
+            capture_output=True,
+        )
+        keyed.replace(png)
+    # idle.gif stays in public/cairn but caption scenes use named poses.
+    print("wrote transparent pose pngs to", OUT)
 
 
 if __name__ == "__main__":

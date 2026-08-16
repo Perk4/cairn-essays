@@ -1,20 +1,48 @@
 export const POSES = ["still", "listen", "point"] as const;
 export type Pose = (typeof POSES)[number];
 
+export const MOODS = ["default", "warm", "cold"] as const;
+export type Mood = (typeof MOODS)[number];
+
+export const VISUALS = [
+  "none",
+  "deskStone",
+  "callingHomework",
+  "citeChip",
+  "articles",
+  "underpowered",
+  "sparkWall",
+  "hawkingPaper",
+  "stoneDrop",
+] as const;
+export type Visual = (typeof VISUALS)[number];
+
 type SceneTiming = {
   id: string;
   durationSec: number;
+  vo: string;
+};
+
+export type SceneBeat = {
+  atSec: number;
+  pose?: Pose;
+  caption?: string;
+  mood?: Mood;
 };
 
 export type CairnCaptionScene = SceneTiming & {
   type: "cairnCaption";
   pose: Pose;
   caption: string;
+  visual?: Visual;
+  mood?: Mood;
+  beats?: SceneBeat[];
 };
 
 export type CiteCardScene = SceneTiming & {
   type: "citeCard";
   lines: string[];
+  pose?: Pose;
 };
 
 export type NamedFrameScene = SceneTiming & {
@@ -22,12 +50,15 @@ export type NamedFrameScene = SceneTiming & {
   left: string;
   right: string;
   caption: string;
+  pose?: Pose;
 };
 
 export type QuoteCardScene = SceneTiming & {
   type: "quoteCard";
   quote: string;
   attr: string;
+  caption?: string;
+  pose?: Pose;
 };
 
 export type NumberCardScene = SceneTiming & {
@@ -35,11 +66,16 @@ export type NumberCardScene = SceneTiming & {
   kicker: string;
   stat: string;
   note: string;
+  footnote?: string;
+  leftLabel?: string;
+  rightLabel?: string;
+  pose?: Pose;
 };
 
 export type LimitsCardScene = SceneTiming & {
   type: "limitsCard";
   items: string[];
+  pose?: Pose;
 };
 
 export type EndCardScene = SceneTiming & {
@@ -47,6 +83,8 @@ export type EndCardScene = SceneTiming & {
   title: string;
   cite: string;
   cta: string;
+  footnote?: string;
+  pose?: Pose;
 };
 
 export type Scene =
@@ -63,6 +101,17 @@ type DistributiveOmit<T, K extends PropertyKey> = T extends unknown
   : never;
 
 export type SceneBody = DistributiveOmit<Scene, "durationSec">;
+
+export type ShortBeat = {
+  id: string;
+  pose: Pose;
+  kicker: string;
+  caption: string;
+  mood: Mood;
+  vo: string;
+  durationSec: number;
+  visual?: Visual;
+};
 
 export type EpisodePaper = {
   authors: string;
@@ -82,12 +131,17 @@ export type Episode = {
   thesis: string;
   rule: string;
   voice: string;
+  voiceLabel: string;
   palette: {
     cream: string;
     terracotta: string;
     olive: string;
     stone: string;
     outline: string;
+  };
+  shorts: {
+    hook: ShortBeat[];
+    rule: ShortBeat[];
   };
   scenes: Scene[];
 };

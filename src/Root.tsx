@@ -1,7 +1,7 @@
 import { Composition } from "remotion";
 import { Flagship } from "./compositions/Flagship";
 import { Short } from "./compositions/Short";
-import { episode, sceneById } from "./episode";
+import { episode } from "./episode";
 import {
   FLAGSHIP_HEIGHT,
   FLAGSHIP_WIDTH,
@@ -13,9 +13,6 @@ import {
 } from "./timing";
 
 export const RemotionRoot = () => {
-  const hook = sceneById("hook");
-  const rule = sceneById("rule");
-
   return (
     <>
       <Composition
@@ -29,20 +26,20 @@ export const RemotionRoot = () => {
       <Composition
         id="ep01-hook"
         component={Short}
-        durationInFrames={shortDurationInFrames(hook)}
+        durationInFrames={shortDurationInFrames(episode.shorts.hook)}
         fps={FPS}
         width={SHORT_WIDTH}
         height={SHORT_HEIGHT}
-        defaultProps={{ sceneId: "hook" }}
+        defaultProps={{ shortId: "hook" }}
       />
       <Composition
         id="ep01-rule"
         component={Short}
-        durationInFrames={shortDurationInFrames(rule)}
+        durationInFrames={shortDurationInFrames(episode.shorts.rule)}
         fps={FPS}
         width={SHORT_WIDTH}
         height={SHORT_HEIGHT}
-        defaultProps={{ sceneId: "rule" }}
+        defaultProps={{ shortId: "rule" }}
       />
     </>
   );
