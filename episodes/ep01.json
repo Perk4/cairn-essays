@@ -15,6 +15,8 @@
   "rule": "This week, when the side project gets dull or hard, treat that as the development process. Not as evidence you found the wrong passion. Finish the session anyway.",
   "voice": "qwen3-tts-ryan",
   "voiceLabel": "Hook and Part 1 are Qwen3-TTS CustomVoice / Ryan via mlx-audio, near 165 wpm. Not Perk. Not a clone. Not say. Later lines stay the espeak placeholder.",
+  "description": "Cairn explains why a dull Thursday is not proof he picked the wrong passion. Warrant: O’Keefe, Dweck & Walton, 2018, Psychological Science.",
+  "thumbLine": "THE WORK",
   "palette": {
     "cream": "#FCF2C6",
     "terracotta": "#A5532D",
@@ -271,10 +273,9 @@
       "type": "endCard",
       "pose": "still",
       "title": "Find it or develop it",
-      "cite": "DOI 10.1177/0956797618780643",
-      "cta": "Subscribe. Next week we stack another stone.",
-      "footnote": "Hawking video: Jha, Hill & Boyd, 2013, The Guardian. Wall: Begelman, 2003, Science.",
-      "vo": "Find it or develop it. Develop it. Subscribe. Next week we stack another stone.",
+      "cite": "O’Keefe, Dweck & Walton, 2018",
+      "cta": "Cairn finishes the session anyway.",
+      "vo": "Hard is the work. Cairn finishes the session anyway.",
       "durationSec": 32
     }
   ]

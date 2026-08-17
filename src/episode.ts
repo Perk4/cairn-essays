@@ -368,6 +368,8 @@ function parseEpisode(value: unknown): Episode {
     rule: requireString(value, "rule"),
     voice: requireString(value, "voice"),
     voiceLabel: requireString(value, "voiceLabel"),
+    description: requireString(value, "description"),
+    thumbLine: requireString(value, "thumbLine"),
     palette: {
       cream: requireString(value.palette, "cream"),
       terracotta: requireString(value.palette, "terracotta"),

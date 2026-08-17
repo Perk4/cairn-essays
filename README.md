@@ -28,7 +28,9 @@ Writes:
 - `out/ep01-hook.mp4` — 1080×1920 Short, two beats (calling / homework), VO + bed
 - `out/ep01-rule.mp4` — 1080×1920 Short, two beats (finish / stone on the pile), VO + bed. Rule uses the **point** pose.
 
-Studio: `npm run dev`
+Studio: `npm run dev`. `ep01-thumb` is the authored 16:9 cream thumbnail (Cairn + a 2–4 word hook), not a frame grab.
+
+Description lives on the episode as `description`. It starts with “Cairn explains” and credits the warrant. No habit-app CTA. The end card is a Cairn closer. The flagship bed ducks under speech.
 
 ## Timing
 

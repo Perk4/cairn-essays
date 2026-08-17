@@ -10,7 +10,7 @@ export const Flagship = () => {
 
   return (
     <AbsoluteFill>
-      <MusicBed fadeInSec={1} fadeOutSec={4} volume={0.07} />
+      <MusicBed fadeInSec={1} fadeOutSec={4} volume={0.07} duckUnderSpeech />
       {episode.scenes.map((scene, index) => {
         const range = ranges[index];
         if (!range) {
