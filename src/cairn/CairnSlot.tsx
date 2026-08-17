@@ -1,10 +1,12 @@
 import { Img, getStaticFiles, staticFile } from "remotion";
 import { spring, useCurrentFrame, useVideoConfig } from "remotion";
 import type { Pose } from "../types";
+import { Mouth, mouthViseme } from "./Mouth";
 
 type CairnSlotProps = {
   pose: Pose;
   size: number;
+  voName?: string;
 };
 
 function hasPublicFile(name: string): boolean {
@@ -13,11 +15,12 @@ function hasPublicFile(name: string): boolean {
 
 export const poseFileName = (pose: Pose): string => `cairn/${pose}.png`;
 
-export const CairnSlot = ({ pose, size }: CairnSlotProps) => {
+export const CairnSlot = ({ pose, size, voName }: CairnSlotProps) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const poseFile = poseFileName(pose);
   const usePose = hasPublicFile(poseFile);
+  const viseme = mouthViseme(frame, voName);
 
   const enter = spring({
     frame,
@@ -32,15 +35,24 @@ export const CairnSlot = ({ pose, size }: CairnSlotProps) => {
   }
 
   return (
-    <Img
-      src={staticFile(poseFile)}
+    <div
       style={{
+        position: "relative",
         width: size,
         height: size,
-        objectFit: "contain",
         transform: `translateY(${(1 - enter) * 40 + bob}px) rotate(${sway}deg) scale(${0.92 + enter * 0.08})`,
         transformOrigin: "50% 85%",
       }}
-    />
+    >
+      <Img
+        src={staticFile(poseFile)}
+        style={{
+          width: size,
+          height: size,
+          objectFit: "contain",
+        }}
+      />
+      <Mouth viseme={viseme} size={size} />
+    </div>
   );
 };

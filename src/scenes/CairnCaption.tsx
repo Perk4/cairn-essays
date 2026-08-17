@@ -36,7 +36,7 @@ export const CairnCaption = ({ scene, layout }: Props) => {
           zIndex: 2,
         }}
       >
-        <CairnSlot pose={pose} size={cairnSize} />
+        <CairnSlot pose={pose} size={cairnSize} voName={scene.id} />
       </div>
       <div
         style={{
