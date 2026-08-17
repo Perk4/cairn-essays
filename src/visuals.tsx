@@ -18,6 +18,7 @@ type VisualProps = {
   layout: "flagship" | "short";
   drop?: boolean;
   mood?: Mood;
+  label?: string;
 };
 
 export const SceneVisual = ({
@@ -25,6 +26,7 @@ export const SceneVisual = ({
   layout,
   drop = false,
   mood = "default",
+  label,
 }: VisualProps) => {
   switch (visual) {
     case "none":
@@ -45,6 +47,8 @@ export const SceneVisual = ({
       return <HawkingPaper />;
     case "stoneDrop":
       return <StonePile dropping={drop} />;
+    case "conceptLabel":
+      return <ConceptLabel text={label} />;
     default: {
       const exhaustive: never = visual;
       return exhaustive;
@@ -138,6 +142,32 @@ const MoodCard = ({
       }}
     >
       {label}
+    </div>
+  );
+};
+
+const ConceptLabel = ({ text }: { text?: string }) => {
+  if (!text) {
+    return null;
+  }
+  return (
+    <div
+      style={{
+        backgroundColor: palette.terracotta,
+        color: palette.cream,
+        border: `4px solid ${palette.outline}`,
+        borderRadius: 18,
+        padding: "22px 28px",
+        maxWidth: 520,
+        fontFamily: displayFont,
+        fontWeight: 700,
+        fontSize: 42,
+        letterSpacing: "0.08em",
+        textTransform: "uppercase",
+        lineHeight: 1.15,
+      }}
+    >
+      {text}
     </div>
   );
 };

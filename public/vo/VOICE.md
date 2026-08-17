@@ -1,6 +1,6 @@
 # Voice
 
-The hook line is **Qwen3-TTS CustomVoice / Ryan** through mlx-audio on this machine.
+The hook and Part 1 are **Qwen3-TTS CustomVoice / Ryan** through mlx-audio on this machine.
 
 Primary model is 1.7B. If that will not load, 0.6B CustomVoice / Ryan. If Qwen3 will not run, Kokoro-82M `af_heart`.
 
@@ -9,9 +9,9 @@ Primary model is 1.7B. If that will not load, 0.6B CustomVoice / Ryan. If Qwen3 
 - Not macOS `say` / Samantha
 - Not cloud TTS
 
-Other scenes still use the espeak-ng placeholder until later tickets. The mouth on the hook reads the RMS envelope in `src/voEnvelopes.json`.
+Later scenes still use the espeak-ng placeholder until later tickets. The mouth on speech-led lines reads the RMS envelope in `src/voEnvelopes.json`.
 
-Regenerate the hook:
+Regenerate speech-led lines:
 
 ```
 npm run vo

@@ -13,8 +13,8 @@
   },
   "thesis": "“Find your passion” is a fixed theory of interest. It makes you drop the side project the week it gets hard. Develop it instead.",
   "rule": "This week, when the side project gets dull or hard, treat that as the development process. Not as evidence you found the wrong passion. Finish the session anyway.",
-  "voice": "qwen3-tts-ryan-hook",
-  "voiceLabel": "Hook is Qwen3-TTS CustomVoice / Ryan via mlx-audio, near 165 wpm. Not Perk. Not a clone. Not say. Other lines stay the espeak placeholder.",
+  "voice": "qwen3-tts-ryan",
+  "voiceLabel": "Hook and Part 1 are Qwen3-TTS CustomVoice / Ryan via mlx-audio, near 165 wpm. Not Perk. Not a clone. Not say. Later lines stay the espeak placeholder.",
   "palette": {
     "cream": "#FCF2C6",
     "terracotta": "#A5532D",
@@ -72,35 +72,55 @@
     {
       "id": "hook",
       "type": "cairnCaption",
-      "pose": "still",
-      "visual": "deskStone",
-      "mood": "warm",
-      "caption": "I had a side project I was sure was the one.",
-      "vo": "I had a side project I was sure was the one. The kind you mention at dinner like it already has a name. You can feel the whole staircase from the first step. Monday night you push the chair in and think: this is it. Finally. A thing that will not feel like the job.",
-      "speechLed": true
-    },
-    {
-      "id": "hook2",
-      "type": "cairnCaption",
       "pose": "listen",
       "visual": "callingHomework",
-      "caption": "Tuesday it felt like a calling. Thursday it felt like homework.",
-      "vo": "Then the week happened. Tuesday it felt like a calling. Thursday it felt like homework. Same desk. Same files. Same person. Different verdict. The spark did not survive contact with a hard paragraph.",
-      "durationSec": 40,
+      "mood": "warm",
+      "caption": "TUESDAY",
+      "vo": "Tuesday it felt like the one. Cairn sat down and treated the pile like a calling. Thursday the same pile felt like homework. Same desk. Same files. Different verdict. Cairn almost walked. Hard must mean he picked the wrong thing. A dull night read as proof the passion was a fake. It does not. That is the work. The spark dying is the job, not the warning. Four things Cairn does when the spark dies.",
+      "speechLed": true,
       "beats": [
         {
           "atSec": 0,
           "pose": "listen",
-          "caption": "Tuesday it felt like a calling.",
+          "caption": "TUESDAY",
           "mood": "warm"
         },
         {
-          "atSec": 10,
+          "atSec": 5,
           "pose": "still",
-          "caption": "Thursday it felt like homework.",
+          "caption": "THURSDAY",
           "mood": "cold"
+        },
+        {
+          "atSec": 11,
+          "pose": "still",
+          "caption": "WRONG THING?",
+          "mood": "cold"
+        },
+        {
+          "atSec": 17,
+          "pose": "point",
+          "caption": "THE WORK",
+          "mood": "default"
+        },
+        {
+          "atSec": 22,
+          "pose": "point",
+          "caption": "4 PARTS",
+          "mood": "default"
         }
       ]
+    },
+    {
+      "id": "part1",
+      "type": "cairnCaption",
+      "pose": "listen",
+      "visual": "conceptLabel",
+      "mood": "default",
+      "label": "Fixed interest",
+      "caption": "Cairn treats a dull Thursday as proof he picked wrong.",
+      "vo": "Part one. Fixed interest. Cairn treats a dull Thursday as proof he picked wrong. If the pile feels like homework, the passion must be fake. So Cairn closes the folder. He tells a friend it was not the one. That is the trap. A hard night is not a verdict.",
+      "speechLed": true
     },
     {
       "id": "thesis",
