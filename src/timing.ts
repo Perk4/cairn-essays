@@ -11,8 +11,9 @@ export const ESSAY_BASE_HOLD_SEC = 12;
 export const MIN_SCENE_SEC = 16;
 export const MAX_SCENE_SEC = 72;
 export const SPEECH_SETTLE_SEC = 0.8;
-export const FLAGSHIP_MIN_SEC = 480;
-export const FLAGSHIP_MAX_SEC = 720;
+export const FLAGSHIP_MIN_SEC = 400;
+export const FLAGSHIP_MAX_SEC = 540;
+export const FLAGSHIP_FEEL_SEC = 450;
 export const SHORT_MIN_SEC = 12;
 export const SHORT_MAX_SEC = 30;
 

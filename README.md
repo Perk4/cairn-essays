@@ -4,7 +4,7 @@ Remotion factory for Cairn essays. Episode 1 is a **story with a spoken track**.
 
 ## Voice
 
-The hook and Part 1 are **Qwen3-TTS CustomVoice / Ryan** through mlx-audio, near 165 wpm. Later lines still use the espeak-ng placeholder.
+Flagship lines are **Qwen3-TTS CustomVoice / Ryan** through mlx-audio, near 165 wpm.
 
 It is **not Perk**. It is **not a clone**. It is **not macOS say**.
 
@@ -34,7 +34,7 @@ Description lives on the episode as `description`. It starts with “Cairn expla
 
 ## Timing
 
-Episode timing lives in `episodes/ep01.json`. Most scenes set `durationSec` as the spoken line plus a hold. Speech-led scenes (the hook and Part 1) omit `durationSec`. Their picture lasts the VO file plus 0.8s settle and skips the 16–72s clamp. Flagship length is the sum of those scene lengths. ep01 is inside the 8–12 minute week-1 bar.
+Episode timing lives in `episodes/ep01.json`. Most scenes set `durationSec` as the spoken line plus a hold. Speech-led scenes (the hook and Part 1) omit `durationSec`. Their picture lasts the VO file plus 0.8s settle and skips the 16–72s clamp. Flagship length is the sum of those scene lengths. The feel target is about 7:30. Overshoot is fine if speech stays continuous.
 
 If `durationSec` is missing and the scene is not speech-led, runtime uses spoken/visible words:
 
