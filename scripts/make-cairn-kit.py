@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-"""Rasterize Cairn pose PNGs with cream keyed out."""
 
 from __future__ import annotations
 

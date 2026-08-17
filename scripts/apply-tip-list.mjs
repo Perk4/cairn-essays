@@ -48,7 +48,7 @@ const scenes = [
   {
     id: "part1",
     type: "cairnCaption",
-    pose: "listen",
+    pose: "present",
     visual: "conceptLabel",
     mood: "default",
     label: "Fixed interest",
@@ -68,7 +68,7 @@ const scenes = [
   {
     id: "part2",
     type: "cairnCaption",
-    pose: "listen",
+    pose: "present",
     visual: "conceptLabel",
     mood: "default",
     label: "Interests develop",
@@ -88,7 +88,7 @@ const scenes = [
   {
     id: "part3",
     type: "cairnCaption",
-    pose: "point",
+    pose: "present",
     visual: "conceptLabel",
     mood: "default",
     label: "Hard is not wrong",
@@ -108,7 +108,7 @@ const scenes = [
   {
     id: "part4",
     type: "cairnCaption",
-    pose: "point",
+    pose: "present",
     visual: "conceptLabel",
     mood: "default",
     label: "Finish the session",
@@ -128,7 +128,7 @@ const scenes = [
   {
     id: "part5",
     type: "cairnCaption",
-    pose: "point",
+    pose: "present",
     visual: "conceptLabel",
     mood: "default",
     label: "Stone on the pile",
