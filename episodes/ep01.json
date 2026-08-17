@@ -76,42 +76,42 @@
       "sceneId": "hook",
       "kicker": "TUESDAY",
       "startSec": 0,
-      "endSec": 27.266
+      "endSec": 26.933
     },
     {
       "id": "part1",
       "sceneId": "part1",
       "kicker": "FIXED INTEREST",
       "startSec": 0,
-      "endSec": 37.821
+      "endSec": 36.467
     },
     {
       "id": "part2",
       "sceneId": "part2",
       "kicker": "INTERESTS DEVELOP",
       "startSec": 0,
-      "endSec": 33.816
+      "endSec": 36.467
     },
     {
       "id": "part3",
       "sceneId": "part3",
       "kicker": "HARD IS NOT WRONG",
       "startSec": 0,
-      "endSec": 31.269
+      "endSec": 32.933
     },
     {
       "id": "part4",
       "sceneId": "part4",
       "kicker": "FINISH THE SESSION",
       "startSec": 0,
-      "endSec": 31.641
+      "endSec": 30.433
     },
     {
       "id": "part5",
       "sceneId": "part5",
       "kicker": "STONE ON THE PILE",
       "startSec": 0,
-      "endSec": 29.815
+      "endSec": 29
     }
   ],
   "scenes": [
