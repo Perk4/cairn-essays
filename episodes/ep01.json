@@ -70,6 +70,38 @@
       }
     ]
   },
+  "clips": [
+    {
+      "id": "hook",
+      "sceneId": "hook",
+      "kicker": "TUESDAY"
+    },
+    {
+      "id": "part1",
+      "sceneId": "part1",
+      "kicker": "FIXED INTEREST"
+    },
+    {
+      "id": "part2",
+      "sceneId": "part2",
+      "kicker": "INTERESTS DEVELOP"
+    },
+    {
+      "id": "part3",
+      "sceneId": "part3",
+      "kicker": "HARD IS NOT WRONG"
+    },
+    {
+      "id": "part4",
+      "sceneId": "part4",
+      "kicker": "FINISH THE SESSION"
+    },
+    {
+      "id": "part5",
+      "sceneId": "part5",
+      "kicker": "STONE ON THE PILE"
+    }
+  ],
   "scenes": [
     {
       "id": "hook",

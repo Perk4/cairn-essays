@@ -28,13 +28,13 @@ Writes:
 - `out/ep01-hook.mp4` — 1080×1920 Short, two beats (calling / homework), VO + bed
 - `out/ep01-rule.mp4` — 1080×1920 Short, two beats (finish / stone on the pile), VO + bed. Rule uses the **point** pose.
 
-Studio: `npm run dev`. `ep01-thumb` is the authored 16:9 cream thumbnail (Cairn + a 2–4 word hook), not a frame grab.
+Studio: `npm run dev`. `ep01-thumb` is the authored 16:9 cream thumbnail. Clips are 1080×1920 remounts of the hook and each Part. Same Ryan take. First-frame kicker. Picture is clamped to 20–45s.
 
 Description lives on the episode as `description`. It starts with “Cairn explains” and credits the warrant. No habit-app CTA. The end card is a Cairn closer. The flagship bed ducks under speech.
 
 ## Timing
 
-Episode timing lives in `episodes/ep01.json`. Flagship scenes are speech-led and omit `durationSec`. Picture lasts the VO file plus 0.8s settle and skips the 16–72s clamp. Flagship length is the sum of those scene lengths. The feel target is about 7:30. Overshoot is fine if speech stays continuous.
+Episode timing lives in `episodes/ep01.json`. Flagship scenes are speech-led and omit `durationSec`. Picture lasts the VO file plus 0.8s settle and skips the 16–72s clamp. A Clip remounts one take at 9:16 and clamps picture to 20–45s. Flagship length is the sum of those scene lengths. The feel target is about 7:30. Overshoot is fine if speech stays continuous.
 
 If `durationSec` is missing and the scene is not speech-led, runtime uses spoken/visible words:
 
