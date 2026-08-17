@@ -1,8 +1,6 @@
 import { readFileSync } from "node:fs";
 
 const SETTLE = 0.8;
-const MIN_SCENE_SEC = 16;
-const MAX_SCENE_SEC = 72;
 
 const ep = JSON.parse(readFileSync("episodes/ep01.json", "utf8"));
 const durations = JSON.parse(readFileSync("public/vo/durations.json", "utf8"));
@@ -10,15 +8,6 @@ const durations = JSON.parse(readFileSync("public/vo/durations.json", "utf8"));
 function fail(message) {
   console.error(message);
   process.exit(1);
-}
-
-const shortLine = 3;
-const shortLed = shortLine + SETTLE;
-if (shortLed !== 3.8) {
-  fail(`speech-led 3s line should be 3.8s, got ${shortLed}`);
-}
-if (shortLed >= MIN_SCENE_SEC && shortLed <= MAX_SCENE_SEC) {
-  fail(`speech-led 3s line landed inside the 16–72 clamp (${shortLed})`);
 }
 
 const hook = ep.scenes.find((scene) => scene.id === "hook");
@@ -35,10 +24,6 @@ if (hook.durationSec !== undefined) {
 const voSec = durations.hook;
 if (typeof voSec !== "number" || voSec <= 0) {
   fail("hook VO duration missing");
-}
-const pictureSec = voSec + SETTLE;
-if (pictureSec - voSec > SETTLE + 1e-9) {
-  fail(`hook settle ${pictureSec - voSec}s exceeds ${SETTLE}s`);
 }
 
 if (ep.title !== "Find it or develop it") {
@@ -59,7 +44,7 @@ for (const scene of others) {
 }
 
 console.log(
-  `hook VO ${voSec.toFixed(3)}s  picture ${pictureSec.toFixed(3)}s  settle ${SETTLE}s`,
+  `hook VO ${voSec.toFixed(3)}s  picture ${(voSec + SETTLE).toFixed(3)}s  settle ${SETTLE}s`,
 );
 console.log(`other scenes ${others.length} still have durationSec`);
 console.log("speech-led check ok");

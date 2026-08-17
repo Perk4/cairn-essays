@@ -16,6 +16,7 @@ import {
   FLAGSHIP_MAX_SEC,
   FLAGSHIP_MIN_SEC,
   flagshipDurationSec,
+  MIN_SCENE_SEC,
   sceneVisibleText,
   SPEECH_SETTLE_SEC,
   speechLedDurationSec,
@@ -384,6 +385,13 @@ const flagshipSec = flagshipDurationSec(episode.scenes);
 if (flagshipSec < FLAGSHIP_MIN_SEC || flagshipSec > FLAGSHIP_MAX_SEC) {
   throw new Error(
     `Flagship duration ${flagshipSec}s is outside the 8–12 minute bar (${FLAGSHIP_MIN_SEC}–${FLAGSHIP_MAX_SEC})`,
+  );
+}
+
+const shortLineSec = speechLedDurationSec(3);
+if (shortLineSec !== 3.8 || shortLineSec >= MIN_SCENE_SEC) {
+  throw new Error(
+    `speech-led 3s line is ${shortLineSec}s; it must be 3.8s and under ${MIN_SCENE_SEC}s`,
   );
 }
 
