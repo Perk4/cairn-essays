@@ -134,6 +134,8 @@ export type Episode = {
   rule: string;
   voice: string;
   voiceLabel: string;
+  description: string;
+  thumbLine: string;
   palette: {
     cream: string;
     terracotta: string;

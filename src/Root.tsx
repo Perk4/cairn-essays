@@ -1,6 +1,7 @@
 import { Composition } from "remotion";
 import { Flagship } from "./compositions/Flagship";
 import { Short } from "./compositions/Short";
+import { Thumbnail } from "./compositions/Thumbnail";
 import { episode } from "./episode";
 import {
   FLAGSHIP_HEIGHT,
@@ -31,6 +32,14 @@ export const RemotionRoot = () => {
         width={SHORT_WIDTH}
         height={SHORT_HEIGHT}
         defaultProps={{ shortId: "hook" }}
+      />
+      <Composition
+        id="ep01-thumb"
+        component={Thumbnail}
+        durationInFrames={1}
+        fps={FPS}
+        width={FLAGSHIP_WIDTH}
+        height={FLAGSHIP_HEIGHT}
       />
       <Composition
         id="ep01-rule"
