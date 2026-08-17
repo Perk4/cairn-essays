@@ -15,6 +15,8 @@ export const FLAGSHIP_MIN_SEC = 480;
 export const FLAGSHIP_MAX_SEC = 720;
 export const SHORT_MIN_SEC = 12;
 export const SHORT_MAX_SEC = 30;
+export const CLIP_MIN_SEC = 20;
+export const CLIP_MAX_SEC = 45;
 
 export function sceneVisibleText(scene: SceneBody): string {
   switch (scene.type) {
@@ -84,6 +86,10 @@ export function shortBeatsDurationSec(beats: readonly ShortBeat[]): number {
 
 export function shortDurationInFrames(beats: readonly ShortBeat[]): number {
   return secondsToFrames(shortBeatsDurationSec(beats));
+}
+
+export function clipDurationSec(voSec: number): number {
+  return clamp(speechLedDurationSec(voSec), CLIP_MIN_SEC, CLIP_MAX_SEC);
 }
 
 export type SceneFrameRange = {

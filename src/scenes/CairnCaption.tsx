@@ -12,9 +12,10 @@ const envelopeMap = envelopes as Record<string, number[]>;
 type Props = {
   scene: CairnCaptionScene;
   layout: "flagship" | "short";
+  kicker?: string;
 };
 
-export const CairnCaption = ({ scene, layout }: Props) => {
+export const CairnCaption = ({ scene, layout, kicker }: Props) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const beat = activeBeat(scene.beats, frame, fps);
@@ -62,7 +63,12 @@ export const CairnCaption = ({ scene, layout }: Props) => {
           label={scene.label}
         />
       </div>
-      <CaptionBar text={caption} layout={layout} />
+      <CaptionBar
+        text={caption}
+        kicker={kicker}
+        layout={layout}
+        punch={Boolean(kicker)}
+      />
     </Room>
   );
 };

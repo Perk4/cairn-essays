@@ -145,5 +145,12 @@ export type Episode = {
     hook: ShortBeat[];
     rule: ShortBeat[];
   };
+  clips: EpisodeClip[];
   scenes: Scene[];
+};
+
+export type EpisodeClip = {
+  id: string;
+  sceneId: string;
+  kicker: string;
 };

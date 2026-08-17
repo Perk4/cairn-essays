@@ -27,6 +27,7 @@ Writes:
 - `out/ep01.mp4` — 1920×1080 flagship, every scene in `episodes/ep01.json`, Ryan on the hook and Part 1, espeak on the rest, plus the CC0 music bed
 - `out/ep01-hook.mp4` — 1080×1920 Short, two beats (calling / homework), VO + bed
 - `out/ep01-rule.mp4` — 1080×1920 Short, two beats (finish / stone on the pile), VO + bed. Rule uses the **point** pose.
+- `ep01-clip-part1` — 1080×1920 Clip remount of flagship Part 1, same Ryan take, first-frame kicker
 
 Studio: `npm run dev`
 

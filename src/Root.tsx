@@ -1,14 +1,18 @@
 import { Composition } from "remotion";
+import { Clip } from "./compositions/Clip";
 import { Flagship } from "./compositions/Flagship";
 import { Short } from "./compositions/Short";
 import { episode } from "./episode";
+import voDurations from "../public/vo/durations.json";
 import {
   FLAGSHIP_HEIGHT,
   FLAGSHIP_WIDTH,
   FPS,
   SHORT_HEIGHT,
   SHORT_WIDTH,
+  clipDurationSec,
   flagshipDurationInFrames,
+  secondsToFrames,
   shortDurationInFrames,
 } from "./timing";
 
@@ -41,6 +45,25 @@ export const RemotionRoot = () => {
         height={SHORT_HEIGHT}
         defaultProps={{ shortId: "rule" }}
       />
+      {episode.clips.map((clip) => {
+        const voSec = voDurations[clip.sceneId as keyof typeof voDurations];
+        if (typeof voSec !== "number") {
+          throw new Error(`Clip ${clip.id} missing VO duration`);
+        }
+        const durationSec = clipDurationSec(voSec);
+        return (
+          <Composition
+            key={clip.id}
+            id={`ep01-clip-${clip.id}`}
+            component={Clip}
+            durationInFrames={secondsToFrames(durationSec)}
+            fps={FPS}
+            width={SHORT_WIDTH}
+            height={SHORT_HEIGHT}
+            defaultProps={{ clipId: clip.id }}
+          />
+        );
+      })}
     </>
   );
 };

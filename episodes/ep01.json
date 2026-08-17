@@ -68,6 +68,13 @@
       }
     ]
   },
+  "clips": [
+    {
+      "id": "part1",
+      "sceneId": "part1",
+      "kicker": "FIXED INTEREST"
+    }
+  ],
   "scenes": [
     {
       "id": "hook",
