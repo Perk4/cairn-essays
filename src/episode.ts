@@ -13,6 +13,8 @@ import { MOODS, POSES, VISUALS } from "./types";
 import raw from "../episodes/ep01.json";
 import voDurations from "../public/vo/durations.json";
 import {
+  CLIP_MAX_SEC,
+  CLIP_MIN_SEC,
   durationSecFromText,
   FLAGSHIP_MAX_SEC,
   FLAGSHIP_MIN_SEC,
@@ -311,14 +313,35 @@ function parseShortBeat(value: unknown, index: string): ShortBeat {
   };
 }
 
+function requireNumber(record: Record<string, unknown>, key: string): number {
+  const value = record[key];
+  if (typeof value !== "number" || !Number.isFinite(value)) {
+    throw new Error(`${key} must be a number`);
+  }
+  return value;
+}
+
 function parseClip(value: unknown, index: string): EpisodeClip {
   if (!isRecord(value)) {
     throw new Error(`Clip ${index} must be an object`);
+  }
+  const startSec = requireNumber(value, "startSec");
+  const endSec = requireNumber(value, "endSec");
+  if (endSec <= startSec) {
+    throw new Error(`Clip ${index} endSec must be after startSec`);
+  }
+  const picture = endSec - startSec + SPEECH_SETTLE_SEC;
+  if (picture < CLIP_MIN_SEC || picture > CLIP_MAX_SEC) {
+    throw new Error(
+      `Clip ${index} picture ${picture.toFixed(2)}s is outside ${CLIP_MIN_SEC}–${CLIP_MAX_SEC}`,
+    );
   }
   return {
     id: requireString(value, "id"),
     sceneId: requireString(value, "sceneId"),
     kicker: requireString(value, "kicker"),
+    startSec,
+    endSec,
   };
 }
 

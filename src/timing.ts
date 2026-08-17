@@ -89,8 +89,12 @@ export function shortDurationInFrames(beats: readonly ShortBeat[]): number {
   return secondsToFrames(shortBeatsDurationSec(beats));
 }
 
-export function clipDurationSec(voSec: number): number {
-  return clamp(speechLedDurationSec(voSec), CLIP_MIN_SEC, CLIP_MAX_SEC);
+export function clipSpokenSec(clip: { startSec: number; endSec: number }): number {
+  return clip.endSec - clip.startSec;
+}
+
+export function clipDurationSec(clip: { startSec: number; endSec: number }): number {
+  return clipSpokenSec(clip) + SPEECH_SETTLE_SEC;
 }
 
 export type SceneFrameRange = {

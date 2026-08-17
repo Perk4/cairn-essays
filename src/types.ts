@@ -155,4 +155,6 @@ export type EpisodeClip = {
   id: string;
   sceneId: string;
   kicker: string;
+  startSec: number;
+  endSec: number;
 };

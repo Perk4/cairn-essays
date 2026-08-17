@@ -32,13 +32,25 @@ for (const clip of clips) {
   if (typeof voSec !== "number" || voSec <= 0) {
     fail(`${clip.id} missing the flagship take`);
   }
-  const picture = Math.min(CLIP_MAX, Math.max(CLIP_MIN, voSec + SETTLE));
+  if (typeof clip.startSec !== "number" || typeof clip.endSec !== "number") {
+    fail(`${clip.id} needs startSec and endSec`);
+  }
+  if (clip.startSec < 0 || clip.endSec > voSec + 0.05) {
+    fail(`${clip.id} trim ${clip.startSec}-${clip.endSec} leaves the take`);
+  }
+  if (clip.endSec <= clip.startSec) {
+    fail(`${clip.id} endSec must be after startSec`);
+  }
+  const spoken = clip.endSec - clip.startSec;
+  const picture = spoken + SETTLE;
   if (picture < CLIP_MIN || picture > CLIP_MAX) {
-    fail(`${clip.id} picture ${picture}s is outside 20–45`);
+    fail(`${clip.id} picture ${picture.toFixed(2)}s is outside 20–45`);
   }
 }
 
 console.log(
-  `${clips.length} clips  ${clips.map((c) => c.kicker).join(" | ")}`,
+  `${clips.length} clips  ${clips
+    .map((c) => `${c.kicker} ${(c.endSec - c.startSec + SETTLE).toFixed(1)}s`)
+    .join(" | ")}`,
 );
 console.log("clip check ok");

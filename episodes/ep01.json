@@ -74,32 +74,44 @@
     {
       "id": "hook",
       "sceneId": "hook",
-      "kicker": "TUESDAY"
+      "kicker": "TUESDAY",
+      "startSec": 0,
+      "endSec": 27.266
     },
     {
       "id": "part1",
       "sceneId": "part1",
-      "kicker": "FIXED INTEREST"
+      "kicker": "FIXED INTEREST",
+      "startSec": 0,
+      "endSec": 37.821
     },
     {
       "id": "part2",
       "sceneId": "part2",
-      "kicker": "INTERESTS DEVELOP"
+      "kicker": "INTERESTS DEVELOP",
+      "startSec": 0,
+      "endSec": 33.816
     },
     {
       "id": "part3",
       "sceneId": "part3",
-      "kicker": "HARD IS NOT WRONG"
+      "kicker": "HARD IS NOT WRONG",
+      "startSec": 0,
+      "endSec": 31.269
     },
     {
       "id": "part4",
       "sceneId": "part4",
-      "kicker": "FINISH THE SESSION"
+      "kicker": "FINISH THE SESSION",
+      "startSec": 0,
+      "endSec": 31.641
     },
     {
       "id": "part5",
       "sceneId": "part5",
-      "kicker": "STONE ON THE PILE"
+      "kicker": "STONE ON THE PILE",
+      "startSec": 0,
+      "endSec": 29.815
     }
   ],
   "scenes": [

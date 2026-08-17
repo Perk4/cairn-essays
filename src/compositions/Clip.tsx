@@ -21,7 +21,11 @@ export const Clip = ({ clipId }: ClipProps) => {
   return (
     <AbsoluteFill>
       <MusicBed fadeInSec={0.25} fadeOutSec={1.2} volume={0.1} />
-      <VoAudio name={clip.sceneId} />
+      <VoAudio
+        name={clip.sceneId}
+        startFromSec={clip.startSec}
+        endAtSec={clip.endSec}
+      />
       {renderScene(scene, "short", clip.kicker)}
     </AbsoluteFill>
   );
