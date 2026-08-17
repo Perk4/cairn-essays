@@ -46,7 +46,7 @@ Shorts are two or more beats. Each beat has its own `durationSec`. Total is clam
 
 ## Pictures
 
-Scenes are rooms, not cream cards that fade and freeze. Cairn uses `public/cairn/still.png`, `listen.png`, and `point.png`. Caption scenes do not substitute `idle.gif` for the named pose. Parts show a concept label, not a cite card.
+Scenes are rooms, not cream cards that fade and freeze. Cairn uses `public/cairn/{still,listen,point,react,present,slump}.png`. Caption scenes do not substitute `idle.gif` for the named pose. Parts show a concept label, not a cite card.
 
 ## Music
 

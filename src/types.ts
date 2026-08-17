@@ -1,4 +1,11 @@
-export const POSES = ["still", "listen", "point"] as const;
+export const POSES = [
+  "still",
+  "listen",
+  "point",
+  "react",
+  "present",
+  "slump",
+] as const;
 export type Pose = (typeof POSES)[number];
 
 export const MOODS = ["default", "warm", "cold"] as const;

@@ -133,19 +133,19 @@
         },
         {
           "atSec": 5,
-          "pose": "still",
+          "pose": "slump",
           "caption": "THURSDAY",
           "mood": "cold"
         },
         {
           "atSec": 11,
-          "pose": "still",
+          "pose": "react",
           "caption": "WRONG THING?",
           "mood": "cold"
         },
         {
           "atSec": 17,
-          "pose": "point",
+          "pose": "present",
           "caption": "THE WORK",
           "mood": "default"
         },
@@ -160,7 +160,7 @@
     {
       "id": "part1",
       "type": "cairnCaption",
-      "pose": "listen",
+      "pose": "present",
       "visual": "conceptLabel",
       "mood": "default",
       "label": "Fixed interest",
@@ -170,25 +170,25 @@
       "beats": [
         {
           "atSec": 0,
-          "pose": "listen",
+          "pose": "present",
           "caption": "FIXED INTEREST",
           "mood": "default"
         },
         {
           "atSec": 6,
-          "pose": "still",
+          "pose": "slump",
           "caption": "DULL THURSDAY",
           "mood": "default"
         },
         {
           "atSec": 12,
-          "pose": "still",
+          "pose": "slump",
           "caption": "THE TRAP",
           "mood": "default"
         },
         {
           "atSec": 18,
-          "pose": "point",
+          "pose": "react",
           "caption": "NOT A VERDICT",
           "mood": "default"
         },
@@ -206,43 +206,43 @@
         },
         {
           "atSec": 36,
-          "pose": "point",
+          "pose": "present",
           "caption": "SIT BACK DOWN",
           "mood": "default"
         },
         {
           "atSec": 42,
-          "pose": "listen",
+          "pose": "present",
           "caption": "SIT BACK DOWN",
           "mood": "default"
         },
         {
           "atSec": 48,
-          "pose": "still",
+          "pose": "present",
           "caption": "SIT BACK DOWN",
           "mood": "default"
         },
         {
           "atSec": 54,
-          "pose": "point",
+          "pose": "present",
           "caption": "SIT BACK DOWN",
           "mood": "default"
         },
         {
           "atSec": 60,
-          "pose": "listen",
+          "pose": "present",
           "caption": "SIT BACK DOWN",
           "mood": "default"
         },
         {
           "atSec": 66,
-          "pose": "still",
+          "pose": "present",
           "caption": "SIT BACK DOWN",
           "mood": "default"
         },
         {
           "atSec": 72,
-          "pose": "point",
+          "pose": "present",
           "caption": "SIT BACK DOWN",
           "mood": "default"
         }
@@ -251,7 +251,7 @@
     {
       "id": "part2",
       "type": "cairnCaption",
-      "pose": "listen",
+      "pose": "present",
       "visual": "conceptLabel",
       "mood": "default",
       "label": "Interests develop",
@@ -261,13 +261,13 @@
       "beats": [
         {
           "atSec": 0,
-          "pose": "listen",
+          "pose": "present",
           "caption": "INTERESTS DEVELOP",
           "mood": "default"
         },
         {
           "atSec": 6,
-          "pose": "still",
+          "pose": "listen",
           "caption": "GROWN NOT FOUND",
           "mood": "default"
         },
@@ -297,61 +297,61 @@
         },
         {
           "atSec": 36,
-          "pose": "point",
+          "pose": "react",
           "caption": "SAME FILE",
           "mood": "default"
         },
         {
           "atSec": 42,
-          "pose": "listen",
+          "pose": "react",
           "caption": "SAME FILE",
           "mood": "default"
         },
         {
           "atSec": 48,
-          "pose": "still",
+          "pose": "react",
           "caption": "SAME FILE",
           "mood": "default"
         },
         {
           "atSec": 54,
-          "pose": "point",
+          "pose": "react",
           "caption": "SAME FILE",
           "mood": "default"
         },
         {
           "atSec": 60,
-          "pose": "listen",
+          "pose": "react",
           "caption": "SAME FILE",
           "mood": "default"
         },
         {
           "atSec": 66,
-          "pose": "still",
+          "pose": "react",
           "caption": "SAME FILE",
           "mood": "default"
         },
         {
           "atSec": 72,
-          "pose": "point",
+          "pose": "react",
           "caption": "SAME FILE",
           "mood": "default"
         },
         {
           "atSec": 78,
-          "pose": "listen",
+          "pose": "react",
           "caption": "SAME FILE",
           "mood": "default"
         },
         {
           "atSec": 84,
-          "pose": "still",
+          "pose": "react",
           "caption": "SAME FILE",
           "mood": "default"
         },
         {
           "atSec": 90,
-          "pose": "point",
+          "pose": "react",
           "caption": "SAME FILE",
           "mood": "default"
         }
@@ -360,7 +360,7 @@
     {
       "id": "part3",
       "type": "cairnCaption",
-      "pose": "point",
+      "pose": "present",
       "visual": "conceptLabel",
       "mood": "default",
       "label": "Hard is not wrong",
@@ -370,19 +370,19 @@
       "beats": [
         {
           "atSec": 0,
-          "pose": "point",
+          "pose": "present",
           "caption": "HARD ≠ WRONG",
           "mood": "default"
         },
         {
           "atSec": 6,
-          "pose": "still",
+          "pose": "slump",
           "caption": "NOT EVIDENCE",
           "mood": "default"
         },
         {
           "atSec": 12,
-          "pose": "listen",
+          "pose": "slump",
           "caption": "THE BASKET",
           "mood": "default"
         },
@@ -400,61 +400,61 @@
         },
         {
           "atSec": 30,
-          "pose": "listen",
+          "pose": "react",
           "caption": "LOAD NOT VERDICT",
           "mood": "default"
         },
         {
           "atSec": 36,
-          "pose": "point",
+          "pose": "present",
           "caption": "ANSWER WITH THE SESSION",
           "mood": "default"
         },
         {
           "atSec": 42,
-          "pose": "listen",
+          "pose": "present",
           "caption": "ANSWER WITH THE SESSION",
           "mood": "default"
         },
         {
           "atSec": 48,
-          "pose": "still",
+          "pose": "present",
           "caption": "ANSWER WITH THE SESSION",
           "mood": "default"
         },
         {
           "atSec": 54,
-          "pose": "point",
+          "pose": "present",
           "caption": "ANSWER WITH THE SESSION",
           "mood": "default"
         },
         {
           "atSec": 60,
-          "pose": "listen",
+          "pose": "present",
           "caption": "ANSWER WITH THE SESSION",
           "mood": "default"
         },
         {
           "atSec": 66,
-          "pose": "still",
+          "pose": "present",
           "caption": "ANSWER WITH THE SESSION",
           "mood": "default"
         },
         {
           "atSec": 72,
-          "pose": "point",
+          "pose": "present",
           "caption": "ANSWER WITH THE SESSION",
           "mood": "default"
         },
         {
           "atSec": 78,
-          "pose": "listen",
+          "pose": "present",
           "caption": "ANSWER WITH THE SESSION",
           "mood": "default"
         },
         {
           "atSec": 84,
-          "pose": "still",
+          "pose": "present",
           "caption": "ANSWER WITH THE SESSION",
           "mood": "default"
         }
@@ -463,7 +463,7 @@
     {
       "id": "part4",
       "type": "cairnCaption",
-      "pose": "point",
+      "pose": "present",
       "visual": "conceptLabel",
       "mood": "default",
       "label": "Finish the session",
@@ -473,7 +473,7 @@
       "beats": [
         {
           "atSec": 0,
-          "pose": "point",
+          "pose": "present",
           "caption": "FINISH THE SESSION",
           "mood": "default"
         },
@@ -485,7 +485,7 @@
         },
         {
           "atSec": 12,
-          "pose": "still",
+          "pose": "slump",
           "caption": "NOT A REBRAND",
           "mood": "default"
         },
@@ -509,25 +509,25 @@
         },
         {
           "atSec": 36,
-          "pose": "point",
+          "pose": "react",
           "caption": "ENDED BLOCK",
           "mood": "default"
         },
         {
           "atSec": 42,
-          "pose": "listen",
+          "pose": "react",
           "caption": "ENDED BLOCK",
           "mood": "default"
         },
         {
           "atSec": 48,
-          "pose": "still",
+          "pose": "react",
           "caption": "ENDED BLOCK",
           "mood": "default"
         },
         {
           "atSec": 54,
-          "pose": "point",
+          "pose": "react",
           "caption": "ENDED BLOCK",
           "mood": "default"
         }
@@ -536,7 +536,7 @@
     {
       "id": "part5",
       "type": "cairnCaption",
-      "pose": "point",
+      "pose": "present",
       "visual": "conceptLabel",
       "mood": "default",
       "label": "Stone on the pile",
@@ -546,7 +546,7 @@
       "beats": [
         {
           "atSec": 0,
-          "pose": "point",
+          "pose": "present",
           "caption": "STONE ON THE PILE",
           "mood": "default"
         },
@@ -558,7 +558,7 @@
         },
         {
           "atSec": 12,
-          "pose": "still",
+          "pose": "slump",
           "caption": "NOT THE MOOD",
           "mood": "default"
         },
@@ -576,25 +576,25 @@
         },
         {
           "atSec": 30,
-          "pose": "listen",
+          "pose": "react",
           "caption": "MOOD LIES",
           "mood": "default"
         },
         {
           "atSec": 36,
-          "pose": "point",
+          "pose": "present",
           "caption": "TALLER CAIRN",
           "mood": "default"
         },
         {
           "atSec": 42,
-          "pose": "listen",
+          "pose": "present",
           "caption": "TALLER CAIRN",
           "mood": "default"
         },
         {
           "atSec": 48,
-          "pose": "still",
+          "pose": "present",
           "caption": "TALLER CAIRN",
           "mood": "default"
         }

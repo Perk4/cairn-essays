@@ -1,14 +1,19 @@
 #!/usr/bin/env python3
-"""Rasterize Cairn still/listen/point PNGs with cream keyed out."""
+"""Rasterize Cairn pose PNGs with cream keyed out."""
 
 from __future__ import annotations
 
 import subprocess
 from pathlib import Path
 
-OUT = Path("/workspace/public/cairn")
+ROOT = Path(__file__).resolve().parent.parent
+OUT = ROOT / "public" / "cairn"
 TMP = Path("/tmp/cairn-frames")
-CHROME = "/usr/bin/google-chrome-stable"
+CHROME_CANDIDATES = (
+    Path("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"),
+    Path("/usr/bin/google-chrome-stable"),
+    Path("/usr/bin/google-chrome"),
+)
 SIZE = 800
 
 STONES = """
@@ -55,6 +60,33 @@ ARMS_POINT = """
   <path d="M 360 -200 L 400 -230"/>
 """
 
+ARMS_REACT = """
+  <path d="M -210 -40 L -300 -180"/>
+  <path d="M -300 -180 L -345 -165"/>
+  <path d="M -300 -180 L -330 -225"/>
+  <path d="M 210 -40 L 300 -180"/>
+  <path d="M 300 -180 L 345 -165"/>
+  <path d="M 300 -180 L 330 -225"/>
+"""
+
+ARMS_PRESENT = """
+  <path d="M -210 -40 L -280 30"/>
+  <path d="M -280 30 L -325 40"/>
+  <path d="M -280 30 L -305 75"/>
+  <path d="M 210 -20 L 370 -40"/>
+  <path d="M 370 -40 L 410 -20"/>
+  <path d="M 370 -40 L 415 -70"/>
+"""
+
+ARMS_SLUMP = """
+  <path d="M -200 10 L -230 130"/>
+  <path d="M -230 130 L -270 150"/>
+  <path d="M -230 130 L -245 175"/>
+  <path d="M 200 10 L 230 130"/>
+  <path d="M 230 130 L 270 150"/>
+  <path d="M 230 130 L 245 175"/>
+"""
+
 
 def svg_markup(arms: str, eyes: str, rotate: float) -> str:
     return f"""<?xml version="1.0" encoding="UTF-8"?>
@@ -86,9 +118,16 @@ def html_wrap(svg: str) -> str:
 """
 
 
+def chrome_bin() -> str:
+    for path in CHROME_CANDIDATES:
+        if path.exists():
+            return str(path)
+    raise FileNotFoundError("Chrome not found")
+
+
 def screenshot(html_path: Path, png_path: Path) -> None:
     cmd = [
-        CHROME,
+        chrome_bin(),
         "--headless=new",
         "--disable-gpu",
         "--no-sandbox",
@@ -103,37 +142,40 @@ def screenshot(html_path: Path, png_path: Path) -> None:
 def write_pose(name: str, arms: str, rotate: float, eyes: str = OPEN_EYES) -> Path:
     TMP.mkdir(parents=True, exist_ok=True)
     html_path = TMP / f"{name}.html"
-    png_path = OUT / f"{name}.png" if name in {"still", "listen", "point"} else TMP / f"{name}.png"
+    png_path = OUT / f"{name}.png"
     html_path.write_text(html_wrap(svg_markup(arms, eyes, rotate)), encoding="utf-8")
     screenshot(html_path, png_path)
     return png_path
+
+
+def key_cream(name: str) -> None:
+    png = OUT / f"{name}.png"
+    keyed = TMP / f"{name}-rgba.png"
+    subprocess.run(
+        [
+            "ffmpeg",
+            "-y",
+            "-i",
+            str(png),
+            "-vf",
+            "colorkey=0xFCF2C6:0.08:0.25,format=rgba",
+            str(keyed),
+        ],
+        check=True,
+        capture_output=True,
+    )
+    keyed.replace(png)
 
 
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     TMP.mkdir(parents=True, exist_ok=True)
 
-    write_pose("still", ARMS_STILL, 0)
-    write_pose("listen", ARMS_LISTEN, -7)
-    write_pose("point", ARMS_POINT, 5)
-    for name in ("still", "listen", "point"):
-        png = OUT / f"{name}.png"
-        keyed = TMP / f"{name}-rgba.png"
-        subprocess.run(
-            [
-                "ffmpeg",
-                "-y",
-                "-i",
-                str(png),
-                "-vf",
-                "colorkey=0xFCF2C6:0.08:0.25,format=rgba",
-                str(keyed),
-            ],
-            check=True,
-            capture_output=True,
-        )
-        keyed.replace(png)
-    # idle.gif stays in public/cairn but caption scenes use named poses.
+    write_pose("react", ARMS_REACT, -4)
+    write_pose("present", ARMS_PRESENT, 3)
+    write_pose("slump", ARMS_SLUMP, 12)
+    for name in ("react", "present", "slump"):
+        key_cream(name)
     print("wrote transparent pose pngs to", OUT)
 
 
