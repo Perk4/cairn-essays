@@ -212,6 +212,7 @@ function parseScene(value: unknown): Scene {
         vo,
         visual: optionalVisual(value),
         mood: optionalMood(value),
+        label: optionalString(value, "label"),
         beats: parseBeats(value.beats),
       });
     }

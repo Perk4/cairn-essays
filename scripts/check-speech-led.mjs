@@ -38,6 +38,12 @@ if (others.length === 0) {
   fail("rest of episode missing");
 }
 for (const scene of others) {
+  if (scene.speechLed === true) {
+    if (scene.durationSec !== undefined) {
+      fail(`${scene.id} is speech-led; drop durationSec`);
+    }
+    continue;
+  }
   if (typeof scene.durationSec !== "number" || scene.durationSec <= 0) {
     fail(`${scene.id} no longer has a duration`);
   }

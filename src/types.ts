@@ -14,6 +14,7 @@ export const VISUALS = [
   "sparkWall",
   "hawkingPaper",
   "stoneDrop",
+  "conceptLabel",
 ] as const;
 export type Visual = (typeof VISUALS)[number];
 
@@ -36,6 +37,7 @@ export type CairnCaptionScene = SceneTiming & {
   caption: string;
   visual?: Visual;
   mood?: Mood;
+  label?: string;
   beats?: SceneBeat[];
 };
 

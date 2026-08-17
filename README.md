@@ -4,11 +4,11 @@ Remotion factory for Cairn essays. Episode 1 is a **story with a spoken track**.
 
 ## Voice
 
-The hook line is **Qwen3-TTS CustomVoice / Ryan** through mlx-audio, near 165 wpm. Other lines still use the espeak-ng placeholder.
+The hook and Part 1 are **Qwen3-TTS CustomVoice / Ryan** through mlx-audio, near 165 wpm. Later lines still use the espeak-ng placeholder.
 
 It is **not Perk**. It is **not a clone**. It is **not macOS say**.
 
-See `public/vo/VOICE.md`. Regenerate the hook with `npm run vo` (needs the local venv and `ffmpeg`).
+See `public/vo/VOICE.md`. Regenerate speech-led lines with `npm run vo` (needs the local venv and `ffmpeg`).
 
 ## Install
 
@@ -24,7 +24,7 @@ npm run render
 
 Writes:
 
-- `out/ep01.mp4` — 1920×1080 flagship, every scene in `episodes/ep01.json`, Ryan on the hook, espeak on the rest, plus the CC0 music bed
+- `out/ep01.mp4` — 1920×1080 flagship, every scene in `episodes/ep01.json`, Ryan on the hook and Part 1, espeak on the rest, plus the CC0 music bed
 - `out/ep01-hook.mp4` — 1080×1920 Short, two beats (calling / homework), VO + bed
 - `out/ep01-rule.mp4` — 1080×1920 Short, two beats (finish / stone on the pile), VO + bed. Rule uses the **point** pose.
 

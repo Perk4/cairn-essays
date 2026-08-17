@@ -2,7 +2,6 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 
 const PYTHON = process.env.CAIRN_VO_PYTHON ?? "/tmp/cairn-vo-venv/bin/python";
-const LINE_ID = "hook";
 const ep = JSON.parse(readFileSync("episodes/ep01.json", "utf8"));
 const durations = JSON.parse(readFileSync("public/vo/durations.json", "utf8"));
 const envelopes = existsSync("src/voEnvelopes.json")
@@ -133,23 +132,24 @@ function synthLocalLine(id, text) {
   };
 }
 
-const scene = ep.scenes.find((item) => item.id === LINE_ID);
-if (!scene) {
-  throw new Error(`missing scene ${LINE_ID}`);
+const lines = ep.scenes.filter((item) => item.speechLed === true);
+if (lines.length === 0) {
+  throw new Error("no speechLed scenes to synth");
 }
 
-const result = synthLocalLine(LINE_ID, scene.vo);
-durations[LINE_ID] = result.duration;
-envelopes[LINE_ID] = result.envelope;
+for (const scene of lines) {
+  const result = synthLocalLine(scene.id, scene.vo);
+  durations[scene.id] = result.duration;
+  envelopes[scene.id] = result.envelope;
+  const words = scene.vo.trim().split(/\s+/).filter(Boolean).length;
+  const wpm = (words / result.duration) * 60;
+  console.log(
+    `${scene.id} ${result.meta.engine} vo ${result.duration.toFixed(2)}s  ${wpm.toFixed(0)} wpm  envelope ${result.envelope.length} frames`,
+  );
+}
 
 writeFileSync(
   "public/vo/durations.json",
   `${JSON.stringify(durations, null, 2)}\n`,
 );
 writeFileSync("src/voEnvelopes.json", `${JSON.stringify(envelopes)}\n`);
-
-const words = scene.vo.trim().split(/\s+/).filter(Boolean).length;
-const wpm = (words / result.duration) * 60;
-console.log(
-  `${LINE_ID} ${result.meta.engine} vo ${result.duration.toFixed(2)}s  ${wpm.toFixed(0)} wpm  envelope ${result.envelope.length} frames`,
-);

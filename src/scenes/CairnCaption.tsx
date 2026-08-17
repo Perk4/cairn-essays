@@ -3,8 +3,11 @@ import { CaptionBar } from "../components/CaptionBar";
 import { Room } from "../components/Room";
 import { activeBeat } from "../timing";
 import type { CairnCaptionScene, Mood, Pose, Visual } from "../types";
+import envelopes from "../voEnvelopes.json";
 import { SceneVisual } from "../visuals";
 import { useCurrentFrame, useVideoConfig } from "remotion";
+
+const envelopeMap = envelopes as Record<string, number[]>;
 
 type Props = {
   scene: CairnCaptionScene;
@@ -39,7 +42,7 @@ export const CairnCaption = ({ scene, layout }: Props) => {
         <CairnSlot
           pose={pose}
           size={cairnSize}
-          voName={scene.id === "hook" ? scene.id : undefined}
+          voName={envelopeMap[scene.id] ? scene.id : undefined}
         />
       </div>
       <div
@@ -51,7 +54,13 @@ export const CairnCaption = ({ scene, layout }: Props) => {
           zIndex: 2,
         }}
       >
-        <SceneVisual visual={visual} layout={layout} drop={drop} mood={mood} />
+        <SceneVisual
+          visual={visual}
+          layout={layout}
+          drop={drop}
+          mood={mood}
+          label={scene.label}
+        />
       </div>
       <CaptionBar text={caption} layout={layout} />
     </Room>
