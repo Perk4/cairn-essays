@@ -16,11 +16,6 @@ CANDIDATES = (
         "custom",
     ),
     (
-        "qwen3-1.7b-ryan-8bit",
-        "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-8bit",
-        "custom",
-    ),
-    (
         "qwen3-0.6b-ryan",
         "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-bf16",
         "custom",

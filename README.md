@@ -2,13 +2,13 @@
 
 Remotion factory for Cairn essays. Episode 1 is a **story with a spoken track**. Captions support the line. They are not the show. Cairn is the body on camera.
 
-## Voice (placeholder)
+## Voice
 
-Spoken audio in `public/vo/` is **espeak-ng** (`en-us`, 120 wpm). It is a system TTS placeholder.
+The hook line is **Qwen3-TTS CustomVoice / Ryan** through mlx-audio, near 165 wpm. Other lines still use the espeak-ng placeholder.
 
-It is **not Perk**. It is **not a clone**. It is **not a human host**.
+It is **not Perk**. It is **not a clone**. It is **not macOS say**.
 
-See `public/vo/VOICE.md`. Regenerate with `npm run vo` (needs `espeak-ng` and `ffmpeg`).
+See `public/vo/VOICE.md`. Regenerate the hook with `npm run vo` (needs the local venv and `ffmpeg`).
 
 ## Install
 

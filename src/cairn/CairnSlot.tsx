@@ -52,7 +52,7 @@ export const CairnSlot = ({ pose, size, voName }: CairnSlotProps) => {
           objectFit: "contain",
         }}
       />
-      <Mouth viseme={viseme} size={size} />
+      {voName ? <Mouth viseme={viseme} size={size} /> : null}
     </div>
   );
 };

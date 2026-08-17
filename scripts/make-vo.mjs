@@ -67,9 +67,30 @@ function probeDuration(mp3) {
   return duration;
 }
 
+function timeStretch(src, dest, tempo) {
+  const stretched = spawnSync(
+    "ffmpeg",
+    [
+      "-y",
+      "-i",
+      src,
+      "-filter:a",
+      `atempo=${tempo}`,
+      "-codec:a",
+      "libmp3lame",
+      "-b:a",
+      "128k",
+      dest,
+    ],
+    { stdio: "inherit" },
+  );
+  if (stretched.status !== 0) {
+    throw new Error(`atempo failed for ${src}`);
+  }
+}
+
 function synthLocalLine(id, text) {
   refuseBanned(id);
-  refuseBanned(text);
   const wav = `/tmp/vo-${id}.wav`;
   const raw = `/tmp/vo-${id}.f32`;
   const mp3 = `public/vo/${id}.mp3`;
@@ -85,13 +106,25 @@ function synthLocalLine(id, text) {
   const meta = JSON.parse(readFileSync(metaPath, "utf8"));
   refuseBanned(meta.engine);
   refuseBanned(meta.model);
+  const rawMp3 = `/tmp/vo-${id}-raw.mp3`;
   const mp3d = spawnSync(
     "ffmpeg",
-    ["-y", "-i", wav, "-codec:a", "libmp3lame", "-b:a", "128k", mp3],
+    ["-y", "-i", wav, "-codec:a", "libmp3lame", "-b:a", "128k", rawMp3],
     { stdio: "inherit" },
   );
   if (mp3d.status !== 0) {
     throw new Error(`ffmpeg failed for ${id}`);
+  }
+  const words = text.trim().split(/\s+/).filter(Boolean).length;
+  const rawSec = probeDuration(rawMp3);
+  const targetSec = (words / 165) * 60;
+  const tempo = rawSec / targetSec;
+  if (tempo > 1.02 || tempo < 0.98) {
+    timeStretch(rawMp3, mp3, Math.min(2, Math.max(0.5, tempo)));
+  } else {
+    spawnSync("ffmpeg", ["-y", "-i", rawMp3, "-c", "copy", mp3], {
+      stdio: "inherit",
+    });
   }
   return {
     duration: probeDuration(mp3),

@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 
 const TARGET_WPM = 165;
-const WPM_SLACK = 35;
+const WPM_SLACK = 15;
 
 function fail(message) {
   console.error(message);
