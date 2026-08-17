@@ -1,5 +1,6 @@
 import type {
   Episode,
+  EpisodeClip,
   Mood,
   Pose,
   Scene,
@@ -12,6 +13,8 @@ import { MOODS, POSES, VISUALS } from "./types";
 import raw from "../episodes/ep01.json";
 import voDurations from "../public/vo/durations.json";
 import {
+  CLIP_MAX_SEC,
+  CLIP_MIN_SEC,
   durationSecFromText,
   FLAGSHIP_MAX_SEC,
   FLAGSHIP_MIN_SEC,
@@ -310,6 +313,54 @@ function parseShortBeat(value: unknown, index: string): ShortBeat {
   };
 }
 
+function requireNumber(record: Record<string, unknown>, key: string): number {
+  const value = record[key];
+  if (typeof value !== "number" || !Number.isFinite(value)) {
+    throw new Error(`${key} must be a number`);
+  }
+  return value;
+}
+
+function parseClip(value: unknown, index: string): EpisodeClip {
+  if (!isRecord(value)) {
+    throw new Error(`Clip ${index} must be an object`);
+  }
+  const startSec = requireNumber(value, "startSec");
+  const endSec = requireNumber(value, "endSec");
+  if (endSec <= startSec) {
+    throw new Error(`Clip ${index} endSec must be after startSec`);
+  }
+  const picture = endSec - startSec + SPEECH_SETTLE_SEC;
+  if (picture < CLIP_MIN_SEC || picture > CLIP_MAX_SEC) {
+    throw new Error(
+      `Clip ${index} picture ${picture.toFixed(2)}s is outside ${CLIP_MIN_SEC}–${CLIP_MAX_SEC}`,
+    );
+  }
+  return {
+    id: requireString(value, "id"),
+    sceneId: requireString(value, "sceneId"),
+    kicker: requireString(value, "kicker"),
+    startSec,
+    endSec,
+  };
+}
+
+function parseClips(value: unknown, scenes: readonly Scene[]): EpisodeClip[] {
+  if (value === undefined) {
+    return [];
+  }
+  if (!Array.isArray(value)) {
+    throw new Error("clips must be an array");
+  }
+  return value.map((item, i) => {
+    const clip = parseClip(item, `[${i}]`);
+    if (!scenes.some((scene) => scene.id === clip.sceneId)) {
+      throw new Error(`Clip ${clip.id} points at missing scene ${clip.sceneId}`);
+    }
+    return clip;
+  });
+}
+
 function parseShorts(value: unknown): Episode["shorts"] {
   if (!isRecord(value)) {
     throw new Error("shorts must be an object");
@@ -351,6 +402,7 @@ function parseEpisode(value: unknown): Episode {
     throw new Error("durationTargetSec must be a number");
   }
 
+  const scenes = value.scenes.map(parseScene);
   return {
     id: requireString(value, "id"),
     slug: requireString(value, "slug"),
@@ -378,7 +430,8 @@ function parseEpisode(value: unknown): Episode {
       outline: requireString(value.palette, "outline"),
     },
     shorts: parseShorts(value.shorts),
-    scenes: value.scenes.map(parseScene),
+    scenes,
+    clips: parseClips(value.clips, scenes),
   };
 }
 

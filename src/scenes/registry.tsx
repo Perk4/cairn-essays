@@ -11,10 +11,11 @@ import type { Scene } from "../types";
 export function renderScene(
   scene: Scene,
   layout: "flagship" | "short",
+  kicker?: string,
 ): ReactNode {
   switch (scene.type) {
     case "cairnCaption":
-      return <CairnCaption scene={scene} layout={layout} />;
+      return <CairnCaption scene={scene} layout={layout} kicker={kicker} />;
     case "citeCard":
       return <CiteCard scene={scene} />;
     case "namedFrame":
