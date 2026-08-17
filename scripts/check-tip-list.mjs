@@ -62,6 +62,11 @@ if (picture < FEEL - FEEL_SLACK) {
   fail(`feel ${picture.toFixed(0)}s is short of ${FEEL}s`);
 }
 
+const endCard = readFileSync("src/scenes/EndCard.tsx", "utf8");
+if (!endCard.includes("voName=")) {
+  fail("speech-led end card must drive CairnSlot from its envelope");
+}
+
 console.log(
   `${parts.length} parts  picture ${picture.toFixed(1)}s  feel ${(picture / 60).toFixed(2)}m`,
 );

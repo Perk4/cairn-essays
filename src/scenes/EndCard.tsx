@@ -4,6 +4,9 @@ import { Room } from "../components/Room";
 import { bodyFont, displayFont } from "../fonts";
 import { palette } from "../palette";
 import type { EndCardScene, Pose } from "../types";
+import envelopes from "../voEnvelopes.json";
+
+const envelopeMap = envelopes as Record<string, number[]>;
 
 export const EndCard = ({ scene }: { scene: EndCardScene }) => {
   const pose: Pose = scene.pose ?? "still";
@@ -18,7 +21,11 @@ export const EndCard = ({ scene }: { scene: EndCardScene }) => {
           transform: "translateX(-50%)",
         }}
       >
-        <CairnSlot pose={pose} size={300} />
+        <CairnSlot
+          pose={pose}
+          size={300}
+          voName={envelopeMap[scene.id] ? scene.id : undefined}
+        />
       </div>
       <div
         style={{
