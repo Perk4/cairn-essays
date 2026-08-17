@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>#31 and its PRs</title>
+  <style>
+    :root {
+      --cream: #FCF2C6;
+      --terracotta: #A5532D;
+      --olive: #796635;
+      --stone: #57351C;
+      --outline: #281D0E;
+      --paper: #FFF8DC;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--outline);
+      font: 16px/1.4 "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    }
+    a { color: var(--terracotta); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 28px 20px 48px; }
+    h1 { font-size: 28px; line-height: 1.15; margin: 0 0 8px; }
+    .lede { color: var(--stone); margin: 0 0 28px; max-width: 42em; }
+    .row { display: grid; gap: 14px; margin-bottom: 22px; }
+    @media (min-width: 820px) {
+      .flow { grid-template-columns: 1fr 18px 1fr 18px 1fr; align-items: stretch; }
+      .prs { grid-template-columns: 1fr 1fr; }
+    }
+    .card {
+      background: var(--paper);
+      border: 2px solid var(--outline);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+    .card h2 { font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 8px; color: var(--olive); }
+    .card h3 { font-size: 18px; margin: 0 0 6px; }
+    .arrow {
+      display: flex; align-items: center; justify-content: center;
+      color: var(--olive); font-size: 22px; font-weight: 700;
+    }
+    @media (max-width: 819px) { .arrow { transform: rotate(90deg); height: 10px; } }
+    .pill {
+      display: inline-block;
+      font: 12px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1.5px solid var(--outline);
+      margin-right: 6px;
+    }
+    .open { background: #F3C19A; }
+    .closed { background: #D7E3B0; }
+    .draft { background: #E8D7A4; }
+    .unmerged { background: #F3C19A; }
+    ul { margin: 8px 0 0; padding-left: 18px; }
+    li { margin: 3px 0; }
+    .muted { color: var(--olive); }
+    .stack { display: flex; flex-direction: column; gap: 8px; }
+    .ticket {
+      display: grid;
+      grid-template-columns: 52px 1fr auto;
+      gap: 8px;
+      align-items: baseline;
+      padding: 6px 0;
+      border-bottom: 1px solid #E8D7A4;
+    }
+    .ticket:last-child { border-bottom: 0; }
+    .num { font: 13px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--terracotta); }
+    .note { font-size: 13px; color: var(--olive); }
+    .callout {
+      border-left: 6px solid var(--terracotta);
+      padding: 12px 14px;
+      background: #F6E8B0;
+      margin: 0 0 22px;
+    }
+    .groups { display: grid; gap: 12px; }
+    @media (min-width: 820px) { .groups { grid-template-columns: 1fr 1fr 1fr 1fr; } }
+    .tiny { font-size: 13px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1><a href="https://github.com/Perk4/cairn-essays/issues/31">#31</a> is the map. The PRs that belong to it are four draft research branches.</h1>
+    <p class="lede">Destination was a written spec, not a render. All 16 child tickets are closed. Implementation PRs hang off <a href="https://github.com/Perk4/cairn-essays/issues/51">#51</a>, not this map.</p>
+
+    <div class="callout">
+      <span class="pill open">#31 OPEN</span>
+      Map stays open. Children 16/16 done. No PR is set to close #31.
+    </div>
+
+    <div class="row flow">
+      <div class="card">
+        <h2>Map</h2>
+        <h3><a href="https://github.com/Perk4/cairn-essays/issues/31">#31 Wayfinder</a></h3>
+        <p class="tiny muted">Lock look, script, pace, local VO, flagship package, Clips package. Do not implement.</p>
+      </div>
+      <div class="arrow">→</div>
+      <div class="card">
+        <h2>Destination</h2>
+        <h3><a href="https://github.com/Perk4/cairn-essays/issues/51">#51 Spec</a></h3>
+        <p class="tiny muted">Tip-list, third-person Cairn, speech-led, Ryan VO, Essay + Clips. Produce against this.</p>
+        <p><span class="pill closed">closed</span></p>
+      </div>
+      <div class="arrow">→</div>
+      <div class="card">
+        <h2>Not this map</h2>
+        <h3>8 impl tickets → 8 PRs</h3>
+        <p class="tiny muted">#52–#59 closed. PRs #60–#67 still open, unmerged. Those close the spec’s tickets, not #31.</p>
+      </div>
+    </div>
+
+    <div class="row prs">
+      <div class="card">
+        <h2>Map PRs — draft, throwaway, do not merge</h2>
+        <div class="ticket">
+          <a class="num" href="https://github.com/Perk4/cairn-essays/pull/50">#50</a>
+          <span>three monke reference videos</span>
+          <span class="note">feeds <a href="https://github.com/Perk4/cairn-essays/issues/32">#32</a></span>
+        </div>
+        <div class="ticket">
+          <a class="num" href="https://github.com/Perk4/cairn-essays/pull/47">#47</a>
+          <span>Remotion 4.0.512 pace APIs</span>
+          <span class="note">feeds <a href="https://github.com/Perk4/cairn-essays/issues/33">#33</a></span>
+        </div>
+        <div class="ticket">
+          <a class="num" href="https://github.com/Perk4/cairn-essays/pull/48">#48</a>
+          <span>local voice models survey</span>
+          <span class="note">feeds <a href="https://github.com/Perk4/cairn-essays/issues/40">#40</a></span>
+        </div>
+        <div class="ticket">
+          <a class="num" href="https://github.com/Perk4/cairn-essays/pull/49">#49</a>
+          <span>Shorts vs long-form packaging</span>
+          <span class="note">feeds <a href="https://github.com/Perk4/cairn-essays/issues/41">#41</a></span>
+        </div>
+        <p class="tiny muted" style="margin-top:10px"><span class="pill draft">draft / open</span> Branches <code>research/*</code>. Map only gists them.</p>
+      </div>
+
+      <div class="card">
+        <h2>Spec PRs — implementation, still unmerged</h2>
+        <div class="ticket"><a class="num" href="https://github.com/Perk4/cairn-essays/pull/60">#60</a><span>speech-led hook</span><span class="note">closes <a href="https://github.com/Perk4/cairn-essays/issues/52">#52</a></span></div>
+        <div class="ticket"><a class="num" href="https://github.com/Perk4/cairn-essays/pull/61">#61</a><span>local Ryan VO</span><span class="note">closes <a href="https://github.com/Perk4/cairn-essays/issues/53">#53</a></span></div>
+        <div class="ticket"><a class="num" href="https://github.com/Perk4/cairn-essays/pull/62">#62</a><span>tip-list hook + Part 1</span><span class="note">closes <a href="https://github.com/Perk4/cairn-essays/issues/54">#54</a></span></div>
+        <div class="ticket"><a class="num" href="https://github.com/Perk4/cairn-essays/pull/63">#63</a><span>first Clip remount</span><span class="note">closes <a href="https://github.com/Perk4/cairn-essays/issues/55">#55</a></span></div>
+        <div class="ticket"><a class="num" href="https://github.com/Perk4/cairn-essays/pull/64">#64</a><span>flagship package</span><span class="note">closes <a href="https://github.com/Perk4/cairn-essays/issues/56">#56</a></span></div>
+        <div class="ticket"><a class="num" href="https://github.com/Perk4/cairn-essays/pull/65">#65</a><span>full tip-list</span><span class="note">closes <a href="https://github.com/Perk4/cairn-essays/issues/57">#57</a></span></div>
+        <div class="ticket"><a class="num" href="https://github.com/Perk4/cairn-essays/pull/66">#66</a><span>Clip set</span><span class="note">closes <a href="https://github.com/Perk4/cairn-essays/issues/58">#58</a></span></div>
+        <div class="ticket"><a class="num" href="https://github.com/Perk4/cairn-essays/pull/67">#67</a><span>react / present / slump</span><span class="note">closes <a href="https://github.com/Perk4/cairn-essays/issues/59">#59</a></span></div>
+        <p class="tiny muted" style="margin-top:10px"><span class="pill unmerged">open / unmerged</span> Stacked: 60 → 61 → 62 → 63+64 → 65 → 66 → 67.</p>
+      </div>
+    </div>
+
+    <h2 style="font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--olive);margin:8px 0 10px">#31 children — all closed</h2>
+    <div class="groups">
+      <div class="card tiny">
+        <h2>Research (has PRs)</h2>
+        <ul>
+          <li><a href="https://github.com/Perk4/cairn-essays/issues/32">#32</a> reference videos → <a href="https://github.com/Perk4/cairn-essays/pull/50">PR 50</a></li>
+          <li><a href="https://github.com/Perk4/cairn-essays/issues/33">#33</a> Remotion pace → <a href="https://github.com/Perk4/cairn-essays/pull/47">PR 47</a></li>
+          <li><a href="https://github.com/Perk4/cairn-essays/issues/40">#40</a> local voice models → <a href="https://github.com/Perk4/cairn-essays/pull/48">PR 48</a></li>
+          <li><a href="https://github.com/Perk4/cairn-essays/issues/41">#41</a> Shorts vs long-form → <a href="https://github.com/Perk4/cairn-essays/pull/49">PR 49</a></li>
+        </ul>
+      </div>
+      <div class="card tiny">
+        <h2>Locks (issue-only)</h2>
+        <ul>
+          <li><a href="https://github.com/Perk4/cairn-essays/issues/34">#34</a> tip-list, third-person, faster</li>
+          <li><a href="https://github.com/Perk4/cairn-essays/issues/35">#35</a> source-to-script</li>
+          <li><a href="https://github.com/Perk4/cairn-essays/issues/36">#36</a> speech-led pace</li>
+          <li><a href="https://github.com/Perk4/cairn-essays/issues/37">#37</a> stone-stack + poses</li>
+          <li><a href="https://github.com/Perk4/cairn-essays/issues/42">#42</a> Ryan / mlx-audio</li>
+          <li><a href="https://github.com/Perk4/cairn-essays/issues/43">#43</a> flagship package</li>
+          <li><a href="https://github.com/Perk4/cairn-essays/issues/44">#44</a> Clips package</li>
+        </ul>
+      </div>
+      <div class="card tiny">
+        <h2>Cheap artifacts</h2>
+        <ul>
+          <li><a href="https://github.com/Perk4/cairn-essays/issues/39">#39</a> hook beat sheet</li>
+          <li><a href="https://github.com/Perk4/cairn-essays/issues/46">#46</a> Clip cut sheet</li>
+          <li><a href="https://github.com/Perk4/cairn-essays/issues/38">#38</a> pose options — non-blocking</li>
+          <li><a href="https://github.com/Perk4/cairn-essays/issues/45">#45</a> VO samples — non-blocking</li>
+        </ul>
+      </div>
+      <div class="card tiny">
+        <h2>Still fog on the map</h2>
+        <ul>
+          <li>Feed locks back into factory #1 tickets (#8, #11, #15, #16)</li>
+          <li>Morning listen: Ryan vs <code>af_heart</code></li>
+          <li>Optional pose sheet</li>
+          <li>Delete vs leave unused: 120px type, cite cards</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
