@@ -4,8 +4,12 @@ const CLIP_MIN = 20;
 const CLIP_MAX = 45;
 const SETTLE = 0.8;
 
+const FPS = 30;
+const SILENCE = 0.02;
+
 const ep = JSON.parse(readFileSync("episodes/ep01.json", "utf8"));
 const durations = JSON.parse(readFileSync("public/vo/durations.json", "utf8"));
+const envelopes = JSON.parse(readFileSync("src/voEnvelopes.json", "utf8"));
 
 function fail(message) {
   console.error(message);
@@ -45,6 +49,13 @@ for (const clip of clips) {
   const picture = spoken + SETTLE;
   if (picture < CLIP_MIN || picture > CLIP_MAX) {
     fail(`${clip.id} picture ${picture.toFixed(2)}s is outside 20–45`);
+  }
+  const samples = envelopes[clip.sceneId] ?? [];
+  const endIdx = Math.round(clip.endSec * FPS);
+  const tail = samples.slice(endIdx, endIdx + Math.round(SETTLE * FPS));
+  const loud = tail.filter((sample) => sample >= SILENCE).length;
+  if (tail.length && loud / tail.length >= 0.15) {
+    fail(`${clip.id} endSec ${clip.endSec}s still has speech into the settle`);
   }
 }
 
