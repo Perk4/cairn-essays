@@ -387,7 +387,7 @@ export const episode = parseEpisode(raw);
 const flagshipSec = flagshipDurationSec(episode.scenes);
 if (flagshipSec < FLAGSHIP_MIN_SEC || flagshipSec > FLAGSHIP_MAX_SEC) {
   throw new Error(
-    `Flagship duration ${flagshipSec}s is outside the 8–12 minute bar (${FLAGSHIP_MIN_SEC}–${FLAGSHIP_MAX_SEC})`,
+    `Flagship duration ${flagshipSec}s is outside the feel window (${FLAGSHIP_MIN_SEC}–${FLAGSHIP_MAX_SEC})`,
   );
 }
 

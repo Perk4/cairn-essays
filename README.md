@@ -4,7 +4,7 @@ Remotion factory for Cairn essays. Episode 1 is a **story with a spoken track**.
 
 ## Voice
 
-The hook and Part 1 are **Qwen3-TTS CustomVoice / Ryan** through mlx-audio, near 165 wpm. Later lines still use the espeak-ng placeholder.
+Flagship lines are **Qwen3-TTS CustomVoice / Ryan** through mlx-audio, near 165 wpm.
 
 It is **not Perk**. It is **not a clone**. It is **not macOS say**.
 
@@ -24,7 +24,7 @@ npm run render
 
 Writes:
 
-- `out/ep01.mp4` — 1920×1080 flagship, every scene in `episodes/ep01.json`, Ryan on the hook and Part 1, espeak on the rest, plus the CC0 music bed
+- `out/ep01.mp4` — 1920×1080 flagship, every scene in `episodes/ep01.json`, Ryan on every line, plus the CC0 music bed
 - `out/ep01-hook.mp4` — 1080×1920 Short, two beats (calling / homework), VO + bed
 - `out/ep01-rule.mp4` — 1080×1920 Short, two beats (finish / stone on the pile), VO + bed. Rule uses the **point** pose.
 
@@ -34,7 +34,7 @@ Description lives on the episode as `description`. It starts with “Cairn expla
 
 ## Timing
 
-Episode timing lives in `episodes/ep01.json`. Most scenes set `durationSec` as the spoken line plus a hold. Speech-led scenes (the hook and Part 1) omit `durationSec`. Their picture lasts the VO file plus 0.8s settle and skips the 16–72s clamp. Flagship length is the sum of those scene lengths. ep01 is inside the 8–12 minute week-1 bar.
+Episode timing lives in `episodes/ep01.json`. Flagship scenes are speech-led and omit `durationSec`. Picture lasts the VO file plus 0.8s settle and skips the 16–72s clamp. Flagship length is the sum of those scene lengths. The feel target is about 7:30. Overshoot is fine if speech stays continuous.
 
 If `durationSec` is missing and the scene is not speech-led, runtime uses spoken/visible words:
 
@@ -46,9 +46,7 @@ Shorts are two or more beats. Each beat has its own `durationSec`. Total is clam
 
 ## Pictures
 
-Scenes are rooms, not cream cards that fade and freeze. Cairn uses `public/cairn/still.png`, `listen.png`, and `point.png`. Caption scenes do not substitute `idle.gif` for the named pose. The rule scene uses **point**.
-
-Study 3 (`2.04 vs 2.64`) and Study 5 (`2.75 vs 3.59`) are the 120px type. Sample size and Mage are footnotes.
+Scenes are rooms, not cream cards that fade and freeze. Cairn uses `public/cairn/still.png`, `listen.png`, and `point.png`. Caption scenes do not substitute `idle.gif` for the named pose. Parts show a concept label, not a cite card.
 
 ## Music
 

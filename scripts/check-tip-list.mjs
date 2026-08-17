@@ -1,5 +1,9 @@
 import { readFileSync } from "node:fs";
 
+const SETTLE = 0.8;
+const FEEL = 450;
+const FEEL_SLACK = 50;
+
 const ep = JSON.parse(readFileSync("episodes/ep01.json", "utf8"));
 const durations = JSON.parse(readFileSync("public/vo/durations.json", "utf8"));
 
@@ -15,44 +19,55 @@ if (ep.paper.authors !== "O’Keefe, Dweck & Walton" || ep.paper.year !== 2018) 
   fail("warrant drifted");
 }
 
-const hook = ep.scenes.find((scene) => scene.id === "hook");
-const part1 = ep.scenes.find((scene) => scene.id === "part1");
-if (!hook || !part1) {
-  fail("missing hook or part1");
-}
-if (hook.speechLed !== true || part1.speechLed !== true) {
-  fail("hook and part1 must be speechLed");
-}
-if (hook.type === "citeCard" || part1.type === "citeCard") {
-  fail("tip-list beats must not be cite cards");
-}
-if (part1.visual !== "conceptLabel" || !part1.label) {
-  fail("part1 needs an on-screen concept label");
+const parts = ep.scenes.filter((scene) => /^part\d+$/.test(scene.id));
+if (parts.length < 4 || parts.length > 5) {
+  fail(`want 4–5 Parts, got ${parts.length}`);
 }
 
-for (const scene of [hook, part1]) {
-  if (!/\bCairn\b/.test(scene.vo)) {
+const hook = ep.scenes.find((scene) => scene.id === "hook");
+const close = ep.scenes.find((scene) => scene.id === "end");
+if (!hook || !close) {
+  fail("missing hook or close");
+}
+
+let picture = 0;
+for (const scene of ep.scenes) {
+  if (scene.type === "citeCard") {
+    fail(`${scene.id} is a cite card`);
+  }
+  if (scene.speechLed !== true) {
+    fail(`${scene.id} is not speech-led`);
+  }
+  if (scene.durationSec !== undefined) {
+    fail(`${scene.id} still has a hold`);
+  }
+  if (scene.id !== "hook" && scene.id !== "end" && !/\bCairn\b/.test(scene.vo)) {
     fail(`${scene.id} is not third-person Cairn`);
   }
-  if (/^\s*I\b/.test(scene.vo)) {
-    fail(`${scene.id} starts in first person`);
+  if (scene.id.startsWith("part") && (scene.visual !== "conceptLabel" || !scene.label)) {
+    fail(`${scene.id} needs a concept label`);
   }
   const voSec = durations[scene.id];
   if (typeof voSec !== "number" || voSec <= 0) {
     fail(`${scene.id} VO duration missing`);
   }
+  picture += voSec + SETTLE;
 }
 
 if (!/Tuesday/i.test(hook.vo) || !/Thursday/i.test(hook.vo)) {
   fail("hook is not the Tuesday/Thursday incident");
 }
 
-const hookSec = durations.hook;
-if (hookSec < 20 || hookSec > 34) {
-  fail(`hook VO ${hookSec}s is not a ~26s feel`);
+if (picture < FEEL - FEEL_SLACK) {
+  fail(`feel ${picture.toFixed(0)}s is short of ${FEEL}s`);
+}
+
+const endCard = readFileSync("src/scenes/EndCard.tsx", "utf8");
+if (!endCard.includes("voName=")) {
+  fail("speech-led end card must drive CairnSlot from its envelope");
 }
 
 console.log(
-  `hook ${durations.hook.toFixed(2)}s  part1 ${durations.part1.toFixed(2)}s  label ${part1.label}`,
+  `${parts.length} parts  picture ${picture.toFixed(1)}s  feel ${(picture / 60).toFixed(2)}m`,
 );
 console.log("tip-list check ok");
