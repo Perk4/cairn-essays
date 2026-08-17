@@ -1,34 +1,60 @@
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 
-const SPEED = "120";
-const VOICE = "en-us";
+const PYTHON = process.env.CAIRN_VO_PYTHON ?? "/tmp/cairn-vo-venv/bin/python";
+const LINE_ID = "hook";
 const ep = JSON.parse(readFileSync("episodes/ep01.json", "utf8"));
+const durations = JSON.parse(readFileSync("public/vo/durations.json", "utf8"));
+const envelopes = existsSync("src/voEnvelopes.json")
+  ? JSON.parse(readFileSync("src/voEnvelopes.json", "utf8"))
+  : {};
 
 mkdirSync("public/vo", { recursive: true });
 
-function synth(id, text) {
-  if (typeof text !== "string" || text.trim().length === 0) {
-    throw new Error(`Missing vo text for ${id}`);
+const ENV_RATE = 3000;
+const FPS = 30;
+const SAMPLES_PER_FRAME = ENV_RATE / FPS;
+const BANNED = ["say", "samantha", "xtts", "eleven", "openai", "azure", "google"];
+
+function refuseBanned(label) {
+  const lower = String(label).toLowerCase();
+  for (const token of BANNED) {
+    if (lower.includes(token)) {
+      throw new Error(`refusing banned voice path: ${label}`);
+    }
   }
-  const wav = `/tmp/vo-${id}.wav`;
-  const mp3 = `public/vo/${id}.mp3`;
-  const spoken = spawnSync(
-    "espeak-ng",
-    ["-s", SPEED, "-v", VOICE, "-w", wav, text],
-    { stdio: "inherit" },
-  );
-  if (spoken.status !== 0) {
-    throw new Error(`espeak-ng failed for ${id}`);
-  }
-  const mp3d = spawnSync(
+}
+
+function envelopeFromMp3(mp3, raw) {
+  const envd = spawnSync(
     "ffmpeg",
-    ["-y", "-i", wav, "-codec:a", "libmp3lame", "-b:a", "64k", mp3],
+    ["-y", "-i", mp3, "-ac", "1", "-ar", String(ENV_RATE), "-f", "f32le", raw],
     { stdio: "inherit" },
   );
-  if (mp3d.status !== 0) {
-    throw new Error(`ffmpeg failed for ${id}`);
+  if (envd.status !== 0) {
+    throw new Error(`envelope failed for ${mp3}`);
   }
+  const buf = readFileSync(raw);
+  const envelope = [];
+  for (let frame = 0; frame * SAMPLES_PER_FRAME * 4 < buf.length; frame++) {
+    let sum = 0;
+    let n = 0;
+    const start = Math.round(frame * SAMPLES_PER_FRAME);
+    for (let s = 0; s < SAMPLES_PER_FRAME; s++) {
+      const offset = (start + s) * 4;
+      if (offset + 4 > buf.length) {
+        break;
+      }
+      const sample = buf.readFloatLE(offset);
+      sum += sample * sample;
+      n += 1;
+    }
+    envelope.push(n === 0 ? 0 : Number(Math.sqrt(sum / n).toFixed(5)));
+  }
+  return envelope;
+}
+
+function probeDuration(mp3) {
   const probe = spawnSync(
     "ffprobe",
     ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", mp3],
@@ -36,40 +62,94 @@ function synth(id, text) {
   );
   const duration = Number(probe.stdout.trim());
   if (!Number.isFinite(duration) || duration <= 0) {
-    throw new Error(`Could not read duration for ${id}`);
+    throw new Error(`Could not read duration for ${mp3}`);
   }
   return duration;
 }
 
-const durations = {};
-
-for (const scene of ep.scenes) {
-  durations[scene.id] = synth(scene.id, scene.vo);
-}
-
-for (const shortId of ["hook", "rule"]) {
-  for (const beat of ep.shorts[shortId]) {
-    const id = `short-${shortId}-${beat.id}`;
-    durations[id] = synth(id, beat.vo);
+function timeStretch(src, dest, tempo) {
+  const stretched = spawnSync(
+    "ffmpeg",
+    [
+      "-y",
+      "-i",
+      src,
+      "-filter:a",
+      `atempo=${tempo}`,
+      "-codec:a",
+      "libmp3lame",
+      "-b:a",
+      "128k",
+      dest,
+    ],
+    { stdio: "inherit" },
+  );
+  if (stretched.status !== 0) {
+    throw new Error(`atempo failed for ${src}`);
   }
 }
+
+function synthLocalLine(id, text) {
+  refuseBanned(id);
+  const wav = `/tmp/vo-${id}.wav`;
+  const raw = `/tmp/vo-${id}.f32`;
+  const mp3 = `public/vo/${id}.mp3`;
+  const metaPath = `public/vo/${id}.meta.json`;
+  const spoken = spawnSync(
+    PYTHON,
+    ["scripts/synth-local-vo.py", "--text", text, "--out", wav, "--meta", metaPath],
+    { stdio: "inherit" },
+  );
+  if (spoken.status !== 0) {
+    throw new Error(`local synth failed for ${id}`);
+  }
+  const meta = JSON.parse(readFileSync(metaPath, "utf8"));
+  refuseBanned(meta.engine);
+  refuseBanned(meta.model);
+  const rawMp3 = `/tmp/vo-${id}-raw.mp3`;
+  const mp3d = spawnSync(
+    "ffmpeg",
+    ["-y", "-i", wav, "-codec:a", "libmp3lame", "-b:a", "128k", rawMp3],
+    { stdio: "inherit" },
+  );
+  if (mp3d.status !== 0) {
+    throw new Error(`ffmpeg failed for ${id}`);
+  }
+  const words = text.trim().split(/\s+/).filter(Boolean).length;
+  const rawSec = probeDuration(rawMp3);
+  const targetSec = (words / 165) * 60;
+  const tempo = rawSec / targetSec;
+  if (tempo > 1.02 || tempo < 0.98) {
+    timeStretch(rawMp3, mp3, Math.min(2, Math.max(0.5, tempo)));
+  } else {
+    spawnSync("ffmpeg", ["-y", "-i", rawMp3, "-c", "copy", mp3], {
+      stdio: "inherit",
+    });
+  }
+  return {
+    duration: probeDuration(mp3),
+    envelope: envelopeFromMp3(mp3, raw),
+    meta,
+  };
+}
+
+const scene = ep.scenes.find((item) => item.id === LINE_ID);
+if (!scene) {
+  throw new Error(`missing scene ${LINE_ID}`);
+}
+
+const result = synthLocalLine(LINE_ID, scene.vo);
+durations[LINE_ID] = result.duration;
+envelopes[LINE_ID] = result.envelope;
 
 writeFileSync(
   "public/vo/durations.json",
   `${JSON.stringify(durations, null, 2)}\n`,
 );
+writeFileSync("src/voEnvelopes.json", `${JSON.stringify(envelopes)}\n`);
 
-console.log("\nVO durations (espeak-ng placeholder, not Perk)\n");
-for (const [id, sec] of Object.entries(durations)) {
-  const scene = ep.scenes.find((item) => item.id === id);
-  const hold = scene ? scene.durationSec - sec : null;
-  const flag =
-    scene && sec > scene.durationSec - 3 ? "  WARN: VO longer than hold" : "";
-  console.log(
-    `${id.padEnd(28)} vo ${sec.toFixed(1)}s` +
-      (hold === null
-        ? ""
-        : `  scene ${scene.durationSec}s  hold ${hold.toFixed(1)}s`) +
-      flag,
-  );
-}
+const words = scene.vo.trim().split(/\s+/).filter(Boolean).length;
+const wpm = (words / result.duration) * 60;
+console.log(
+  `${LINE_ID} ${result.meta.engine} vo ${result.duration.toFixed(2)}s  ${wpm.toFixed(0)} wpm  envelope ${result.envelope.length} frames`,
+);

@@ -13,8 +13,8 @@
   },
   "thesis": "“Find your passion” is a fixed theory of interest. It makes you drop the side project the week it gets hard. Develop it instead.",
   "rule": "This week, when the side project gets dull or hard, treat that as the development process. Not as evidence you found the wrong passion. Finish the session anyway.",
-  "voice": "placeholder-espeak-ng",
-  "voiceLabel": "espeak-ng en-us, 120 wpm. Placeholder system TTS. Not Perk. Not a clone. Not a human host. Cairn is the body.",
+  "voice": "qwen3-tts-ryan-hook",
+  "voiceLabel": "Hook is Qwen3-TTS CustomVoice / Ryan via mlx-audio, near 165 wpm. Not Perk. Not a clone. Not say. Other lines stay the espeak placeholder.",
   "palette": {
     "cream": "#FCF2C6",
     "terracotta": "#A5532D",
