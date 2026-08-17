@@ -49,8 +49,10 @@ for (const scene of others) {
   }
 }
 
+const held = others.filter((scene) => scene.speechLed !== true).length;
+const led = others.filter((scene) => scene.speechLed === true).length;
 console.log(
   `hook VO ${voSec.toFixed(3)}s  picture ${(voSec + SETTLE).toFixed(3)}s  settle ${SETTLE}s`,
 );
-console.log(`other scenes ${others.length} still have durationSec`);
+console.log(`other scenes ${held} keep durationSec, ${led} more are speech-led`);
 console.log("speech-led check ok");
