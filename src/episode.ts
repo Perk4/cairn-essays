@@ -95,7 +95,7 @@ function optionalPose(record: Record<string, unknown>): Pose | undefined {
     return undefined;
   }
   if (!isPose(record.pose)) {
-    throw new Error("pose must be still|listen|point");
+    throw new Error(`pose must be ${POSES.join("|")}`);
   }
   return record.pose;
 }
@@ -205,7 +205,7 @@ function parseScene(value: unknown): Scene {
     case "cairnCaption": {
       const pose = value.pose;
       if (!isPose(pose)) {
-        throw new Error(`Scene ${id} needs pose still|listen|point`);
+        throw new Error(`Scene ${id} needs pose ${POSES.join("|")}`);
       }
       return withDuration(value, {
         id,
@@ -291,7 +291,7 @@ function parseShortBeat(value: unknown, index: string): ShortBeat {
   }
   const pose = value.pose;
   if (!isPose(pose)) {
-    throw new Error(`Short beat ${index} needs pose still|listen|point`);
+    throw new Error(`Short beat ${index} needs pose ${POSES.join("|")}`);
   }
   const mood = value.mood;
   if (!isMood(mood)) {
