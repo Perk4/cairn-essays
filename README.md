@@ -32,9 +32,9 @@ Studio: `npm run dev`
 
 ## Timing
 
-Each scene has `vo` plus `durationSec` in `episodes/ep01.json` (source of truth). `durationSec` is the spoken line plus a hold so the picture can keep moving. Flagship length is the sum of those holds. ep01 is inside the 8–12 minute week-1 bar.
+Each scene has `vo` plus `durationSec` in `episodes/ep01.json` (source of truth). Most scenes still use a spoken line plus a hold. The hook is `speechLed`. Its picture lasts the VO file plus 0.8s settle and skips the 16–72s clamp. Flagship length is the sum of those scene lengths. ep01 is inside the 8–12 minute week-1 bar.
 
-If `durationSec` is missing, runtime uses spoken/visible words:
+If `durationSec` is missing and the scene is not speech-led, runtime uses spoken/visible words:
 
 ```
 durationSec = clamp(round(12 + wordCount / 2.2), 16, 72)
