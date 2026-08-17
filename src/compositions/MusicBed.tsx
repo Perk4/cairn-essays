@@ -4,18 +4,23 @@ export const MUSIC_FILE = "music/bee-hive-pad.mp3";
 
 export const SPEECH_DUCK = 0.35;
 
+export type SpeechWindow = {
+  from: number;
+  durationInFrames: number;
+};
+
 type MusicBedProps = {
   fadeInSec?: number;
   fadeOutSec?: number;
   volume?: number;
-  duckUnderSpeech?: boolean;
+  speechWindows?: readonly SpeechWindow[];
 };
 
 export const MusicBed = ({
   fadeInSec = 1,
   fadeOutSec = 4,
   volume = 0.08,
-  duckUnderSpeech = false,
+  speechWindows = [],
 }: MusicBedProps) => {
   const { fps, durationInFrames } = useVideoConfig();
   const fadeIn = Math.max(1, Math.round(fadeInSec * fps));
@@ -41,7 +46,12 @@ export const MusicBed = ({
             extrapolateRight: "clamp",
           },
         );
-        const ducked = duckUnderSpeech ? SPEECH_DUCK : 1;
+        const speaking = speechWindows.some(
+          (window) =>
+            frame >= window.from &&
+            frame < window.from + window.durationInFrames,
+        );
+        const ducked = speaking ? SPEECH_DUCK : 1;
         return fadeInAmt * fadeOutAmt * volume * ducked;
       }}
     />

@@ -40,11 +40,14 @@ if (!/\bCairn\b/.test(end.cta) || !/\bCairn\b/.test(end.vo)) {
   fail("end closer must be spoken as Cairn");
 }
 
-if (!flagship.includes("duckUnderSpeech")) {
+if (!flagship.includes("speechWindows")) {
   fail("flagship bed is not ducked under speech");
 }
-if (!bed.includes("SPEECH_DUCK") || !bed.includes("duckUnderSpeech")) {
+if (!bed.includes("SPEECH_DUCK") || !bed.includes("speechWindows")) {
   fail("MusicBed has no speech duck");
+}
+if (!bed.includes("speaking")) {
+  fail("MusicBed duck does not follow speech windows");
 }
 
 console.log(`thumb "${ep.thumbLine}"  description ${ep.description.length} chars`);
