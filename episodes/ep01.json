@@ -165,6 +165,42 @@
           "pose": "point",
           "caption": "SIT BACK DOWN",
           "mood": "default"
+        },
+        {
+          "atSec": 42,
+          "pose": "listen",
+          "caption": "SIT BACK DOWN",
+          "mood": "default"
+        },
+        {
+          "atSec": 48,
+          "pose": "still",
+          "caption": "SIT BACK DOWN",
+          "mood": "default"
+        },
+        {
+          "atSec": 54,
+          "pose": "point",
+          "caption": "SIT BACK DOWN",
+          "mood": "default"
+        },
+        {
+          "atSec": 60,
+          "pose": "listen",
+          "caption": "SIT BACK DOWN",
+          "mood": "default"
+        },
+        {
+          "atSec": 66,
+          "pose": "still",
+          "caption": "SIT BACK DOWN",
+          "mood": "default"
+        },
+        {
+          "atSec": 72,
+          "pose": "point",
+          "caption": "SIT BACK DOWN",
+          "mood": "default"
         }
       ]
     },
@@ -217,6 +253,60 @@
         },
         {
           "atSec": 36,
+          "pose": "point",
+          "caption": "SAME FILE",
+          "mood": "default"
+        },
+        {
+          "atSec": 42,
+          "pose": "listen",
+          "caption": "SAME FILE",
+          "mood": "default"
+        },
+        {
+          "atSec": 48,
+          "pose": "still",
+          "caption": "SAME FILE",
+          "mood": "default"
+        },
+        {
+          "atSec": 54,
+          "pose": "point",
+          "caption": "SAME FILE",
+          "mood": "default"
+        },
+        {
+          "atSec": 60,
+          "pose": "listen",
+          "caption": "SAME FILE",
+          "mood": "default"
+        },
+        {
+          "atSec": 66,
+          "pose": "still",
+          "caption": "SAME FILE",
+          "mood": "default"
+        },
+        {
+          "atSec": 72,
+          "pose": "point",
+          "caption": "SAME FILE",
+          "mood": "default"
+        },
+        {
+          "atSec": 78,
+          "pose": "listen",
+          "caption": "SAME FILE",
+          "mood": "default"
+        },
+        {
+          "atSec": 84,
+          "pose": "still",
+          "caption": "SAME FILE",
+          "mood": "default"
+        },
+        {
+          "atSec": 90,
           "pose": "point",
           "caption": "SAME FILE",
           "mood": "default"
@@ -275,6 +365,54 @@
           "pose": "point",
           "caption": "ANSWER WITH THE SESSION",
           "mood": "default"
+        },
+        {
+          "atSec": 42,
+          "pose": "listen",
+          "caption": "ANSWER WITH THE SESSION",
+          "mood": "default"
+        },
+        {
+          "atSec": 48,
+          "pose": "still",
+          "caption": "ANSWER WITH THE SESSION",
+          "mood": "default"
+        },
+        {
+          "atSec": 54,
+          "pose": "point",
+          "caption": "ANSWER WITH THE SESSION",
+          "mood": "default"
+        },
+        {
+          "atSec": 60,
+          "pose": "listen",
+          "caption": "ANSWER WITH THE SESSION",
+          "mood": "default"
+        },
+        {
+          "atSec": 66,
+          "pose": "still",
+          "caption": "ANSWER WITH THE SESSION",
+          "mood": "default"
+        },
+        {
+          "atSec": 72,
+          "pose": "point",
+          "caption": "ANSWER WITH THE SESSION",
+          "mood": "default"
+        },
+        {
+          "atSec": 78,
+          "pose": "listen",
+          "caption": "ANSWER WITH THE SESSION",
+          "mood": "default"
+        },
+        {
+          "atSec": 84,
+          "pose": "still",
+          "caption": "ANSWER WITH THE SESSION",
+          "mood": "default"
         }
       ]
     },
@@ -330,6 +468,24 @@
           "pose": "point",
           "caption": "ENDED BLOCK",
           "mood": "default"
+        },
+        {
+          "atSec": 42,
+          "pose": "listen",
+          "caption": "ENDED BLOCK",
+          "mood": "default"
+        },
+        {
+          "atSec": 48,
+          "pose": "still",
+          "caption": "ENDED BLOCK",
+          "mood": "default"
+        },
+        {
+          "atSec": 54,
+          "pose": "point",
+          "caption": "ENDED BLOCK",
+          "mood": "default"
         }
       ]
     },
@@ -341,7 +497,7 @@
       "mood": "default",
       "label": "Stone on the pile",
       "caption": "Cairn puts the finished block on the stack.",
-      "vo": "Part five. Put the stone on the pile. Only if the close has not already said it. Tonight it has not. Cairn takes the finished block and puts it on the stack. The pile is the record. Not the mood. Not the Tuesday glow. A stone is a session that happened. Cairn can see it. Tomorrow the pile is still there even if Thursday comes back. That is the point of a cairn. Marks on a path. Not proof of a soulmate. Cairn does not need a new species of work. He needs another stone. He places it where he can see it. A note. A commit. A crossed line. The stack gets taller by one. That height is the only proof Cairn trusts after a cold Thursday. Mood lies. The pile does not. He leaves the room with a taller cairn than he entered.",
+      "vo": "Part five. Put the stone on the pile. Cairn takes the finished block and puts it on the stack. The pile is the record. Not the mood. Not the Tuesday glow. A stone is a session that happened. Cairn can see it. Tomorrow the pile is still there even if Thursday comes back. That is the point of a cairn. Marks on a path. Not proof of a soulmate. Cairn does not need a new species of work. He needs another stone. He places it where he can see it. A note. A commit. A crossed line. The stack gets taller by one. That height is the only proof Cairn trusts after a cold Thursday. Mood lies. The pile does not. He leaves the room with a taller cairn than he entered.",
       "speechLed": true,
       "beats": [
         {
@@ -383,6 +539,18 @@
         {
           "atSec": 36,
           "pose": "point",
+          "caption": "TALLER CAIRN",
+          "mood": "default"
+        },
+        {
+          "atSec": 42,
+          "pose": "listen",
+          "caption": "TALLER CAIRN",
+          "mood": "default"
+        },
+        {
+          "atSec": 48,
+          "pose": "still",
           "caption": "TALLER CAIRN",
           "mood": "default"
         }

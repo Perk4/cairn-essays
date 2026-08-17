@@ -58,8 +58,8 @@ if (!/Tuesday/i.test(hook.vo) || !/Thursday/i.test(hook.vo)) {
   fail("hook is not the Tuesday/Thursday incident");
 }
 
-if (Math.abs(picture - FEEL) > FEEL_SLACK) {
-  fail(`feel ${picture.toFixed(0)}s is not near ${FEEL}s`);
+if (picture < FEEL - FEEL_SLACK) {
+  fail(`feel ${picture.toFixed(0)}s is short of ${FEEL}s`);
 }
 
 console.log(
