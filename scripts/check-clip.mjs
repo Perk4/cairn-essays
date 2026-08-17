@@ -33,12 +33,13 @@ if (typeof voSec !== "number" || voSec <= 0) {
   fail("part1 VO missing");
 }
 
-const picture = Math.min(CLIP_MAX, Math.max(CLIP_MIN, voSec + SETTLE));
+const speechLed = voSec + SETTLE;
+const picture = Math.min(CLIP_MAX, Math.max(CLIP_MIN, speechLed));
 if (picture < CLIP_MIN || picture > CLIP_MAX) {
   fail(`clip picture ${picture}s is outside 20–45`);
 }
 
 console.log(
-  `clip part1 kicker ${clip.kicker}  vo ${voSec.toFixed(2)}s  picture ${picture.toFixed(2)}s`,
+  `clip part1 kicker ${clip.kicker}  vo ${voSec.toFixed(2)}s  speech-led ${speechLed.toFixed(2)}s  picture ${picture.toFixed(2)}s`,
 );
 console.log("clip check ok");

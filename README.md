@@ -27,13 +27,12 @@ Writes:
 - `out/ep01.mp4` — 1920×1080 flagship, every scene in `episodes/ep01.json`, Ryan on the hook and Part 1, espeak on the rest, plus the CC0 music bed
 - `out/ep01-hook.mp4` — 1080×1920 Short, two beats (calling / homework), VO + bed
 - `out/ep01-rule.mp4` — 1080×1920 Short, two beats (finish / stone on the pile), VO + bed. Rule uses the **point** pose.
-- `ep01-clip-part1` — 1080×1920 Clip remount of flagship Part 1, same Ryan take, first-frame kicker
 
-Studio: `npm run dev`
+Studio: `npm run dev`. `ep01-clip-part1` is a 1080×1920 remount of flagship Part 1. Same Ryan take. First-frame kicker. Picture is clamped to 20–45s.
 
 ## Timing
 
-Episode timing lives in `episodes/ep01.json`. Most scenes set `durationSec` as the spoken line plus a hold. Speech-led scenes (the hook and Part 1) omit `durationSec`. Their picture lasts the VO file plus 0.8s settle and skips the 16–72s clamp. Flagship length is the sum of those scene lengths. ep01 is inside the 8–12 minute week-1 bar.
+Episode timing lives in `episodes/ep01.json`. Most scenes set `durationSec` as the spoken line plus a hold. Speech-led scenes (the hook and Part 1) omit `durationSec`. Their picture lasts the VO file plus 0.8s settle and skips the 16–72s clamp. A Clip remounts one of those takes at 9:16 and clamps picture to 20–45s. Flagship length is the sum of those scene lengths. ep01 is inside the 8–12 minute week-1 bar.
 
 If `durationSec` is missing and the scene is not speech-led, runtime uses spoken/visible words:
 
