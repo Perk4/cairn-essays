@@ -77,7 +77,7 @@
       "mood": "warm",
       "caption": "I had a side project I was sure was the one.",
       "vo": "I had a side project I was sure was the one. The kind you mention at dinner like it already has a name. You can feel the whole staircase from the first step. Monday night you push the chair in and think: this is it. Finally. A thing that will not feel like the job.",
-      "durationSec": 42
+      "speechLed": true
     },
     {
       "id": "hook2",

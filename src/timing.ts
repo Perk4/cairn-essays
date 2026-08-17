@@ -10,6 +10,7 @@ export const SHORT_HEIGHT = 1920;
 export const ESSAY_BASE_HOLD_SEC = 12;
 export const MIN_SCENE_SEC = 16;
 export const MAX_SCENE_SEC = 72;
+export const SPEECH_SETTLE_SEC = 0.8;
 export const FLAGSHIP_MIN_SEC = 480;
 export const FLAGSHIP_MAX_SEC = 720;
 export const SHORT_MIN_SEC = 12;
@@ -56,6 +57,13 @@ export function durationSecFromText(text: string): number {
     MIN_SCENE_SEC,
     MAX_SCENE_SEC,
   );
+}
+
+export function speechLedDurationSec(voSec: number): number {
+  if (!Number.isFinite(voSec) || voSec <= 0) {
+    throw new Error("speech-led VO duration must be a positive number");
+  }
+  return voSec + SPEECH_SETTLE_SEC;
 }
 
 export function durationSecForScene(scene: Scene): number {

@@ -10,12 +10,16 @@ import type {
 } from "./types";
 import { MOODS, POSES, VISUALS } from "./types";
 import raw from "../episodes/ep01.json";
+import voDurations from "../public/vo/durations.json";
 import {
   durationSecFromText,
   FLAGSHIP_MAX_SEC,
   FLAGSHIP_MIN_SEC,
   flagshipDurationSec,
+  MIN_SCENE_SEC,
   sceneVisibleText,
+  SPEECH_SETTLE_SEC,
+  speechLedDurationSec,
 } from "./timing";
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -145,10 +149,40 @@ function parseBeats(value: unknown): SceneBeat[] | undefined {
   });
 }
 
+function voDurationSec(id: string): number {
+  if (!(id in voDurations)) {
+    throw new Error(`Missing VO duration for ${id}`);
+  }
+  const sec = voDurations[id as keyof typeof voDurations];
+  if (typeof sec !== "number" || !Number.isFinite(sec) || sec <= 0) {
+    throw new Error(`VO duration for ${id} must be a positive number`);
+  }
+  return sec;
+}
+
+function isSpeechLed(record: Record<string, unknown>, id: string): boolean {
+  if (!("speechLed" in record) || record.speechLed === undefined) {
+    return false;
+  }
+  if (typeof record.speechLed !== "boolean") {
+    throw new Error(`Scene ${id} speechLed must be a boolean`);
+  }
+  return record.speechLed;
+}
+
 function withDuration(
   record: Record<string, unknown>,
   scene: SceneBody,
 ): Scene {
+  if (isSpeechLed(record, scene.id)) {
+    if ("durationSec" in record && record.durationSec !== undefined) {
+      throw new Error(`Scene ${scene.id} is speech-led; drop durationSec`);
+    }
+    return {
+      ...scene,
+      durationSec: speechLedDurationSec(voDurationSec(scene.id)),
+    };
+  }
   const override = optionalPositiveNumber(record, "durationSec");
   const durationSec =
     override ?? durationSecFromText(scene.vo || sceneVisibleText(scene));
@@ -351,6 +385,25 @@ const flagshipSec = flagshipDurationSec(episode.scenes);
 if (flagshipSec < FLAGSHIP_MIN_SEC || flagshipSec > FLAGSHIP_MAX_SEC) {
   throw new Error(
     `Flagship duration ${flagshipSec}s is outside the 8–12 minute bar (${FLAGSHIP_MIN_SEC}–${FLAGSHIP_MAX_SEC})`,
+  );
+}
+
+const shortLineSec = speechLedDurationSec(3);
+if (shortLineSec !== 3.8 || shortLineSec >= MIN_SCENE_SEC) {
+  throw new Error(
+    `speech-led 3s line is ${shortLineSec}s; it must be 3.8s and under ${MIN_SCENE_SEC}s`,
+  );
+}
+
+const hook = episode.scenes.find((scene) => scene.id === "hook");
+if (!hook) {
+  throw new Error("ep01 is missing the hook scene");
+}
+const hookVoSec = voDurationSec("hook");
+const hookSettle = hook.durationSec - hookVoSec;
+if (hookSettle < 0 || hookSettle > SPEECH_SETTLE_SEC + 1e-9) {
+  throw new Error(
+    `hook settle ${hookSettle}s must be 0–${SPEECH_SETTLE_SEC}s over the spoken line`,
   );
 }
 
