@@ -9,7 +9,7 @@ Primary model is 1.7B. If that will not load, 0.6B CustomVoice / Ryan. If Qwen3 
 - Not macOS `say` / Samantha
 - Not cloud TTS
 
-Other scenes still use the espeak-ng placeholder until later tickets. The mouth on caption scenes reads the RMS envelope in `src/voEnvelopes.json`.
+Other scenes still use the espeak-ng placeholder until later tickets. The mouth on the hook reads the RMS envelope in `src/voEnvelopes.json`.
 
 Regenerate the hook:
 

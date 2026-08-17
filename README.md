@@ -24,7 +24,7 @@ npm run render
 
 Writes:
 
-- `out/ep01.mp4` — 1920×1080 flagship, every scene in `episodes/ep01.json`, placeholder VO + CC0 music bed
+- `out/ep01.mp4` — 1920×1080 flagship, every scene in `episodes/ep01.json`, Ryan on the hook, espeak on the rest, plus the CC0 music bed
 - `out/ep01-hook.mp4` — 1080×1920 Short, two beats (calling / homework), VO + bed
 - `out/ep01-rule.mp4` — 1080×1920 Short, two beats (finish / stone on the pile), VO + bed. Rule uses the **point** pose.
 
