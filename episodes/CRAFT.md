@@ -36,13 +36,13 @@ From [What does horrible scripting mean as a craft standard?](https://github.com
 | **Beat Board** | Ordered Story Beats for **one Part**. Not one board for the Essay. |
 | **Thumbnail** | Written staging note: pose, where Cairn sits, room verb, what the muted frame argues. Drawn frames optional. The YouTube packshot is not this. |
 | **Staging** | Arrangement so the Beat’s action is instantly clear. Cairn, visual, and caption are directed, not decoration. |
-| **Cue** | One JSON `beats[]` row. A machine keyframe. **Not** a Story Beat. |
-| **Scene** | Remotion render unit. Not a story unit. |
+| **Cue** | One JSON `beats[]` row. A machine keyframe. **Not** a Story Beat. One Story Beat is implemented by **one or more** Cues. Many Cues with the same muted-frame argument are still one Beat. |
+| **Scene** | Remotion render unit. Not a story unit. One Scene per Part. Do not split a Part across Scenes to change the set. |
 | **Part** | One named claim in the tip-list; ends on a Move. Hook and close count. |
 | **Move** | The do-this or joke-as-lesson that ends a Part. |
 | **Animatic** | The Beat Board played in time against VO (or scratch). |
 
-Fails: calling a Cue a Story Beat; a board that is only caption swaps; an Essay-wide board; requiring drawn Thumbnails; saying “scene” when you mean Part or Beat.
+Fails: calling a Cue a Story Beat; treating `beats[]` as the Beat Board; a board that is only caption swaps; an Essay-wide board; requiring drawn Thumbnails; saying “scene” when you mean Part or Beat; requiring a 1:1 Cue-to-Beat count.
 
 From [What is the beat language for this factory?](https://github.com/Perk4/cairn-essays/issues/73). Definitions measured in [What do beat board, animatic, thumbnail, and staging mean here?](https://github.com/Perk4/cairn-essays/issues/70).
 
@@ -54,9 +54,13 @@ A Story Beat is a **staged action**. A caption swap is a Cue.
 
 A new Beat must change **what the room is doing** — a different pose-as-action, a prop that enters or leaves, or a spatial change. Caption may echo that verb. Caption is not the verb.
 
+A room verb is the **muted-frame argument**, not the pose PNG name. Two `point` Cues can be different Beats if the room changed. Same pose, same set, new caption is still a Cue.
+
+Pose-as-action on existing Cue fields (pose, caption, mood) is a legal room verb. Scene-level visual is Part set dressing. Cue-level visual is **not** required in this factory. Do not split one Part into many Scenes to change the set. Flagship names one Sequence per Scene. The Animatic watch needs that Sequence to be the Part.
+
 Prefer **Cairn + a readable room verb** over planted-Cairn-plus-cycling-`conceptLabel`. Existing kit verbs are enough to start. Does not rebuild the kit or reopen the stone-stack look.
 
-Fails: a muted still that needs the VO; listing a caption-only Cue as a Beat; a Part whose board never changes the room; a “new” Beat with the same room verb as the last one.
+Fails: a muted still that needs the VO; listing a caption-only Cue as a Beat; a Part whose board never changes the room; a “new” Beat whose muted-frame argument matches the last Beat. Same pose PNG does not by itself fail.
 
 From [Is a beat a staged action or a caption swap?](https://github.com/Perk4/cairn-essays/issues/75).
 
@@ -74,6 +78,8 @@ Fail — do not polish:
 4. The picture is only Cue swaps with no Thumbnail.
 5. Studio is playing Cues that were never checked against the board.
 
+Record the pass or fail **on that Part’s board heading**. Do not add a second file.
+
 Mouth, springs, kit motion, and visual-kit rebuild are **polish**. They start only after this pass fails nothing.
 
 From [Does an animatic step belong before Remotion polish?](https://github.com/Perk4/cairn-essays/issues/74).
@@ -86,7 +92,7 @@ From [Does an animatic step belong before Remotion polish?](https://github.com/P
 | Holds | Spoken lines, Beat Board, Thumbnails | Scenes, `vo`, Cues, timings, Clips |
 | Fail here | Craft, staging, Animatic | Render, VO compile, duration |
 
-Board compiles **into** JSON. Flagship, Clips, and `npm run vo` read JSON only. If they disagree, the board is craft truth; JSON is what is on tape until recompile. Do not “fix” Cues while the board still restates.
+Board compiles **into** JSON. Flagship, Clips, and `npm run vo` read JSON only. If they disagree, the board is craft truth; JSON is what is on tape until recompile. A check must be able to see that the Cues came from the board. Do not “fix” Cues while the board still restates.
 
 Board shape:
 
@@ -101,6 +107,10 @@ Board shape:
 ### Beat Board
 1. <Story Beat name>
    Thumbnail: pose / Cairn / room verb / frame argument
+
+### Animatic
+pass | fail
+<which fail line, or empty on pass>
 ```
 
 From [Where does the script live versus episode JSON?](https://github.com/Perk4/cairn-essays/issues/76).
