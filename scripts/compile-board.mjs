@@ -1,7 +1,9 @@
 import { readFileSync, writeFileSync } from "node:fs";
+import { spawnSync } from "node:child_process";
 
 const board = readFileSync("episodes/ep01.board.md", "utf8");
 const existing = JSON.parse(readFileSync("episodes/ep01.json", "utf8"));
+const durations = JSON.parse(readFileSync("public/vo/durations.json", "utf8"));
 
 function spokenFor(title) {
   const parts = board.split(/^## Part: /m).slice(1);
@@ -67,7 +69,12 @@ const scenes = [
     beats: [
       { atSec: 0, pose: "listen", caption: "HAWKING VIDEO", mood: "warm" },
       { atSec: 1, pose: "still", caption: "HARD ARTICLE", mood: "cold" },
-      { atSec: 2, pose: "listen", caption: "GROW GROUP STAYED", mood: "default" },
+      {
+        atSec: 2,
+        pose: "listen",
+        caption: "GROW GROUP STAYED",
+        mood: "default",
+      },
     ],
   },
   {
@@ -140,7 +147,11 @@ const scenes = [
 ];
 
 for (const scene of scenes) {
-  if (scene.vo.includes("Part one") || scene.vo.includes("Part two") || scene.vo.includes("Part three")) {
+  if (
+    scene.vo.includes("Part one") ||
+    scene.vo.includes("Part two") ||
+    scene.vo.includes("Part three")
+  ) {
     throw new Error(`${scene.id} still says Part N`);
   }
 }
@@ -148,7 +159,8 @@ for (const scene of scenes) {
 const ep = {
   ...existing,
   durationTargetSec: 600,
-  thesis: "Hard does not mean you picked the wrong thing. Finish the session anyway.",
+  thesis:
+    "Hard does not mean you picked the wrong thing. Finish the session anyway.",
   voice: "kokoro",
   voiceLabel:
     "Kokoro-82M am_echo, local Apache. Not Perk. Not a clone. Not a human host. Cairn is the body.",
@@ -164,7 +176,7 @@ const ep = {
         mood: "warm",
         visual: "callingHomework",
         vo: "Tuesday it felt like a calling.",
-        durationSec: 9,
+        durationSec: durations["short-hook-calling"],
       },
       {
         id: "homework",
@@ -174,19 +186,41 @@ const ep = {
         mood: "cold",
         visual: "callingHomework",
         vo: "Thursday it felt like homework.",
-        durationSec: 9,
+        durationSec: durations["short-hook-homework"],
       },
     ],
     rule: existing.shorts.rule,
   },
   clips: [
     { id: "hook", sceneId: "hook", kicker: "TUESDAY", startSec: 0, endSec: 26 },
-    { id: "trap", sceneId: "trap", kicker: "THE VERDICT", startSec: 0, endSec: 32 },
-    { id: "story", sceneId: "story", kicker: "HAWKING", startSec: 0, endSec: 32 },
+    {
+      id: "trap",
+      sceneId: "trap",
+      kicker: "THE VERDICT",
+      startSec: 0,
+      endSec: 32,
+    },
+    {
+      id: "story",
+      sceneId: "story",
+      kicker: "HAWKING",
+      startSec: 0,
+      endSec: 32,
+    },
     { id: "stay", sceneId: "stay", kicker: "FINISH", startSec: 0, endSec: 32 },
   ],
   scenes,
 };
 
 writeFileSync("episodes/ep01.json", `${JSON.stringify(ep, null, 2)}\n`);
+const applied = spawnSync(
+  process.execPath,
+  ["scripts/apply-sentence-beats.mjs"],
+  {
+    stdio: "inherit",
+  },
+);
+if (applied.status !== 0) {
+  throw new Error("sentence pictures failed after compile");
+}
 console.log(`compiled ${scenes.length} scenes from board`);

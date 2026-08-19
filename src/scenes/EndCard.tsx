@@ -1,16 +1,21 @@
+import { useCurrentFrame, useVideoConfig } from "remotion";
 import { PlantedCairn } from "../cairn/CairnSlot";
 import { FloorPile } from "../cairn/verbs";
 import { CaptionBar } from "../components/CaptionBar";
 import { Room } from "../components/Room";
 import { bodyFont, displayFont } from "../fonts";
 import { palette } from "../palette";
+import { activeBeat } from "../timing";
 import type { EndCardScene, Pose } from "../types";
 import voDurations from "../../public/vo/durations.json";
 
 const durationMap = voDurations as Record<string, number>;
 
 export const EndCard = ({ scene }: { scene: EndCardScene }) => {
-  const pose: Pose = scene.pose ?? "still";
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const beat = activeBeat(scene.beats, frame, fps);
+  const pose: Pose = beat?.pose ?? scene.pose ?? "still";
 
   return (
     <Room mood="warm">
@@ -75,7 +80,11 @@ export const EndCard = ({ scene }: { scene: EndCardScene }) => {
           {scene.footnote ? ` · ${scene.footnote}` : ""}
         </div>
       </div>
-      <CaptionBar text="Develop it." layout="flagship" />
+      <CaptionBar
+        text={beat?.caption ?? "Develop it."}
+        layout="flagship"
+        localFrame={frame - Math.round((beat?.atSec ?? 0) * fps)}
+      />
     </Room>
   );
 };

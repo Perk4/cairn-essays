@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 
-const SETTLE = 0.8;
+const SETTLE = 0;
 const FEEL_MIN = 480;
 const FEEL_MAX = 720;
 const CTA =

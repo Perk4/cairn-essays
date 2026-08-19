@@ -77,6 +77,7 @@ export type QuoteCardScene = SceneTiming & {
   attr: string;
   caption?: string;
   pose?: Pose;
+  beats?: SceneBeat[];
 };
 
 export type NumberCardScene = SceneTiming & {
@@ -104,6 +105,7 @@ export type EndCardScene = SceneTiming & {
   cta: string;
   footnote?: string;
   pose?: Pose;
+  beats?: SceneBeat[];
 };
 
 export type Scene =

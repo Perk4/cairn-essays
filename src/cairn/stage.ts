@@ -11,8 +11,6 @@ export const FLOOR_TOP_PCT = {
 
 export const POINT_HAND_PCT = { x: 0.9, y: 0.42 } as const;
 
-export const LISTEN_TALK_LEAN = 16;
-
 export function floorTopPct(layout: Layout): number {
   return FLOOR_TOP_PCT[layout];
 }

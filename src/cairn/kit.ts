@@ -38,11 +38,7 @@ function letterViseme(ch: string): Viseme {
   return "mid";
 }
 
-function visemeFromLetters(
-  vo: string,
-  t: number,
-  spokenSec: number,
-): Viseme {
+function visemeFromLetters(vo: string, t: number, spokenSec: number): Viseme {
   const words = vo.trim().split(/\s+/);
   if (t < 0 || t >= spokenSec || words.length === 0) {
     return "closed";
@@ -74,7 +70,8 @@ function envelopeClosed(voName: string | undefined, frame: number): boolean {
     return false;
   }
   const peak = Math.max(...envelope, 0.0001);
-  const sample = envelope[Math.min(Math.max(frame, 0), envelope.length - 1)] ?? 0;
+  const sample =
+    envelope[Math.min(Math.max(frame, 0), envelope.length - 1)] ?? 0;
   return sample / peak < 0.16;
 }
 
@@ -123,12 +120,7 @@ export function resolveCairnFile(
   if (pose === "point") {
     return "cairn/point.png";
   }
-  if (
-    kit.mouth &&
-    viseme &&
-    viseme !== "closed" &&
-    (pose === "still" || pose === "listen")
-  ) {
+  if (kit.mouth && viseme && (pose === "still" || pose === "listen")) {
     return mouthFile(viseme);
   }
   if (kit.tueThu && mood === "warm" && hasPublicFile(TUE_OPEN)) {
@@ -136,9 +128,6 @@ export function resolveCairnFile(
   }
   if (kit.tueThu && mood === "cold" && hasPublicFile(THU_SLITS)) {
     return THU_SLITS;
-  }
-  if (kit.mouth && viseme && (pose === "still" || pose === "listen")) {
-    return mouthFile(viseme);
   }
   return `cairn/${pose}.png`;
 }

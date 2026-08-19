@@ -1,6 +1,6 @@
 import { readFileSync, writeFileSync } from "node:fs";
 
-const SETTLE = 0.8;
+const SETTLE = 0;
 const CLIP_MIN = 20;
 const CLIP_MAX = 45;
 

@@ -246,6 +246,7 @@ function parseScene(value: unknown): Scene {
         caption: optionalString(value, "caption"),
         vo,
         pose: optionalPose(value),
+        beats: parseBeats(value.beats),
       });
     case "numberCard":
       return withDuration(value, {
@@ -279,6 +280,7 @@ function parseScene(value: unknown): Scene {
         footnote: optionalString(value, "footnote"),
         vo,
         pose: optionalPose(value),
+        beats: parseBeats(value.beats),
       });
     default: {
       throw new Error(`Unknown scene type: ${type}`);
@@ -356,7 +358,9 @@ function parseClips(value: unknown, scenes: readonly Scene[]): EpisodeClip[] {
   return value.map((item, i) => {
     const clip = parseClip(item, `[${i}]`);
     if (!scenes.some((scene) => scene.id === clip.sceneId)) {
-      throw new Error(`Clip ${clip.id} points at missing scene ${clip.sceneId}`);
+      throw new Error(
+        `Clip ${clip.id} points at missing scene ${clip.sceneId}`,
+      );
     }
     return clip;
   });
@@ -446,9 +450,9 @@ if (flagshipSec < FLAGSHIP_MIN_SEC || flagshipSec > FLAGSHIP_MAX_SEC) {
 }
 
 const shortLineSec = speechLedDurationSec(3);
-if (shortLineSec !== 3.8 || shortLineSec >= MIN_SCENE_SEC) {
+if (shortLineSec !== 3 || shortLineSec >= MIN_SCENE_SEC) {
   throw new Error(
-    `speech-led 3s line is ${shortLineSec}s; it must be 3.8s and under ${MIN_SCENE_SEC}s`,
+    `speech-led 3s line is ${shortLineSec}s; it must be 3s and under ${MIN_SCENE_SEC}s`,
   );
 }
 

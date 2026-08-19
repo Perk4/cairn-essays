@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 
-const SETTLE = 0.8;
+const SETTLE = 0;
 
 const ep = JSON.parse(readFileSync("episodes/ep01.json", "utf8"));
 const durations = JSON.parse(readFileSync("public/vo/durations.json", "utf8"));

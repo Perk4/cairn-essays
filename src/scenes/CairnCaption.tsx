@@ -1,3 +1,4 @@
+import { useCurrentFrame, useVideoConfig } from "remotion";
 import { PlantedCairn } from "../cairn/CairnSlot";
 import { handPosition } from "../cairn/stage";
 import { CaptionBar } from "../components/CaptionBar";
@@ -6,7 +7,6 @@ import { activeBeat } from "../timing";
 import type { CairnCaptionScene, Mood, Pose, Visual } from "../types";
 import voDurations from "../../public/vo/durations.json";
 import { SceneVisual } from "../visuals";
-import { useCurrentFrame, useVideoConfig } from "remotion";
 
 const durationMap = voDurations as Record<string, number>;
 
@@ -29,7 +29,8 @@ export const CairnCaption = ({ scene, layout, kicker }: Props) => {
   const cairnLeft = short ? width / 2 - cairnSize / 2 : width * 0.07;
   const drop =
     visual === "stoneDrop" &&
-    (Boolean(beat?.caption?.toLowerCase().includes("stone")) || pose === "point");
+    (Boolean(beat?.caption?.toLowerCase().includes("stone")) ||
+      pose === "point");
   const throwFrom =
     visual === "stoneDrop"
       ? handPosition({
@@ -89,6 +90,7 @@ export const CairnCaption = ({ scene, layout, kicker }: Props) => {
         kicker={kicker}
         layout={layout}
         punch={Boolean(kicker)}
+        localFrame={frame - Math.round((beat?.atSec ?? 0) * fps)}
       />
     </Room>
   );

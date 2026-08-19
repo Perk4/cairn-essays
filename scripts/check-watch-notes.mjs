@@ -54,7 +54,9 @@ for (const scene of ep.scenes) {
   if (typeof voSec !== "number" || voSec <= 0) {
     fail(`${scene.id} VO duration missing`);
   }
-  const cues = JSON.parse(readFileSync(`public/vo/${scene.id}.cues.json`, "utf8"));
+  const cues = JSON.parse(
+    readFileSync(`public/vo/${scene.id}.cues.json`, "utf8"),
+  );
   const beats = [...(scene.beats ?? [])].sort((a, b) => a.atSec - b.atSec);
   if (beats.length === 0) {
     fail(`${scene.id} has no picture beats for ${cues.length} sentences`);
@@ -72,7 +74,9 @@ for (const scene of ep.scenes) {
     const at = edges[i];
     const hold = at - prev;
     if (hold > MAX_HOLD + 1e-6) {
-      fail(`${scene.id} holds ${hold.toFixed(2)}s of one picture past ${MAX_HOLD}s`);
+      fail(
+        `${scene.id} holds ${hold.toFixed(2)}s of one picture past ${MAX_HOLD}s`,
+      );
     }
     if (i < beats.length) {
       const key = pictureKey(beats[i]);
@@ -85,5 +89,7 @@ for (const scene of ep.scenes) {
   }
 }
 
-console.log("talk planted, shorts end with the line, picture moves with each sentence");
+console.log(
+  "talk planted, shorts end with the line, picture moves with each sentence",
+);
 console.log("watch notes check ok");

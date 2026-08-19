@@ -35,9 +35,9 @@ Description lives on the episode as `description`. It starts with "Cairn explain
 
 ## Timing
 
-The board at `episodes/ep01.board.md` owns the spoken track. `episodes/ep01.json` owns the render shape and copies each Spoken section without rewrites. Flagship scenes omit `durationSec`. Picture lasts for the VO file plus a 0.8 second settle. The feel window is 8 to 12 minutes.
+The board at `episodes/ep01.board.md` owns the spoken track. `episodes/ep01.json` owns the render shape and copies each Spoken section without rewrites. Flagship scenes omit `durationSec`. Picture lasts for the VO file. The feel window is 8 to 12 minutes.
 
-Shorts are two or more beats. Each beat has its own `durationSec`. Total duration stays between 12 and 30 seconds. Kickers appear on frame 0.
+Shorts are two or more beats. Each beat lasts as long as its line. Kickers appear on frame 0.
 
 ## Pictures
 

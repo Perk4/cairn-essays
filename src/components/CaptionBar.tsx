@@ -7,6 +7,7 @@ type CaptionBarProps = {
   kicker?: string;
   layout: "flagship" | "short";
   punch?: boolean;
+  localFrame?: number;
 };
 
 export const CaptionBar = ({
@@ -14,10 +15,12 @@ export const CaptionBar = ({
   kicker,
   layout,
   punch = false,
+  localFrame,
 }: CaptionBarProps) => {
   const frame = useCurrentFrame();
   const short = layout === "short";
-  const rise = interpolate(frame, [0, punch ? 8 : 14], [18, 0], {
+  const t = localFrame ?? frame;
+  const rise = interpolate(t, [0, punch ? 8 : 14], [18, 0], {
     extrapolateRight: "clamp",
   });
   const kickerSize = short ? (punch && frame < 60 ? 92 : 56) : 28;

@@ -38,7 +38,7 @@ if (hash("public/cairn/mouth-closed.png") === hash("public/cairn/mouth-open.png"
 }
 
 const slot = readFileSync("src/cairn/CairnSlot.tsx", "utf8");
-if (slot.includes("Math.sin(frame")) {
+if (slot.includes("Math.sin(frame") || slot.includes("talkingListen")) {
   fail("CairnSlot still bobs");
 }
 if (!slot.includes("PlantedCairn")) {

@@ -8,7 +8,7 @@ import {
 } from "node:fs";
 import { spawnSync } from "node:child_process";
 
-const SETTLE = 0.8;
+const SETTLE = 0;
 const MIN_CHUNK = 60;
 const MAX_CHUNK = 150;
 const OVERLAP = 8;
@@ -113,7 +113,9 @@ if (packed.length >= 2 && dur(packed[packed.length - 1]) < MIN_CHUNK) {
 for (const chunk of packed) {
   const len = dur(chunk);
   if (len > MAX_CHUNK + 0.05) {
-    fail(`chunk ${chunk.ids.join("+")} is ${len.toFixed(1)}s, over ${MAX_CHUNK}`);
+    fail(
+      `chunk ${chunk.ids.join("+")} is ${len.toFixed(1)}s, over ${MAX_CHUNK}`,
+    );
   }
 }
 
@@ -239,18 +241,20 @@ for (const path of seamParts) {
 spawnSync("rm", ["-f", listPath]);
 
 const settleWav = "review/.settle.wav";
-run("ffmpeg", [
-  "-y",
-  "-f",
-  "lavfi",
-  "-i",
-  "anullsrc=r=24000:cl=mono",
-  "-t",
-  String(SETTLE),
-  "-c:a",
-  "pcm_s16le",
-  settleWav,
-]);
+if (SETTLE > 0) {
+  run("ffmpeg", [
+    "-y",
+    "-f",
+    "lavfi",
+    "-i",
+    "anullsrc=r=24000:cl=mono",
+    "-t",
+    String(SETTLE),
+    "-c:a",
+    "pcm_s16le",
+    settleWav,
+  ]);
+}
 
 const wavParts = [];
 const transcript = [];
@@ -270,7 +274,10 @@ for (const scene of ep.scenes) {
     "pcm_s16le",
     wav,
   ]);
-  wavParts.push(wav, settleWav);
+  wavParts.push(wav);
+  if (SETTLE > 0) {
+    wavParts.push(settleWav);
+  }
   const cuesPath = `public/vo/${scene.id}.cues.json`;
   if (existsSync(cuesPath)) {
     const cues = JSON.parse(readFileSync(cuesPath, "utf8"));
@@ -323,8 +330,13 @@ for (const row of transcript) {
 writeFileSync("review/transcript.vtt", `${vtt.join("\n")}\n`);
 writeFileSync(
   "review/transcript.tsv",
-  ["start\tend\tscene\ttext", ...transcript.map((row) => `${row.start}\t${row.end}\t${row.scene}\t${row.text.replace(/\t/g, " ")}`)].join("\n") +
-    "\n",
+  [
+    "start\tend\tscene\ttext",
+    ...transcript.map(
+      (row) =>
+        `${row.start}\t${row.end}\t${row.scene}\t${row.text.replace(/\t/g, " ")}`,
+    ),
+  ].join("\n") + "\n",
 );
 
 writeFileSync(
@@ -343,4 +355,6 @@ writeFileSync(
   ].join("\n"),
 );
 
-console.log(`review kit ${cuts.length} chunks  seams ${seamParts.length / 2} joins  ${transcript.length} cues`);
+console.log(
+  `review kit ${cuts.length} chunks  seams ${seamParts.length / 2} joins  ${transcript.length} cues`,
+);

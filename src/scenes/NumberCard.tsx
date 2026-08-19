@@ -134,7 +134,11 @@ export const NumberCard = ({ scene }: { scene: NumberCardScene }) => {
           </div>
         ) : null}
       </div>
-      <CaptionBar text={scene.note} layout="flagship" />
+      <CaptionBar
+        text={beat?.caption ?? scene.note}
+        layout="flagship"
+        localFrame={frame - Math.round((beat?.atSec ?? 0) * fps)}
+      />
     </Room>
   );
 };
