@@ -4,11 +4,11 @@ Remotion factory for Cairn essays. Episode 1 is a **story with a spoken track**.
 
 ## Voice
 
-Flagship lines are **placeholder espeak-ng** in this acting cut, labeled not Perk, if the local Ryan venv is missing. Prefer Qwen3-TTS CustomVoice / Ryan through mlx-audio, near 165 wpm, when that machine is present.
+Flagship lines use local Apache Kokoro-82M with `am_echo` at speed 1.25. `public/vo/voice.json` owns the model, voice, speed, and 0.45 second sentence gap.
 
-It is **not Perk**. It is **not a clone**. It is **not macOS say**.
+It is **not Perk**. It is **not a clone**. It is **not espeak**. It is **not ElevenLabs**.
 
-See `public/vo/VOICE.md`. Regenerate speech-led lines with `npm run vo` (needs the local venv and `ffmpeg`).
+See `public/vo/VOICE.md`. Regenerate speech-led lines with `npm run vo`.
 
 ## Install
 
@@ -24,32 +24,27 @@ npm run render
 
 Writes:
 
-- `out/ep01.mp4` — 1920×1080 flagship, every scene in `episodes/ep01.json`, Ryan on every line, plus the CC0 music bed
-- `out/ep01-hook.mp4` — 1080×1920 Short, two beats (calling / homework), VO + bed
-- `out/ep01-rule.mp4` — 1080×1920 Short, two beats (finish / stone on the pile), VO + bed. Rule uses the **point** pose.
+- `out/ep01.mp4`. A dry 1920×1080 flagship with Kokoro on every line.
+- `out/ep01-hook.mp4`. A dry 1080×1920 Short where Tuesday calling becomes Thursday homework.
 
-Studio: `npm run dev`. `ep01-thumb` is the authored 16:9 cream thumbnail. Clips are 1080×1920 remounts of the hook and each Part. Same Ryan take, trimmed to a complete thought. First-frame kicker. Picture is 20–45s.
+The rule Short composition can still render. It is not in this package.
 
-Description lives on the episode as `description`. It starts with “Cairn explains” and credits the warrant. No habit-app CTA. The end card is a Cairn closer. The flagship bed ducks under speech.
+Studio: `npm run dev`. `ep01-thumb` is the authored 16:9 cream thumbnail. Clips are 1080×1920 remounts of the hook and named scenes. Each has a first-frame kicker and runs 20 to 45 seconds.
+
+Description lives on the episode as `description`. It starts with "Cairn explains" and credits the warrant. The end card uses the authored subscribe line.
 
 ## Timing
 
-Episode timing lives in `episodes/ep01.json`. Flagship scenes are speech-led and omit `durationSec`. Picture lasts the VO file plus 0.8s settle and skips the 16–72s clamp. A Clip remounts a 20–45s trim of one take at 9:16. Flagship length is the sum of those scene lengths. The feel target is about 7:30. Overshoot is fine if speech stays continuous.
+The board at `episodes/ep01.board.md` owns the spoken track. `episodes/ep01.json` owns the render shape and copies each Spoken section without rewrites. Flagship scenes omit `durationSec`. Picture lasts for the VO file plus a 0.8 second settle. The feel window is 8 to 12 minutes.
 
-If `durationSec` is missing and the scene is not speech-led, runtime uses spoken/visible words:
-
-```
-durationSec = clamp(round(12 + wordCount / 2.2), 16, 72)
-```
-
-Shorts are two or more beats. Each beat has its own `durationSec`. Total is clamped to 12–30s. Kickers are on screen from frame 0 so a For You page has a second beat to cut to.
+Shorts are two or more beats. Each beat has its own `durationSec`. Total duration stays between 12 and 30 seconds. Kickers appear on frame 0.
 
 ## Pictures
 
-Scenes are rooms, not cream cards that fade and freeze. Cairn uses the talking kit in `public/cairn/`: `still`, `listen`, `point`, mouth sheets, `tue-open`, `thu-slits`. Caption scenes do not substitute `idle.gif` for the named pose. Parts show a concept label, not a cite card.
+Scenes are rooms. Cairn uses the talking kit in `public/cairn/`: `still`, `listen`, `point`, mouth sheets, `tue-open`, `thu-slits`. No academic Part N title cards. Cairn points at 2.75 vs 3.59. Eggs drop with him in the scene. The stone leaves the hand and lands on a real pile.
 
 ## Music
 
-`public/music/bee-hive-pad.mp3` — John Bartmann, _bee-hive-pad-master_, [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). Source and license: `public/music/SOURCE.md`.
+None on the flagship or the Short. Dry.
 
-Looped under the flagship and the Shorts, quiet, under the VO, faded in/out. No commercial track.
+`public/music/bee-hive-pad.mp3` stays in the tree as a CC0 file. It is not mixed in this cut.

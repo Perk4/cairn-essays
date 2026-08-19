@@ -6,7 +6,6 @@ mkdirSync("out", { recursive: true });
 const jobs = [
   { id: "ep01", out: "out/ep01.mp4" },
   { id: "ep01-hook", out: "out/ep01-hook.mp4" },
-  { id: "ep01-rule", out: "out/ep01-rule.mp4" },
 ];
 
 for (const job of jobs) {

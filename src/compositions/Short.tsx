@@ -1,5 +1,4 @@
 import { AbsoluteFill, Sequence, useVideoConfig } from "remotion";
-import { MusicBed } from "./MusicBed";
 import { PlantedCairn } from "../cairn/CairnSlot";
 import { handPosition } from "../cairn/stage";
 import { CaptionBar } from "../components/CaptionBar";
@@ -20,7 +19,6 @@ export const Short = ({ shortId }: ShortProps) => {
 
   return (
     <AbsoluteFill>
-      <MusicBed fadeInSec={0.25} fadeOutSec={1.2} volume={0.1} />
       {beats.map((beat) => {
         const durationInFrames = secondsToFrames(beat.durationSec);
         const start = from;

@@ -1,12 +1,19 @@
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import {
+  existsSync,
+  mkdirSync,
+  readFileSync,
+  readdirSync,
+  rmSync,
+  unlinkSync,
+  writeFileSync,
+} from "node:fs";
 import { spawnSync } from "node:child_process";
 
 const PYTHON = process.env.CAIRN_VO_PYTHON ?? "/tmp/cairn-vo-venv/bin/python";
+const VOICE_CONFIG =
+  process.env.CAIRN_VOICE_CONFIG ?? "public/vo/voice.json";
 const ep = JSON.parse(readFileSync("episodes/ep01.json", "utf8"));
-const durations = JSON.parse(readFileSync("public/vo/durations.json", "utf8"));
-const envelopes = existsSync("src/voEnvelopes.json")
-  ? JSON.parse(readFileSync("src/voEnvelopes.json", "utf8"))
-  : {};
+const voiceConfig = JSON.parse(readFileSync(VOICE_CONFIG, "utf8"));
 
 mkdirSync("public/vo", { recursive: true });
 
@@ -53,63 +60,55 @@ function envelopeFromMp3(mp3, raw) {
   return envelope;
 }
 
-function probeDuration(mp3) {
+function probeDuration(file) {
   const probe = spawnSync(
     "ffprobe",
-    ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", mp3],
+    ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", file],
     { encoding: "utf8" },
   );
   const duration = Number(probe.stdout.trim());
   if (!Number.isFinite(duration) || duration <= 0) {
-    throw new Error(`Could not read duration for ${mp3}`);
+    throw new Error(`could not read duration for ${file}`);
   }
   return duration;
 }
 
-function timeStretch(src, dest, tempo) {
-  const stretched = spawnSync(
-    "ffmpeg",
-    [
-      "-y",
-      "-i",
-      src,
-      "-filter:a",
-      `atempo=${tempo}`,
-      "-codec:a",
-      "libmp3lame",
-      "-b:a",
-      "128k",
-      dest,
-    ],
-    { stdio: "inherit" },
-  );
-  if (stretched.status !== 0) {
-    throw new Error(`atempo failed for ${src}`);
-  }
-}
-
-function synthEspeakLine(id, text) {
+function synthLocalLine(id, text) {
   refuseBanned(id);
   const wav = `/tmp/vo-${id}.wav`;
   const raw = `/tmp/vo-${id}.f32`;
   const mp3 = `public/vo/${id}.mp3`;
   const metaPath = `public/vo/${id}.meta.json`;
   const spoken = spawnSync(
-    "espeak-ng",
-    ["-v", "en-us", "-s", "120", "-w", wav, text],
+    PYTHON,
+    [
+      "scripts/synth-local-vo.py",
+      "--text",
+      text,
+      "--out",
+      wav,
+      "--meta",
+      metaPath,
+      "--config",
+      VOICE_CONFIG,
+    ],
     { stdio: "inherit" },
   );
   if (spoken.status !== 0) {
-    throw new Error(`espeak-ng failed for ${id}`);
+    throw new Error(`Kokoro synth failed for ${id}`);
   }
-  writeFileSync(
-    metaPath,
-    `${JSON.stringify({
-      engine: "espeak-ng",
-      model: "en-us",
-      placeholder: true,
-    })}\n`,
-  );
+  const meta = JSON.parse(readFileSync(metaPath, "utf8"));
+  const stamp = `${meta.engine} ${meta.model} ${meta.voice}`;
+  refuseBanned(stamp);
+  if (
+    meta.engine !== voiceConfig.engine ||
+    meta.model !== voiceConfig.model ||
+    meta.voice !== voiceConfig.voice ||
+    meta.speed !== voiceConfig.speed ||
+    meta.gapSec !== voiceConfig.gapSec
+  ) {
+    throw new Error(`voice metadata drifted for ${id}: ${stamp}`);
+  }
   const mp3d = spawnSync(
     "ffmpeg",
     ["-y", "-i", wav, "-codec:a", "libmp3lame", "-b:a", "128k", mp3],
@@ -118,73 +117,63 @@ function synthEspeakLine(id, text) {
   if (mp3d.status !== 0) {
     throw new Error(`ffmpeg failed for ${id}`);
   }
-  return {
-    duration: probeDuration(mp3),
-    envelope: envelopeFromMp3(mp3, raw),
-    meta: JSON.parse(readFileSync(metaPath, "utf8")),
-  };
+  const duration = probeDuration(mp3);
+  const envelope = envelopeFromMp3(mp3, raw);
+  rmSync(wav, { force: true });
+  rmSync(raw, { force: true });
+  return { duration, envelope, meta };
 }
 
-function synthLocalLine(id, text) {
-  if (!existsSync(PYTHON)) {
-    return synthEspeakLine(id, text);
-  }
-  refuseBanned(id);
-  const wav = `/tmp/vo-${id}.wav`;
-  const raw = `/tmp/vo-${id}.f32`;
-  const mp3 = `public/vo/${id}.mp3`;
-  const metaPath = `public/vo/${id}.meta.json`;
-  const spoken = spawnSync(
-    PYTHON,
-    ["scripts/synth-local-vo.py", "--text", text, "--out", wav, "--meta", metaPath],
-    { stdio: "inherit" },
-  );
-  if (spoken.status !== 0) {
-    throw new Error(`local synth failed for ${id}`);
-  }
-  const meta = JSON.parse(readFileSync(metaPath, "utf8"));
-  refuseBanned(meta.engine);
-  refuseBanned(meta.model);
-  const rawMp3 = `/tmp/vo-${id}-raw.mp3`;
-  const mp3d = spawnSync(
-    "ffmpeg",
-    ["-y", "-i", wav, "-codec:a", "libmp3lame", "-b:a", "128k", rawMp3],
-    { stdio: "inherit" },
-  );
-  if (mp3d.status !== 0) {
-    throw new Error(`ffmpeg failed for ${id}`);
-  }
-  const words = text.trim().split(/\s+/).filter(Boolean).length;
-  const rawSec = probeDuration(rawMp3);
-  const targetSec = (words / 165) * 60;
-  const tempo = rawSec / targetSec;
-  if (tempo > 1.02 || tempo < 0.98) {
-    timeStretch(rawMp3, mp3, Math.min(2, Math.max(0.5, tempo)));
-  } else {
-    spawnSync("ffmpeg", ["-y", "-i", rawMp3, "-c", "copy", mp3], {
-      stdio: "inherit",
-    });
-  }
-  return {
-    duration: probeDuration(mp3),
-    envelope: envelopeFromMp3(mp3, raw),
-    meta,
-  };
+if (!existsSync(PYTHON)) {
+  throw new Error(`Kokoro Python is missing: ${PYTHON}`);
 }
 
-const lines = ep.scenes.filter((item) => item.speechLed === true);
-if (lines.length === 0) {
+const sceneLines = ep.scenes
+  .filter((scene) => scene.speechLed === true)
+  .map((scene) => ({ id: scene.id, text: scene.vo }));
+const shortLines = Object.entries(ep.shorts).flatMap(([shortId, beats]) =>
+  beats.map((beat) => ({
+    id: `short-${shortId}-${beat.id}`,
+    text: beat.vo,
+  })),
+);
+const lines = [...sceneLines, ...shortLines];
+if (sceneLines.length === 0) {
   throw new Error("no speechLed scenes to synth");
 }
 
-for (const scene of lines) {
-  const result = synthLocalLine(scene.id, scene.vo);
-  durations[scene.id] = result.duration;
-  envelopes[scene.id] = result.envelope;
-  const words = scene.vo.trim().split(/\s+/).filter(Boolean).length;
+const expected = new Set();
+for (const line of lines) {
+  if (
+    typeof line.id !== "string" ||
+    typeof line.text !== "string" ||
+    !line.text.trim()
+  ) {
+    throw new Error("every VO line needs a non-empty id and text");
+  }
+  if (expected.has(line.id)) {
+    throw new Error(`duplicate VO id ${line.id}`);
+  }
+  expected.add(line.id);
+}
+
+for (const file of readdirSync("public/vo")) {
+  const match = file.match(/^(.+?)(?:\.mp3|\.meta\.json)$/);
+  if (match && !expected.has(match[1])) {
+    unlinkSync(`public/vo/${file}`);
+  }
+}
+
+const durations = {};
+const envelopes = {};
+for (const line of lines) {
+  const result = synthLocalLine(line.id, line.text);
+  durations[line.id] = result.duration;
+  envelopes[line.id] = result.envelope;
+  const words = line.text.trim().split(/\s+/).filter(Boolean).length;
   const wpm = (words / result.duration) * 60;
   console.log(
-    `${scene.id} ${result.meta.engine} vo ${result.duration.toFixed(2)}s  ${wpm.toFixed(0)} wpm  envelope ${result.envelope.length} frames`,
+    `${line.id} ${result.meta.engine}/${result.meta.voice} ${result.duration.toFixed(2)}s  ${wpm.toFixed(0)} wpm  envelope ${result.envelope.length} frames`,
   );
 }
 

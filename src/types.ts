@@ -11,6 +11,14 @@ export type Pose = (typeof POSES)[number];
 export const MOODS = ["default", "warm", "cold"] as const;
 export type Mood = (typeof MOODS)[number];
 
+export type VoiceConfig = {
+  engine: "kokoro";
+  model: "hexgrad/Kokoro-82M";
+  voice: string;
+  speed: number;
+  gapSec: number;
+};
+
 export const VISUALS = [
   "none",
   "deskStone",

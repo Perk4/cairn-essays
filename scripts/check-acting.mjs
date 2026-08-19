@@ -55,6 +55,11 @@ if (limits.includes("CairnSlot") || limits.includes("PlantedCairn")) {
   fail("Limits still has a Cairn PiP");
 }
 
+const json = JSON.parse(readFileSync("episodes/ep01.json", "utf8"));
+if (json.scenes.some((scene) => scene.type === "limitsCard")) {
+  fail("limits wall is still in the cut");
+}
+
 const kitSrc = readFileSync("src/cairn/kit.ts", "utf8");
 if (!kitSrc.includes("VOWELS") || !kitSrc.includes("TUE_OPEN")) {
   fail("kit.ts missing vowel visemes or tue/thu files");

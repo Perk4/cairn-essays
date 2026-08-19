@@ -59,7 +59,7 @@ if (!thu || thu.mood !== "cold" || thu.pose !== "still") {
   fail("Thursday must be still + cold (thu-slits)");
 }
 
-const gap = ep.scenes.find((scene) => scene.id === "s5gap");
+const gap = ep.scenes.find((scene) => scene.id === "gap");
 if (!gap || gap.type !== "numberCard" || gap.stat !== "2.75 vs 3.59") {
   fail("missing 2.75 vs 3.59 number card");
 }
@@ -67,27 +67,18 @@ if (!gap.beats?.some((beat) => beat.pose === "point")) {
   fail("number card never points");
 }
 
-const people = ep.scenes.find((scene) => scene.id === "s3");
-if (!people || people.stat !== "470") {
-  fail("missing 470 number card");
+if (ep.scenes.some((scene) => String(scene.stat ?? "") === "470")) {
+  fail("470 is still a hero number");
+}
+if (ep.scenes.some((scene) => scene.type === "limitsCard")) {
+  fail("limits wall is still in the cut");
 }
 
-if (!ep.scenes.some((scene) => scene.id === "quote" && scene.type === "quoteCard")) {
+if (!ep.scenes.some((scene) => scene.id === "eggs" && scene.type === "quoteCard")) {
   fail("missing eggs quote");
 }
 if (!ep.scenes.some((scene) => scene.id === "stack" && scene.visual === "stoneDrop")) {
   fail("missing stone throw");
-}
-if (!ep.scenes.some((scene) => scene.type === "limitsCard")) {
-  fail("missing limits wall");
-}
-
-const parts = ep.scenes.filter((scene) => scene.id.startsWith("part"));
-for (const part of parts) {
-  const first = part.beats?.[0];
-  if (!first || first.pose !== "present") {
-    fail(`${part.id} should open on present`);
-  }
 }
 
 console.log(`kit ${KIT.join(" ")}`);

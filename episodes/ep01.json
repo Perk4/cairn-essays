@@ -2,7 +2,7 @@
   "id": "ep01",
   "slug": "find-it-or-develop-it",
   "title": "Find it or develop it",
-  "durationTargetSec": 510,
+  "durationTargetSec": 600,
   "paper": {
     "authors": "O’Keefe, Dweck & Walton",
     "year": 2018,
@@ -13,8 +13,8 @@
   },
   "thesis": "Hard does not mean you picked the wrong thing. Finish the session anyway.",
   "rule": "This week, when the side project gets dull or hard, treat that as the development process. Not as evidence you found the wrong passion. Finish the session anyway.",
-  "voice": "placeholder-espeak-ng",
-  "voiceLabel": "espeak-ng en-us. Placeholder TTS. Not Perk. Not a clone. Not a human host. Cairn is the body.",
+  "voice": "kokoro",
+  "voiceLabel": "am_echo. Local Apache Kokoro-82M. Not Perk. Not a clone. Cairn is the body.",
   "description": "Cairn explains why a dull Thursday is not proof he picked the wrong passion. Warrant: O’Keefe, Dweck & Walton, 2018, Psychological Science.",
   "thumbLine": "THE WORK",
   "palette": {
@@ -76,42 +76,35 @@
       "sceneId": "hook",
       "kicker": "TUESDAY",
       "startSec": 0,
-      "endSec": 27.8
+      "endSec": 31.9
     },
     {
-      "id": "part1",
-      "sceneId": "part1",
-      "kicker": "FIXED INTEREST",
+      "id": "trap",
+      "sceneId": "trap",
+      "kicker": "THE TRAP",
       "startSec": 0,
-      "endSec": 33.533
+      "endSec": 34.367
     },
     {
-      "id": "part2",
-      "sceneId": "part2",
-      "kicker": "INTERESTS DEVELOP",
+      "id": "story",
+      "sceneId": "story",
+      "kicker": "HAWKING VIDEO",
       "startSec": 0,
-      "endSec": 36.667
+      "endSec": 36.733
     },
     {
-      "id": "part3",
-      "sceneId": "part3",
-      "kicker": "HARD IS NOT WRONG",
-      "startSec": 0,
-      "endSec": 39.767
-    },
-    {
-      "id": "part4",
-      "sceneId": "part4",
+      "id": "stay",
+      "sceneId": "stay",
       "kicker": "FINISH THE SESSION",
       "startSec": 0,
-      "endSec": 24.767
+      "endSec": 35.5
     },
     {
-      "id": "part5",
-      "sceneId": "part5",
+      "id": "stack",
+      "sceneId": "stack",
       "kicker": "STONE ON THE PILE",
       "startSec": 0,
-      "endSec": 31.067
+      "endSec": 29.8
     }
   ],
   "scenes": [
@@ -122,7 +115,7 @@
       "visual": "callingHomework",
       "mood": "warm",
       "caption": "TUESDAY",
-      "vo": "Tuesday it felt like the one. Cairn sat down and treated the pile like a calling. The files were open. The chair was in. Thursday the same pile felt like homework. Same desk. Same files. Different verdict. Cairn almost walked. Hard must mean he picked the wrong thing. It does not. Hard does not mean you picked the wrong thing. Finish the session anyway. The spark dying is the job, not the warning. That sentence has a theory inside it. Cairn will name it. Then he will stay.",
+      "vo": "Tuesday it felt like a calling. Cairn sat down like the pile had chosen him. The chair was already pulled in. The files were already open. He treated the first hour like proof. This is the one. This is the work his life was waiting for. The spark was loud enough to drown the dull parts. He even told a friend. I think I found it. He said it like a discovery, not like a plan. The pile looked back at him with the same heat. He stayed past the time he had blocked. He did not notice the chair. He did not notice the clock. Calling will do that. It makes the body sit as if the work were already a home.\n\nThursday the same pile felt like homework. Same desk. Same files. Same chair. The spark had gone quiet. A hard paragraph sat there and did not love him back. The sentence that used to pull him now asked him to carry it. Cairn felt the old verdict form in his mouth. Hard must mean I picked the wrong thing. He almost closed the lid. He almost told that friend it was a false alarm. He almost went hunting for a cleaner calling on the same night. He stood up once. He sat down again. The folder had not moved. The verdict had.\n\nHe does not close the lid. Hard does not mean you picked the wrong thing. Finish the session anyway. The spark dying is the job, not the warning. Tuesday was allowed to feel like a calling. Thursday is allowed to feel like work. Those two days are one pile. Cairn will name the theory that is talking. Then he will stay long enough to finish the block he already started. He will not ask the room for a new passion before the hour is done.",
       "speechLed": true,
       "beats": [
         {
@@ -132,19 +125,19 @@
           "mood": "warm"
         },
         {
-          "atSec": 8,
+          "atSec": 45,
           "pose": "still",
           "caption": "THURSDAY",
           "mood": "cold"
         },
         {
-          "atSec": 16,
+          "atSec": 95,
           "pose": "listen",
           "caption": "HARD ≠ WRONG",
           "mood": "default"
         },
         {
-          "atSec": 22,
+          "atSec": 120,
           "pose": "point",
           "caption": "FINISH ANYWAY",
           "mood": "default"
@@ -152,89 +145,49 @@
       ]
     },
     {
-      "id": "part1",
+      "id": "trap",
       "type": "cairnCaption",
-      "pose": "present",
-      "visual": "conceptLabel",
-      "mood": "default",
-      "label": "Fixed interest",
-      "caption": "Cairn treats a dull Thursday as proof he picked wrong.",
-      "vo": "Part one. Fixed interest. Cairn treats a dull Thursday as proof he picked wrong. If the pile feels like homework, the passion must be fake. So Cairn closes the folder. He tells a friend it was not the one. That is the trap. A hard night is not a verdict. Find your passion is a fixed theory of interest. It makes Cairn loyal until the spark dies, then it makes him leave. Tuesday was allowed to feel like a calling. Thursday is not allowed to feel like work. He does not ask what the pile needs. He asks whether he is still the kind of person who loves this. That question is the trap. He names the theory that is talking. Fixed interest. Then he sits back down. The folder stays on the desk. The chair stays pulled in.",
+      "pose": "slump",
+      "visual": "sparkWall",
+      "mood": "cold",
+      "caption": "A hard night is not a verdict.",
+      "vo": "Cairn treats a dull Thursday as proof he picked wrong. If the pile feels like homework, the passion must be fake. So the hand goes to the lid. The friend gets a message. It was not the one. That is the trap. A hard night is not a verdict. Find your passion is a fixed theory of interest. It makes Cairn loyal until the spark dies. Then it makes him leave. The loyalty looks like love on Tuesday. It looks like a courtroom on Thursday. The pile did not change species overnight. The theory did.\n\nHe does not ask what the pile needs. He asks whether he is still the kind of person who loves this. That question is the trap talking. It turns a heavy paragraph into a personality test. It turns a mismatch into a broken compass. Cairn names it. Then he sits back down. The folder stays on the desk. The chair stays pulled in. He does not owe the night a new identity. He owes the pile the hour he already started. The friend can wait. The lid can wait. The session cannot.\n\nA find theory treats interest like a coin under a bench. You either found it or you did not. When the page mismatches, the coin was fake, so you stand up and hunt another coin. A develop theory treats interest like a muscle. Mismatch is the first hour of training. Same page. Different theory. Different heat. When Cairn sits with a mismatching article, a find theory cools him. A develop theory keeps him curious. He does not need a new passion. He needs another pass. He does not open a new folder to feel Tuesday again. He gives this folder a second hour before he gives it a funeral. Taste is not a locked door. A page can be wrong for his taste and still be worth a pass. Develop it means stay long enough for the interest to thicken. Cairn talks to himself like the grow group. Not like a man who misplaced his soulmate.",
       "speechLed": true,
       "beats": [
         {
           "atSec": 0,
-          "pose": "present",
-          "caption": "FIXED INTEREST"
-        },
-        {
-          "atSec": 6,
           "pose": "slump",
-          "caption": "DULL THURSDAY"
+          "caption": "DULL THURSDAY",
+          "mood": "cold"
         },
         {
-          "atSec": 14,
+          "atSec": 35,
           "pose": "react",
-          "caption": "NOT A VERDICT"
+          "caption": "NAME THE TRAP",
+          "mood": "default"
         },
         {
-          "atSec": 22,
+          "atSec": 70,
           "pose": "listen",
-          "caption": "NAME THE THEORY"
+          "caption": "SIT BACK DOWN",
+          "mood": "default"
         },
         {
-          "atSec": 30,
-          "pose": "present",
-          "caption": "SIT BACK DOWN"
-        }
-      ]
-    },
-    {
-      "id": "part2",
-      "type": "cairnCaption",
-      "pose": "present",
-      "visual": "conceptLabel",
-      "mood": "default",
-      "label": "Interests develop",
-      "caption": "An interest is grown. It is not found.",
-      "vo": "Part two. Interests develop. An interest is grown. It is not found like a coin under a bench. When Cairn sits with a mismatching article, a find theory cools him. A develop theory keeps him curious. Same page. Different theory. Different heat. Thursday feeling like homework is not a broken compass. It is the first hour of development. Cairn does not need a new passion. He needs another pass. He does not open a new folder to feel Tuesday again. Develop it means stay long enough for the interest to thicken. Cairn gives the pile a second hour before he gives it a funeral. He talks to himself like the develop group. The article can be wrong for his taste and still be worth a pass. Taste is not a locked door.",
-      "speechLed": true,
-      "beats": [
-        {
-          "atSec": 0,
-          "pose": "present",
-          "caption": "INTERESTS DEVELOP"
-        },
-        {
-          "atSec": 6,
-          "pose": "listen",
-          "caption": "GROWN NOT FOUND"
-        },
-        {
-          "atSec": 14,
-          "pose": "listen",
-          "caption": "SAME PAGE"
-        },
-        {
-          "atSec": 22,
+          "atSec": 105,
           "pose": "point",
-          "caption": "ANOTHER PASS"
-        },
-        {
-          "atSec": 30,
-          "pose": "react",
-          "caption": "SAME FILE"
+          "caption": "ANOTHER PASS",
+          "mood": "default"
         }
       ]
     },
     {
-      "id": "s5story",
+      "id": "story",
       "type": "cairnCaption",
       "pose": "listen",
       "visual": "hawkingPaper",
       "mood": "warm",
-      "caption": "An easy Hawking video. Then a hard article.",
-      "vo": "They hooked people with an easy Stephen Hawking video about black holes. Then they handed them a hard science article on the same thing. Cairn knows that move. Spark first. Then the wall. The find group cooled. The grow group stayed. You take some time, you hit a wall, over time you build that commitment. That is the story. Not a hobbyist who found the wrong craft. Hawking first. Then the hard page. Cairn stays for the hard page.",
+      "caption": "HAWKING VIDEO",
+      "vo": "They hooked people with an easy Stephen Hawking video about black holes. Then they handed them a hard science article on the same thing. Cairn knows that move in his own week. Spark first. Then the wall. Tuesday is the video. Thursday is the article. The topic did not switch. The heat did. That is the experiment as a desk. You get the calling. Then you get the homework. The researchers did not invent a hobbyist who picked pottery and quit. They built a spark, then a wall, and they watched who stayed.\n\nThe find group cooled. The grow group stayed. You take some time, you hit a wall, over time you build that commitment. That is the story Cairn needs on a cold Thursday. Not a fable. A pattern. People who thought interest is found treated the hard page as evidence they had the wrong topic. People who thought interest is grown treated the hard page as the next hour. Same Hawking. Same article. Different theory. Different heat. Cairn stays for the hard page. He does not hunt a new video to feel Tuesday again. The wall is not a sign to switch lives. The wall is where the grow group did their work.\n\nCairn walks it once more so the picture sticks. Easy video. Hard article. Find group cools. Grow group stays. The spark is allowed. The wall is required. If he only keeps the work that feels like a calling, he will only keep the trailer. The essay is the article. The session is the article. He sits with the article. He lets the Hawking warmth be real. Then he lets the hard page be real. He does not use the second to cancel the first. That is what staying looks like when nobody is filming a calling.",
       "speechLed": true,
       "beats": [
         {
@@ -244,13 +197,13 @@
           "mood": "warm"
         },
         {
-          "atSec": 8,
+          "atSec": 35,
           "pose": "still",
           "caption": "HARD ARTICLE",
           "mood": "cold"
         },
         {
-          "atSec": 16,
+          "atSec": 70,
           "pose": "listen",
           "caption": "GROW GROUP STAYED",
           "mood": "default"
@@ -258,7 +211,7 @@
       ]
     },
     {
-      "id": "s5gap",
+      "id": "gap",
       "type": "numberCard",
       "pose": "listen",
       "kicker": "When the article was hard",
@@ -266,29 +219,8 @@
       "leftLabel": "go find it",
       "rightLabel": "you grow it",
       "note": "Cairn points at the gap. The grow-it side stayed warmer.",
-      "footnote": "N = 70",
-      "vo": "When the article was hard, interest sat at two point seven five versus three point five nine. Cairn points at the number. The grow it side stayed warmer. The gap was biggest for people who found the article hard.",
-      "speechLed": true,
-      "beats": [
-        {
-          "atSec": 0,
-          "pose": "listen"
-        },
-        {
-          "atSec": 2,
-          "pose": "point"
-        }
-      ]
-    },
-    {
-      "id": "s3",
-      "type": "numberCard",
-      "pose": "listen",
-      "kicker": "Five experiments",
-      "stat": "470",
-      "note": "Stanford. Same pattern. Cairn reads the number.",
       "footnote": "O’Keefe, Dweck & Walton, 2018",
-      "vo": "Five experiments. About four hundred seventy people. Stanford. Same pattern. Matching stuff feels great. Mismatching stuff dies faster if you think passion is a find. Cairn reads the number. He does not invent a hobbyist. The warrant is a set of studies, not a fable about someone who picked pottery then quit.",
+      "vo": "When the article was hard, interest sat at two point seven five versus three point five nine. Cairn points at the number. Go find it sat cooler. You grow it stayed warmer. The gap was biggest for people who found the article hard. That is the warrant for tonight. Hard did not mean they had picked the wrong topic. Hard meant the theory of interest was doing the cooling. Cairn reads the gap. He does not make a sample size the hero of the room. The finding is the heat that survived the wall. Two point seven five versus three point five nine. He points so the hands have somewhere to go besides the lid.",
       "speechLed": true,
       "beats": [
         {
@@ -296,117 +228,45 @@
           "pose": "listen"
         },
         {
-          "atSec": 2,
+          "atSec": 18,
           "pose": "point"
         }
       ]
     },
     {
-      "id": "part3",
-      "type": "cairnCaption",
-      "pose": "present",
-      "visual": "conceptLabel",
-      "mood": "default",
-      "label": "Hard is not wrong",
-      "caption": "Hard does not mean Cairn picked the wrong thing.",
-      "vo": "Part three. Hard is not wrong. This is the thesis as a named part. Hard does not mean Cairn picked the wrong thing. Finish the session anyway. When the side project gets dull, Cairn used to treat that as evidence. He closed the lid. That sentence felt honest and it was the fixed theory talking. Urging people to find their passion can put all the eggs in one basket, then drop the basket when it gets heavy. Cairn will not drop this basket tonight. A heavy paragraph is not a sign to switch lives. It is a sign to keep the hands on the work. Hard is a load. Wrong is a verdict. Cairn carries the load. He does not issue the verdict. If a friend asks whether this is still the one, Cairn answers with the session, not with the mood.",
-      "speechLed": true,
-      "beats": [
-        {
-          "atSec": 0,
-          "pose": "present",
-          "caption": "HARD ≠ WRONG"
-        },
-        {
-          "atSec": 8,
-          "pose": "slump",
-          "caption": "THE BASKET"
-        },
-        {
-          "atSec": 16,
-          "pose": "point",
-          "caption": "KEEP THE HANDS"
-        },
-        {
-          "atSec": 24,
-          "pose": "react",
-          "caption": "LOAD NOT VERDICT"
-        }
-      ]
-    },
-    {
-      "id": "quote",
+      "id": "eggs",
       "type": "quoteCard",
       "pose": "still",
       "quote": "You put all your eggs in one basket, then drop the basket when it gets heavy.",
-      "caption": "Eggs in one basket. Then you drop it.",
+      "caption": "The eggs were never the problem. The drop was.",
       "attr": "O’Keefe, Dweck & Walton, 2018",
-      "vo": "The researchers said you put all your eggs in one basket, then drop the basket when it gets heavy. Cairn watches the eggs hit the floor. That is the whole warning in one picture.",
+      "vo": "The researchers said you put all your eggs in one basket, then drop the basket when it gets heavy. Cairn watches the eggs hit the floor. That is the whole warning in one picture. Urging people to find their passion can put all the eggs in one basket. Then a heavy night becomes a reason to drop it. The eggs were never the problem. The drop was. Tuesday put the eggs in. Thursday judged the basket by its weight. The floor gets a mess that used to be a plan.\n\nCairn will not drop this basket tonight. A heavy paragraph is not a sign to switch lives. It is a sign to keep the hands on the work. Hard is a load. Wrong is a verdict. Cairn carries the load. He does not issue the verdict. If a friend asks whether this is still the one, Cairn answers with the session, not with the mood. The eggs can stay in the basket while the basket is heavy. That is the picture. He is still in the room while they fall, so he can refuse the drop even as he watches it.",
       "speechLed": true
     },
     {
-      "id": "part4",
+      "id": "stay",
       "type": "cairnCaption",
       "pose": "present",
-      "visual": "conceptLabel",
+      "visual": "deskStone",
       "mood": "default",
-      "label": "Finish the session",
-      "caption": "Cairn finishes the block he already started.",
-      "vo": "Part four. Finish the session. This is the do-this move. Cairn sets a finish line he can see from the chair. One session. Not a new identity. Not a rebrand. When the spark dies, Cairn finishes the block he already started. He does not hunt a cleaner calling on the same night. He does not ask the room whether he is still passionate. He asks what the next stone is. Then he does that stone. The session ends when the block ends, not when the feeling ends. Develop it is a verb he can do before bed. Twenty minutes. One paragraph. The win is the ended block. Not a restored crush. Cairn can keep a promise to a pile.",
+      "caption": "ONE SESSION",
+      "vo": "This is the do-this move. Cairn sets a finish line he can see from the chair. One session. Not a new identity. Not a rebrand. When the spark dies, Cairn finishes the block he already started. He does not hunt a cleaner calling on the same night. He does not ask the room whether he is still passionate. He asks what the next stone is. Then he does that stone. The question is small on purpose. A small question can be answered with hands. A soulmate question cannot.\n\nThe session ends when the block ends, not when the feeling ends. Develop it is a verb he can do before bed. Twenty minutes. One paragraph. One pass through the hard page. The win is the ended block. Not a restored crush. Cairn can keep a promise to a pile. Mood lies. The pile does not. If the spark comes back, good. If it does not, the block still ended. That is the only scoreboard tonight.\n\nHe does not need a law about every age group. He does not need a wall of limits. He needs a rule for this chair. This week, when the side project gets dull or hard, treat that as the development process. Not as evidence you found the wrong passion. Finish the session anyway. The grow group did not stay because the article got easier. They stayed because their theory let them stay. Cairn borrows that theory for one hour. He can return the courtroom tomorrow. Tonight he returns the chair. He picks the next stone before he picks a new life. He reads the next paragraph before he writes the breakup text. He ends the block with the lid still open. That is a session. That is enough.",
       "speechLed": true,
       "beats": [
         {
           "atSec": 0,
           "pose": "present",
-          "caption": "FINISH THE SESSION"
+          "caption": "ONE SESSION"
         },
         {
-          "atSec": 8,
-          "pose": "listen",
-          "caption": "ONE BLOCK"
-        },
-        {
-          "atSec": 16,
+          "atSec": 35,
           "pose": "point",
           "caption": "NEXT STONE"
         },
         {
-          "atSec": 24,
+          "atSec": 75,
           "pose": "react",
           "caption": "ENDED BLOCK"
-        }
-      ]
-    },
-    {
-      "id": "part5",
-      "type": "cairnCaption",
-      "pose": "present",
-      "visual": "conceptLabel",
-      "mood": "default",
-      "label": "Stone on the pile",
-      "caption": "Cairn puts the finished block on the stack.",
-      "vo": "Part five. Put the stone on the pile. Cairn takes the finished block and puts it on the stack. The pile is the record. Not the mood. Not the Tuesday glow. A stone is a session that happened. Cairn can see it. Tomorrow the pile is still there even if Thursday comes back. That is the point of a cairn. Marks on a path. Not proof of a soulmate. Cairn does not need a new species of work. He needs another stone. Mood lies. The pile does not. He leaves the room with a taller cairn than he entered.",
-      "speechLed": true,
-      "beats": [
-        {
-          "atSec": 0,
-          "pose": "present",
-          "caption": "STONE ON THE PILE"
-        },
-        {
-          "atSec": 8,
-          "pose": "listen",
-          "caption": "THE RECORD"
-        },
-        {
-          "atSec": 16,
-          "pose": "point",
-          "caption": "MARKS ON A PATH"
-        },
-        {
-          "atSec": 24,
-          "pose": "react",
-          "caption": "MOOD LIES"
         }
       ]
     },
@@ -416,8 +276,8 @@
       "pose": "point",
       "visual": "stoneDrop",
       "mood": "default",
-      "caption": "The stone leaves the hand.",
-      "vo": "Cairn takes the stone out of his hand and puts it on the pile. That height is the only proof he trusts after a cold Thursday. Finish the session. Put the stone on the pile.",
+      "caption": "STONE LEAVES THE HAND",
+      "vo": "Cairn takes the stone out of his hand and puts it on the pile. That height is the only proof he trusts after a cold Thursday. A stone is a session that happened. Cairn can see it. Tomorrow the pile is still there even if Thursday comes back. That is the point of a cairn. Marks on a path. Not proof of a soulmate. He does not need a new species of work. He needs another stone. The throw is the move. The stone leaves the pointing hand. It lands on a real pile. Finish the session. Put the stone on the pile. He leaves the room with a taller cairn than he entered. That is the record. Not the mood. Not the Tuesday glow.",
       "speechLed": true,
       "beats": [
         {
@@ -426,23 +286,11 @@
           "caption": "STONE LEAVES THE HAND"
         },
         {
-          "atSec": 6,
+          "atSec": 20,
           "pose": "point",
-          "caption": "PUT IT ON THE PILE"
+          "caption": "ON THE PILE"
         }
       ]
-    },
-    {
-      "id": "limits",
-      "type": "limitsCard",
-      "pose": "still",
-      "items": [
-        "Mostly college students.",
-        "One extra test with older adults did not show the same dip.",
-        "A useful push, not a law."
-      ],
-      "vo": "Mostly college students. One extra test with older adults did not show the same dip. Cairn believes the pattern. He does not pretend it is a law.",
-      "speechLed": true
     },
     {
       "id": "end",
@@ -450,8 +298,8 @@
       "pose": "still",
       "title": "Hard does not mean you picked the wrong thing.",
       "cite": "O’Keefe, Dweck & Walton, 2018",
-      "cta": "Cairn finishes the session anyway.",
-      "vo": "Tuesday felt like the one. Thursday felt like homework. Hard is not wrong. Finish the session. Put the stone on the pile. Cairn finishes the session anyway.",
+      "cta": "If this week's takeaway stuck, subscribe. Next one lands same time.",
+      "vo": "Tuesday felt like the one. Thursday felt like homework. Hard does not mean you picked the wrong thing. Finish the session anyway. If this week's takeaway stuck, subscribe. Next one lands same time.",
       "speechLed": true
     }
   ]

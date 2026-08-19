@@ -1,1 +1,1 @@
-{"engine":"espeak-ng","model":"en-us","placeholder":true}
+{"engine": "kokoro", "model": "hexgrad/Kokoro-82M", "voice": "am_echo", "speed": 1.25, "gapSec": 0.45, "sampleRate": 24000}

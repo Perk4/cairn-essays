@@ -1,0 +1,7 @@
+{
+  "engine": "kokoro",
+  "model": "hexgrad/Kokoro-82M",
+  "voice": "am_echo",
+  "speed": 1.25,
+  "gapSec": 0.45
+}
