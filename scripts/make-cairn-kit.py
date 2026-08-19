@@ -191,7 +191,7 @@ def main() -> None:
         "mouth-closed": (ARMS_STILL, 0, OPEN_EYES + MOUTH_CLOSED),
         "mouth-mid": (ARMS_STILL, 0, OPEN_EYES + MOUTH_MID),
         "mouth-open": (ARMS_STILL, 0, OPEN_EYES + MOUTH_OPEN),
-        "tue-open": (ARMS_STILL, 0, OPEN_EYES + MOUTH_CLOSED),
+        "tue-open": (ARMS_LISTEN, -16, OPEN_EYES + MOUTH_CLOSED),
         "thu-slits": (ARMS_STILL, 0, SLIT_EYES + MOUTH_CLOSED),
         "react": (ARMS_REACT, -4, OPEN_EYES + MOUTH_CLOSED),
         "present": (ARMS_PRESENT, 3, OPEN_EYES + MOUTH_CLOSED),

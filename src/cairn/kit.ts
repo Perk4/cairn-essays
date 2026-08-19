@@ -120,14 +120,22 @@ export function resolveCairnFile(
   viseme: Viseme | null,
 ): string {
   const kit = talkingKitReady();
+  if (pose === "point") {
+    return "cairn/point.png";
+  }
+  if (
+    kit.mouth &&
+    viseme &&
+    viseme !== "closed" &&
+    (pose === "still" || pose === "listen")
+  ) {
+    return mouthFile(viseme);
+  }
   if (kit.tueThu && mood === "warm" && hasPublicFile(TUE_OPEN)) {
     return TUE_OPEN;
   }
   if (kit.tueThu && mood === "cold" && hasPublicFile(THU_SLITS)) {
     return THU_SLITS;
-  }
-  if (pose === "point") {
-    return "cairn/point.png";
   }
   if (kit.mouth && viseme && (pose === "still" || pose === "listen")) {
     return mouthFile(viseme);
