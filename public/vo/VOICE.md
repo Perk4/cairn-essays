@@ -1,20 +1,17 @@
 # Voice
 
-Flagship lines are **Qwen3-TTS CustomVoice / Ryan** through mlx-audio on this machine.
+Flagship lines use local Apache Kokoro-82M with `am_echo` at speed 1.25. `public/vo/voice.json` is the voice boundary. Set `CAIRN_VOICE_CONFIG` to read the same shape from another path.
 
-Primary model is 1.7B. If that will not load, 0.6B CustomVoice / Ryan. If Qwen3 will not run, Kokoro-82M `af_heart`.
+The synthesizer renders one sentence at a time and inserts `gapSec` silence between sentences. It does not stretch the result after synthesis.
 
-- Not Perk
-- Not a Perk clone
-- Not macOS `say` / Samantha
-- Not cloud TTS
+It is **not Perk**. It is **not a clone**. It is **not espeak**. It is **not ElevenLabs**.
 
-The mouth on speech-led lines reads the RMS envelope in `src/voEnvelopes.json`.
+The mouth on speech-led lines opens on vowels. Holds follow the RMS envelope in `src/voEnvelopes.json`.
 
 Regenerate speech-led lines:
 
 ```
-npm run vo
+CAIRN_VO_PYTHON=/tmp/cairn-vo-venv/bin/python npm run vo
 ```
 
-Needs the local venv at `/tmp/cairn-vo-venv` (or `CAIRN_VO_PYTHON`) plus `ffmpeg`.
+The command needs `ffmpeg` and the local Python environment. It downloads the Kokoro ONNX files to `/tmp/kokoro-models` if either file is missing. A synthesis error stops the run.

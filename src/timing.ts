@@ -10,10 +10,10 @@ export const SHORT_HEIGHT = 1920;
 export const ESSAY_BASE_HOLD_SEC = 12;
 export const MIN_SCENE_SEC = 16;
 export const MAX_SCENE_SEC = 72;
-export const SPEECH_SETTLE_SEC = 0.8;
-export const FLAGSHIP_MIN_SEC = 400;
-export const FLAGSHIP_MAX_SEC = 540;
-export const FLAGSHIP_FEEL_SEC = 450;
+export const SPEECH_SETTLE_SEC = 0;
+export const FLAGSHIP_MIN_SEC = 480;
+export const FLAGSHIP_MAX_SEC = 720;
+export const FLAGSHIP_FEEL_SEC = 600;
 export const SHORT_MIN_SEC = 12;
 export const SHORT_MAX_SEC = 30;
 export const CLIP_MIN_SEC = 20;
@@ -82,18 +82,30 @@ export function secondsToFrames(sec: number): number {
 
 export function shortBeatsDurationSec(beats: readonly ShortBeat[]): number {
   const total = beats.reduce((sum, beat) => sum + beat.durationSec, 0);
-  return clamp(total, SHORT_MIN_SEC, SHORT_MAX_SEC);
+  if (total <= 0) {
+    throw new Error("Short beats need a positive duration");
+  }
+  if (total > SHORT_MAX_SEC) {
+    throw new Error(`Short picture ${total}s is over ${SHORT_MAX_SEC}s`);
+  }
+  return total;
 }
 
 export function shortDurationInFrames(beats: readonly ShortBeat[]): number {
   return secondsToFrames(shortBeatsDurationSec(beats));
 }
 
-export function clipSpokenSec(clip: { startSec: number; endSec: number }): number {
+export function clipSpokenSec(clip: {
+  startSec: number;
+  endSec: number;
+}): number {
   return clip.endSec - clip.startSec;
 }
 
-export function clipDurationSec(clip: { startSec: number; endSec: number }): number {
+export function clipDurationSec(clip: {
+  startSec: number;
+  endSec: number;
+}): number {
   return clipSpokenSec(clip) + SPEECH_SETTLE_SEC;
 }
 

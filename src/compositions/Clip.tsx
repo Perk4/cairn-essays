@@ -1,5 +1,4 @@
 import { AbsoluteFill } from "remotion";
-import { MusicBed } from "./MusicBed";
 import { VoAudio } from "../components/VoAudio";
 import { episode } from "../episode";
 import { renderScene } from "../scenes/registry";
@@ -20,7 +19,6 @@ export const Clip = ({ clipId }: ClipProps) => {
 
   return (
     <AbsoluteFill>
-      <MusicBed fadeInSec={0.25} fadeOutSec={1.2} volume={0.1} />
       <VoAudio
         name={clip.sceneId}
         startFromSec={clip.startSec}

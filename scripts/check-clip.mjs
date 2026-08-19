@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 
 const CLIP_MIN = 20;
 const CLIP_MAX = 45;
-const SETTLE = 0.8;
+const SETTLE = 0;
 
 const FPS = 30;
 const SILENCE = 0.02;

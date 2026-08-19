@@ -11,6 +11,14 @@ export type Pose = (typeof POSES)[number];
 export const MOODS = ["default", "warm", "cold"] as const;
 export type Mood = (typeof MOODS)[number];
 
+export type VoiceConfig = {
+  engine: "kokoro";
+  model: "hexgrad/Kokoro-82M";
+  voice: string;
+  speed: number;
+  gapSec: number;
+};
+
 export const VISUALS = [
   "none",
   "deskStone",
@@ -21,6 +29,7 @@ export const VISUALS = [
   "sparkWall",
   "hawkingPaper",
   "stoneDrop",
+  "eggsDrop",
   "conceptLabel",
 ] as const;
 export type Visual = (typeof VISUALS)[number];
@@ -68,6 +77,7 @@ export type QuoteCardScene = SceneTiming & {
   attr: string;
   caption?: string;
   pose?: Pose;
+  beats?: SceneBeat[];
 };
 
 export type NumberCardScene = SceneTiming & {
@@ -79,6 +89,7 @@ export type NumberCardScene = SceneTiming & {
   leftLabel?: string;
   rightLabel?: string;
   pose?: Pose;
+  beats?: SceneBeat[];
 };
 
 export type LimitsCardScene = SceneTiming & {
@@ -94,6 +105,7 @@ export type EndCardScene = SceneTiming & {
   cta: string;
   footnote?: string;
   pose?: Pose;
+  beats?: SceneBeat[];
 };
 
 export type Scene =

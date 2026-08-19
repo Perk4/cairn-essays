@@ -1,62 +1,66 @@
-import { CairnSlot } from "../cairn/CairnSlot";
+import { useCurrentFrame, useVideoConfig } from "remotion";
+import { PlantedCairn } from "../cairn/CairnSlot";
+import { FloorPile } from "../cairn/verbs";
 import { CaptionBar } from "../components/CaptionBar";
 import { Room } from "../components/Room";
 import { bodyFont, displayFont } from "../fonts";
 import { palette } from "../palette";
+import { activeBeat } from "../timing";
 import type { EndCardScene, Pose } from "../types";
-import envelopes from "../voEnvelopes.json";
+import voDurations from "../../public/vo/durations.json";
 
-const envelopeMap = envelopes as Record<string, number[]>;
+const durationMap = voDurations as Record<string, number>;
 
 export const EndCard = ({ scene }: { scene: EndCardScene }) => {
-  const pose: Pose = scene.pose ?? "still";
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const beat = activeBeat(scene.beats, frame, fps);
+  const pose: Pose = beat?.pose ?? scene.pose ?? "still";
 
   return (
     <Room mood="warm">
-      <div
-        style={{
-          position: "absolute",
-          left: "50%",
-          top: 40,
-          transform: "translateX(-50%)",
-        }}
-      >
-        <CairnSlot
-          pose={pose}
-          size={300}
-          voName={envelopeMap[scene.id] ? scene.id : undefined}
-        />
-      </div>
+      <PlantedCairn
+        layout="flagship"
+        center
+        pose={pose}
+        size={340}
+        nod
+        vo={scene.vo}
+        voName={durationMap[scene.id] ? scene.id : undefined}
+        spokenSec={durationMap[scene.id]}
+      />
+      <FloorPile layout="flagship" dropping={false} pileLeft={120} />
       <div
         style={{
           position: "absolute",
           left: 160,
           right: 160,
-          top: 360,
+          top: 120,
           backgroundColor: palette.stone,
           color: palette.cream,
           border: `5px solid ${palette.outline}`,
           borderRadius: 28,
-          padding: "36px 48px",
+          padding: "28px 48px",
           textAlign: "center",
           boxShadow: `16px 16px 0 ${palette.terracotta}`,
+          zIndex: 3,
         }}
       >
         <div
           style={{
             fontFamily: displayFont,
             fontWeight: 700,
-            fontSize: 64,
+            fontSize: 52,
           }}
         >
           {scene.title}
         </div>
         <div
           style={{
-            marginTop: 28,
+            marginTop: 20,
             fontFamily: displayFont,
             fontWeight: 600,
-            fontSize: 36,
+            fontSize: 32,
             color: "#E8D7A4",
           }}
         >
@@ -64,7 +68,7 @@ export const EndCard = ({ scene }: { scene: EndCardScene }) => {
         </div>
         <div
           style={{
-            marginTop: 28,
+            marginTop: 20,
             fontFamily: bodyFont,
             fontWeight: 600,
             fontSize: 18,
@@ -76,7 +80,11 @@ export const EndCard = ({ scene }: { scene: EndCardScene }) => {
           {scene.footnote ? ` · ${scene.footnote}` : ""}
         </div>
       </div>
-      <CaptionBar text="Develop it." layout="flagship" />
+      <CaptionBar
+        text={beat?.caption ?? "Develop it."}
+        layout="flagship"
+        localFrame={frame - Math.round((beat?.atSec ?? 0) * fps)}
+      />
     </Room>
   );
 };

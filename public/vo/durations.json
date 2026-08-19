@@ -1,13 +1,14 @@
 {
-  "hook": 27.265958,
-  "end": 18.909875,
-  "short-hook-calling": 3.108571,
-  "short-hook-homework": 3.186939,
-  "short-rule-finish": 2.507755,
-  "short-rule-stone": 2.429388,
-  "part1": 74.913958,
-  "part2": 92.721292,
-  "part3": 90.170417,
-  "part4": 56.734792,
-  "part5": 47.995458
+  "hook": 109.152,
+  "trap": 123.888,
+  "story": 114,
+  "gap": 38.592,
+  "eggs": 61.368,
+  "stay": 107.616,
+  "stack": 44.88,
+  "end": 14.352,
+  "short-hook-calling": 1.944,
+  "short-hook-homework": 1.848,
+  "short-rule-finish": 1.68,
+  "short-rule-stone": 1.704
 }

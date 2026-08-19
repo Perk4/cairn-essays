@@ -1,33 +1,23 @@
 import { interpolate, useCurrentFrame, useVideoConfig } from "remotion";
-import { CairnSlot } from "../cairn/CairnSlot";
 import { CaptionBar } from "../components/CaptionBar";
 import { Room } from "../components/Room";
 import { bodyFont, displayFont } from "../fonts";
 import { palette } from "../palette";
-import type { LimitsCardScene, Pose } from "../types";
+import type { LimitsCardScene } from "../types";
 
 export const LimitsCard = ({ scene }: { scene: LimitsCardScene }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const pose: Pose = scene.pose ?? "still";
 
   return (
-    <Room mood="default">
-      <div
-        style={{
-          position: "absolute",
-          right: 40,
-          top: 20,
-        }}
-      >
-        <CairnSlot pose={pose} size={280} />
-      </div>
+    <Room mood="default" plain>
       <div
         style={{
           position: "absolute",
           left: 80,
+          right: 80,
           top: 80,
-          width: 1180,
+          bottom: 180,
           backgroundColor: palette.stone,
           color: palette.cream,
           border: `5px solid ${palette.outline}`,

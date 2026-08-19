@@ -2,7 +2,7 @@
   "id": "ep01",
   "slug": "find-it-or-develop-it",
   "title": "Find it or develop it",
-  "durationTargetSec": 450,
+  "durationTargetSec": 600,
   "paper": {
     "authors": "O’Keefe, Dweck & Walton",
     "year": 2018,
@@ -13,8 +13,8 @@
   },
   "thesis": "Hard does not mean you picked the wrong thing. Finish the session anyway.",
   "rule": "This week, when the side project gets dull or hard, treat that as the development process. Not as evidence you found the wrong passion. Finish the session anyway.",
-  "voice": "qwen3-tts-ryan",
-  "voiceLabel": "Flagship lines are Qwen3-TTS CustomVoice / Ryan via mlx-audio, near 165 wpm. Not Perk. Not a clone. Not say.",
+  "voice": "kokoro",
+  "voiceLabel": "am_echo. Local Apache Kokoro-82M. Not Perk. Not a clone. Cairn is the body.",
   "description": "Cairn explains why a dull Thursday is not proof he picked the wrong passion. Warrant: O’Keefe, Dweck & Walton, 2018, Psychological Science.",
   "thumbLine": "THE WORK",
   "palette": {
@@ -34,7 +34,7 @@
         "mood": "warm",
         "visual": "callingHomework",
         "vo": "Tuesday it felt like a calling.",
-        "durationSec": 9
+        "durationSec": 1.944
       },
       {
         "id": "homework",
@@ -44,7 +44,7 @@
         "mood": "cold",
         "visual": "callingHomework",
         "vo": "Thursday it felt like homework.",
-        "durationSec": 9
+        "durationSec": 1.848
       }
     ],
     "rule": [
@@ -56,7 +56,7 @@
         "mood": "default",
         "visual": "stoneDrop",
         "vo": "Finish the session anyway.",
-        "durationSec": 9
+        "durationSec": 1.68
       },
       {
         "id": "stone",
@@ -66,7 +66,7 @@
         "mood": "default",
         "visual": "stoneDrop",
         "vo": "Put the stone on the pile.",
-        "durationSec": 9
+        "durationSec": 1.704
       }
     ]
   },
@@ -76,42 +76,35 @@
       "sceneId": "hook",
       "kicker": "TUESDAY",
       "startSec": 0,
-      "endSec": 26.933
+      "endSec": 31.9
     },
     {
-      "id": "part1",
-      "sceneId": "part1",
-      "kicker": "FIXED INTEREST",
+      "id": "trap",
+      "sceneId": "trap",
+      "kicker": "THE TRAP",
       "startSec": 0,
-      "endSec": 36.467
+      "endSec": 34.367
     },
     {
-      "id": "part2",
-      "sceneId": "part2",
-      "kicker": "INTERESTS DEVELOP",
+      "id": "story",
+      "sceneId": "story",
+      "kicker": "HAWKING VIDEO",
       "startSec": 0,
-      "endSec": 36.467
+      "endSec": 36.733
     },
     {
-      "id": "part3",
-      "sceneId": "part3",
-      "kicker": "HARD IS NOT WRONG",
-      "startSec": 0,
-      "endSec": 32.933
-    },
-    {
-      "id": "part4",
-      "sceneId": "part4",
+      "id": "stay",
+      "sceneId": "stay",
       "kicker": "FINISH THE SESSION",
       "startSec": 0,
-      "endSec": 30.433
+      "endSec": 35.5
     },
     {
-      "id": "part5",
-      "sceneId": "part5",
+      "id": "stack",
+      "sceneId": "stack",
       "kicker": "STONE ON THE PILE",
       "startSec": 0,
-      "endSec": 29
+      "endSec": 29.8
     }
   ],
   "scenes": [
@@ -122,7 +115,7 @@
       "visual": "callingHomework",
       "mood": "warm",
       "caption": "TUESDAY",
-      "vo": "Tuesday it felt like the one. Cairn sat down and treated the pile like a calling. Thursday the same pile felt like homework. Same desk. Same files. Different verdict. Cairn almost walked. Hard must mean he picked the wrong thing. A dull night read as proof the passion was a fake. It does not. That is the work. The spark dying is the job, not the warning. Five things Cairn does when the spark dies.",
+      "vo": "Tuesday it felt like a calling. Cairn sat down like the pile had chosen him. The chair was already pulled in. The files were already open. He treated the first hour like proof. This is the one. This is the work his life was waiting for. The spark was loud enough to drown the dull parts. He even told a friend. I think I found it. He said it like a discovery, not like a plan. The pile looked back at him with the same heat. He stayed past the time he had blocked. He did not notice the chair. He did not notice the clock. Calling will do that. It makes the body sit as if the work were already a home.\n\nThursday the same pile felt like homework. Same desk. Same files. Same chair. The spark had gone quiet. A hard paragraph sat there and did not love him back. The sentence that used to pull him now asked him to carry it. Cairn felt the old verdict form in his mouth. Hard must mean I picked the wrong thing. He almost closed the lid. He almost told that friend it was a false alarm. He almost went hunting for a cleaner calling on the same night. He stood up once. He sat down again. The folder had not moved. The verdict had.\n\nHe does not close the lid. Hard does not mean you picked the wrong thing. Finish the session anyway. The spark dying is the job, not the warning. Tuesday was allowed to feel like a calling. Thursday is allowed to feel like work. Those two days are one pile. Cairn will name the theory that is talking. Then he will stay long enough to finish the block he already started. He will not ask the room for a new passion before the hour is done.",
       "speechLed": true,
       "beats": [
         {
@@ -132,470 +125,1608 @@
           "mood": "warm"
         },
         {
-          "atSec": 5,
-          "pose": "slump",
+          "atSec": 2.188,
+          "pose": "present",
+          "caption": "Cairn sat down like the pile had chosen him.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 5.245,
+          "pose": "point",
+          "caption": "The chair was already pulled in.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 7.433,
+          "pose": "listen",
+          "caption": "The files were already open.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 9.332,
+          "pose": "react",
+          "caption": "He treated the first hour like proof.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 11.81,
+          "pose": "still",
+          "caption": "This is the one.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 13.418,
+          "pose": "listen",
+          "caption": "This is the work his life was waiting for.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 16.475,
+          "pose": "present",
+          "caption": "The spark was loud enough to drown the dull parts.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 19.822,
+          "pose": "point",
+          "caption": "He even told a friend.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 21.721,
+          "pose": "listen",
+          "caption": "I think I found it.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 23.619,
+          "pose": "react",
+          "caption": "He said it like a discovery, not like a plan.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 26.966,
+          "pose": "still",
+          "caption": "The pile looked back at him with the same heat.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 30.313,
+          "pose": "listen",
+          "caption": "He stayed past the time he had blocked.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 33.08,
+          "pose": "present",
+          "caption": "He did not notice the chair.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 35.268,
+          "pose": "point",
+          "caption": "He did not notice the clock.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 37.456,
+          "pose": "listen",
+          "caption": "Calling will do that.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 39.065,
+          "pose": "react",
+          "caption": "It makes the body sit as if the work were already a home.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 43.065,
+          "pose": "still",
+          "caption": "It makes the body sit as if the work were already a home.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 43.281,
+          "pose": "still",
           "caption": "THURSDAY",
           "mood": "cold"
         },
         {
-          "atSec": 11,
-          "pose": "react",
-          "caption": "WRONG THING?",
+          "atSec": 45.759,
+          "pose": "present",
+          "caption": "Same desk.",
           "mood": "cold"
         },
         {
-          "atSec": 17,
-          "pose": "present",
-          "caption": "THE WORK",
-          "mood": "default"
-        },
-        {
-          "atSec": 22,
+          "atSec": 46.788,
           "pose": "point",
-          "caption": "5 PARTS",
-          "mood": "default"
-        }
-      ]
-    },
-    {
-      "id": "part1",
-      "type": "cairnCaption",
-      "pose": "present",
-      "visual": "conceptLabel",
-      "mood": "default",
-      "label": "Fixed interest",
-      "caption": "Cairn treats a dull Thursday as proof he picked wrong.",
-      "vo": "Part one. Fixed interest. Cairn treats a dull Thursday as proof he picked wrong. If the pile feels like homework, the passion must be fake. So Cairn closes the folder. He tells a friend it was not the one. That is the trap. A hard night is not a verdict. Find your passion is a fixed theory of interest. It makes Cairn loyal until the spark dies, then it makes him leave. Tuesday was allowed to feel like a calling. Thursday is not allowed to feel like work. The moment the desk goes cold, Cairn reads it as evidence he found the wrong thing. He does not ask what the pile needs. He asks whether he is still the kind of person who loves this. That question is the trap. Interests are not soulmates waiting in a drawer. They are built. The paper is O'Keefe, Dweck, and Walton, two thousand eighteen. Cairn keeps the folder open. He does not perform a passion test at midnight. He does not audit his personality against a dull page. He names the theory that is talking. Fixed interest. Then he sits back down. The folder stays on the desk. The chair stays pulled in. That is Part one made visible.",
-      "speechLed": true,
-      "beats": [
-        {
-          "atSec": 0,
-          "pose": "present",
-          "caption": "FIXED INTEREST",
-          "mood": "default"
+          "caption": "Same files.",
+          "mood": "cold"
         },
         {
-          "atSec": 6,
-          "pose": "slump",
-          "caption": "DULL THURSDAY",
-          "mood": "default"
+          "atSec": 47.818,
+          "pose": "listen",
+          "caption": "Same chair.",
+          "mood": "cold"
         },
         {
-          "atSec": 12,
-          "pose": "slump",
-          "caption": "THE TRAP",
-          "mood": "default"
-        },
-        {
-          "atSec": 18,
+          "atSec": 48.847,
           "pose": "react",
-          "caption": "NOT A VERDICT",
-          "mood": "default"
+          "caption": "The spark had gone quiet.",
+          "mood": "cold"
         },
         {
-          "atSec": 24,
+          "atSec": 50.745,
+          "pose": "still",
+          "caption": "A hard paragraph sat there and did not love him back.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 54.382,
+          "pose": "listen",
+          "caption": "The sentence that used to pull him now asked him to carry it.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 58.382,
+          "pose": "present",
+          "caption": "The sentence that used to pull him now asked him to carry it.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 58.598,
           "pose": "point",
-          "caption": "KEEP THE FOLDER",
-          "mood": "default"
+          "caption": "Cairn felt the old verdict form in his mouth.",
+          "mood": "cold"
         },
         {
-          "atSec": 30,
+          "atSec": 61.655,
           "pose": "listen",
-          "caption": "NAME THE THEORY",
-          "mood": "default"
+          "caption": "Hard must mean I picked the wrong thing.",
+          "mood": "cold"
         },
         {
-          "atSec": 36,
-          "pose": "present",
-          "caption": "SIT BACK DOWN",
-          "mood": "default"
+          "atSec": 64.422,
+          "pose": "react",
+          "caption": "He almost closed the lid.",
+          "mood": "cold"
         },
         {
-          "atSec": 42,
-          "pose": "present",
-          "caption": "SIT BACK DOWN",
-          "mood": "default"
+          "atSec": 66.321,
+          "pose": "still",
+          "caption": "He almost told that friend it was a false alarm.",
+          "mood": "cold"
         },
         {
-          "atSec": 48,
-          "pose": "present",
-          "caption": "SIT BACK DOWN",
-          "mood": "default"
-        },
-        {
-          "atSec": 54,
-          "pose": "present",
-          "caption": "SIT BACK DOWN",
-          "mood": "default"
-        },
-        {
-          "atSec": 60,
-          "pose": "present",
-          "caption": "SIT BACK DOWN",
-          "mood": "default"
-        },
-        {
-          "atSec": 66,
-          "pose": "present",
-          "caption": "SIT BACK DOWN",
-          "mood": "default"
-        },
-        {
-          "atSec": 72,
-          "pose": "present",
-          "caption": "SIT BACK DOWN",
-          "mood": "default"
-        }
-      ]
-    },
-    {
-      "id": "part2",
-      "type": "cairnCaption",
-      "pose": "present",
-      "visual": "conceptLabel",
-      "mood": "default",
-      "label": "Interests develop",
-      "caption": "An interest is grown. It is not found.",
-      "vo": "Part two. Interests develop. The warrant's actual claim is a rule Cairn can use. An interest is grown. It is not found like a coin under a bench. When Cairn sits with a mismatching article, a find theory cools him. A develop theory keeps him curious. Same page. Different theory. Different heat. Cairn uses that. Thursday feeling like homework is not a broken compass. It is the first hour of development. He does not need a new passion. He needs another pass. The spark is not a verdict. It is a starting temperature. Cairn treats the dull page as the work, not as a warning that he chose badly. He reads the hard paragraph again. He does not open a new folder to feel Tuesday again. Develop it means stay long enough for the interest to thicken. That is the rule. Cairn gives the pile a second hour before he gives it a funeral. He lets a mismatch stay on the desk. He writes one more sentence after the feeling leaves. Curiosity is a practice, not a weather report. If the page is cold, Cairn adds friction on purpose. He asks one better question of the same file. That is development. Not a new calling. In the studies, people handed a find theory cooled on the mismatch. People handed a develop theory did not. Cairn borrows that. He talks to himself like the develop group. The article can be wrong for his taste and still be worth a pass. Taste is not a locked door.",
-      "speechLed": true,
-      "beats": [
-        {
-          "atSec": 0,
-          "pose": "present",
-          "caption": "INTERESTS DEVELOP",
-          "mood": "default"
-        },
-        {
-          "atSec": 6,
+          "atSec": 69.668,
           "pose": "listen",
-          "caption": "GROWN NOT FOUND",
-          "mood": "default"
+          "caption": "He almost went hunting for a cleaner calling on the same night.",
+          "mood": "cold"
         },
         {
-          "atSec": 12,
-          "pose": "listen",
-          "caption": "SAME PAGE",
-          "mood": "default"
+          "atSec": 73.594,
+          "pose": "present",
+          "caption": "He stood up once.",
+          "mood": "cold"
         },
         {
-          "atSec": 18,
+          "atSec": 75.203,
           "pose": "point",
-          "caption": "STARTING HEAT",
-          "mood": "default"
+          "caption": "He sat down again.",
+          "mood": "cold"
         },
         {
-          "atSec": 24,
-          "pose": "point",
-          "caption": "STAY LONG ENOUGH",
-          "mood": "default"
-        },
-        {
-          "atSec": 30,
+          "atSec": 76.811,
           "pose": "listen",
-          "caption": "SECOND HOUR",
-          "mood": "default"
+          "caption": "The folder had not moved.",
+          "mood": "cold"
         },
         {
-          "atSec": 36,
+          "atSec": 78.71,
           "pose": "react",
-          "caption": "SAME FILE",
-          "mood": "default"
+          "caption": "The verdict had.",
+          "mood": "cold"
         },
         {
-          "atSec": 42,
-          "pose": "react",
-          "caption": "SAME FILE",
-          "mood": "default"
+          "atSec": 80.029,
+          "pose": "still",
+          "caption": "He does not close the lid.",
+          "mood": "cold"
         },
         {
-          "atSec": 48,
-          "pose": "react",
-          "caption": "SAME FILE",
-          "mood": "default"
-        },
-        {
-          "atSec": 54,
-          "pose": "react",
-          "caption": "SAME FILE",
-          "mood": "default"
-        },
-        {
-          "atSec": 60,
-          "pose": "react",
-          "caption": "SAME FILE",
-          "mood": "default"
-        },
-        {
-          "atSec": 66,
-          "pose": "react",
-          "caption": "SAME FILE",
-          "mood": "default"
-        },
-        {
-          "atSec": 72,
-          "pose": "react",
-          "caption": "SAME FILE",
-          "mood": "default"
-        },
-        {
-          "atSec": 78,
-          "pose": "react",
-          "caption": "SAME FILE",
-          "mood": "default"
-        },
-        {
-          "atSec": 84,
-          "pose": "react",
-          "caption": "SAME FILE",
-          "mood": "default"
-        },
-        {
-          "atSec": 90,
-          "pose": "react",
-          "caption": "SAME FILE",
-          "mood": "default"
-        }
-      ]
-    },
-    {
-      "id": "part3",
-      "type": "cairnCaption",
-      "pose": "present",
-      "visual": "conceptLabel",
-      "mood": "default",
-      "label": "Hard is not wrong",
-      "caption": "Hard does not mean Cairn picked the wrong thing.",
-      "vo": "Part three. Hard is not wrong. This is the thesis as a named part. Hard does not mean Cairn picked the wrong thing. Finish the session anyway. When the side project gets dull, Cairn used to treat that as evidence. He closed the lid. He told the table it was not the one. That sentence felt honest and it was the fixed theory talking. Urging people to find their passion can put all the eggs in one basket, then drop the basket when it gets heavy. Cairn will not drop this basket tonight. A heavy paragraph is not a sign to switch lives. It is a sign to keep the hands on the work. The mismatch does not cancel the pile. The pile is still the pile. Cairn names the feeling and stays. He says the night is hard and he does not add the word wrong. Those are different claims. Hard is a load. Wrong is a verdict. Cairn carries the load. He does not issue the verdict. If a friend asks whether this is still the one, Cairn answers with the session, not with the mood. The thesis has a body now. Hardness used to be a story about identity. Now it is a story about load. Cairn can carry a load without rewriting who he is. That is faster and it is funnier, because the joke and the lesson are the same sentence. Cairn does the hard bit. He does not audition a new self.",
-      "speechLed": true,
-      "beats": [
-        {
-          "atSec": 0,
-          "pose": "present",
+          "atSec": 82.217,
+          "pose": "listen",
           "caption": "HARD ≠ WRONG",
           "mood": "default"
         },
         {
-          "atSec": 6,
-          "pose": "slump",
-          "caption": "NOT EVIDENCE",
-          "mood": "default"
-        },
-        {
-          "atSec": 12,
-          "pose": "slump",
-          "caption": "THE BASKET",
-          "mood": "default"
-        },
-        {
-          "atSec": 18,
+          "atSec": 85.274,
           "pose": "point",
-          "caption": "KEEP THE HANDS",
-          "mood": "default"
+          "caption": "FINISH ANYWAY",
+          "mood": "cold"
         },
         {
-          "atSec": 24,
+          "atSec": 86.883,
           "pose": "point",
-          "caption": "CAIRN STAYS",
-          "mood": "default"
+          "caption": "The spark dying is the job, not the warning.",
+          "mood": "cold"
         },
         {
-          "atSec": 30,
+          "atSec": 89.94,
+          "pose": "listen",
+          "caption": "TUESDAY",
+          "mood": "cold"
+        },
+        {
+          "atSec": 92.707,
+          "pose": "still",
+          "caption": "THURSDAY",
+          "mood": "cold"
+        },
+        {
+          "atSec": 95.185,
+          "pose": "still",
+          "caption": "Those two days are one pile.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 97.373,
+          "pose": "listen",
+          "caption": "Cairn will name the theory that is talking.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 100.141,
+          "pose": "present",
+          "caption": "Then he will stay long enough to finish the block he already started.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 104.141,
+          "pose": "point",
+          "caption": "Then he will stay long enough to finish the block he already started.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 104.357,
+          "pose": "listen",
+          "caption": "He will not ask the room for a new passion before the hour is done.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 108.357,
           "pose": "react",
-          "caption": "LOAD NOT VERDICT",
+          "caption": "He will not ask the room for a new passion before the hour is done.",
+          "mood": "cold"
+        }
+      ]
+    },
+    {
+      "id": "trap",
+      "type": "cairnCaption",
+      "pose": "slump",
+      "visual": "sparkWall",
+      "mood": "cold",
+      "caption": "Cairn treats a dull Thursday as proof he picked wrong.",
+      "vo": "Cairn treats a dull Thursday as proof he picked wrong. If the pile feels like homework, the passion must be fake. So the hand goes to the lid. The friend gets a message. It was not the one. That is the trap. A hard night is not a verdict. Find your passion is a fixed theory of interest. It makes Cairn loyal until the spark dies. Then it makes him leave. The loyalty looks like love on Tuesday. It looks like a courtroom on Thursday. The pile did not change species overnight. The theory did.\n\nHe does not ask what the pile needs. He asks whether he is still the kind of person who loves this. That question is the trap talking. It turns a heavy paragraph into a personality test. It turns a mismatch into a broken compass. Cairn names it. Then he sits back down. The folder stays on the desk. The chair stays pulled in. He does not owe the night a new identity. He owes the pile the hour he already started. The friend can wait. The lid can wait. The session cannot.\n\nA find theory treats interest like a coin under a bench. You either found it or you did not. When the page mismatches, the coin was fake, so you stand up and hunt another coin. A develop theory treats interest like a muscle. Mismatch is the first hour of training. Same page. Different theory. Different heat. When Cairn sits with a mismatching article, a find theory cools him. A develop theory keeps him curious. He does not need a new passion. He needs another pass. He does not open a new folder to feel Tuesday again. He gives this folder a second hour before he gives it a funeral. Taste is not a locked door. A page can be wrong for his taste and still be worth a pass. Develop it means stay long enough for the interest to thicken. Cairn talks to himself like the grow group. Not like a man who misplaced his soulmate.",
+      "speechLed": true,
+      "beats": [
+        {
+          "atSec": 0,
+          "pose": "slump",
+          "caption": "Cairn treats a dull Thursday as proof he picked wrong.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 3.445,
+          "pose": "react",
+          "caption": "If the pile feels like homework, the passion must be fake.",
           "mood": "default"
         },
         {
-          "atSec": 36,
-          "pose": "present",
-          "caption": "ANSWER WITH THE SESSION",
+          "atSec": 7.19,
+          "pose": "listen",
+          "caption": "So the hand goes to the lid.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 9.737,
+          "pose": "point",
+          "caption": "The friend gets a message.",
           "mood": "default"
         },
         {
-          "atSec": 42,
+          "atSec": 11.684,
           "pose": "present",
-          "caption": "ANSWER WITH THE SESSION",
+          "caption": "It was not the one.",
           "mood": "default"
         },
         {
-          "atSec": 48,
-          "pose": "present",
-          "caption": "ANSWER WITH THE SESSION",
+          "atSec": 13.632,
+          "pose": "slump",
+          "caption": "That is the trap.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 15.28,
+          "pose": "slump",
+          "caption": "A hard night is not a verdict.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 17.827,
+          "pose": "react",
+          "caption": "Find your passion is a fixed theory of interest.",
           "mood": "default"
         },
         {
-          "atSec": 54,
-          "pose": "present",
-          "caption": "ANSWER WITH THE SESSION",
+          "atSec": 20.973,
+          "pose": "listen",
+          "caption": "It makes Cairn loyal until the spark dies.",
           "mood": "default"
         },
         {
-          "atSec": 60,
-          "pose": "present",
-          "caption": "ANSWER WITH THE SESSION",
+          "atSec": 23.819,
+          "pose": "point",
+          "caption": "Then it makes him leave.",
           "mood": "default"
         },
         {
-          "atSec": 66,
+          "atSec": 25.766,
           "pose": "present",
-          "caption": "ANSWER WITH THE SESSION",
+          "caption": "The loyalty looks like love on Tuesday.",
           "mood": "default"
         },
         {
-          "atSec": 72,
-          "pose": "present",
-          "caption": "ANSWER WITH THE SESSION",
+          "atSec": 28.313,
+          "pose": "slump",
+          "caption": "It looks like a courtroom on Thursday.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 30.86,
+          "pose": "slump",
+          "caption": "The pile did not change species overnight.",
           "mood": "default"
         },
         {
-          "atSec": 78,
-          "pose": "present",
-          "caption": "ANSWER WITH THE SESSION",
+          "atSec": 33.407,
+          "pose": "react",
+          "caption": "The theory did.",
           "mood": "default"
         },
         {
-          "atSec": 84,
+          "atSec": 34.755,
+          "pose": "listen",
+          "caption": "He does not ask what the pile needs.",
+          "mood": "default"
+        },
+        {
+          "atSec": 37.601,
+          "pose": "point",
+          "caption": "He asks whether he is still the kind of person who loves this.",
+          "mood": "default"
+        },
+        {
+          "atSec": 41.601,
           "pose": "present",
-          "caption": "ANSWER WITH THE SESSION",
+          "caption": "He asks whether he is still the kind of person who loves this.",
+          "mood": "default"
+        },
+        {
+          "atSec": 41.945,
+          "pose": "slump",
+          "caption": "That question is the trap talking.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 44.192,
+          "pose": "slump",
+          "caption": "It turns a heavy paragraph into a personality test.",
+          "mood": "default"
+        },
+        {
+          "atSec": 47.338,
+          "pose": "react",
+          "caption": "It turns a mismatch into a broken compass.",
+          "mood": "default"
+        },
+        {
+          "atSec": 50.184,
+          "pose": "listen",
+          "caption": "Cairn names it.",
+          "mood": "default"
+        },
+        {
+          "atSec": 51.533,
+          "pose": "point",
+          "caption": "Then he sits back down.",
+          "mood": "default"
+        },
+        {
+          "atSec": 53.481,
+          "pose": "present",
+          "caption": "The folder stays on the desk.",
+          "mood": "default"
+        },
+        {
+          "atSec": 55.728,
+          "pose": "slump",
+          "caption": "The chair stays pulled in.",
+          "mood": "default"
+        },
+        {
+          "atSec": 57.675,
+          "pose": "slump",
+          "caption": "He does not owe the night a new identity.",
+          "mood": "default"
+        },
+        {
+          "atSec": 60.821,
+          "pose": "react",
+          "caption": "He owes the pile the hour he already started.",
+          "mood": "default"
+        },
+        {
+          "atSec": 63.967,
+          "pose": "listen",
+          "caption": "The friend can wait.",
+          "mood": "default"
+        },
+        {
+          "atSec": 65.615,
+          "pose": "point",
+          "caption": "The lid can wait.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 67.263,
+          "pose": "present",
+          "caption": "The session cannot.",
+          "mood": "default"
+        },
+        {
+          "atSec": 68.612,
+          "pose": "slump",
+          "caption": "A find theory treats interest like a coin under a bench.",
+          "mood": "default"
+        },
+        {
+          "atSec": 72.356,
+          "pose": "slump",
+          "caption": "You either found it or you did not.",
+          "mood": "default"
+        },
+        {
+          "atSec": 75.203,
+          "pose": "react",
+          "caption": "When the page mismatches, the coin was fake, so you stand up and hunt another coin.",
+          "mood": "default"
+        },
+        {
+          "atSec": 79.203,
+          "pose": "listen",
+          "caption": "When the page mismatches, the coin was fake, so you stand up and hunt another coin.",
+          "mood": "default"
+        },
+        {
+          "atSec": 80.445,
+          "pose": "point",
+          "caption": "A develop theory treats interest like a muscle.",
+          "mood": "default"
+        },
+        {
+          "atSec": 83.291,
+          "pose": "present",
+          "caption": "Mismatch is the first hour of training.",
+          "mood": "default"
+        },
+        {
+          "atSec": 85.838,
+          "pose": "slump",
+          "caption": "Same page.",
+          "mood": "default"
+        },
+        {
+          "atSec": 86.887,
+          "pose": "slump",
+          "caption": "Different theory.",
+          "mood": "default"
+        },
+        {
+          "atSec": 87.936,
+          "pose": "react",
+          "caption": "Different heat.",
+          "mood": "default"
+        },
+        {
+          "atSec": 88.985,
+          "pose": "listen",
+          "caption": "When Cairn sits with a mismatching article, a find theory cools him.",
+          "mood": "default"
+        },
+        {
+          "atSec": 92.985,
+          "pose": "point",
+          "caption": "When Cairn sits with a mismatching article, a find theory cools him.",
+          "mood": "default"
+        },
+        {
+          "atSec": 93.03,
+          "pose": "present",
+          "caption": "A develop theory keeps him curious.",
+          "mood": "default"
+        },
+        {
+          "atSec": 95.277,
+          "pose": "slump",
+          "caption": "He does not need a new passion.",
+          "mood": "default"
+        },
+        {
+          "atSec": 97.823,
+          "pose": "slump",
+          "caption": "He needs another pass.",
+          "mood": "default"
+        },
+        {
+          "atSec": 99.472,
+          "pose": "react",
+          "caption": "He does not open a new folder to feel Tuesday again.",
+          "mood": "default"
+        },
+        {
+          "atSec": 103.216,
+          "pose": "listen",
+          "caption": "He gives this folder a second hour before he gives it a funeral.",
+          "mood": "default"
+        },
+        {
+          "atSec": 107.216,
+          "pose": "point",
+          "caption": "He gives this folder a second hour before he gives it a funeral.",
+          "mood": "default"
+        },
+        {
+          "atSec": 107.56,
+          "pose": "present",
+          "caption": "Taste is not a locked door.",
+          "mood": "default"
+        },
+        {
+          "atSec": 109.807,
+          "pose": "slump",
+          "caption": "A page can be wrong for his taste and still be worth a pass.",
+          "mood": "default"
+        },
+        {
+          "atSec": 113.807,
+          "pose": "react",
+          "caption": "A page can be wrong for his taste and still be worth a pass.",
+          "mood": "default"
+        },
+        {
+          "atSec": 114.451,
+          "pose": "listen",
+          "caption": "Develop it means stay long enough for the interest to thicken.",
+          "mood": "default"
+        },
+        {
+          "atSec": 118.196,
+          "pose": "point",
+          "caption": "Cairn talks to himself like the grow group.",
+          "mood": "default"
+        },
+        {
+          "atSec": 121.042,
+          "pose": "present",
+          "caption": "Not like a man who misplaced his soulmate.",
           "mood": "default"
         }
       ]
     },
     {
-      "id": "part4",
+      "id": "story",
       "type": "cairnCaption",
-      "pose": "present",
-      "visual": "conceptLabel",
-      "mood": "default",
-      "label": "Finish the session",
-      "caption": "Cairn finishes the block he already started.",
-      "vo": "Part four. Finish the session. This is the do-this move. Cairn sets a finish line he can see from the chair. One session. Not a new identity. Not a rebrand. When the spark dies, Cairn finishes the block he already started. He does not hunt a cleaner calling on the same night. He does not ask the room whether he is still passionate. He asks what the next stone is. Then he does that stone. The session ends when the block ends, not when the feeling ends. That is how Cairn stays in the work. Develop it is a verb he can do before bed. Cairn writes the finish line on a scrap. Twenty minutes. One function. One paragraph. He starts the timer. When it rings he stops, even if Tuesday never came back. The win is the ended block. Not a restored crush. Cairn can keep a promise to a pile. That is the move.",
+      "pose": "listen",
+      "visual": "hawkingPaper",
+      "mood": "warm",
+      "caption": "They hooked people with an easy Stephen Hawking video about black holes.",
+      "vo": "They hooked people with an easy Stephen Hawking video about black holes. Then they handed them a hard science article on the same thing. Cairn knows that move in his own week. Spark first. Then the wall. Tuesday is the video. Thursday is the article. The topic did not switch. The heat did. That is the experiment as a desk. You get the calling. Then you get the homework. The researchers did not invent a hobbyist who picked pottery and quit. They built a spark, then a wall, and they watched who stayed.\n\nThe find group cooled. The grow group stayed. You take some time, you hit a wall, over time you build that commitment. That is the story Cairn needs on a cold Thursday. Not a fable. A pattern. People who thought interest is found treated the hard page as evidence they had the wrong topic. People who thought interest is grown treated the hard page as the next hour. Same Hawking. Same article. Different theory. Different heat. Cairn stays for the hard page. He does not hunt a new video to feel Tuesday again. The wall is not a sign to switch lives. The wall is where the grow group did their work.\n\nCairn walks it once more so the picture sticks. Easy video. Hard article. Find group cools. Grow group stays. The spark is allowed. The wall is required. If he only keeps the work that feels like a calling, he will only keep the trailer. The essay is the article. The session is the article. He sits with the article. He lets the Hawking warmth be real. Then he lets the hard page be real. He does not use the second to cancel the first. That is what staying looks like when nobody is filming a calling.",
       "speechLed": true,
       "beats": [
         {
           "atSec": 0,
+          "pose": "listen",
+          "caption": "They hooked people with an easy Stephen Hawking video about black holes.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 4,
+          "pose": "still",
+          "caption": "They hooked people with an easy Stephen Hawking video about black holes.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 4.188,
+          "pose": "react",
+          "caption": "Then they handed them a hard science article on the same thing.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 8.188,
+          "pose": "point",
+          "caption": "Then they handed them a hard science article on the same thing.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 8.375,
           "pose": "present",
-          "caption": "FINISH THE SESSION",
-          "mood": "default"
+          "caption": "Cairn knows that move in his own week.",
+          "mood": "warm"
         },
         {
-          "atSec": 6,
+          "atSec": 11.317,
           "pose": "listen",
-          "caption": "ONE BLOCK",
-          "mood": "default"
+          "caption": "Spark first.",
+          "mood": "warm"
         },
         {
-          "atSec": 12,
-          "pose": "slump",
-          "caption": "NOT A REBRAND",
-          "mood": "default"
-        },
-        {
-          "atSec": 18,
-          "pose": "point",
-          "caption": "NEXT STONE",
-          "mood": "default"
-        },
-        {
-          "atSec": 24,
-          "pose": "point",
-          "caption": "A VERB TONIGHT",
-          "mood": "default"
-        },
-        {
-          "atSec": 30,
+          "atSec": 12.39,
           "pose": "listen",
-          "caption": "WRITE THE LINE",
+          "caption": "Then the wall.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 13.774,
+          "pose": "still",
+          "caption": "Tuesday is the video.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 15.47,
+          "pose": "react",
+          "caption": "Thursday is the article.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 17.166,
+          "pose": "point",
+          "caption": "The topic did not switch.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 19.173,
+          "pose": "present",
+          "caption": "The heat did.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 20.557,
+          "pose": "listen",
+          "caption": "That is the experiment as a desk.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 23.188,
+          "pose": "listen",
+          "caption": "You get the calling.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 24.884,
+          "pose": "still",
+          "caption": "Then you get the homework.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 26.891,
+          "pose": "react",
+          "caption": "The researchers did not invent a hobbyist who picked pottery and quit.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 30.891,
+          "pose": "point",
+          "caption": "The researchers did not invent a hobbyist who picked pottery and quit.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 31.078,
+          "pose": "present",
+          "caption": "They built a spark, then a wall, and they watched who stayed.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 35.078,
+          "pose": "listen",
+          "caption": "They built a spark, then a wall, and they watched who stayed.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 35.266,
+          "pose": "listen",
+          "caption": "The find group cooled.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 36.962,
+          "pose": "still",
+          "caption": "The grow group stayed.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 38.658,
+          "pose": "react",
+          "caption": "You take some time, you hit a wall, over time you build that commitment.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 42.658,
+          "pose": "point",
+          "caption": "You take some time, you hit a wall, over time you build that commitment.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 43.468,
+          "pose": "present",
+          "caption": "That is the story Cairn needs on a cold Thursday.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 47.033,
+          "pose": "listen",
+          "caption": "Not a fable.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 48.417,
+          "pose": "listen",
+          "caption": "A pattern.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 49.49,
+          "pose": "still",
+          "caption": "People who thought interest is found treated the hard page as evidence they had the wrong topic.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 53.49,
+          "pose": "react",
+          "caption": "People who thought interest is found treated the hard page as evidence they had the wrong topic.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 55.235,
+          "pose": "point",
+          "caption": "People who thought interest is grown treated the hard page as the next hour.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 59.235,
+          "pose": "present",
+          "caption": "People who thought interest is grown treated the hard page as the next hour.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 60.045,
+          "pose": "listen",
+          "caption": "Same Hawking.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 61.118,
+          "pose": "listen",
+          "caption": "Same article.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 62.191,
+          "pose": "still",
+          "caption": "Different theory.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 63.264,
+          "pose": "react",
+          "caption": "Different heat.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 64.337,
+          "pose": "point",
+          "caption": "Cairn stays for the hard page.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 66.656,
+          "pose": "present",
+          "caption": "He does not hunt a new video to feel Tuesday again.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 70.532,
+          "pose": "listen",
+          "caption": "The wall is not a sign to switch lives.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 73.785,
+          "pose": "listen",
+          "caption": "The wall is where the grow group did their work.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 77.35,
+          "pose": "still",
+          "caption": "Cairn walks it once more so the picture sticks.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 80.603,
+          "pose": "react",
+          "caption": "Easy video.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 81.676,
+          "pose": "point",
+          "caption": "Hard article.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 82.749,
+          "pose": "present",
+          "caption": "Find group cools.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 84.133,
+          "pose": "listen",
+          "caption": "Grow group stays.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 85.517,
+          "pose": "listen",
+          "caption": "The spark is allowed.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 87.213,
+          "pose": "still",
+          "caption": "The wall is required.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 88.909,
+          "pose": "react",
+          "caption": "If he only keeps the work that feels like a calling, he will only keep the trailer.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 92.909,
+          "pose": "point",
+          "caption": "If he only keeps the work that feels like a calling, he will only keep the trailer.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 94.654,
+          "pose": "present",
+          "caption": "The essay is the article.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 96.661,
+          "pose": "listen",
+          "caption": "The session is the article.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 98.669,
+          "pose": "listen",
+          "caption": "He sits with the article.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 100.676,
+          "pose": "still",
+          "caption": "He lets the Hawking warmth be real.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 103.306,
+          "pose": "react",
+          "caption": "Then he lets the hard page be real.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 106.248,
+          "pose": "point",
+          "caption": "He does not use the second to cancel the first.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 109.812,
+          "pose": "present",
+          "caption": "That is what staying looks like when nobody is filming a calling.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 113.812,
+          "pose": "listen",
+          "caption": "That is what staying looks like when nobody is filming a calling.",
+          "mood": "warm"
+        }
+      ]
+    },
+    {
+      "id": "gap",
+      "type": "numberCard",
+      "pose": "point",
+      "kicker": "When the article was hard",
+      "stat": "2.75 vs 3.59",
+      "leftLabel": "go find it",
+      "rightLabel": "you grow it",
+      "note": "Cairn points at the gap. The grow-it side stayed warmer.",
+      "footnote": "O’Keefe, Dweck & Walton, 2018",
+      "vo": "When the article was hard, interest sat at two point seven five versus three point five nine. Cairn points at the number. Go find it sat cooler. You grow it stayed warmer. The gap was biggest for people who found the article hard. That is the warrant for tonight. Hard did not mean they had picked the wrong topic. Hard meant the theory of interest was doing the cooling. Cairn reads the gap. He does not make a sample size the hero of the room. The finding is the heat that survived the wall. Two point seven five versus three point five nine. He points so the hands have somewhere to go besides the lid.",
+      "speechLed": true,
+      "beats": [
+        {
+          "atSec": 0,
+          "pose": "point",
+          "caption": "When the article was hard, interest sat at two point seven five versus three point five nine.",
           "mood": "default"
         },
         {
-          "atSec": 36,
-          "pose": "react",
-          "caption": "ENDED BLOCK",
+          "atSec": 4,
+          "pose": "listen",
+          "caption": "When the article was hard, interest sat at two point seven five versus three point five nine.",
           "mood": "default"
         },
         {
-          "atSec": 42,
-          "pose": "react",
-          "caption": "ENDED BLOCK",
+          "atSec": 5.29,
+          "pose": "point",
+          "caption": "Cairn points at the number.",
           "mood": "default"
         },
         {
-          "atSec": 48,
-          "pose": "react",
-          "caption": "ENDED BLOCK",
+          "atSec": 7.164,
+          "pose": "listen",
+          "caption": "Go find it sat cooler.",
           "mood": "default"
         },
         {
-          "atSec": 54,
-          "pose": "react",
-          "caption": "ENDED BLOCK",
+          "atSec": 9.037,
+          "pose": "point",
+          "caption": "You grow it stayed warmer.",
+          "mood": "default"
+        },
+        {
+          "atSec": 10.911,
+          "pose": "listen",
+          "caption": "The gap was biggest for people who found the article hard.",
+          "mood": "default"
+        },
+        {
+          "atSec": 14.493,
+          "pose": "point",
+          "caption": "That is the warrant for tonight.",
+          "mood": "default"
+        },
+        {
+          "atSec": 16.651,
+          "pose": "listen",
+          "caption": "Hard did not mean they had picked the wrong topic.",
+          "mood": "default"
+        },
+        {
+          "atSec": 19.948,
+          "pose": "point",
+          "caption": "Hard meant the theory of interest was doing the cooling.",
+          "mood": "default"
+        },
+        {
+          "atSec": 23.245,
+          "pose": "listen",
+          "caption": "Cairn reads the gap.",
+          "mood": "default"
+        },
+        {
+          "atSec": 24.834,
+          "pose": "point",
+          "caption": "He does not make a sample size the hero of the room.",
+          "mood": "default"
+        },
+        {
+          "atSec": 28.701,
+          "pose": "listen",
+          "caption": "The finding is the heat that survived the wall.",
+          "mood": "default"
+        },
+        {
+          "atSec": 31.713,
+          "pose": "point",
+          "caption": "Two point seven five versus three point five nine.",
+          "mood": "default"
+        },
+        {
+          "atSec": 34.725,
+          "pose": "point",
+          "caption": "He points so the hands have somewhere to go besides the lid.",
           "mood": "default"
         }
       ]
     },
     {
-      "id": "part5",
+      "id": "eggs",
+      "type": "quoteCard",
+      "pose": "still",
+      "quote": "You put all your eggs in one basket, then drop the basket when it gets heavy.",
+      "caption": "The eggs were never the problem. The drop was.",
+      "attr": "O’Keefe, Dweck & Walton, 2018",
+      "vo": "The researchers said you put all your eggs in one basket, then drop the basket when it gets heavy. Cairn watches the eggs hit the floor. That is the whole warning in one picture. Urging people to find their passion can put all the eggs in one basket. Then a heavy night becomes a reason to drop it. The eggs were never the problem. The drop was. Tuesday put the eggs in. Thursday judged the basket by its weight. The floor gets a mess that used to be a plan.\n\nCairn will not drop this basket tonight. A heavy paragraph is not a sign to switch lives. It is a sign to keep the hands on the work. Hard is a load. Wrong is a verdict. Cairn carries the load. He does not issue the verdict. If a friend asks whether this is still the one, Cairn answers with the session, not with the mood. The eggs can stay in the basket while the basket is heavy. That is the picture. He is still in the room while they fall, so he can refuse the drop even as he watches it.",
+      "speechLed": true,
+      "beats": [
+        {
+          "atSec": 0,
+          "pose": "still",
+          "caption": "The researchers said you put all your eggs in one basket, then drop the basket when it gets heavy.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 4,
+          "pose": "react",
+          "caption": "The researchers said you put all your eggs in one basket, then drop the basket when it gets heavy.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 5.615,
+          "pose": "slump",
+          "caption": "Cairn watches the eggs hit the floor.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 7.967,
+          "pose": "present",
+          "caption": "That is the whole warning in one picture.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 10.592,
+          "pose": "listen",
+          "caption": "Urging people to find their passion can put all the eggs in one basket.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 14.592,
+          "pose": "still",
+          "caption": "Urging people to find their passion can put all the eggs in one basket.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 14.847,
+          "pose": "react",
+          "caption": "Then a heavy night becomes a reason to drop it.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 18.016,
+          "pose": "slump",
+          "caption": "The eggs were never the problem.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 20.097,
+          "pose": "present",
+          "caption": "The drop was.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 21.362,
+          "pose": "listen",
+          "caption": "Tuesday put the eggs in.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 23.171,
+          "pose": "still",
+          "caption": "Thursday judged the basket by its weight.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 25.524,
+          "pose": "react",
+          "caption": "The floor gets a mess that used to be a plan.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 28.964,
+          "pose": "slump",
+          "caption": "Cairn will not drop this basket tonight.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 31.317,
+          "pose": "present",
+          "caption": "A heavy paragraph is not a sign to switch lives.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 34.485,
+          "pose": "listen",
+          "caption": "It is a sign to keep the hands on the work.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 37.925,
+          "pose": "still",
+          "caption": "Hard is a load.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 39.462,
+          "pose": "react",
+          "caption": "Wrong is a verdict.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 41,
+          "pose": "slump",
+          "caption": "Cairn carries the load.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 42.537,
+          "pose": "present",
+          "caption": "He does not issue the verdict.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 44.618,
+          "pose": "listen",
+          "caption": "If a friend asks whether this is still the one, Cairn answers with the session, not with the mood.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 48.618,
+          "pose": "still",
+          "caption": "If a friend asks whether this is still the one, Cairn answers with the session, not with the mood.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 50.232,
+          "pose": "react",
+          "caption": "The eggs can stay in the basket while the basket is heavy.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 53.944,
+          "pose": "slump",
+          "caption": "That is the picture.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 55.482,
+          "pose": "present",
+          "caption": "He is still in the room while they fall, so he can refuse the drop even as he watches it.",
+          "mood": "cold"
+        },
+        {
+          "atSec": 59.482,
+          "pose": "listen",
+          "caption": "He is still in the room while they fall, so he can refuse the drop even as he watches it.",
+          "mood": "cold"
+        }
+      ]
+    },
+    {
+      "id": "stay",
       "type": "cairnCaption",
       "pose": "present",
-      "visual": "conceptLabel",
+      "visual": "deskStone",
       "mood": "default",
-      "label": "Stone on the pile",
-      "caption": "Cairn puts the finished block on the stack.",
-      "vo": "Part five. Put the stone on the pile. Cairn takes the finished block and puts it on the stack. The pile is the record. Not the mood. Not the Tuesday glow. A stone is a session that happened. Cairn can see it. Tomorrow the pile is still there even if Thursday comes back. That is the point of a cairn. Marks on a path. Not proof of a soulmate. Cairn does not need a new species of work. He needs another stone. He places it where he can see it. A note. A commit. A crossed line. The stack gets taller by one. That height is the only proof Cairn trusts after a cold Thursday. Mood lies. The pile does not. He leaves the room with a taller cairn than he entered.",
+      "caption": "This is the do-this move.",
+      "vo": "This is the do-this move. Cairn sets a finish line he can see from the chair. One session. Not a new identity. Not a rebrand. When the spark dies, Cairn finishes the block he already started. He does not hunt a cleaner calling on the same night. He does not ask the room whether he is still passionate. He asks what the next stone is. Then he does that stone. The question is small on purpose. A small question can be answered with hands. A soulmate question cannot.\n\nThe session ends when the block ends, not when the feeling ends. Develop it is a verb he can do before bed. Twenty minutes. One paragraph. One pass through the hard page. The win is the ended block. Not a restored crush. Cairn can keep a promise to a pile. Mood lies. The pile does not. If the spark comes back, good. If it does not, the block still ended. That is the only scoreboard tonight.\n\nHe does not need a law about every age group. He does not need a wall of limits. He needs a rule for this chair. This week, when the side project gets dull or hard, treat that as the development process. Not as evidence you found the wrong passion. Finish the session anyway. The grow group did not stay because the article got easier. They stayed because their theory let them stay. Cairn borrows that theory for one hour. He can return the courtroom tomorrow. Tonight he returns the chair. He picks the next stone before he picks a new life. He reads the next paragraph before he writes the breakup text. He ends the block with the lid still open. That is a session. That is enough.",
       "speechLed": true,
       "beats": [
         {
           "atSec": 0,
           "pose": "present",
-          "caption": "STONE ON THE PILE",
+          "caption": "This is the do-this move.",
           "mood": "default"
         },
         {
-          "atSec": 6,
+          "atSec": 1.969,
+          "pose": "point",
+          "caption": "Cairn sets a finish line he can see from the chair.",
+          "mood": "default"
+        },
+        {
+          "atSec": 5.761,
           "pose": "listen",
-          "caption": "THE RECORD",
+          "caption": "One session.",
           "mood": "default"
         },
         {
-          "atSec": 12,
-          "pose": "slump",
-          "caption": "NOT THE MOOD",
-          "mood": "default"
-        },
-        {
-          "atSec": 18,
-          "pose": "point",
-          "caption": "MARKS ON A PATH",
-          "mood": "default"
-        },
-        {
-          "atSec": 24,
-          "pose": "point",
-          "caption": "ANOTHER STONE",
-          "mood": "default"
-        },
-        {
-          "atSec": 30,
+          "atSec": 6.819,
           "pose": "react",
-          "caption": "MOOD LIES",
+          "caption": "Not a new identity.",
           "mood": "default"
         },
         {
-          "atSec": 36,
+          "atSec": 8.484,
           "pose": "present",
-          "caption": "TALLER CAIRN",
+          "caption": "Not a rebrand.",
           "mood": "default"
         },
         {
-          "atSec": 42,
+          "atSec": 9.846,
           "pose": "present",
-          "caption": "TALLER CAIRN",
+          "caption": "When the spark dies, Cairn finishes the block he already started.",
           "mood": "default"
         },
         {
-          "atSec": 48,
+          "atSec": 13.638,
+          "pose": "point",
+          "caption": "He does not hunt a cleaner calling on the same night.",
+          "mood": "default"
+        },
+        {
+          "atSec": 17.43,
+          "pose": "listen",
+          "caption": "He does not ask the room whether he is still passionate.",
+          "mood": "default"
+        },
+        {
+          "atSec": 21.222,
+          "pose": "react",
+          "caption": "He asks what the next stone is.",
+          "mood": "default"
+        },
+        {
+          "atSec": 23.798,
           "pose": "present",
-          "caption": "TALLER CAIRN",
+          "caption": "Then he does that stone.",
+          "mood": "default"
+        },
+        {
+          "atSec": 25.768,
+          "pose": "present",
+          "caption": "The question is small on purpose.",
+          "mood": "default"
+        },
+        {
+          "atSec": 28.04,
+          "pose": "point",
+          "caption": "A small question can be answered with hands.",
+          "mood": "default"
+        },
+        {
+          "atSec": 30.921,
+          "pose": "listen",
+          "caption": "A soulmate question cannot.",
+          "mood": "default"
+        },
+        {
+          "atSec": 32.586,
+          "pose": "react",
+          "caption": "The session ends when the block ends, not when the feeling ends.",
+          "mood": "default"
+        },
+        {
+          "atSec": 36.586,
+          "pose": "present",
+          "caption": "The session ends when the block ends, not when the feeling ends.",
+          "mood": "default"
+        },
+        {
+          "atSec": 36.682,
+          "pose": "present",
+          "caption": "Develop it is a verb he can do before bed.",
+          "mood": "default"
+        },
+        {
+          "atSec": 40.17,
+          "pose": "point",
+          "caption": "Twenty minutes.",
+          "mood": "default"
+        },
+        {
+          "atSec": 41.228,
+          "pose": "listen",
+          "caption": "One paragraph.",
+          "mood": "default"
+        },
+        {
+          "atSec": 42.286,
+          "pose": "react",
+          "caption": "One pass through the hard page.",
+          "mood": "default"
+        },
+        {
+          "atSec": 44.559,
+          "pose": "present",
+          "caption": "The win is the ended block.",
+          "mood": "default"
+        },
+        {
+          "atSec": 46.832,
+          "pose": "present",
+          "caption": "Not a restored crush.",
+          "mood": "default"
+        },
+        {
+          "atSec": 48.497,
+          "pose": "point",
+          "caption": "Cairn can keep a promise to a pile.",
+          "mood": "default"
+        },
+        {
+          "atSec": 51.377,
+          "pose": "listen",
+          "caption": "Mood lies.",
+          "mood": "default"
+        },
+        {
+          "atSec": 52.435,
+          "pose": "react",
+          "caption": "The pile does not.",
+          "mood": "default"
+        },
+        {
+          "atSec": 54.1,
+          "pose": "present",
+          "caption": "If the spark comes back, good.",
+          "mood": "default"
+        },
+        {
+          "atSec": 56.373,
+          "pose": "present",
+          "caption": "If it does not, the block still ended.",
+          "mood": "default"
+        },
+        {
+          "atSec": 59.254,
+          "pose": "point",
+          "caption": "That is the only scoreboard tonight.",
+          "mood": "default"
+        },
+        {
+          "atSec": 61.527,
+          "pose": "listen",
+          "caption": "He does not need a law about every age group.",
+          "mood": "default"
+        },
+        {
+          "atSec": 65.015,
+          "pose": "react",
+          "caption": "He does not need a wall of limits.",
+          "mood": "default"
+        },
+        {
+          "atSec": 67.896,
+          "pose": "present",
+          "caption": "He needs a rule for this chair.",
+          "mood": "default"
+        },
+        {
+          "atSec": 70.472,
+          "pose": "present",
+          "caption": "This week, when the side project gets dull or hard, treat that as the development process.",
+          "mood": "default"
+        },
+        {
+          "atSec": 74.472,
+          "pose": "point",
+          "caption": "This week, when the side project gets dull or hard, treat that as the development process.",
+          "mood": "default"
+        },
+        {
+          "atSec": 75.783,
+          "pose": "listen",
+          "caption": "Not as evidence you found the wrong passion.",
+          "mood": "default"
+        },
+        {
+          "atSec": 78.664,
+          "pose": "react",
+          "caption": "Finish the session anyway.",
+          "mood": "default"
+        },
+        {
+          "atSec": 80.329,
+          "pose": "present",
+          "caption": "The grow group did not stay because the article got easier.",
+          "mood": "default"
+        },
+        {
+          "atSec": 84.121,
+          "pose": "present",
+          "caption": "They stayed because their theory let them stay.",
+          "mood": "default"
+        },
+        {
+          "atSec": 87.002,
+          "pose": "point",
+          "caption": "Cairn borrows that theory for one hour.",
+          "mood": "default"
+        },
+        {
+          "atSec": 89.579,
+          "pose": "listen",
+          "caption": "He can return the courtroom tomorrow.",
+          "mood": "default"
+        },
+        {
+          "atSec": 91.852,
+          "pose": "react",
+          "caption": "Tonight he returns the chair.",
+          "mood": "default"
+        },
+        {
+          "atSec": 93.821,
+          "pose": "present",
+          "caption": "He picks the next stone before he picks a new life.",
+          "mood": "default"
+        },
+        {
+          "atSec": 97.613,
+          "pose": "present",
+          "caption": "He reads the next paragraph before he writes the breakup text.",
+          "mood": "default"
+        },
+        {
+          "atSec": 101.405,
+          "pose": "point",
+          "caption": "He ends the block with the lid still open.",
+          "mood": "default"
+        },
+        {
+          "atSec": 104.589,
+          "pose": "listen",
+          "caption": "That is a session.",
+          "mood": "default"
+        },
+        {
+          "atSec": 106.255,
+          "pose": "react",
+          "caption": "That is enough.",
+          "mood": "default"
+        }
+      ]
+    },
+    {
+      "id": "stack",
+      "type": "cairnCaption",
+      "pose": "point",
+      "visual": "stoneDrop",
+      "mood": "default",
+      "caption": "Cairn takes the stone out of his hand and puts it on the pile.",
+      "vo": "Cairn takes the stone out of his hand and puts it on the pile. That height is the only proof he trusts after a cold Thursday. A stone is a session that happened. Cairn can see it. Tomorrow the pile is still there even if Thursday comes back. That is the point of a cairn. Marks on a path. Not proof of a soulmate. He does not need a new species of work. He needs another stone. The throw is the move. The stone leaves the pointing hand. It lands on a real pile. Finish the session. Put the stone on the pile. He leaves the room with a taller cairn than he entered. That is the record. Not the mood. Not the Tuesday glow.",
+      "speechLed": true,
+      "beats": [
+        {
+          "atSec": 0,
+          "pose": "point",
+          "caption": "Cairn takes the stone out of his hand and puts it on the pile.",
+          "mood": "default"
+        },
+        {
+          "atSec": 4,
+          "pose": "present",
+          "caption": "Cairn takes the stone out of his hand and puts it on the pile.",
+          "mood": "default"
+        },
+        {
+          "atSec": 4.519,
+          "pose": "listen",
+          "caption": "That height is the only proof he trusts after a cold Thursday.",
+          "mood": "default"
+        },
+        {
+          "atSec": 8.457,
+          "pose": "point",
+          "caption": "A stone is a session that happened.",
+          "mood": "default"
+        },
+        {
+          "atSec": 10.941,
+          "pose": "point",
+          "caption": "Cairn can see it.",
+          "mood": "default"
+        },
+        {
+          "atSec": 12.554,
+          "pose": "point",
+          "caption": "Tomorrow the pile is still there even if Thursday comes back.",
+          "mood": "default"
+        },
+        {
+          "atSec": 16.201,
+          "pose": "listen",
+          "caption": "That is the point of a cairn.",
+          "mood": "default"
+        },
+        {
+          "atSec": 18.685,
+          "pose": "point",
+          "caption": "Marks on a path.",
+          "mood": "default"
+        },
+        {
+          "atSec": 20.298,
+          "pose": "point",
+          "caption": "Not proof of a soulmate.",
+          "mood": "default"
+        },
+        {
+          "atSec": 22.201,
+          "pose": "present",
+          "caption": "He does not need a new species of work.",
+          "mood": "default"
+        },
+        {
+          "atSec": 25.267,
+          "pose": "listen",
+          "caption": "He needs another stone.",
+          "mood": "default"
+        },
+        {
+          "atSec": 26.879,
+          "pose": "point",
+          "caption": "The throw is the move.",
+          "mood": "default"
+        },
+        {
+          "atSec": 28.782,
+          "pose": "point",
+          "caption": "The stone leaves the pointing hand.",
+          "mood": "default"
+        },
+        {
+          "atSec": 30.976,
+          "pose": "point",
+          "caption": "It lands on a real pile.",
+          "mood": "default"
+        },
+        {
+          "atSec": 33.17,
+          "pose": "listen",
+          "caption": "Finish the session.",
+          "mood": "default"
+        },
+        {
+          "atSec": 34.492,
+          "pose": "point",
+          "caption": "Put the stone on the pile.",
+          "mood": "default"
+        },
+        {
+          "atSec": 36.686,
+          "pose": "point",
+          "caption": "He leaves the room with a taller cairn than he entered.",
+          "mood": "default"
+        },
+        {
+          "atSec": 40.333,
+          "pose": "present",
+          "caption": "That is the record.",
+          "mood": "default"
+        },
+        {
+          "atSec": 41.946,
+          "pose": "listen",
+          "caption": "Not the mood.",
+          "mood": "default"
+        },
+        {
+          "atSec": 43.267,
+          "pose": "point",
+          "caption": "Not the Tuesday glow.",
           "mood": "default"
         }
       ]
@@ -604,11 +1735,49 @@
       "id": "end",
       "type": "endCard",
       "pose": "still",
-      "title": "Find it or develop it",
+      "title": "Hard does not mean you picked the wrong thing.",
       "cite": "O’Keefe, Dweck & Walton, 2018",
-      "cta": "Cairn finishes the session anyway.",
-      "vo": "Tuesday felt like the one. Thursday felt like homework. Fixed interest made Cairn want to walk. Interests develop. Hard is not wrong. Finish the session. Put the stone on the pile. Cairn recaps the night as a list he can keep. Then he does the last line. Cairn finishes the session anyway.",
-      "speechLed": true
+      "cta": "If this week's takeaway stuck, subscribe. Next one lands same time.",
+      "vo": "Tuesday felt like the one. Thursday felt like homework. Hard does not mean you picked the wrong thing. Finish the session anyway. If this week's takeaway stuck, subscribe. Next one lands same time.",
+      "speechLed": true,
+      "beats": [
+        {
+          "atSec": 0,
+          "pose": "still",
+          "caption": "Tuesday felt like the one.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 2.215,
+          "pose": "listen",
+          "caption": "Thursday felt like homework.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 4.078,
+          "pose": "point",
+          "caption": "Hard does not mean you picked the wrong thing.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 7.706,
+          "pose": "present",
+          "caption": "Finish the session anyway.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 9.568,
+          "pose": "still",
+          "caption": "If this week's takeaway stuck, subscribe.",
+          "mood": "warm"
+        },
+        {
+          "atSec": 12.137,
+          "pose": "point",
+          "caption": "Next one lands same time.",
+          "mood": "warm"
+        }
+      ]
     }
   ]
 }

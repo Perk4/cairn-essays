@@ -1,16 +1,15 @@
 import { readFileSync, writeFileSync } from "node:fs";
 
-const SETTLE = 0.8;
+const SETTLE = 0;
 const CLIP_MIN = 20;
 const CLIP_MAX = 45;
 
 const TARGETS = {
-  hook: 26,
-  part1: 35,
-  part2: 35,
-  part3: 32,
-  part4: 30,
-  part5: 30,
+  hook: 32,
+  trap: 35,
+  story: 35,
+  stay: 35,
+  stack: 30,
 };
 
 const FPS = 30;

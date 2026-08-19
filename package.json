@@ -26,6 +26,7 @@
     "upgrade": "remotion upgrade",
     "lint": "eslint src && tsc",
     "vo": "node scripts/make-vo.mjs",
-    "render": "node scripts/render.mjs"
+    "render": "node scripts/render.mjs",
+    "review-kit": "node scripts/make-review-kit.mjs"
   }
 }
