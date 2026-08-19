@@ -4,7 +4,7 @@ Remotion factory for Cairn essays. Episode 1 is a **story with a spoken track**.
 
 ## Voice
 
-Flagship lines are **Qwen3-TTS CustomVoice / Ryan** through mlx-audio, near 165 wpm.
+Flagship lines are **placeholder espeak-ng** in this acting cut, labeled not Perk, if the local Ryan venv is missing. Prefer Qwen3-TTS CustomVoice / Ryan through mlx-audio, near 165 wpm, when that machine is present.
 
 It is **not Perk**. It is **not a clone**. It is **not macOS say**.
 
@@ -46,7 +46,7 @@ Shorts are two or more beats. Each beat has its own `durationSec`. Total is clam
 
 ## Pictures
 
-Scenes are rooms, not cream cards that fade and freeze. Cairn uses `public/cairn/{still,listen,point,react,present,slump}.png`. Caption scenes do not substitute `idle.gif` for the named pose. Parts show a concept label, not a cite card.
+Scenes are rooms, not cream cards that fade and freeze. Cairn uses the talking kit in `public/cairn/`: `still`, `listen`, `point`, mouth sheets, `tue-open`, `thu-slits`. Caption scenes do not substitute `idle.gif` for the named pose. Parts show a concept label, not a cite card.
 
 ## Music
 

@@ -108,20 +108,6 @@ export const Room = ({
             borderTop: `8px solid ${palette.outline}`,
           }}
         />
-        {plain ? null : (
-          <div
-            style={{
-              position: "absolute",
-              left: layout === "short" ? "18%" : "8%",
-              width: layout === "short" ? "64%" : "22%",
-              top: `calc(${floorTop} - 14px)`,
-              height: 22,
-              backgroundColor: palette.stone,
-              border: `4px solid ${palette.outline}`,
-              borderRadius: 6,
-            }}
-          />
-        )}
       </div>
       {wash ? (
         <AbsoluteFill

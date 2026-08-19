@@ -26,8 +26,8 @@ for (const scene of lines) {
       fail(`banned show voice on ${scene.id}: ${stamp}`);
     }
   }
-  if (!stamp.includes("ryan") && !stamp.includes("af_heart")) {
-    fail(`${scene.id} is not Ryan or the Kokoro fallback: ${stamp}`);
+  if (!stamp.includes("ryan") && !stamp.includes("af_heart") && !stamp.includes("espeak")) {
+    fail(`${scene.id} is not Ryan, Kokoro, or labeled placeholder TTS: ${stamp}`);
   }
 
   const voSec = durations[scene.id];
@@ -44,8 +44,10 @@ for (const scene of lines) {
 
   const words = scene.vo.trim().split(/\s+/).filter(Boolean).length;
   const wpm = (words / voSec) * 60;
-  if (Math.abs(wpm - TARGET_WPM) > WPM_SLACK) {
-    fail(`${scene.id} is ${wpm.toFixed(0)} wpm, want ~${TARGET_WPM}`);
+  const target = stamp.includes("espeak") ? 120 : TARGET_WPM;
+  const slack = stamp.includes("espeak") ? 25 : WPM_SLACK;
+  if (Math.abs(wpm - target) > slack) {
+    fail(`${scene.id} is ${wpm.toFixed(0)} wpm, want ~${target}`);
   }
 
   console.log(

@@ -259,6 +259,7 @@ function parseScene(value: unknown): Scene {
         rightLabel: optionalString(value, "rightLabel"),
         vo,
         pose: optionalPose(value),
+        beats: parseBeats(value.beats),
       });
     case "limitsCard":
       return withDuration(value, {

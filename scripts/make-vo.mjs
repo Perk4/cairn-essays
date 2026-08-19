@@ -88,7 +88,47 @@ function timeStretch(src, dest, tempo) {
   }
 }
 
+function synthEspeakLine(id, text) {
+  refuseBanned(id);
+  const wav = `/tmp/vo-${id}.wav`;
+  const raw = `/tmp/vo-${id}.f32`;
+  const mp3 = `public/vo/${id}.mp3`;
+  const metaPath = `public/vo/${id}.meta.json`;
+  const spoken = spawnSync(
+    "espeak-ng",
+    ["-v", "en-us", "-s", "120", "-w", wav, text],
+    { stdio: "inherit" },
+  );
+  if (spoken.status !== 0) {
+    throw new Error(`espeak-ng failed for ${id}`);
+  }
+  writeFileSync(
+    metaPath,
+    `${JSON.stringify({
+      engine: "espeak-ng",
+      model: "en-us",
+      placeholder: true,
+    })}\n`,
+  );
+  const mp3d = spawnSync(
+    "ffmpeg",
+    ["-y", "-i", wav, "-codec:a", "libmp3lame", "-b:a", "128k", mp3],
+    { stdio: "inherit" },
+  );
+  if (mp3d.status !== 0) {
+    throw new Error(`ffmpeg failed for ${id}`);
+  }
+  return {
+    duration: probeDuration(mp3),
+    envelope: envelopeFromMp3(mp3, raw),
+    meta: JSON.parse(readFileSync(metaPath, "utf8")),
+  };
+}
+
 function synthLocalLine(id, text) {
+  if (!existsSync(PYTHON)) {
+    return synthEspeakLine(id, text);
+  }
   refuseBanned(id);
   const wav = `/tmp/vo-${id}.wav`;
   const raw = `/tmp/vo-${id}.f32`;

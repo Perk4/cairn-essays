@@ -2,7 +2,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 
 const POSE_BY_CAPTION = {
   TUESDAY: "listen",
-  THURSDAY: "slump",
+  THURSDAY: "still",
   "WRONG THING?": "react",
   "THE WORK": "present",
   "5 PARTS": "point",
@@ -40,7 +40,13 @@ const POSE_BY_CAPTION = {
   "MARKS ON A PATH": "point",
   "ANOTHER STONE": "point",
   "MOOD LIES": "react",
-  "TALLER CAIRN": "present",
+  "HAWKING VIDEO": "listen",
+  "HARD ARTICLE": "still",
+  "GROW GROUP STAYED": "listen",
+  "STONE LEAVES THE HAND": "point",
+  "PUT IT ON THE PILE": "point",
+  "FINISH ANYWAY": "point",
+  "ANOTHER PASS": "point",
 };
 
 const ep = JSON.parse(readFileSync("episodes/ep01.json", "utf8"));

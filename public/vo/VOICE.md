@@ -1,15 +1,10 @@
 # Voice
 
-Flagship lines are **Qwen3-TTS CustomVoice / Ryan** through mlx-audio on this machine.
+This acting cut uses **placeholder espeak-ng** when the local Ryan venv is missing. Labeled not Perk. Not a clone. Not macOS `say`.
 
-Primary model is 1.7B. If that will not load, 0.6B CustomVoice / Ryan. If Qwen3 will not run, Kokoro-82M `af_heart`.
+When the venv is present, flagship lines are **Qwen3-TTS CustomVoice / Ryan** through mlx-audio, near 165 wpm.
 
-- Not Perk
-- Not a Perk clone
-- Not macOS `say` / Samantha
-- Not cloud TTS
-
-The mouth on speech-led lines reads the RMS envelope in `src/voEnvelopes.json`.
+The mouth on speech-led lines opens on vowels. Holds follow the RMS envelope in `src/voEnvelopes.json`.
 
 Regenerate speech-led lines:
 
@@ -17,4 +12,4 @@ Regenerate speech-led lines:
 npm run vo
 ```
 
-Needs the local venv at `/tmp/cairn-vo-venv` (or `CAIRN_VO_PYTHON`) plus `ffmpeg`.
+Needs `espeak-ng` plus `ffmpeg`, or the local venv at `/tmp/cairn-vo-venv` (or `CAIRN_VO_PYTHON`).

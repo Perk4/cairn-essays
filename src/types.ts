@@ -21,6 +21,7 @@ export const VISUALS = [
   "sparkWall",
   "hawkingPaper",
   "stoneDrop",
+  "eggsDrop",
   "conceptLabel",
 ] as const;
 export type Visual = (typeof VISUALS)[number];
@@ -79,6 +80,7 @@ export type NumberCardScene = SceneTiming & {
   leftLabel?: string;
   rightLabel?: string;
   pose?: Pose;
+  beats?: SceneBeat[];
 };
 
 export type LimitsCardScene = SceneTiming & {

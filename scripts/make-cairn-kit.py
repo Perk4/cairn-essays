@@ -9,9 +9,9 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "public" / "cairn"
 TMP = Path("/tmp/cairn-frames")
 CHROME_CANDIDATES = (
-    Path("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"),
     Path("/usr/bin/google-chrome-stable"),
     Path("/usr/bin/google-chrome"),
+    Path("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"),
 )
 SIZE = 800
 
@@ -32,31 +32,45 @@ OPEN_EYES = """
   <circle cx="42" cy="-22" r="11" fill="#281D0E" stroke="none"/>
 """
 
+SLIT_EYES = """
+  <rect x="-58" y="-32" width="40" height="8" rx="3" fill="#281D0E" stroke="none"/>
+  <rect x="22" y="-28" width="32" height="7" rx="3" fill="#281D0E" stroke="none"/>
+"""
+
+MOUTH_CLOSED = """
+  <rect x="-22" y="16" width="44" height="8" rx="3" fill="#281D0E" stroke="none"/>
+"""
+
+MOUTH_MID = """
+  <ellipse cx="0" cy="28" rx="22" ry="16" fill="#281D0E" stroke="none"/>
+"""
+
+MOUTH_OPEN = """
+  <circle cx="0" cy="30" r="24" fill="#281D0E" stroke="none"/>
+"""
+
 ARMS_STILL = """
-  <path d="M -210 -40 L -310 -90"/>
-  <path d="M -310 -90 L -355 -70"/>
-  <path d="M -310 -90 L -345 -135"/>
-  <path d="M 210 -40 L 310 -90"/>
-  <path d="M 310 -90 L 355 -70"/>
-  <path d="M 310 -90 L 345 -135"/>
+  <path d="M -210 -10 L -250 95"/>
+  <path d="M -250 95 L -300 95"/>
+  <path d="M 210 -10 L 250 95"/>
+  <path d="M 250 95 L 300 95"/>
 """
 
 ARMS_LISTEN = """
   <path d="M -210 -20 L -250 70"/>
   <path d="M -250 70 L -295 85"/>
   <path d="M -250 70 L -275 115"/>
-  <path d="M 210 -20 L 250 70"/>
-  <path d="M 250 70 L 295 85"/>
-  <path d="M 250 70 L 275 115"/>
+  <path d="M 210 -10 L 340 40"/>
+  <path d="M 340 40 L 385 28"/>
+  <path d="M 340 40 L 380 70"/>
 """
 
 ARMS_POINT = """
-  <path d="M -210 -40 L -280 40"/>
-  <path d="M -280 40 L -325 50"/>
-  <path d="M -280 40 L -300 85"/>
-  <path d="M 210 -40 L 360 -200"/>
-  <path d="M 360 -200 L 395 -175"/>
-  <path d="M 360 -200 L 400 -230"/>
+  <path d="M -210 -20 L -250 80"/>
+  <path d="M -250 80 L -300 80"/>
+  <path d="M 210 -40 L 390 -30"/>
+  <path d="M 390 -30 L 430 -18"/>
+  <path d="M 390 -30 L 428 -55"/>
 """
 
 ARMS_REACT = """
@@ -87,7 +101,7 @@ ARMS_SLUMP = """
 """
 
 
-def svg_markup(arms: str, eyes: str, rotate: float) -> str:
+def svg_markup(arms: str, extras: str, rotate: float) -> str:
     return f"""<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="{SIZE}" height="{SIZE}" viewBox="-430 -360 860 780">
   <rect width="100%" height="100%" x="-430" y="-360" fill="#FCF2C6"/>
@@ -96,7 +110,7 @@ def svg_markup(arms: str, eyes: str, rotate: float) -> str:
       {arms}
     </g>
     {STONES}
-    {eyes}
+    {extras}
   </g>
 </svg>
 """
@@ -138,11 +152,11 @@ def screenshot(html_path: Path, png_path: Path) -> None:
     subprocess.run(cmd, check=True, capture_output=True)
 
 
-def write_pose(name: str, arms: str, rotate: float, eyes: str = OPEN_EYES) -> Path:
+def write_pose(name: str, arms: str, rotate: float, extras: str) -> Path:
     TMP.mkdir(parents=True, exist_ok=True)
     html_path = TMP / f"{name}.html"
     png_path = OUT / f"{name}.png"
-    html_path.write_text(html_wrap(svg_markup(arms, eyes, rotate)), encoding="utf-8")
+    html_path.write_text(html_wrap(svg_markup(arms, extras, rotate)), encoding="utf-8")
     screenshot(html_path, png_path)
     return png_path
 
@@ -170,12 +184,23 @@ def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     TMP.mkdir(parents=True, exist_ok=True)
 
-    write_pose("react", ARMS_REACT, -4)
-    write_pose("present", ARMS_PRESENT, 3)
-    write_pose("slump", ARMS_SLUMP, 12)
-    for name in ("react", "present", "slump"):
+    frames = {
+        "still": (ARMS_STILL, 0, OPEN_EYES + MOUTH_CLOSED),
+        "listen": (ARMS_LISTEN, -16, OPEN_EYES + MOUTH_CLOSED),
+        "point": (ARMS_POINT, 0, OPEN_EYES + MOUTH_CLOSED),
+        "mouth-closed": (ARMS_STILL, 0, OPEN_EYES + MOUTH_CLOSED),
+        "mouth-mid": (ARMS_STILL, 0, OPEN_EYES + MOUTH_MID),
+        "mouth-open": (ARMS_STILL, 0, OPEN_EYES + MOUTH_OPEN),
+        "tue-open": (ARMS_STILL, 0, OPEN_EYES + MOUTH_CLOSED),
+        "thu-slits": (ARMS_STILL, 0, SLIT_EYES + MOUTH_CLOSED),
+        "react": (ARMS_REACT, -4, OPEN_EYES + MOUTH_CLOSED),
+        "present": (ARMS_PRESENT, 3, OPEN_EYES + MOUTH_CLOSED),
+        "slump": (ARMS_SLUMP, 12, OPEN_EYES + MOUTH_CLOSED),
+    }
+    for name, (arms, rotate, extras) in frames.items():
+        write_pose(name, arms, rotate, extras)
         key_cream(name)
-    print("wrote transparent pose pngs to", OUT)
+    print("wrote talking kit pngs to", OUT)
 
 
 if __name__ == "__main__":
