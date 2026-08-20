@@ -8,7 +8,7 @@
   "voiceLabel": "Kokoro-82M am_echo 1.25",
   "description": "Cairn books the keyboard like a standup. His brain clocks in. One thesis. Book the passion like a job and it starts to feel like work.",
   "thumbLine": "Yellow square",
-  "thumbStill": "05-keys-square.png",
+  "thumbStill": "03-he-books-it-yellow-square.png",
   "palette": {
     "cream": "#FCF2C6",
     "terracotta": "#A5532D",
@@ -21,7 +21,7 @@
       {
         "id": "book",
         "still": "03-he-books-it-wrote-keys.png",
-        "altStill": "05-keys-square.png",
+        "altStill": "03-he-books-it-yellow-square.png",
         "vo": "Wrote KEYS on it like it was standup. Yellow square. Start time. End time.",
         "caption": "Yellow square."
       },
@@ -39,7 +39,7 @@
       "id": "intro-cairn",
       "type": "stillShot",
       "beat": "00-hook",
-      "still": "01-intro-full-body.png",
+      "still": "01-intro-this-is-cairn.png",
       "kenBurns": "in",
       "caption": "This is Cairn.",
       "vo": "This is Cairn."
@@ -76,7 +76,7 @@
       "id": "tue-keyboard",
       "type": "stillShot",
       "beat": "01-tuesday",
-      "still": "02-tue-keyboard-day.png",
+      "still": "02-tuesday-the-keyboard-was-just-a-keyboard.png",
       "kenBurns": "in",
       "caption": "The keyboard was just a keyboard.",
       "vo": "Tuesday the keyboard was just a keyboard."
@@ -94,7 +94,7 @@
       "id": "tue-walk-in",
       "type": "stillShot",
       "beat": "01-tuesday",
-      "still": "03-tue-walk-in.png",
+      "still": "02-tuesday-cairn-walked-in.png",
       "kenBurns": "right",
       "caption": "He walked in because he felt like it.",
       "vo": "Cairn walked in because he felt like it."
@@ -112,7 +112,7 @@
       "id": "tue-dark",
       "type": "stillShot",
       "beat": "01-tuesday",
-      "still": "04-tue-play-dusk.png",
+      "still": "02-tuesday-he-played-until-it-got-dark.png",
       "kenBurns": "left",
       "caption": "He played until it got dark.",
       "vo": "He played until it got dark."
@@ -172,7 +172,7 @@
       "kenBurns": "in",
       "caption": "Opened his calendar.",
       "vo": "Opened his calendar. Made a block. Tuesday. Seven.",
-      "altStill": "05-keys-square.png"
+      "altStill": "03-he-books-it-yellow-square.png"
     },
     {
       "id": "books-keys",
@@ -187,7 +187,7 @@
       "id": "books-yellow",
       "type": "stillShot",
       "beat": "02-books",
-      "still": "05-keys-square.png",
+      "still": "03-he-books-it-yellow-square.png",
       "kenBurns": "in",
       "caption": "Yellow square.",
       "vo": "Yellow square. Start time. End time.",
@@ -264,7 +264,7 @@
       "id": "thu-clock",
       "type": "stillShot",
       "beat": "04-thursday",
-      "still": "07-thu-clock-seven.png",
+      "still": "05-thursday-clock-hits-seven.png",
       "kenBurns": "in",
       "caption": "Clock hits seven.",
       "vo": "Clock hits seven."
@@ -355,7 +355,7 @@
       "id": "thu-lid",
       "type": "stillShot",
       "beat": "04-thursday",
-      "still": "09-thu-lid-close.png",
+      "still": "05-thursday-closes-the-lid.png",
       "kenBurns": "right",
       "caption": "Closes the lid. Leaves on time.",
       "vo": "Closes the lid. Leaves on time."
@@ -374,8 +374,7 @@
       "id": "fri-walk",
       "type": "stillShot",
       "beat": "05-weekend",
-      "still": "10-fri-walk-mug.png",
-      "altStill": "06-friday-walks-past-the-desk.png",
+      "still": "06-friday-walks-past-the-desk.png",
       "kenBurns": "right",
       "caption": "Walks past the desk and feels guilty.",
       "vo": "Friday morning he walks past the desk and feels guilty."
@@ -394,7 +393,7 @@
       "id": "fri-coffee",
       "type": "stillShot",
       "beat": "05-weekend",
-      "still": "10-fri-walk-mug.png",
+      "still": "06-friday-he-makes-coffee.png",
       "altStill": "06-friday-walks-past-the-desk.png",
       "kenBurns": "left",
       "caption": "He makes coffee. Walks past it again.",
@@ -417,7 +416,7 @@
       "id": "sat-homework",
       "type": "stillShot",
       "beat": "05-weekend",
-      "still": "11-want-vs-homework.png",
+      "still": "06-saturday-used-to-want-it.png",
       "kenBurns": "out",
       "caption": "Now he walks over and it's homework.",
       "vo": "Used to walk over and want it. Now he walks over and it's homework.",
@@ -527,7 +526,7 @@
       "type": "stillShot",
       "beat": "07-move",
       "still": "08-the-move-square-is-gone.png",
-      "altStill": "02-tue-keyboard-day.png",
+      "altStill": "03-he-books-it-opened-his-calendar.png",
       "kenBurns": "out",
       "caption": "Square's gone.",
       "vo": "Square's gone. Week looks empty. That's the point. He doesn't make a better standup. Doesn't write KEYS 2. Doesn't set a reminder to be inspired.",
@@ -591,7 +590,7 @@
       "id": "move-stone",
       "type": "stillShot",
       "beat": "07-move",
-      "still": "12-one-stone.png",
+      "still": "08-the-move-one-stone.png",
       "altStill": "08-the-move-plays-one-song.png",
       "kenBurns": "in",
       "caption": "One stone.",
@@ -623,11 +622,11 @@
       "id": "cta",
       "type": "stillShot",
       "beat": "cta",
-      "still": "13-cta-quiet.png",
+      "still": "09-cta.png",
       "kenBurns": "out",
       "caption": "If this week's takeaway stuck, subscribe.",
       "vo": "If this week's takeaway stuck, subscribe. Next one lands same time.",
-      "altStill": "01-intro-full-body.png"
+      "altStill": "01-intro-this-is-cairn.png"
     }
   ]
 }
