@@ -109,11 +109,7 @@ for (const unit of byBeat) {
   if (dur(last) < MIN_CHUNK && dur(last) + dur(unit) <= MAX_CHUNK) {
     last.ids.push(...unit.ids);
     last.end = unit.end;
-    continue;
-  }
-  if (dur(unit) < MIN_CHUNK && dur(last) + dur(unit) <= MAX_CHUNK) {
-    last.ids.push(...unit.ids);
-    last.end = unit.end;
+    last.beat = last.beat;
     continue;
   }
   packed.push({ ...unit, ids: [...unit.ids] });
