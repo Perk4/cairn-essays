@@ -25,17 +25,56 @@ export const VISUALS = [
 ] as const;
 export type Visual = (typeof VISUALS)[number];
 
-type SceneTiming = {
-  id: string;
-  durationSec: number;
-  vo: string;
-};
-
 export type SceneBeat = {
   atSec: number;
   pose?: Pose;
   caption?: string;
   mood?: Mood;
+};
+
+export const BEATS = [
+  "00-hook",
+  "01-tuesday",
+  "02-books",
+  "03-wednesday",
+  "04-thursday",
+  "05-weekend",
+  "06-name",
+  "07-move",
+  "cta",
+] as const;
+export type BeatId = (typeof BEATS)[number];
+
+export const KEN_BURNS = ["in", "out", "left", "right"] as const;
+export type KenBurns = (typeof KEN_BURNS)[number];
+
+export type VoiceConfig = {
+  engine: "kokoro";
+  model: "hexgrad/Kokoro-82M";
+  voice: string;
+  speed: number;
+  gapSec: number;
+};
+
+export type StillShotScene = {
+  id: string;
+  type: "stillShot";
+  still: string;
+  altStill?: string;
+  vo: string;
+  caption: string;
+  beat: BeatId;
+  kenBurns: KenBurns;
+  durationSec: number;
+};
+
+export type Scene = StillShotScene;
+export type SceneBody = Omit<StillShotScene, "durationSec">;
+
+type SceneTiming = {
+  id: string;
+  durationSec: number;
+  vo: string;
 };
 
 export type CairnCaptionScene = SceneTiming & {
@@ -96,39 +135,13 @@ export type EndCardScene = SceneTiming & {
   pose?: Pose;
 };
 
-export type Scene =
-  | CairnCaptionScene
-  | CiteCardScene
-  | NamedFrameScene
-  | QuoteCardScene
-  | NumberCardScene
-  | LimitsCardScene
-  | EndCardScene;
-
-type DistributiveOmit<T, K extends PropertyKey> = T extends unknown
-  ? Omit<T, K>
-  : never;
-
-export type SceneBody = DistributiveOmit<Scene, "durationSec">;
-
 export type ShortBeat = {
   id: string;
-  pose: Pose;
-  kicker: string;
-  caption: string;
-  mood: Mood;
+  still: string;
+  altStill?: string;
   vo: string;
+  caption: string;
   durationSec: number;
-  visual?: Visual;
-};
-
-export type EpisodePaper = {
-  authors: string;
-  year: number;
-  journal: string;
-  citation: string;
-  doi: string;
-  title: string;
 };
 
 export type Episode = {
@@ -136,13 +149,12 @@ export type Episode = {
   slug: string;
   title: string;
   durationTargetSec: number;
-  paper: EpisodePaper;
   thesis: string;
-  rule: string;
   voice: string;
   voiceLabel: string;
   description: string;
   thumbLine: string;
+  thumbStill: string;
   palette: {
     cream: string;
     terracotta: string;
@@ -152,16 +164,6 @@ export type Episode = {
   };
   shorts: {
     hook: ShortBeat[];
-    rule: ShortBeat[];
   };
-  clips: EpisodeClip[];
   scenes: Scene[];
-};
-
-export type EpisodeClip = {
-  id: string;
-  sceneId: string;
-  kicker: string;
-  startSec: number;
-  endSec: number;
 };

@@ -1,5 +1,4 @@
-import { AbsoluteFill } from "remotion";
-import { CairnSlot } from "../cairn/CairnSlot";
+import { AbsoluteFill, Img, staticFile } from "remotion";
 import { episode } from "../episode";
 import { displayFont } from "../fonts";
 import { palette } from "../palette";
@@ -7,29 +6,27 @@ import { palette } from "../palette";
 export const Thumbnail = () => {
   return (
     <AbsoluteFill style={{ backgroundColor: palette.cream }}>
+      <Img
+        src={staticFile(`ep01-stills/${episode.thumbStill}`)}
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+        }}
+      />
       <div
         style={{
           position: "absolute",
           left: 80,
-          top: 80,
-        }}
-      >
-        <CairnSlot pose="point" size={720} />
-      </div>
-      <div
-        style={{
-          position: "absolute",
           right: 80,
-          top: "50%",
-          transform: "translateY(-50%)",
+          bottom: 72,
           fontFamily: displayFont,
           fontWeight: 700,
-          fontSize: 120,
+          fontSize: 92,
           lineHeight: 0.95,
           letterSpacing: "-0.03em",
           color: palette.outline,
-          textAlign: "right",
-          maxWidth: 720,
+          textAlign: "center",
         }}
       >
         {episode.thumbLine}

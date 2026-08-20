@@ -1,5 +1,4 @@
 import { Composition } from "remotion";
-import { Clip } from "./compositions/Clip";
 import { Flagship } from "./compositions/Flagship";
 import { Short } from "./compositions/Short";
 import { Thumbnail } from "./compositions/Thumbnail";
@@ -10,9 +9,7 @@ import {
   FPS,
   SHORT_HEIGHT,
   SHORT_WIDTH,
-  clipDurationSec,
   flagshipDurationInFrames,
-  secondsToFrames,
   shortDurationInFrames,
 } from "./timing";
 
@@ -44,30 +41,6 @@ export const RemotionRoot = () => {
         width={FLAGSHIP_WIDTH}
         height={FLAGSHIP_HEIGHT}
       />
-      <Composition
-        id="ep01-rule"
-        component={Short}
-        durationInFrames={shortDurationInFrames(episode.shorts.rule)}
-        fps={FPS}
-        width={SHORT_WIDTH}
-        height={SHORT_HEIGHT}
-        defaultProps={{ shortId: "rule" }}
-      />
-      {episode.clips.map((clip) => {
-        const durationSec = clipDurationSec(clip);
-        return (
-          <Composition
-            key={clip.id}
-            id={`ep01-clip-${clip.id}`}
-            component={Clip}
-            durationInFrames={secondsToFrames(durationSec)}
-            fps={FPS}
-            width={SHORT_WIDTH}
-            height={SHORT_HEIGHT}
-            defaultProps={{ clipId: clip.id }}
-          />
-        );
-      })}
     </>
   );
 };

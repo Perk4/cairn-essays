@@ -1,14 +1,14 @@
 # cairn-essays
 
-Remotion factory for Cairn essays. Episode 1 is a **story with a spoken track**. Captions support the line. They are not the show. Cairn is the body on camera.
+Remotion factory for Cairn essays. Episode 1 is **You booked it like a standup**. Talking-kit stills. Spoken track. Captions support the line. They are not the show.
+
+Takeaway: Book the passion like a job and your brain clocks in.
 
 ## Voice
 
-Flagship lines are **Qwen3-TTS CustomVoice / Ryan** through mlx-audio, near 165 wpm.
+Kokoro-82M, voice `am_echo`, speed 1.25, local, Apache. Dry. No music.
 
-It is **not Perk**. It is **not a clone**. It is **not macOS say**.
-
-See `public/vo/VOICE.md`. Regenerate speech-led lines with `npm run vo` (needs the local venv and `ffmpeg`).
+See `public/vo/VOICE.md`. `npm run vo` writes the takes.
 
 ## Install
 
@@ -19,37 +19,20 @@ npm i
 ## Render
 
 ```
+python3 scripts/draw-ep01-stills.py
+npm run vo
 npm run render
+node scripts/make-review-kit.mjs
 ```
 
 Writes:
 
-- `out/ep01.mp4` — 1920×1080 flagship, every scene in `episodes/ep01.json`, Ryan on every line, plus the CC0 music bed
-- `out/ep01-hook.mp4` — 1080×1920 Short, two beats (calling / homework), VO + bed
-- `out/ep01-rule.mp4` — 1080×1920 Short, two beats (finish / stone on the pile), VO + bed. Rule uses the **point** pose.
+- `out/ep01.mp4` — 1920×1080 flagship, stills in `public/ep01-stills/`, Kokoro on every line, dry
+- `out/ep01-hook.mp4` — 1080×1920 Short, book-it then delete-the-square
+- `review/` — 60–150s beat chunks, seams reel, contact sheet, full VO wav, timestamped transcript
 
-Studio: `npm run dev`. `ep01-thumb` is the authored 16:9 cream thumbnail. Clips are 1080×1920 remounts of the hook and each Part. Same Ryan take, trimmed to a complete thought. First-frame kicker. Picture is 20–45s.
+Studio: `npm run dev`.
 
-Description lives on the episode as `description`. It starts with “Cairn explains” and credits the warrant. No habit-app CTA. The end card is a Cairn closer. The flagship bed ducks under speech.
+## Picture
 
-## Timing
-
-Episode timing lives in `episodes/ep01.json`. Flagship scenes are speech-led and omit `durationSec`. Picture lasts the VO file plus 0.8s settle and skips the 16–72s clamp. A Clip remounts a 20–45s trim of one take at 9:16. Flagship length is the sum of those scene lengths. The feel target is about 7:30. Overshoot is fine if speech stays continuous.
-
-If `durationSec` is missing and the scene is not speech-led, runtime uses spoken/visible words:
-
-```
-durationSec = clamp(round(12 + wordCount / 2.2), 16, 72)
-```
-
-Shorts are two or more beats. Each beat has its own `durationSec`. Total is clamped to 12–30s. Kickers are on screen from frame 0 so a For You page has a second beat to cut to.
-
-## Pictures
-
-Scenes are rooms, not cream cards that fade and freeze. Cairn uses `public/cairn/{still,listen,point,react,present,slump}.png`. Caption scenes do not substitute `idle.gif` for the named pose. Parts show a concept label, not a cite card.
-
-## Music
-
-`public/music/bee-hive-pad.mp3` — John Bartmann, _bee-hive-pad-master_, [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). Source and license: `public/music/SOURCE.md`.
-
-Looped under the flagship and the Shorts, quiet, under the VO, faded in/out. No commercial track.
+Named still on the named line. New picture at least every 4s. Cairn walks, sits, walks past. Thursday sit is sitting. Delete shows the yellow square gone.
