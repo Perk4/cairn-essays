@@ -26,6 +26,9 @@
     "upgrade": "remotion upgrade",
     "lint": "eslint src && tsc",
     "vo": "node scripts/make-vo.mjs",
-    "render": "node scripts/render.mjs"
+    "stills": "python3 scripts/draw-ep01-stills.py",
+    "render": "node scripts/render.mjs",
+    "review": "node scripts/make-review-kit.mjs",
+    "check": "node scripts/check-stills.mjs && node scripts/check-package.mjs && node scripts/check-watch-notes.mjs && node scripts/check-kokoro-vo.mjs"
   }
 }

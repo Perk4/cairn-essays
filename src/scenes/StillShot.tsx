@@ -1,0 +1,92 @@
+import { Img, interpolate, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
+import { CaptionBar } from "../components/CaptionBar";
+import type { KenBurns, StillShotScene } from "../types";
+import {
+  FPS,
+  MAX_HOLD_SEC,
+  kenBurnsForSlice,
+  pictureStills,
+  stillSliceIndex,
+} from "../timing";
+
+const motionFor = (
+  kind: KenBurns,
+): { scaleFrom: number; scaleTo: number; xFrom: number; xTo: number } => {
+  switch (kind) {
+    case "in":
+      return { scaleFrom: 1.04, scaleTo: 1.12, xFrom: 0, xTo: 0 };
+    case "out":
+      return { scaleFrom: 1.12, scaleTo: 1.04, xFrom: 0, xTo: 0 };
+    case "left":
+      return { scaleFrom: 1.08, scaleTo: 1.08, xFrom: 32, xTo: -36 };
+    case "right":
+      return { scaleFrom: 1.08, scaleTo: 1.08, xFrom: -36, xTo: 32 };
+    default: {
+      const exhaustive: never = kind;
+      return exhaustive;
+    }
+  }
+};
+
+type Props = {
+  scene: StillShotScene;
+  layout: "flagship" | "short";
+  kicker?: string;
+};
+
+export const StillShot = ({ scene, layout, kicker }: Props) => {
+  const frame = useCurrentFrame();
+  const { durationInFrames } = useVideoConfig();
+  const holdFrames = MAX_HOLD_SEC * FPS;
+  const stills = pictureStills(scene);
+  const slice = stillSliceIndex(frame / FPS, stills.length);
+  const still = stills[slice];
+  if (!still) {
+    throw new Error(`Scene ${scene.id} is missing a still for slice ${slice}`);
+  }
+  const motion = motionFor(kenBurnsForSlice(scene.kenBurns, slice));
+  const localDuration = Math.min(holdFrames, durationInFrames - slice * holdFrames);
+  const localFrame = frame - slice * holdFrames;
+  const scale = interpolate(
+    localFrame,
+    [0, Math.max(1, localDuration)],
+    [motion.scaleFrom, motion.scaleTo],
+    { extrapolateRight: "clamp" },
+  );
+  const x = interpolate(
+    localFrame,
+    [0, Math.max(1, localDuration)],
+    [motion.xFrom, motion.xTo],
+    { extrapolateRight: "clamp" },
+  );
+  const objectPosition = layout === "short" ? "center 40%" : "center center";
+
+  return (
+    <div
+      style={{
+        position: "absolute",
+        inset: 0,
+        overflow: "hidden",
+        backgroundColor: "#FCF2C6",
+      }}
+    >
+      <Img
+        src={staticFile(`ep01-stills/${still}`)}
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          objectPosition,
+          transform: `translateX(${x}px) scale(${scale})`,
+          transformOrigin: "center center",
+        }}
+      />
+      <CaptionBar
+        text={scene.caption}
+        kicker={kicker}
+        layout={layout}
+        punch={Boolean(kicker)}
+      />
+    </div>
+  );
+};

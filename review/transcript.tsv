@@ -1,0 +1,139 @@
+start	end	scene	text
+0	1.275	intro-cairn	This is Cairn.
+1.344	2.951	intro-rocks	Little stack of rocks.
+3.401	4.544	intro-rocks	Stick arms.
+4.608	7.083	intro-room	Lives in a room with a desk and a keyboard.
+7.152	8.448	intro-teacher	Not your teacher.
+8.898	11.693	intro-teacher	Just a guy who keeps going back to the thing he likes.
+11.76	14.149	tue-keyboard	Tuesday the keyboard was just a keyboard.
+14.208	15.697	tue-desk	It was on the desk.
+15.768	17.923	tue-walk-in	Cairn walked in because he felt like it.
+17.976	19.469	tue-nobody	Nobody texted him.
+19.536	21.294	tue-dark	He played until it got dark.
+21.36	22.808	tue-time	Didn't check the time.
+22.872	24.856	tue-chair	Didn't owe the chair a full hour.
+24.912	26.597	tue-left	Left when the song was done.
+27.047	28.603	tue-left	Or when he got bored.
+29.053	30.229	tue-left	That's allowed.
+30.288	31.755	books-fun	That's the fun part.
+32.205	33.529	books-fun	You just show up.
+33.979	35.21	books-fun	You don't plan it.
+35.28	36.697	books-serious	Then he got serious.
+36.768	38.217	books-opened	Opened his calendar.
+38.667	39.77	books-opened	Made a block.
+40.22	41.222	books-opened	Tuesday.
+41.672	42.539	books-opened	Seven.
+42.6	44.669	books-keys	Wrote KEYS on it like it was standup.
+44.736	45.917	books-yellow	Yellow square.
+46.367	47.519	books-yellow	Start time.
+47.969	49.2	books-yellow	End time.
+49.248	52.491	books-invite	Even put the room in the invite like someone else was coming.
+52.56	53.995	books-proud	He was proud of that.
+54.445	55.632	books-proud	Felt grown.
+56.082	58.738	books-proud	Like, okay, I'm not flaking on this anymore.
+58.8	60.858	wed-check	Wednesday he checked the square twice.
+61.308	62.344	wed-check	Still there.
+62.794	63.638	wed-check	Nice.
+64.088	65.591	wed-check	He had a practice now.
+65.64	66.871	wed-friend	Told a friend.
+67.321	68.887	wed-friend	I blocked time for it.
+69.337	70.753	wed-friend	Friend said fire.
+71.203	72.919	wed-friend	Cairn felt like an adult.
+72.984	76.184	wed-past	Wednesday night he walked past the keyboard and didn't touch it.
+76.248	77.825	wed-save	He had a block tomorrow.
+78.275	79.235	wed-save	Saving it.
+79.685	81.465	wed-save	That felt responsible too.
+81.528	83.448	thu-hit	Thursday the square actually hit.
+83.496	84.923	thu-clock	Clock hits seven.
+84.984	86.515	thu-chair	Chair's already out.
+86.568	88.68	thu-sit	Cairn sits down like it's a meeting.
+88.728	90.23	thu-hands	Hands on the keys.
+90.68	92.02	thu-hands	Waiting to want it.
+92.088	93.545	thu-want	He does not want it.
+93.6	94.92	thu-same	Same keyboard.
+95.37	96.483	thu-same	Same room.
+96.933	98.457	thu-same	Totally different vibe.
+98.52	100.033	thu-brain	Hands know what to do.
+100.483	102.105	thu-brain	Brain is in the standup.
+102.168	103.754	thu-watch	He's watching the clock.
+103.824	107.067	thu-hour	He plays the whole hour anyway because the calendar said so.
+107.136	108.27	thu-ends	Block ends.
+108.72	110.853	thu-ends	He stands up like the call is over.
+110.904	112.191	thu-lid	Closes the lid.
+112.641	113.963	thu-lid	Leaves on time.
+114.024	115.397	thu-attended	He did the hour.
+115.847	117.377	thu-attended	Could've checked a box.
+117.827	119.427	thu-attended	Didn't feel like he played.
+119.877	121.325	thu-attended	Felt like he attended.
+121.392	124.507	fri-walk	Friday morning he walks past the desk and feels guilty.
+124.56	126.329	fri-look	Not fail-a-test guilty.
+126.779	128.998	fri-look	Keyboard's just sitting there looking at him.
+129.448	131.357	fri-look	Like a task he didn't finish.
+131.424	132.73	fri-coffee	He makes coffee.
+133.18	134.769	fri-coffee	Walks past it again.
+135.219	136.573	fri-coffee	Still feels it.
+136.632	138.36	sat-looks	Saturday he does it again.
+138.81	140.043	sat-looks	Not at seven.
+140.493	141.593	sat-looks	Just looks.
+142.043	143.599	sat-looks	Keyboard didn't move.
+144.049	145.388	sat-looks	The feeling did.
+145.44	147.252	sat-homework	Used to walk over and want it.
+147.702	149.814	sat-homework	Now he walks over and it's homework.
+149.88	153.187	sat-mug	Puts his mug down and leaves so he doesn't owe it another minute.
+153.24	155.352	name-board	Someone on a writing board said it.
+155.802	157.957	name-board	What's a passion will turn into a chore.
+158.407	162.289	name-board	An artist said they booked an hour to be creative and then sat there in nothing.
+162.739	166.494	name-board	Another person said they feel guilty every time they see the keyboard.
+166.56	168.021	name-walk	Cairn was like yeah.
+168.471	169.656	name-walk	That's the walk.
+169.704	171.368	name-work	He didn't fall off the thing.
+171.818	174.015	name-work	He put it on the calendar like work.
+174.465	176.471	name-work	So his brain did work-brain.
+176.921	178.012	name-work	Clocked in.
+178.08	179.487	name-story	That's the whole story.
+179.937	180.984	name-story	One move.
+181.434	182.567	name-story	One result.
+182.616	185.112	name-mindset	People who study this gave it a boring name.
+185.562	186.957	name-mindset	Calendar mindset.
+187.407	190.735	name-mindset	They had people put a clock time on stuff that used to be free.
+191.185	192.035	name-mindset	Dinner.
+192.485	193.444	name-mindset	A walk.
+193.894	195.096	name-mindset	A hobby hour.
+195.546	198.156	name-mindset	Once it had a start time, it felt like a job.
+198.606	200.377	name-mindset	The fun didn't leave the thing.
+200.827	202.917	name-mindset	The fun left when the block showed up.
+202.968	204.803	name-chart	Cairn doesn't need their chart.
+205.253	206.831	name-chart	He has the yellow square.
+207.281	208.585	name-chart	That's the chart.
+208.656	210.341	move-small	So he does the small thing.
+210.408	211.889	move-delete	Opens the calendar.
+212.339	214.119	move-delete	Deletes Tuesday at seven.
+214.176	215.405	move-gone	Square's gone.
+215.855	217.238	move-gone	Week looks empty.
+217.688	218.927	move-gone	That's the point.
+219.377	221.319	move-gone	He doesn't make a better standup.
+221.769	223.369	move-gone	Doesn't write KEYS 2.
+223.819	226.144	move-gone	Doesn't set a reminder to be inspired.
+226.2	228.551	move-over	If he wants the keyboard, he walks over.
+228.6	230.391	move-past	If he doesn't, he walks past.
+230.841	232.611	move-past	He doesn't owe it an hour.
+232.68	234.213	move-night	That night he tests it.
+234.663	236.066	move-night	Goes to the desk.
+236.516	237.615	move-night	Doesn't sit.
+238.065	238.993	move-night	Leaves.
+239.443	240.575	move-night	No guilt.
+241.025	242.988	move-night	Keyboard's just furniture again.
+243.048	244.776	move-four	Later he walks over at four.
+245.226	246.374	move-four	No reason.
+246.432	248.736	move-song	Plays one song because he's already there.
+249.186	250.613	move-song	Stops when it's done.
+250.68	252.236	move-stone	Puts that on the pile.
+252.686	253.874	move-stone	One stone.
+254.324	255.753	move-stone	A session that happened.
+256.203	257.474	move-stone	Not a streak.
+257.924	260.185	move-stone	Not a 7pm personality.
+260.256	262.325	move-again	Keyboard's just a keyboard again.
+262.392	264.002	move-die	The passion didn't die.
+264.452	266.159	move-die	He booked it like a standup.
+266.208	268.755	cta	If this week's takeaway stuck, subscribe.
+269.205	271.211	cta	Next one lands same time.

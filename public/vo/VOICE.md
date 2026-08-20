@@ -1,20 +1,16 @@
 # Voice
 
-Flagship lines are **Qwen3-TTS CustomVoice / Ryan** through mlx-audio on this machine.
+Flagship lines are **Kokoro-82M**, voice `am_echo`, speed **1.25**, local, Apache-2.0.
 
-Primary model is 1.7B. If that will not load, 0.6B CustomVoice / Ryan. If Qwen3 will not run, Kokoro-82M `af_heart`.
+- Not espeak
+- Not ElevenLabs
+- Not Qwen / Ryan
+- Not macOS `say`
 
-- Not Perk
-- Not a Perk clone
-- Not macOS `say` / Samantha
-- Not cloud TTS
-
-The mouth on speech-led lines reads the RMS envelope in `src/voEnvelopes.json`.
-
-Regenerate speech-led lines:
+Config is `public/vo/voice.json`. Swap the voice field there. Do not hardcode the speaker in the cut.
 
 ```
 npm run vo
 ```
 
-Needs the local venv at `/tmp/cairn-vo-venv` (or `CAIRN_VO_PYTHON`) plus `ffmpeg`.
+Needs `/tmp/cairn-vo-venv` (or `CAIRN_VO_PYTHON`) plus `ffmpeg`.

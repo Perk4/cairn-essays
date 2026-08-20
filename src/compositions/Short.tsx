@@ -1,16 +1,27 @@
-import { AbsoluteFill, Sequence } from "remotion";
-import { MusicBed } from "./MusicBed";
-import { CairnSlot } from "../cairn/CairnSlot";
+import {
+  AbsoluteFill,
+  Img,
+  Sequence,
+  interpolate,
+  staticFile,
+  useCurrentFrame,
+  useVideoConfig,
+} from "remotion";
 import { CaptionBar } from "../components/CaptionBar";
-import { Room } from "../components/Room";
 import { VoAudio } from "../components/VoAudio";
 import { episode } from "../episode";
 import type { ShortBeat } from "../types";
-import { secondsToFrames } from "../timing";
-import { SceneVisual } from "../visuals";
+import {
+  FPS,
+  MAX_HOLD_SEC,
+  kenBurnsForSlice,
+  pictureStills,
+  secondsToFrames,
+  stillSliceIndex,
+} from "../timing";
 
 export type ShortProps = {
-  shortId: "hook" | "rule";
+  shortId: "hook";
 };
 
 export const Short = ({ shortId }: ShortProps) => {
@@ -18,8 +29,7 @@ export const Short = ({ shortId }: ShortProps) => {
   let from = 0;
 
   return (
-    <AbsoluteFill>
-      <MusicBed fadeInSec={0.25} fadeOutSec={1.2} volume={0.1} />
+    <AbsoluteFill style={{ backgroundColor: "#FCF2C6" }}>
       {beats.map((beat) => {
         const durationInFrames = secondsToFrames(beat.durationSec);
         const start = from;
@@ -41,42 +51,37 @@ export const Short = ({ shortId }: ShortProps) => {
 };
 
 const ShortBeatView = ({ beat }: { beat: ShortBeat }) => {
-  const drop = beat.id === "stone";
+  const frame = useCurrentFrame();
+  const { durationInFrames } = useVideoConfig();
+  const holdFrames = MAX_HOLD_SEC * FPS;
+  const stills = pictureStills(beat);
+  const slice = stillSliceIndex(frame / FPS, stills.length);
+  const still = stills[slice];
+  if (!still) {
+    throw new Error(`Short beat ${beat.id} is missing a still for slice ${slice}`);
+  }
+  const pan = kenBurnsForSlice("in", slice) === "in" ? 1.06 : 1.14;
+  const zoom = interpolate(
+    frame - slice * holdFrames,
+    [0, Math.max(1, Math.min(holdFrames, durationInFrames - slice * holdFrames))],
+    [pan, pan + 0.08],
+    { extrapolateRight: "clamp" },
+  );
+
   return (
-    <Room mood={beat.mood} layout="short">
-      <div
+    <AbsoluteFill style={{ overflow: "hidden", backgroundColor: "#FCF2C6" }}>
+      <Img
+        src={staticFile(`ep01-stills/${still}`)}
         style={{
-          position: "absolute",
-          left: "50%",
-          top: 80,
-          transform: "translateX(-50%)",
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          objectPosition: "center 35%",
+          transform: `scale(${zoom})`,
+          transformOrigin: "center 40%",
         }}
-      >
-        <CairnSlot pose={beat.pose} size={560} />
-      </div>
-      {beat.visual ? (
-        <div
-          style={{
-            position: "absolute",
-            left: "50%",
-            top: 680,
-            transform: "translateX(-50%)",
-          }}
-        >
-          <SceneVisual
-            visual={beat.visual}
-            layout="short"
-            drop={drop}
-            mood={beat.mood}
-          />
-        </div>
-      ) : null}
-      <CaptionBar
-        text={beat.caption}
-        kicker={beat.kicker}
-        layout="short"
-        punch
       />
-    </Room>
+      <CaptionBar text={beat.caption} kicker={beat.id.toUpperCase()} layout="short" punch />
+    </AbsoluteFill>
   );
 };

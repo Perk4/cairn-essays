@@ -1,22 +1,14 @@
 {
   "id": "ep01",
-  "slug": "find-it-or-develop-it",
-  "title": "Find it or develop it",
-  "durationTargetSec": 450,
-  "paper": {
-    "authors": "O’Keefe, Dweck & Walton",
-    "year": 2018,
-    "journal": "Psychological Science",
-    "citation": "29(10): 1653–1664",
-    "doi": "10.1177/0956797618780643",
-    "title": "Implicit theories of interest: Finding your passion or developing it?"
-  },
-  "thesis": "Hard does not mean you picked the wrong thing. Finish the session anyway.",
-  "rule": "This week, when the side project gets dull or hard, treat that as the development process. Not as evidence you found the wrong passion. Finish the session anyway.",
-  "voice": "qwen3-tts-ryan",
-  "voiceLabel": "Flagship lines are Qwen3-TTS CustomVoice / Ryan via mlx-audio, near 165 wpm. Not Perk. Not a clone. Not say.",
-  "description": "Cairn explains why a dull Thursday is not proof he picked the wrong passion. Warrant: O’Keefe, Dweck & Walton, 2018, Psychological Science.",
-  "thumbLine": "THE WORK",
+  "slug": "you-booked-it-like-a-standup",
+  "title": "You booked it like a standup",
+  "durationTargetSec": 420,
+  "thesis": "Book the passion like a job and your brain clocks in.",
+  "voice": "kokoro/am_echo",
+  "voiceLabel": "Kokoro-82M am_echo 1.25",
+  "description": "Cairn books the keyboard like a standup. His brain clocks in. One thesis. Book the passion like a job and it starts to feel like work.",
+  "thumbLine": "Yellow square",
+  "thumbStill": "03-he-books-it-yellow-square.png",
   "palette": {
     "cream": "#FCF2C6",
     "terracotta": "#A5532D",
@@ -27,588 +19,614 @@
   "shorts": {
     "hook": [
       {
-        "id": "calling",
-        "pose": "listen",
-        "kicker": "TUESDAY",
-        "caption": "Tuesday it felt like a calling.",
-        "mood": "warm",
-        "visual": "callingHomework",
-        "vo": "Tuesday it felt like a calling.",
-        "durationSec": 9
+        "id": "book",
+        "still": "03-he-books-it-wrote-keys.png",
+        "altStill": "03-he-books-it-yellow-square.png",
+        "vo": "Wrote KEYS on it like it was standup. Yellow square. Start time. End time.",
+        "caption": "Yellow square."
       },
       {
-        "id": "homework",
-        "pose": "still",
-        "kicker": "THURSDAY",
-        "caption": "Thursday it felt like homework.",
-        "mood": "cold",
-        "visual": "callingHomework",
-        "vo": "Thursday it felt like homework.",
-        "durationSec": 9
-      }
-    ],
-    "rule": [
-      {
-        "id": "finish",
-        "pose": "point",
-        "kicker": "FINISH",
-        "caption": "Finish the session anyway.",
-        "mood": "default",
-        "visual": "stoneDrop",
-        "vo": "Finish the session anyway.",
-        "durationSec": 9
-      },
-      {
-        "id": "stone",
-        "pose": "point",
-        "kicker": "STACK",
-        "caption": "Put the stone on the pile.",
-        "mood": "default",
-        "visual": "stoneDrop",
-        "vo": "Put the stone on the pile.",
-        "durationSec": 9
+        "id": "delete",
+        "still": "08-the-move-deletes-tuesday-at-seven.png",
+        "altStill": "08-the-move-square-is-gone.png",
+        "vo": "Opens the calendar. Deletes Tuesday at seven. Square's gone. Week looks empty.",
+        "caption": "Square's gone."
       }
     ]
   },
-  "clips": [
-    {
-      "id": "hook",
-      "sceneId": "hook",
-      "kicker": "TUESDAY",
-      "startSec": 0,
-      "endSec": 26.933
-    },
-    {
-      "id": "part1",
-      "sceneId": "part1",
-      "kicker": "FIXED INTEREST",
-      "startSec": 0,
-      "endSec": 36.467
-    },
-    {
-      "id": "part2",
-      "sceneId": "part2",
-      "kicker": "INTERESTS DEVELOP",
-      "startSec": 0,
-      "endSec": 36.467
-    },
-    {
-      "id": "part3",
-      "sceneId": "part3",
-      "kicker": "HARD IS NOT WRONG",
-      "startSec": 0,
-      "endSec": 32.933
-    },
-    {
-      "id": "part4",
-      "sceneId": "part4",
-      "kicker": "FINISH THE SESSION",
-      "startSec": 0,
-      "endSec": 30.433
-    },
-    {
-      "id": "part5",
-      "sceneId": "part5",
-      "kicker": "STONE ON THE PILE",
-      "startSec": 0,
-      "endSec": 29
-    }
-  ],
   "scenes": [
     {
-      "id": "hook",
-      "type": "cairnCaption",
-      "pose": "listen",
-      "visual": "callingHomework",
-      "mood": "warm",
-      "caption": "TUESDAY",
-      "vo": "Tuesday it felt like the one. Cairn sat down and treated the pile like a calling. Thursday the same pile felt like homework. Same desk. Same files. Different verdict. Cairn almost walked. Hard must mean he picked the wrong thing. A dull night read as proof the passion was a fake. It does not. That is the work. The spark dying is the job, not the warning. Five things Cairn does when the spark dies.",
-      "speechLed": true,
-      "beats": [
-        {
-          "atSec": 0,
-          "pose": "listen",
-          "caption": "TUESDAY",
-          "mood": "warm"
-        },
-        {
-          "atSec": 5,
-          "pose": "slump",
-          "caption": "THURSDAY",
-          "mood": "cold"
-        },
-        {
-          "atSec": 11,
-          "pose": "react",
-          "caption": "WRONG THING?",
-          "mood": "cold"
-        },
-        {
-          "atSec": 17,
-          "pose": "present",
-          "caption": "THE WORK",
-          "mood": "default"
-        },
-        {
-          "atSec": 22,
-          "pose": "point",
-          "caption": "5 PARTS",
-          "mood": "default"
-        }
+      "id": "intro-cairn",
+      "type": "stillShot",
+      "beat": "00-hook",
+      "still": "01-intro-this-is-cairn.png",
+      "kenBurns": "in",
+      "caption": "This is Cairn.",
+      "vo": "This is Cairn."
+    },
+    {
+      "id": "intro-rocks",
+      "type": "stillShot",
+      "beat": "00-hook",
+      "still": "01-intro-little-stack-of-rocks.png",
+      "kenBurns": "in",
+      "caption": "Little stack of rocks.",
+      "vo": "Little stack of rocks. Stick arms."
+    },
+    {
+      "id": "intro-room",
+      "type": "stillShot",
+      "beat": "00-hook",
+      "still": "01-intro-lives-in-a-room.png",
+      "kenBurns": "out",
+      "caption": "A room with a desk and a keyboard.",
+      "vo": "Lives in a room with a desk and a keyboard."
+    },
+    {
+      "id": "intro-teacher",
+      "type": "stillShot",
+      "beat": "00-hook",
+      "still": "01-intro-not-your-teacher.png",
+      "altStill": "01-intro-lives-in-a-room.png",
+      "kenBurns": "right",
+      "caption": "Not your teacher.",
+      "vo": "Not your teacher. Just a guy who keeps going back to the thing he likes."
+    },
+    {
+      "id": "tue-keyboard",
+      "type": "stillShot",
+      "beat": "01-tuesday",
+      "still": "02-tuesday-the-keyboard-was-just-a-keyboard.png",
+      "kenBurns": "in",
+      "caption": "The keyboard was just a keyboard.",
+      "vo": "Tuesday the keyboard was just a keyboard."
+    },
+    {
+      "id": "tue-desk",
+      "type": "stillShot",
+      "beat": "01-tuesday",
+      "still": "02-tuesday-it-was-on-the-desk.png",
+      "kenBurns": "in",
+      "caption": "It was on the desk.",
+      "vo": "It was on the desk."
+    },
+    {
+      "id": "tue-walk-in",
+      "type": "stillShot",
+      "beat": "01-tuesday",
+      "still": "02-tuesday-cairn-walked-in.png",
+      "kenBurns": "right",
+      "caption": "He walked in because he felt like it.",
+      "vo": "Cairn walked in because he felt like it."
+    },
+    {
+      "id": "tue-nobody",
+      "type": "stillShot",
+      "beat": "01-tuesday",
+      "still": "02-tuesday-nobody-texted-him.png",
+      "kenBurns": "out",
+      "caption": "Nobody texted him.",
+      "vo": "Nobody texted him."
+    },
+    {
+      "id": "tue-dark",
+      "type": "stillShot",
+      "beat": "01-tuesday",
+      "still": "02-tuesday-he-played-until-it-got-dark.png",
+      "kenBurns": "left",
+      "caption": "He played until it got dark.",
+      "vo": "He played until it got dark."
+    },
+    {
+      "id": "tue-time",
+      "type": "stillShot",
+      "beat": "01-tuesday",
+      "still": "02-tuesday-didnt-check-the-time.png",
+      "kenBurns": "in",
+      "caption": "Didn't check the time.",
+      "vo": "Didn't check the time."
+    },
+    {
+      "id": "tue-chair",
+      "type": "stillShot",
+      "beat": "01-tuesday",
+      "still": "02-tuesday-didnt-owe-the-chair.png",
+      "kenBurns": "out",
+      "caption": "Didn't owe the chair a full hour.",
+      "vo": "Didn't owe the chair a full hour."
+    },
+    {
+      "id": "tue-left",
+      "type": "stillShot",
+      "beat": "01-tuesday",
+      "still": "02-tuesday-left-when-the-song-was-done.png",
+      "altStill": "02-tuesday-the-keyboard-was-just-a-keyboard.png",
+      "kenBurns": "right",
+      "caption": "Left when the song was done.",
+      "vo": "Left when the song was done. Or when he got bored. That's allowed."
+    },
+    {
+      "id": "books-fun",
+      "type": "stillShot",
+      "beat": "02-books",
+      "still": "03-he-books-it-thats-the-fun-part.png",
+      "kenBurns": "right",
+      "caption": "That's the fun part.",
+      "vo": "That's the fun part. You just show up. You don't plan it.",
+      "altStill": "02-tuesday-cairn-walked-in.png"
+    },
+    {
+      "id": "books-serious",
+      "type": "stillShot",
+      "beat": "02-books",
+      "still": "03-he-books-it-then-he-got-serious.png",
+      "kenBurns": "in",
+      "caption": "Then he got serious.",
+      "vo": "Then he got serious."
+    },
+    {
+      "id": "books-opened",
+      "type": "stillShot",
+      "beat": "02-books",
+      "still": "03-he-books-it-opened-his-calendar.png",
+      "kenBurns": "in",
+      "caption": "Opened his calendar.",
+      "vo": "Opened his calendar. Made a block. Tuesday. Seven.",
+      "altStill": "03-he-books-it-yellow-square.png"
+    },
+    {
+      "id": "books-keys",
+      "type": "stillShot",
+      "beat": "02-books",
+      "still": "03-he-books-it-wrote-keys.png",
+      "kenBurns": "in",
+      "caption": "Wrote KEYS.",
+      "vo": "Wrote KEYS on it like it was standup."
+    },
+    {
+      "id": "books-yellow",
+      "type": "stillShot",
+      "beat": "02-books",
+      "still": "03-he-books-it-yellow-square.png",
+      "kenBurns": "in",
+      "caption": "Yellow square.",
+      "vo": "Yellow square. Start time. End time.",
+      "altStill": "03-he-books-it-wrote-keys.png"
+    },
+    {
+      "id": "books-invite",
+      "type": "stillShot",
+      "beat": "02-books",
+      "still": "03-he-books-it-put-the-room-in-the-invite.png",
+      "kenBurns": "out",
+      "caption": "He put the room in the invite.",
+      "vo": "Even put the room in the invite like someone else was coming."
+    },
+    {
+      "id": "books-proud",
+      "type": "stillShot",
+      "beat": "02-books",
+      "still": "03-he-books-it-he-was-proud.png",
+      "altStill": "03-he-books-it-yellow-square.png",
+      "kenBurns": "out",
+      "caption": "He was proud of that.",
+      "vo": "He was proud of that. Felt grown. Like, okay, I'm not flaking on this anymore."
+    },
+    {
+      "id": "wed-check",
+      "type": "stillShot",
+      "beat": "03-wednesday",
+      "still": "04-wednesday-checked-the-square-twice.png",
+      "altStill": "03-he-books-it-yellow-square.png",
+      "kenBurns": "in",
+      "caption": "He checked the square twice.",
+      "vo": "Wednesday he checked the square twice. Still there. Nice. He had a practice now."
+    },
+    {
+      "id": "wed-friend",
+      "type": "stillShot",
+      "beat": "03-wednesday",
+      "still": "04-wednesday-told-a-friend.png",
+      "altStill": "01-intro-lives-in-a-room.png",
+      "kenBurns": "out",
+      "caption": "Told a friend.",
+      "vo": "Told a friend. I blocked time for it. Friend said fire. Cairn felt like an adult."
+    },
+    {
+      "id": "wed-past",
+      "type": "stillShot",
+      "beat": "03-wednesday",
+      "still": "04-wednesday-walked-past-the-keyboard.png",
+      "kenBurns": "right",
+      "caption": "Walked past. Didn't touch it.",
+      "vo": "Wednesday night he walked past the keyboard and didn't touch it."
+    },
+    {
+      "id": "wed-save",
+      "type": "stillShot",
+      "beat": "03-wednesday",
+      "still": "04-wednesday-he-had-a-block-tomorrow.png",
+      "kenBurns": "in",
+      "caption": "He had a block tomorrow.",
+      "vo": "He had a block tomorrow. Saving it. That felt responsible too.",
+      "altStill": "04-wednesday-walked-past-the-keyboard.png"
+    },
+    {
+      "id": "thu-hit",
+      "type": "stillShot",
+      "beat": "04-thursday",
+      "still": "05-thursday-the-square-actually-hit.png",
+      "kenBurns": "in",
+      "caption": "Thursday the square actually hit.",
+      "vo": "Thursday the square actually hit."
+    },
+    {
+      "id": "thu-clock",
+      "type": "stillShot",
+      "beat": "04-thursday",
+      "still": "05-thursday-clock-hits-seven.png",
+      "kenBurns": "in",
+      "caption": "Clock hits seven.",
+      "vo": "Clock hits seven."
+    },
+    {
+      "id": "thu-chair",
+      "type": "stillShot",
+      "beat": "04-thursday",
+      "still": "05-thursday-chairs-already-out.png",
+      "kenBurns": "out",
+      "caption": "Chair's already out.",
+      "vo": "Chair's already out."
+    },
+    {
+      "id": "thu-sit",
+      "type": "stillShot",
+      "beat": "04-thursday",
+      "still": "05-thursday-cairn-sits-down.png",
+      "kenBurns": "in",
+      "caption": "Cairn sits down like it's a meeting.",
+      "vo": "Cairn sits down like it's a meeting."
+    },
+    {
+      "id": "thu-hands",
+      "type": "stillShot",
+      "beat": "04-thursday",
+      "still": "05-thursday-hands-on-the-keys.png",
+      "kenBurns": "in",
+      "caption": "Hands on the keys.",
+      "vo": "Hands on the keys. Waiting to want it."
+    },
+    {
+      "id": "thu-want",
+      "type": "stillShot",
+      "beat": "04-thursday",
+      "still": "05-thursday-he-does-not-want-it.png",
+      "kenBurns": "out",
+      "caption": "He does not want it.",
+      "vo": "He does not want it."
+    },
+    {
+      "id": "thu-same",
+      "type": "stillShot",
+      "beat": "04-thursday",
+      "still": "05-thursday-same-keyboard-same-room.png",
+      "kenBurns": "left",
+      "caption": "Same keyboard. Same room.",
+      "vo": "Same keyboard. Same room. Totally different vibe.",
+      "altStill": "02-tuesday-the-keyboard-was-just-a-keyboard.png"
+    },
+    {
+      "id": "thu-brain",
+      "type": "stillShot",
+      "beat": "04-thursday",
+      "still": "05-thursday-hands-know-what-to-do.png",
+      "kenBurns": "in",
+      "caption": "Brain is in the standup.",
+      "vo": "Hands know what to do. Brain is in the standup."
+    },
+    {
+      "id": "thu-watch",
+      "type": "stillShot",
+      "beat": "04-thursday",
+      "still": "05-thursday-hes-watching-the-clock.png",
+      "kenBurns": "in",
+      "caption": "He's watching the clock.",
+      "vo": "He's watching the clock."
+    },
+    {
+      "id": "thu-hour",
+      "type": "stillShot",
+      "beat": "04-thursday",
+      "still": "05-thursday-plays-the-whole-hour.png",
+      "kenBurns": "out",
+      "caption": "He plays the whole hour anyway.",
+      "vo": "He plays the whole hour anyway because the calendar said so."
+    },
+    {
+      "id": "thu-ends",
+      "type": "stillShot",
+      "beat": "04-thursday",
+      "still": "05-thursday-block-ends.png",
+      "kenBurns": "out",
+      "caption": "Block ends.",
+      "vo": "Block ends. He stands up like the call is over."
+    },
+    {
+      "id": "thu-lid",
+      "type": "stillShot",
+      "beat": "04-thursday",
+      "still": "05-thursday-closes-the-lid.png",
+      "kenBurns": "right",
+      "caption": "Closes the lid. Leaves on time.",
+      "vo": "Closes the lid. Leaves on time."
+    },
+    {
+      "id": "thu-attended",
+      "type": "stillShot",
+      "beat": "04-thursday",
+      "still": "05-thursday-closes-the-lid.png",
+      "altStill": "05-thursday-block-ends.png",
+      "kenBurns": "out",
+      "caption": "Felt like he attended.",
+      "vo": "He did the hour. Could've checked a box. Didn't feel like he played. Felt like he attended."
+    },
+    {
+      "id": "fri-walk",
+      "type": "stillShot",
+      "beat": "05-weekend",
+      "still": "06-friday-walks-past-the-desk.png",
+      "kenBurns": "right",
+      "caption": "Walks past the desk and feels guilty.",
+      "vo": "Friday morning he walks past the desk and feels guilty."
+    },
+    {
+      "id": "fri-look",
+      "type": "stillShot",
+      "beat": "05-weekend",
+      "still": "06-friday-keyboard-looking-at-him.png",
+      "altStill": "02-tuesday-the-keyboard-was-just-a-keyboard.png",
+      "kenBurns": "in",
+      "caption": "Keyboard's looking at him.",
+      "vo": "Not fail-a-test guilty. Keyboard's just sitting there looking at him. Like a task he didn't finish."
+    },
+    {
+      "id": "fri-coffee",
+      "type": "stillShot",
+      "beat": "05-weekend",
+      "still": "06-friday-he-makes-coffee.png",
+      "altStill": "06-friday-walks-past-the-desk.png",
+      "kenBurns": "left",
+      "caption": "He makes coffee. Walks past it again.",
+      "vo": "He makes coffee. Walks past it again. Still feels it."
+    },
+    {
+      "id": "sat-looks",
+      "type": "stillShot",
+      "beat": "05-weekend",
+      "still": "06-saturday-just-looks.png",
+      "altStill": "02-tuesday-the-keyboard-was-just-a-keyboard.png",
+      "kenBurns": "in",
+      "caption": "Saturday he just looks.",
+      "vo": "Saturday he does it again. Not at seven. Just looks. Keyboard didn't move. The feeling did.",
+      "holdStills": [
+        "06-saturday-used-to-want-it.png"
       ]
     },
     {
-      "id": "part1",
-      "type": "cairnCaption",
-      "pose": "present",
-      "visual": "conceptLabel",
-      "mood": "default",
-      "label": "Fixed interest",
-      "caption": "Cairn treats a dull Thursday as proof he picked wrong.",
-      "vo": "Part one. Fixed interest. Cairn treats a dull Thursday as proof he picked wrong. If the pile feels like homework, the passion must be fake. So Cairn closes the folder. He tells a friend it was not the one. That is the trap. A hard night is not a verdict. Find your passion is a fixed theory of interest. It makes Cairn loyal until the spark dies, then it makes him leave. Tuesday was allowed to feel like a calling. Thursday is not allowed to feel like work. The moment the desk goes cold, Cairn reads it as evidence he found the wrong thing. He does not ask what the pile needs. He asks whether he is still the kind of person who loves this. That question is the trap. Interests are not soulmates waiting in a drawer. They are built. The paper is O'Keefe, Dweck, and Walton, two thousand eighteen. Cairn keeps the folder open. He does not perform a passion test at midnight. He does not audit his personality against a dull page. He names the theory that is talking. Fixed interest. Then he sits back down. The folder stays on the desk. The chair stays pulled in. That is Part one made visible.",
-      "speechLed": true,
-      "beats": [
-        {
-          "atSec": 0,
-          "pose": "present",
-          "caption": "FIXED INTEREST",
-          "mood": "default"
-        },
-        {
-          "atSec": 6,
-          "pose": "slump",
-          "caption": "DULL THURSDAY",
-          "mood": "default"
-        },
-        {
-          "atSec": 12,
-          "pose": "slump",
-          "caption": "THE TRAP",
-          "mood": "default"
-        },
-        {
-          "atSec": 18,
-          "pose": "react",
-          "caption": "NOT A VERDICT",
-          "mood": "default"
-        },
-        {
-          "atSec": 24,
-          "pose": "point",
-          "caption": "KEEP THE FOLDER",
-          "mood": "default"
-        },
-        {
-          "atSec": 30,
-          "pose": "listen",
-          "caption": "NAME THE THEORY",
-          "mood": "default"
-        },
-        {
-          "atSec": 36,
-          "pose": "present",
-          "caption": "SIT BACK DOWN",
-          "mood": "default"
-        },
-        {
-          "atSec": 42,
-          "pose": "present",
-          "caption": "SIT BACK DOWN",
-          "mood": "default"
-        },
-        {
-          "atSec": 48,
-          "pose": "present",
-          "caption": "SIT BACK DOWN",
-          "mood": "default"
-        },
-        {
-          "atSec": 54,
-          "pose": "present",
-          "caption": "SIT BACK DOWN",
-          "mood": "default"
-        },
-        {
-          "atSec": 60,
-          "pose": "present",
-          "caption": "SIT BACK DOWN",
-          "mood": "default"
-        },
-        {
-          "atSec": 66,
-          "pose": "present",
-          "caption": "SIT BACK DOWN",
-          "mood": "default"
-        },
-        {
-          "atSec": 72,
-          "pose": "present",
-          "caption": "SIT BACK DOWN",
-          "mood": "default"
-        }
+      "id": "sat-homework",
+      "type": "stillShot",
+      "beat": "05-weekend",
+      "still": "06-saturday-used-to-want-it.png",
+      "kenBurns": "out",
+      "caption": "Now he walks over and it's homework.",
+      "vo": "Used to walk over and want it. Now he walks over and it's homework.",
+      "altStill": "08-the-move-walks-over.png"
+    },
+    {
+      "id": "sat-mug",
+      "type": "stillShot",
+      "beat": "05-weekend",
+      "still": "06-saturday-puts-his-mug-down.png",
+      "kenBurns": "right",
+      "caption": "Puts his mug down and leaves.",
+      "vo": "Puts his mug down and leaves so he doesn't owe it another minute."
+    },
+    {
+      "id": "name-board",
+      "type": "stillShot",
+      "beat": "06-name",
+      "still": "07-the-name-writing-board.png",
+      "altStill": "07-the-name-thats-the-walk.png",
+      "kenBurns": "in",
+      "caption": "Someone on a writing board said it.",
+      "vo": "Someone on a writing board said it. What's a passion will turn into a chore. An artist said they booked an hour to be creative and then sat there in nothing. Another person said they feel guilty every time they see the keyboard.",
+      "holdStills": [
+        "06-friday-keyboard-looking-at-him.png",
+        "05-thursday-he-does-not-want-it.png"
       ]
     },
     {
-      "id": "part2",
-      "type": "cairnCaption",
-      "pose": "present",
-      "visual": "conceptLabel",
-      "mood": "default",
-      "label": "Interests develop",
-      "caption": "An interest is grown. It is not found.",
-      "vo": "Part two. Interests develop. The warrant's actual claim is a rule Cairn can use. An interest is grown. It is not found like a coin under a bench. When Cairn sits with a mismatching article, a find theory cools him. A develop theory keeps him curious. Same page. Different theory. Different heat. Cairn uses that. Thursday feeling like homework is not a broken compass. It is the first hour of development. He does not need a new passion. He needs another pass. The spark is not a verdict. It is a starting temperature. Cairn treats the dull page as the work, not as a warning that he chose badly. He reads the hard paragraph again. He does not open a new folder to feel Tuesday again. Develop it means stay long enough for the interest to thicken. That is the rule. Cairn gives the pile a second hour before he gives it a funeral. He lets a mismatch stay on the desk. He writes one more sentence after the feeling leaves. Curiosity is a practice, not a weather report. If the page is cold, Cairn adds friction on purpose. He asks one better question of the same file. That is development. Not a new calling. In the studies, people handed a find theory cooled on the mismatch. People handed a develop theory did not. Cairn borrows that. He talks to himself like the develop group. The article can be wrong for his taste and still be worth a pass. Taste is not a locked door.",
-      "speechLed": true,
-      "beats": [
-        {
-          "atSec": 0,
-          "pose": "present",
-          "caption": "INTERESTS DEVELOP",
-          "mood": "default"
-        },
-        {
-          "atSec": 6,
-          "pose": "listen",
-          "caption": "GROWN NOT FOUND",
-          "mood": "default"
-        },
-        {
-          "atSec": 12,
-          "pose": "listen",
-          "caption": "SAME PAGE",
-          "mood": "default"
-        },
-        {
-          "atSec": 18,
-          "pose": "point",
-          "caption": "STARTING HEAT",
-          "mood": "default"
-        },
-        {
-          "atSec": 24,
-          "pose": "point",
-          "caption": "STAY LONG ENOUGH",
-          "mood": "default"
-        },
-        {
-          "atSec": 30,
-          "pose": "listen",
-          "caption": "SECOND HOUR",
-          "mood": "default"
-        },
-        {
-          "atSec": 36,
-          "pose": "react",
-          "caption": "SAME FILE",
-          "mood": "default"
-        },
-        {
-          "atSec": 42,
-          "pose": "react",
-          "caption": "SAME FILE",
-          "mood": "default"
-        },
-        {
-          "atSec": 48,
-          "pose": "react",
-          "caption": "SAME FILE",
-          "mood": "default"
-        },
-        {
-          "atSec": 54,
-          "pose": "react",
-          "caption": "SAME FILE",
-          "mood": "default"
-        },
-        {
-          "atSec": 60,
-          "pose": "react",
-          "caption": "SAME FILE",
-          "mood": "default"
-        },
-        {
-          "atSec": 66,
-          "pose": "react",
-          "caption": "SAME FILE",
-          "mood": "default"
-        },
-        {
-          "atSec": 72,
-          "pose": "react",
-          "caption": "SAME FILE",
-          "mood": "default"
-        },
-        {
-          "atSec": 78,
-          "pose": "react",
-          "caption": "SAME FILE",
-          "mood": "default"
-        },
-        {
-          "atSec": 84,
-          "pose": "react",
-          "caption": "SAME FILE",
-          "mood": "default"
-        },
-        {
-          "atSec": 90,
-          "pose": "react",
-          "caption": "SAME FILE",
-          "mood": "default"
-        }
+      "id": "name-walk",
+      "type": "stillShot",
+      "beat": "06-name",
+      "still": "07-the-name-thats-the-walk.png",
+      "kenBurns": "right",
+      "caption": "That's the walk.",
+      "vo": "Cairn was like yeah. That's the walk."
+    },
+    {
+      "id": "name-work",
+      "type": "stillShot",
+      "beat": "06-name",
+      "still": "07-the-name-work-brain.png",
+      "altStill": "05-thursday-cairn-sits-down.png",
+      "kenBurns": "in",
+      "caption": "His brain did work-brain.",
+      "vo": "He didn't fall off the thing. He put it on the calendar like work. So his brain did work-brain. Clocked in.",
+      "holdStills": [
+        "03-he-books-it-yellow-square.png"
       ]
     },
     {
-      "id": "part3",
-      "type": "cairnCaption",
-      "pose": "present",
-      "visual": "conceptLabel",
-      "mood": "default",
-      "label": "Hard is not wrong",
-      "caption": "Hard does not mean Cairn picked the wrong thing.",
-      "vo": "Part three. Hard is not wrong. This is the thesis as a named part. Hard does not mean Cairn picked the wrong thing. Finish the session anyway. When the side project gets dull, Cairn used to treat that as evidence. He closed the lid. He told the table it was not the one. That sentence felt honest and it was the fixed theory talking. Urging people to find their passion can put all the eggs in one basket, then drop the basket when it gets heavy. Cairn will not drop this basket tonight. A heavy paragraph is not a sign to switch lives. It is a sign to keep the hands on the work. The mismatch does not cancel the pile. The pile is still the pile. Cairn names the feeling and stays. He says the night is hard and he does not add the word wrong. Those are different claims. Hard is a load. Wrong is a verdict. Cairn carries the load. He does not issue the verdict. If a friend asks whether this is still the one, Cairn answers with the session, not with the mood. The thesis has a body now. Hardness used to be a story about identity. Now it is a story about load. Cairn can carry a load without rewriting who he is. That is faster and it is funnier, because the joke and the lesson are the same sentence. Cairn does the hard bit. He does not audition a new self.",
-      "speechLed": true,
-      "beats": [
-        {
-          "atSec": 0,
-          "pose": "present",
-          "caption": "HARD ≠ WRONG",
-          "mood": "default"
-        },
-        {
-          "atSec": 6,
-          "pose": "slump",
-          "caption": "NOT EVIDENCE",
-          "mood": "default"
-        },
-        {
-          "atSec": 12,
-          "pose": "slump",
-          "caption": "THE BASKET",
-          "mood": "default"
-        },
-        {
-          "atSec": 18,
-          "pose": "point",
-          "caption": "KEEP THE HANDS",
-          "mood": "default"
-        },
-        {
-          "atSec": 24,
-          "pose": "point",
-          "caption": "CAIRN STAYS",
-          "mood": "default"
-        },
-        {
-          "atSec": 30,
-          "pose": "react",
-          "caption": "LOAD NOT VERDICT",
-          "mood": "default"
-        },
-        {
-          "atSec": 36,
-          "pose": "present",
-          "caption": "ANSWER WITH THE SESSION",
-          "mood": "default"
-        },
-        {
-          "atSec": 42,
-          "pose": "present",
-          "caption": "ANSWER WITH THE SESSION",
-          "mood": "default"
-        },
-        {
-          "atSec": 48,
-          "pose": "present",
-          "caption": "ANSWER WITH THE SESSION",
-          "mood": "default"
-        },
-        {
-          "atSec": 54,
-          "pose": "present",
-          "caption": "ANSWER WITH THE SESSION",
-          "mood": "default"
-        },
-        {
-          "atSec": 60,
-          "pose": "present",
-          "caption": "ANSWER WITH THE SESSION",
-          "mood": "default"
-        },
-        {
-          "atSec": 66,
-          "pose": "present",
-          "caption": "ANSWER WITH THE SESSION",
-          "mood": "default"
-        },
-        {
-          "atSec": 72,
-          "pose": "present",
-          "caption": "ANSWER WITH THE SESSION",
-          "mood": "default"
-        },
-        {
-          "atSec": 78,
-          "pose": "present",
-          "caption": "ANSWER WITH THE SESSION",
-          "mood": "default"
-        },
-        {
-          "atSec": 84,
-          "pose": "present",
-          "caption": "ANSWER WITH THE SESSION",
-          "mood": "default"
-        }
+      "id": "name-story",
+      "type": "stillShot",
+      "beat": "06-name",
+      "still": "03-he-books-it-yellow-square.png",
+      "kenBurns": "out",
+      "caption": "One move. One result.",
+      "vo": "That's the whole story. One move. One result.",
+      "altStill": "08-the-move-booked-it-like-a-standup.png"
+    },
+    {
+      "id": "name-mindset",
+      "type": "stillShot",
+      "beat": "06-name",
+      "still": "07-the-name-calendar-mindset.png",
+      "altStill": "03-he-books-it-yellow-square.png",
+      "kenBurns": "in",
+      "caption": "Calendar mindset.",
+      "vo": "People who study this gave it a boring name. Calendar mindset. They had people put a clock time on stuff that used to be free. Dinner. A walk. A hobby hour. Once it had a start time, it felt like a job. The fun didn't leave the thing. The fun left when the block showed up.",
+      "holdStills": [
+        "07-the-name-he-has-the-yellow-square.png",
+        "05-thursday-cairn-sits-down.png",
+        "07-the-name-work-brain.png",
+        "07-the-name-thats-the-walk.png"
       ]
     },
     {
-      "id": "part4",
-      "type": "cairnCaption",
-      "pose": "present",
-      "visual": "conceptLabel",
-      "mood": "default",
-      "label": "Finish the session",
-      "caption": "Cairn finishes the block he already started.",
-      "vo": "Part four. Finish the session. This is the do-this move. Cairn sets a finish line he can see from the chair. One session. Not a new identity. Not a rebrand. When the spark dies, Cairn finishes the block he already started. He does not hunt a cleaner calling on the same night. He does not ask the room whether he is still passionate. He asks what the next stone is. Then he does that stone. The session ends when the block ends, not when the feeling ends. That is how Cairn stays in the work. Develop it is a verb he can do before bed. Cairn writes the finish line on a scrap. Twenty minutes. One function. One paragraph. He starts the timer. When it rings he stops, even if Tuesday never came back. The win is the ended block. Not a restored crush. Cairn can keep a promise to a pile. That is the move.",
-      "speechLed": true,
-      "beats": [
-        {
-          "atSec": 0,
-          "pose": "present",
-          "caption": "FINISH THE SESSION",
-          "mood": "default"
-        },
-        {
-          "atSec": 6,
-          "pose": "listen",
-          "caption": "ONE BLOCK",
-          "mood": "default"
-        },
-        {
-          "atSec": 12,
-          "pose": "slump",
-          "caption": "NOT A REBRAND",
-          "mood": "default"
-        },
-        {
-          "atSec": 18,
-          "pose": "point",
-          "caption": "NEXT STONE",
-          "mood": "default"
-        },
-        {
-          "atSec": 24,
-          "pose": "point",
-          "caption": "A VERB TONIGHT",
-          "mood": "default"
-        },
-        {
-          "atSec": 30,
-          "pose": "listen",
-          "caption": "WRITE THE LINE",
-          "mood": "default"
-        },
-        {
-          "atSec": 36,
-          "pose": "react",
-          "caption": "ENDED BLOCK",
-          "mood": "default"
-        },
-        {
-          "atSec": 42,
-          "pose": "react",
-          "caption": "ENDED BLOCK",
-          "mood": "default"
-        },
-        {
-          "atSec": 48,
-          "pose": "react",
-          "caption": "ENDED BLOCK",
-          "mood": "default"
-        },
-        {
-          "atSec": 54,
-          "pose": "react",
-          "caption": "ENDED BLOCK",
-          "mood": "default"
-        }
+      "id": "name-chart",
+      "type": "stillShot",
+      "beat": "06-name",
+      "still": "07-the-name-he-has-the-yellow-square.png",
+      "kenBurns": "in",
+      "caption": "He has the yellow square.",
+      "vo": "Cairn doesn't need their chart. He has the yellow square. That's the chart.",
+      "altStill": "03-he-books-it-yellow-square.png"
+    },
+    {
+      "id": "move-small",
+      "type": "stillShot",
+      "beat": "07-move",
+      "still": "03-he-books-it-opened-his-calendar.png",
+      "kenBurns": "in",
+      "caption": "So he does the small thing.",
+      "vo": "So he does the small thing."
+    },
+    {
+      "id": "move-delete",
+      "type": "stillShot",
+      "beat": "07-move",
+      "still": "08-the-move-deletes-tuesday-at-seven.png",
+      "kenBurns": "in",
+      "caption": "Deletes Tuesday at seven.",
+      "vo": "Opens the calendar. Deletes Tuesday at seven."
+    },
+    {
+      "id": "move-gone",
+      "type": "stillShot",
+      "beat": "07-move",
+      "still": "08-the-move-square-is-gone.png",
+      "altStill": "03-he-books-it-opened-his-calendar.png",
+      "kenBurns": "out",
+      "caption": "Square's gone.",
+      "vo": "Square's gone. Week looks empty. That's the point. He doesn't make a better standup. Doesn't write KEYS 2. Doesn't set a reminder to be inspired.",
+      "holdStills": [
+        "08-the-move-walks-over.png",
+        "08-the-move-walks-past.png"
       ]
     },
     {
-      "id": "part5",
-      "type": "cairnCaption",
-      "pose": "present",
-      "visual": "conceptLabel",
-      "mood": "default",
-      "label": "Stone on the pile",
-      "caption": "Cairn puts the finished block on the stack.",
-      "vo": "Part five. Put the stone on the pile. Cairn takes the finished block and puts it on the stack. The pile is the record. Not the mood. Not the Tuesday glow. A stone is a session that happened. Cairn can see it. Tomorrow the pile is still there even if Thursday comes back. That is the point of a cairn. Marks on a path. Not proof of a soulmate. Cairn does not need a new species of work. He needs another stone. He places it where he can see it. A note. A commit. A crossed line. The stack gets taller by one. That height is the only proof Cairn trusts after a cold Thursday. Mood lies. The pile does not. He leaves the room with a taller cairn than he entered.",
-      "speechLed": true,
-      "beats": [
-        {
-          "atSec": 0,
-          "pose": "present",
-          "caption": "STONE ON THE PILE",
-          "mood": "default"
-        },
-        {
-          "atSec": 6,
-          "pose": "listen",
-          "caption": "THE RECORD",
-          "mood": "default"
-        },
-        {
-          "atSec": 12,
-          "pose": "slump",
-          "caption": "NOT THE MOOD",
-          "mood": "default"
-        },
-        {
-          "atSec": 18,
-          "pose": "point",
-          "caption": "MARKS ON A PATH",
-          "mood": "default"
-        },
-        {
-          "atSec": 24,
-          "pose": "point",
-          "caption": "ANOTHER STONE",
-          "mood": "default"
-        },
-        {
-          "atSec": 30,
-          "pose": "react",
-          "caption": "MOOD LIES",
-          "mood": "default"
-        },
-        {
-          "atSec": 36,
-          "pose": "present",
-          "caption": "TALLER CAIRN",
-          "mood": "default"
-        },
-        {
-          "atSec": 42,
-          "pose": "present",
-          "caption": "TALLER CAIRN",
-          "mood": "default"
-        },
-        {
-          "atSec": 48,
-          "pose": "present",
-          "caption": "TALLER CAIRN",
-          "mood": "default"
-        }
+      "id": "move-over",
+      "type": "stillShot",
+      "beat": "07-move",
+      "still": "08-the-move-walks-over.png",
+      "kenBurns": "right",
+      "caption": "If he wants the keyboard, he walks over.",
+      "vo": "If he wants the keyboard, he walks over."
+    },
+    {
+      "id": "move-past",
+      "type": "stillShot",
+      "beat": "07-move",
+      "still": "08-the-move-walks-past.png",
+      "kenBurns": "left",
+      "caption": "If he doesn't, he walks past.",
+      "vo": "If he doesn't, he walks past. He doesn't owe it an hour.",
+      "altStill": "08-the-move-walks-over.png"
+    },
+    {
+      "id": "move-night",
+      "type": "stillShot",
+      "beat": "07-move",
+      "still": "08-the-move-night-test.png",
+      "altStill": "02-tuesday-the-keyboard-was-just-a-keyboard.png",
+      "kenBurns": "out",
+      "caption": "Doesn't sit. Leaves. No guilt.",
+      "vo": "That night he tests it. Goes to the desk. Doesn't sit. Leaves. No guilt. Keyboard's just furniture again.",
+      "holdStills": [
+        "08-the-move-walks-past.png"
       ]
     },
     {
-      "id": "end",
-      "type": "endCard",
-      "pose": "still",
-      "title": "Find it or develop it",
-      "cite": "O’Keefe, Dweck & Walton, 2018",
-      "cta": "Cairn finishes the session anyway.",
-      "vo": "Tuesday felt like the one. Thursday felt like homework. Fixed interest made Cairn want to walk. Interests develop. Hard is not wrong. Finish the session. Put the stone on the pile. Cairn recaps the night as a list he can keep. Then he does the last line. Cairn finishes the session anyway.",
-      "speechLed": true
+      "id": "move-four",
+      "type": "stillShot",
+      "beat": "07-move",
+      "still": "08-the-move-walks-over-at-four.png",
+      "kenBurns": "right",
+      "caption": "Later he walks over at four.",
+      "vo": "Later he walks over at four. No reason."
+    },
+    {
+      "id": "move-song",
+      "type": "stillShot",
+      "beat": "07-move",
+      "still": "08-the-move-plays-one-song.png",
+      "kenBurns": "in",
+      "caption": "Plays one song because he's already there.",
+      "vo": "Plays one song because he's already there. Stops when it's done.",
+      "altStill": "08-the-move-walks-over-at-four.png"
+    },
+    {
+      "id": "move-stone",
+      "type": "stillShot",
+      "beat": "07-move",
+      "still": "08-the-move-one-stone.png",
+      "altStill": "08-the-move-plays-one-song.png",
+      "kenBurns": "in",
+      "caption": "One stone.",
+      "vo": "Puts that on the pile. One stone. A session that happened. Not a streak. Not a 7pm personality.",
+      "holdStills": [
+        "08-the-move-walks-over-at-four.png"
+      ]
+    },
+    {
+      "id": "move-again",
+      "type": "stillShot",
+      "beat": "07-move",
+      "still": "08-the-move-keyboard-just-a-keyboard.png",
+      "kenBurns": "out",
+      "caption": "Keyboard's just a keyboard again.",
+      "vo": "Keyboard's just a keyboard again."
+    },
+    {
+      "id": "move-die",
+      "type": "stillShot",
+      "beat": "07-move",
+      "still": "08-the-move-booked-it-like-a-standup.png",
+      "altStill": "08-the-move-square-is-gone.png",
+      "kenBurns": "out",
+      "caption": "He booked it like a standup.",
+      "vo": "The passion didn't die. He booked it like a standup."
+    },
+    {
+      "id": "cta",
+      "type": "stillShot",
+      "beat": "cta",
+      "still": "09-cta.png",
+      "kenBurns": "out",
+      "caption": "If this week's takeaway stuck, subscribe.",
+      "vo": "If this week's takeaway stuck, subscribe. Next one lands same time.",
+      "altStill": "01-intro-this-is-cairn.png"
     }
   ]
 }
