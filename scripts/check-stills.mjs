@@ -36,12 +36,25 @@ for (const name of names) {
 }
 
 const required = [
+  "01-intro-full-body.png",
   "01-intro-this-is-cairn.png",
+  "02-tue-keyboard-day.png",
+  "03-tue-walk-in.png",
+  "04-tue-play-dusk.png",
+  "05-keys-square.png",
   "05-thursday-cairn-sits-down.png",
+  "06-keys-deleted.png",
+  "07-thu-clock-seven.png",
+  "08-thu-meeting-sit.png",
   "08-the-move-square-is-gone.png",
   "08-the-move-walks-over.png",
   "08-the-move-walks-past.png",
   "09-cta.png",
+  "09-thu-lid-close.png",
+  "10-fri-walk-mug.png",
+  "11-want-vs-homework.png",
+  "12-one-stone.png",
+  "13-cta-quiet.png",
 ];
 for (const name of required) {
   if (!existsSync(`public/ep01-stills/${name}`)) {
