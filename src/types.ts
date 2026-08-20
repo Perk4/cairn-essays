@@ -61,6 +61,7 @@ export type StillShotScene = {
   type: "stillShot";
   still: string;
   altStill?: string;
+  holdStills?: string[];
   vo: string;
   caption: string;
   beat: BeatId;
@@ -139,6 +140,7 @@ export type ShortBeat = {
   id: string;
   still: string;
   altStill?: string;
+  holdStills?: string[];
   vo: string;
   caption: string;
   durationSec: number;

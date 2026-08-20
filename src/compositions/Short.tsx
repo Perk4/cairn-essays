@@ -11,7 +11,14 @@ import { CaptionBar } from "../components/CaptionBar";
 import { VoAudio } from "../components/VoAudio";
 import { episode } from "../episode";
 import type { ShortBeat } from "../types";
-import { FPS, MAX_HOLD_SEC, secondsToFrames } from "../timing";
+import {
+  FPS,
+  MAX_HOLD_SEC,
+  kenBurnsForSlice,
+  pictureStills,
+  secondsToFrames,
+  stillSliceIndex,
+} from "../timing";
 
 export type ShortProps = {
   shortId: "hook";
@@ -47,11 +54,19 @@ const ShortBeatView = ({ beat }: { beat: ShortBeat }) => {
   const frame = useCurrentFrame();
   const { durationInFrames } = useVideoConfig();
   const holdFrames = MAX_HOLD_SEC * FPS;
-  const secondHalf = Boolean(beat.altStill) && frame >= Math.min(holdFrames, durationInFrames - 1);
-  const still = secondHalf && beat.altStill ? beat.altStill : beat.still;
-  const zoom = interpolate(frame, [0, Math.max(1, durationInFrames)], [1.06, 1.16], {
-    extrapolateRight: "clamp",
-  });
+  const stills = pictureStills(beat);
+  const slice = stillSliceIndex(frame / FPS, stills.length);
+  const still = stills[slice];
+  if (!still) {
+    throw new Error(`Short beat ${beat.id} is missing a still for slice ${slice}`);
+  }
+  const pan = kenBurnsForSlice("in", slice) === "in" ? 1.06 : 1.14;
+  const zoom = interpolate(
+    frame - slice * holdFrames,
+    [0, Math.max(1, Math.min(holdFrames, durationInFrames - slice * holdFrames))],
+    [pan, pan + 0.08],
+    { extrapolateRight: "clamp" },
+  );
 
   return (
     <AbsoluteFill style={{ overflow: "hidden", backgroundColor: "#FCF2C6" }}>

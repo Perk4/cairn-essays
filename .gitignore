@@ -3,3 +3,5 @@ dist
 .DS_Store
 .env
 out
+!out/ep01.mp4
+!out/ep01-hook.mp4

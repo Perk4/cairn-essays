@@ -1,4 +1,5 @@
-import type { Scene, SceneBeat, SceneBody, ShortBeat } from "./types";
+import type { KenBurns, Scene, SceneBeat, SceneBody, ShortBeat } from "./types";
+import { KEN_BURNS } from "./types";
 
 export const FPS = 30;
 
@@ -23,6 +24,40 @@ export function wordCount(text: string): number {
     .trim()
     .split(/\s+/)
     .filter((token) => /[0-9A-Za-z\u00C0-\u024F]/.test(token)).length;
+}
+
+export function pictureStills(scene: {
+  still: string;
+  altStill?: string;
+  holdStills?: readonly string[];
+}): string[] {
+  const stills = [scene.still];
+  if (scene.altStill && !stills.includes(scene.altStill)) {
+    stills.push(scene.altStill);
+  }
+  for (const extra of scene.holdStills ?? []) {
+    if (!stills.includes(extra)) {
+      stills.push(extra);
+    }
+  }
+  return stills;
+}
+
+export function stillSliceIndex(tSec: number, stillCount: number): number {
+  if (stillCount < 1) {
+    throw new Error("need at least one still");
+  }
+  return Math.min(stillCount - 1, Math.floor(Math.max(0, tSec) / MAX_HOLD_SEC));
+}
+
+export function kenBurnsForSlice(base: KenBurns, slice: number): KenBurns {
+  const offset = KEN_BURNS.indexOf(base);
+  const index = ((offset < 0 ? 0 : offset) + slice) % KEN_BURNS.length;
+  const next = KEN_BURNS[index];
+  if (!next) {
+    throw new Error("kenBurns slice is empty");
+  }
+  return next;
 }
 
 export function speechLedDurationSec(voSec: number): number {

@@ -40,59 +40,73 @@ function probeDuration(file) {
   return duration;
 }
 
-function synthLocalLine(id, text) {
-  refuseBanned(id);
-  const wav = `/tmp/vo-${id}.wav`;
+function metaMatches(metaPath) {
+  if (!existsSync(metaPath)) {
+    return false;
+  }
+  const meta = JSON.parse(readFileSync(metaPath, "utf8"));
+  return (
+    meta.engine === voiceConfig.engine &&
+    meta.model === voiceConfig.model &&
+    meta.voice === voiceConfig.voice &&
+    meta.speed === voiceConfig.speed &&
+    meta.gapSec === voiceConfig.gapSec
+  );
+}
+
+function encodeMp3(id, wav) {
   const mp3 = `public/vo/${id}.mp3`;
-  const metaPath = `public/vo/${id}.meta.json`;
-  const cuesWav = `/tmp/vo-${id}.cues.json`;
+  const mp3d = spawnSync(
+    "ffmpeg",
+    [
+      "-y",
+      "-loglevel",
+      "error",
+      "-i",
+      wav,
+      "-codec:a",
+      "libmp3lame",
+      "-b:a",
+      "128k",
+      mp3,
+    ],
+    { stdio: ["ignore", "pipe", "pipe"] },
+  );
+  if (mp3d.status !== 0) {
+    throw new Error(`ffmpeg failed for ${id}\n${mp3d.stderr}`);
+  }
+  return mp3;
+}
+
+function synthBatch(jobs) {
+  if (jobs.length === 0) {
+    return;
+  }
+  mkdirSync("/tmp/vo-batch", { recursive: true });
+  const batch = jobs.map((job) => ({
+    id: job.id,
+    text: job.text,
+    out: `/tmp/vo-batch/${job.id}.wav`,
+    meta: `public/vo/${job.id}.meta.json`,
+    cues: `public/vo/${job.id}.cues.json`,
+  }));
+  const batchPath = "/tmp/vo-batch/jobs.json";
+  writeFileSync(batchPath, `${JSON.stringify(batch, null, 2)}\n`);
   const spoken = spawnSync(
     PYTHON,
-    [
-      "scripts/synth-local-vo.py",
-      "--text",
-      text,
-      "--out",
-      wav,
-      "--meta",
-      metaPath,
-      "--config",
-      VOICE_CONFIG,
-    ],
+    ["scripts/synth-local-vo.py", "--batch", batchPath, "--config", VOICE_CONFIG],
     { stdio: "inherit" },
   );
   if (spoken.status !== 0) {
-    throw new Error(`Kokoro synth failed for ${id}`);
+    throw new Error("Kokoro batch synth failed");
   }
-  const meta = JSON.parse(readFileSync(metaPath, "utf8"));
-  const stamp = `${meta.engine} ${meta.model} ${meta.voice}`;
-  refuseBanned(stamp);
-  if (
-    meta.engine !== voiceConfig.engine ||
-    meta.model !== voiceConfig.model ||
-    meta.voice !== voiceConfig.voice ||
-    meta.speed !== voiceConfig.speed ||
-    meta.gapSec !== voiceConfig.gapSec
-  ) {
-    throw new Error(`voice metadata drifted for ${id}: ${stamp}`);
+  for (const job of batch) {
+    if (!metaMatches(job.meta)) {
+      throw new Error(`voice metadata drifted for ${job.id}`);
+    }
+    encodeMp3(job.id, job.out);
+    rmSync(job.out, { force: true });
   }
-  const mp3d = spawnSync(
-    "ffmpeg",
-    ["-y", "-i", wav, "-codec:a", "libmp3lame", "-b:a", "128k", mp3],
-    { stdio: "inherit" },
-  );
-  if (mp3d.status !== 0) {
-    throw new Error(`ffmpeg failed for ${id}`);
-  }
-  const cuesSrc = existsSync(cuesWav)
-    ? cuesWav
-    : metaPath.replace(".meta.json", ".cues.json");
-  if (existsSync(cuesSrc) && cuesSrc !== `public/vo/${id}.cues.json`) {
-    writeFileSync(`public/vo/${id}.cues.json`, readFileSync(cuesSrc));
-  }
-  rmSync(wav, { force: true });
-  rmSync(cuesWav, { force: true });
-  return { duration: probeDuration(mp3), meta };
 }
 
 if (!existsSync(PYTHON)) {
@@ -124,13 +138,33 @@ for (const file of readdirSync("public/vo")) {
 }
 
 const durations = {};
+const pending = [];
 for (const line of lines) {
-  const result = synthLocalLine(line.id, line.text);
-  durations[line.id] = result.duration;
+  const mp3 = `public/vo/${line.id}.mp3`;
+  const metaPath = `public/vo/${line.id}.meta.json`;
+  if (existsSync(mp3) && metaMatches(metaPath)) {
+    durations[line.id] = probeDuration(mp3);
+    const words = line.text.trim().split(/\s+/).filter(Boolean).length;
+    const wpm = (words / durations[line.id]) * 60;
+    console.log(
+      `${line.id} skip ${voiceConfig.engine}/${voiceConfig.voice} ${durations[line.id].toFixed(2)}s  ${wpm.toFixed(0)} wpm`,
+    );
+    continue;
+  }
+  pending.push(line);
+}
+
+if (pending.length > 0) {
+  synthBatch(pending);
+}
+
+for (const line of pending) {
+  durations[line.id] = probeDuration(`public/vo/${line.id}.mp3`);
+  const meta = JSON.parse(readFileSync(`public/vo/${line.id}.meta.json`, "utf8"));
   const words = line.text.trim().split(/\s+/).filter(Boolean).length;
-  const wpm = (words / result.duration) * 60;
+  const wpm = (words / durations[line.id]) * 60;
   console.log(
-    `${line.id} ${result.meta.engine}/${result.meta.voice} ${result.duration.toFixed(2)}s  ${wpm.toFixed(0)} wpm`,
+    `${line.id} ${meta.engine}/${meta.voice} ${durations[line.id].toFixed(2)}s  ${wpm.toFixed(0)} wpm`,
   );
 }
 

@@ -13,11 +13,17 @@ for (const scene of ep.scenes) {
   if (scene.altStill) {
     names.add(scene.altStill);
   }
+  for (const extra of scene.holdStills ?? []) {
+    names.add(extra);
+  }
 }
 for (const beat of ep.shorts.hook) {
   names.add(beat.still);
   if (beat.altStill) {
     names.add(beat.altStill);
+  }
+  for (const extra of beat.holdStills ?? []) {
+    names.add(extra);
   }
 }
 names.add(ep.thumbStill);

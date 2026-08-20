@@ -78,21 +78,32 @@ def sentence_chunks(text: str) -> list[str]:
     return chunks
 
 
-def synth_kokoro(
+def write_meta(path: Path, config: VoiceConfig, sample_rate: int) -> None:
+    path.write_text(
+        json.dumps(
+            {
+                "engine": config.engine,
+                "model": config.model,
+                "voice": config.voice,
+                "speed": config.speed,
+                "gapSec": config.gap_sec,
+                "sampleRate": sample_rate,
+            }
+        )
+        + "\n"
+    )
+
+
+def synth_one(
+    kokoro: object,
     config: VoiceConfig,
     text: str,
-    path: Path,
+    wav_path: Path,
     cues_path: Path,
-    model_path: Path,
-    voices_path: Path,
 ) -> int:
     import numpy as np
     import soundfile as sf
-    from kokoro_onnx import Kokoro
 
-    ensure_file(model_path, MODEL_URL)
-    ensure_file(voices_path, VOICES_URL)
-    kokoro = Kokoro(str(model_path), str(voices_path))
     sentence_audio: list[np.ndarray] = []
     cues: list[dict[str, float | str]] = []
     sample_rate: int | None = None
@@ -127,51 +138,82 @@ def synth_kokoro(
         if index:
             joined.append(gap)
         joined.append(audio)
-    sf.write(str(path), np.concatenate(joined), sample_rate)
+    wav_path.parent.mkdir(parents=True, exist_ok=True)
+    sf.write(str(wav_path), np.concatenate(joined), sample_rate)
     cues_path.write_text(json.dumps(cues, indent=2) + "\n")
     return sample_rate
 
 
+def load_kokoro(model_path: Path, voices_path: Path):
+    from kokoro_onnx import Kokoro
+
+    ensure_file(model_path, MODEL_URL)
+    ensure_file(voices_path, VOICES_URL)
+    return Kokoro(str(model_path), str(voices_path))
+
+
+def synth_kokoro(
+    config: VoiceConfig,
+    text: str,
+    path: Path,
+    cues_path: Path,
+    model_path: Path,
+    voices_path: Path,
+) -> int:
+    kokoro = load_kokoro(model_path, voices_path)
+    return synth_one(kokoro, config, text, path, cues_path)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--text", required=True)
-    parser.add_argument("--out", required=True)
-    parser.add_argument("--meta", required=True)
+    parser.add_argument("--text")
+    parser.add_argument("--out")
+    parser.add_argument("--meta")
+    parser.add_argument("--batch")
     parser.add_argument(
         "--config",
         default=os.environ.get("CAIRN_VOICE_CONFIG", "public/vo/voice.json"),
     )
     args = parser.parse_args()
+    config = load_voice_config(Path(args.config))
+    model_path = Path(os.environ.get("KOKORO_MODEL_PATH", str(DEFAULT_MODEL_PATH)))
+    voices_path = Path(os.environ.get("KOKORO_VOICES_PATH", str(DEFAULT_VOICES_PATH)))
+
+    if args.batch:
+        jobs = json.loads(Path(args.batch).read_text())
+        if not isinstance(jobs, list) or not jobs:
+            raise SystemExit("batch file must be a non-empty JSON array")
+        kokoro = load_kokoro(model_path, voices_path)
+        for job in jobs:
+            line_id = str(job["id"])
+            text = str(job["text"])
+            wav = Path(str(job["out"]))
+            meta = Path(str(job["meta"]))
+            cues = Path(str(job.get("cues", str(meta).replace(".meta.json", ".cues.json"))))
+            banned(line_id)
+            sample_rate = synth_one(kokoro, config, text, wav, cues)
+            write_meta(meta, config, sample_rate)
+            print(
+                f"synth ok {line_id} kokoro {config.voice} {config.model} sr={sample_rate}",
+                file=__import__("sys").stderr,
+            )
+        return
+
+    if not args.text or not args.out or not args.meta:
+        raise SystemExit("single-line mode needs --text --out --meta")
     out = Path(args.out)
     meta = Path(args.meta)
-    cues = out.with_suffix(".cues.json")
-    if str(out).endswith(".wav"):
-        cues = Path(str(out)[:-4] + ".cues.json")
+    cues = Path(str(meta).replace(".meta.json", ".cues.json")) if str(meta).endswith(".meta.json") else Path(str(out)[:-4] + ".cues.json")
     out.parent.mkdir(parents=True, exist_ok=True)
-    config = load_voice_config(Path(args.config))
     sample_rate = synth_kokoro(
         config,
         args.text,
         out,
-        Path(str(meta).replace(".meta.json", ".cues.json"))
-        if str(meta).endswith(".meta.json")
-        else cues,
-        Path(os.environ.get("KOKORO_MODEL_PATH", str(DEFAULT_MODEL_PATH))),
-        Path(os.environ.get("KOKORO_VOICES_PATH", str(DEFAULT_VOICES_PATH))),
+        cues,
+        model_path,
+        voices_path,
     )
-    meta.write_text(
-        json.dumps(
-            {
-                "engine": config.engine,
-                "model": config.model,
-                "voice": config.voice,
-                "speed": config.speed,
-                "gapSec": config.gap_sec,
-                "sampleRate": sample_rate,
-            }
-        )
-        + "\n"
-    )
+    write_meta(meta, config, sample_rate)
     print(
         f"synth ok kokoro {config.voice} {config.model} sr={sample_rate}",
         file=__import__("sys").stderr,

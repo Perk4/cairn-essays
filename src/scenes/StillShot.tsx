@@ -1,28 +1,17 @@
 import { Img, interpolate, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { CaptionBar } from "../components/CaptionBar";
 import type { KenBurns, StillShotScene } from "../types";
-import { FPS, MAX_HOLD_SEC } from "../timing";
+import {
+  FPS,
+  MAX_HOLD_SEC,
+  kenBurnsForSlice,
+  pictureStills,
+  stillSliceIndex,
+} from "../timing";
 
 const motionFor = (
   kind: KenBurns,
-  alt: boolean,
 ): { scaleFrom: number; scaleTo: number; xFrom: number; xTo: number } => {
-  if (alt) {
-    switch (kind) {
-      case "in":
-        return { scaleFrom: 1.12, scaleTo: 1.2, xFrom: -28, xTo: 22 };
-      case "out":
-        return { scaleFrom: 1.08, scaleTo: 1.02, xFrom: 22, xTo: -18 };
-      case "left":
-        return { scaleFrom: 1.1, scaleTo: 1.1, xFrom: -24, xTo: 36 };
-      case "right":
-        return { scaleFrom: 1.1, scaleTo: 1.1, xFrom: 24, xTo: -36 };
-      default: {
-        const exhaustive: never = kind;
-        return exhaustive;
-      }
-    }
-  }
   switch (kind) {
     case "in":
       return { scaleFrom: 1.04, scaleTo: 1.12, xFrom: 0, xTo: 0 };
@@ -49,16 +38,15 @@ export const StillShot = ({ scene, layout, kicker }: Props) => {
   const frame = useCurrentFrame();
   const { durationInFrames } = useVideoConfig();
   const holdFrames = MAX_HOLD_SEC * FPS;
-  const split = Boolean(scene.altStill) || durationInFrames > holdFrames;
-  const secondHalf = split && frame >= Math.min(holdFrames, durationInFrames - 1);
-  const still = secondHalf && scene.altStill ? scene.altStill : scene.still;
-  const motion = motionFor(scene.kenBurns, secondHalf);
-  const localDuration = secondHalf
-    ? Math.max(1, durationInFrames - holdFrames)
-    : split
-      ? Math.min(holdFrames, durationInFrames)
-      : durationInFrames;
-  const localFrame = secondHalf ? frame - holdFrames : frame;
+  const stills = pictureStills(scene);
+  const slice = stillSliceIndex(frame / FPS, stills.length);
+  const still = stills[slice];
+  if (!still) {
+    throw new Error(`Scene ${scene.id} is missing a still for slice ${slice}`);
+  }
+  const motion = motionFor(kenBurnsForSlice(scene.kenBurns, slice));
+  const localDuration = Math.min(holdFrames, durationInFrames - slice * holdFrames);
+  const localFrame = frame - slice * holdFrames;
   const scale = interpolate(
     localFrame,
     [0, Math.max(1, localDuration)],

@@ -224,11 +224,16 @@ for (const cut of cuts) {
 }
 
 const stillFiles = cuts.map((cut) => `review/stills/${cut.name}.png`);
+const tileCols = Math.max(1, Math.ceil(Math.sqrt(stillFiles.length)));
+const tileRows = Math.max(1, Math.ceil(stillFiles.length / tileCols));
+while (stillFiles.length < tileCols * tileRows) {
+  stillFiles.push(stillFiles[stillFiles.length - 1]);
+}
 run("ffmpeg", [
   "-y",
   ...stillFiles.flatMap((path) => ["-i", path]),
   "-filter_complex",
-  `tile=3x3`,
+  `tile=${tileCols}x${tileRows}`,
   "review/contact-sheet.png",
 ]);
 

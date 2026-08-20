@@ -152,7 +152,8 @@
       "still": "03-he-books-it-thats-the-fun-part.png",
       "kenBurns": "right",
       "caption": "That's the fun part.",
-      "vo": "That's the fun part. You just show up. You don't plan it."
+      "vo": "That's the fun part. You just show up. You don't plan it.",
+      "altStill": "02-tuesday-cairn-walked-in.png"
     },
     {
       "id": "books-serious",
@@ -170,7 +171,8 @@
       "still": "03-he-books-it-opened-his-calendar.png",
       "kenBurns": "in",
       "caption": "Opened his calendar.",
-      "vo": "Opened his calendar. Made a block. Tuesday. Seven."
+      "vo": "Opened his calendar. Made a block. Tuesday. Seven.",
+      "altStill": "03-he-books-it-yellow-square.png"
     },
     {
       "id": "books-keys",
@@ -188,7 +190,8 @@
       "still": "03-he-books-it-yellow-square.png",
       "kenBurns": "in",
       "caption": "Yellow square.",
-      "vo": "Yellow square. Start time. End time."
+      "vo": "Yellow square. Start time. End time.",
+      "altStill": "03-he-books-it-wrote-keys.png"
     },
     {
       "id": "books-invite",
@@ -245,7 +248,8 @@
       "still": "04-wednesday-he-had-a-block-tomorrow.png",
       "kenBurns": "in",
       "caption": "He had a block tomorrow.",
-      "vo": "He had a block tomorrow. Saving it. That felt responsible too."
+      "vo": "He had a block tomorrow. Saving it. That felt responsible too.",
+      "altStill": "04-wednesday-walked-past-the-keyboard.png"
     },
     {
       "id": "thu-hit",
@@ -308,7 +312,8 @@
       "still": "05-thursday-same-keyboard-same-room.png",
       "kenBurns": "left",
       "caption": "Same keyboard. Same room.",
-      "vo": "Same keyboard. Same room. Totally different vibe."
+      "vo": "Same keyboard. Same room. Totally different vibe.",
+      "altStill": "02-tuesday-the-keyboard-was-just-a-keyboard.png"
     },
     {
       "id": "thu-brain",
@@ -402,7 +407,10 @@
       "altStill": "02-tuesday-the-keyboard-was-just-a-keyboard.png",
       "kenBurns": "in",
       "caption": "Saturday he just looks.",
-      "vo": "Saturday he does it again. Not at seven. Just looks. Keyboard didn't move. The feeling did."
+      "vo": "Saturday he does it again. Not at seven. Just looks. Keyboard didn't move. The feeling did.",
+      "holdStills": [
+        "06-saturday-used-to-want-it.png"
+      ]
     },
     {
       "id": "sat-homework",
@@ -411,7 +419,8 @@
       "still": "06-saturday-used-to-want-it.png",
       "kenBurns": "out",
       "caption": "Now he walks over and it's homework.",
-      "vo": "Used to walk over and want it. Now he walks over and it's homework."
+      "vo": "Used to walk over and want it. Now he walks over and it's homework.",
+      "altStill": "08-the-move-walks-over.png"
     },
     {
       "id": "sat-mug",
@@ -430,7 +439,11 @@
       "altStill": "07-the-name-thats-the-walk.png",
       "kenBurns": "in",
       "caption": "Someone on a writing board said it.",
-      "vo": "Someone on a writing board said it. What's a passion will turn into a chore. An artist said they booked an hour to be creative and then sat there in nothing. Another person said they feel guilty every time they see the keyboard."
+      "vo": "Someone on a writing board said it. What's a passion will turn into a chore. An artist said they booked an hour to be creative and then sat there in nothing. Another person said they feel guilty every time they see the keyboard.",
+      "holdStills": [
+        "06-friday-keyboard-looking-at-him.png",
+        "05-thursday-he-does-not-want-it.png"
+      ]
     },
     {
       "id": "name-walk",
@@ -449,7 +462,10 @@
       "altStill": "05-thursday-cairn-sits-down.png",
       "kenBurns": "in",
       "caption": "His brain did work-brain.",
-      "vo": "He didn't fall off the thing. He put it on the calendar like work. So his brain did work-brain. Clocked in."
+      "vo": "He didn't fall off the thing. He put it on the calendar like work. So his brain did work-brain. Clocked in.",
+      "holdStills": [
+        "03-he-books-it-yellow-square.png"
+      ]
     },
     {
       "id": "name-story",
@@ -458,7 +474,8 @@
       "still": "03-he-books-it-yellow-square.png",
       "kenBurns": "out",
       "caption": "One move. One result.",
-      "vo": "That's the whole story. One move. One result."
+      "vo": "That's the whole story. One move. One result.",
+      "altStill": "08-the-move-booked-it-like-a-standup.png"
     },
     {
       "id": "name-mindset",
@@ -468,7 +485,13 @@
       "altStill": "03-he-books-it-yellow-square.png",
       "kenBurns": "in",
       "caption": "Calendar mindset.",
-      "vo": "People who study this gave it a boring name. Calendar mindset. They had people put a clock time on stuff that used to be free. Dinner. A walk. A hobby hour. Once it had a start time, it felt like a job. The fun didn't leave the thing. The fun left when the block showed up."
+      "vo": "People who study this gave it a boring name. Calendar mindset. They had people put a clock time on stuff that used to be free. Dinner. A walk. A hobby hour. Once it had a start time, it felt like a job. The fun didn't leave the thing. The fun left when the block showed up.",
+      "holdStills": [
+        "07-the-name-he-has-the-yellow-square.png",
+        "05-thursday-cairn-sits-down.png",
+        "07-the-name-work-brain.png",
+        "07-the-name-thats-the-walk.png"
+      ]
     },
     {
       "id": "name-chart",
@@ -477,7 +500,8 @@
       "still": "07-the-name-he-has-the-yellow-square.png",
       "kenBurns": "in",
       "caption": "He has the yellow square.",
-      "vo": "Cairn doesn't need their chart. He has the yellow square. That's the chart."
+      "vo": "Cairn doesn't need their chart. He has the yellow square. That's the chart.",
+      "altStill": "03-he-books-it-yellow-square.png"
     },
     {
       "id": "move-small",
@@ -502,10 +526,14 @@
       "type": "stillShot",
       "beat": "07-move",
       "still": "08-the-move-square-is-gone.png",
-      "altStill": "08-the-move-deletes-tuesday-at-seven.png",
+      "altStill": "03-he-books-it-opened-his-calendar.png",
       "kenBurns": "out",
       "caption": "Square's gone.",
-      "vo": "Square's gone. Week looks empty. That's the point. He doesn't make a better standup. Doesn't write KEYS 2. Doesn't set a reminder to be inspired."
+      "vo": "Square's gone. Week looks empty. That's the point. He doesn't make a better standup. Doesn't write KEYS 2. Doesn't set a reminder to be inspired.",
+      "holdStills": [
+        "08-the-move-walks-over.png",
+        "08-the-move-walks-past.png"
+      ]
     },
     {
       "id": "move-over",
@@ -523,7 +551,8 @@
       "still": "08-the-move-walks-past.png",
       "kenBurns": "left",
       "caption": "If he doesn't, he walks past.",
-      "vo": "If he doesn't, he walks past. He doesn't owe it an hour."
+      "vo": "If he doesn't, he walks past. He doesn't owe it an hour.",
+      "altStill": "08-the-move-walks-over.png"
     },
     {
       "id": "move-night",
@@ -533,7 +562,10 @@
       "altStill": "02-tuesday-the-keyboard-was-just-a-keyboard.png",
       "kenBurns": "out",
       "caption": "Doesn't sit. Leaves. No guilt.",
-      "vo": "That night he tests it. Goes to the desk. Doesn't sit. Leaves. No guilt. Keyboard's just furniture again."
+      "vo": "That night he tests it. Goes to the desk. Doesn't sit. Leaves. No guilt. Keyboard's just furniture again.",
+      "holdStills": [
+        "08-the-move-walks-past.png"
+      ]
     },
     {
       "id": "move-four",
@@ -551,7 +583,8 @@
       "still": "08-the-move-plays-one-song.png",
       "kenBurns": "in",
       "caption": "Plays one song because he's already there.",
-      "vo": "Plays one song because he's already there. Stops when it's done."
+      "vo": "Plays one song because he's already there. Stops when it's done.",
+      "altStill": "08-the-move-walks-over-at-four.png"
     },
     {
       "id": "move-stone",
@@ -561,7 +594,10 @@
       "altStill": "08-the-move-plays-one-song.png",
       "kenBurns": "in",
       "caption": "One stone.",
-      "vo": "Puts that on the pile. One stone. A session that happened. Not a streak. Not a 7pm personality."
+      "vo": "Puts that on the pile. One stone. A session that happened. Not a streak. Not a 7pm personality.",
+      "holdStills": [
+        "08-the-move-walks-over-at-four.png"
+      ]
     },
     {
       "id": "move-again",
@@ -589,7 +625,8 @@
       "still": "09-cta.png",
       "kenBurns": "out",
       "caption": "If this week's takeaway stuck, subscribe.",
-      "vo": "If this week's takeaway stuck, subscribe. Next one lands same time."
+      "vo": "If this week's takeaway stuck, subscribe. Next one lands same time.",
+      "altStill": "01-intro-this-is-cairn.png"
     }
   ]
 }

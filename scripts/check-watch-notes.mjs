@@ -67,13 +67,21 @@ for (const scene of ep.scenes) {
   if (!existsSync(`public/ep01-stills/${scene.still}`)) {
     fail(`missing still ${scene.still}`);
   }
-  if (voSec > MAX_HOLD + 1e-6 && !scene.altStill) {
+  const stills = [scene.still, scene.altStill, ...(scene.holdStills ?? [])].filter(
+    (name, index, list) => name && list.indexOf(name) === index,
+  );
+  if (voSec > stills.length * MAX_HOLD + 1e-6) {
     fail(
-      `${scene.id} holds ${voSec.toFixed(2)}s of one picture past ${MAX_HOLD}s`,
+      `${scene.id} holds ${voSec.toFixed(2)}s of ${stills.length} pictures past ${MAX_HOLD}s each`,
     );
   }
   if (scene.altStill && !existsSync(`public/ep01-stills/${scene.altStill}`)) {
     fail(`missing alt still ${scene.altStill}`);
+  }
+  for (const extra of scene.holdStills ?? []) {
+    if (!existsSync(`public/ep01-stills/${extra}`)) {
+      fail(`missing hold still ${extra}`);
+    }
   }
   const banned = ["Part 1", "Part 2", "470", "HARD ≠ WRONG"];
   const surface = `${scene.vo} ${scene.caption} ${scene.still}`;

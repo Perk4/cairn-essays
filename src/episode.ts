@@ -12,7 +12,9 @@ import voDurations from "../public/vo/durations.json";
 import {
   FLAGSHIP_MAX_SEC,
   FLAGSHIP_MIN_SEC,
+  MAX_HOLD_SEC,
   flagshipDurationSec,
+  pictureStills,
   speechLedDurationSec,
 } from "./timing";
 
@@ -66,6 +68,20 @@ function withDuration(scene: SceneBody): Scene {
   };
 }
 
+function optionalStringArray(
+  record: Record<string, unknown>,
+  key: string,
+): string[] | undefined {
+  if (!(key in record) || record[key] === undefined) {
+    return undefined;
+  }
+  const value = record[key];
+  if (!Array.isArray(value) || value.some((item) => typeof item !== "string")) {
+    throw new Error(`${key} must be an array of strings`);
+  }
+  return value;
+}
+
 function parseScene(value: unknown): Scene {
   if (!isRecord(value)) {
     throw new Error("Scene must be an object");
@@ -91,6 +107,7 @@ function parseScene(value: unknown): Scene {
     type: "stillShot",
     still: requireString(value, "still"),
     altStill: optionalString(value, "altStill"),
+    holdStills: optionalStringArray(value, "holdStills"),
     vo: requireString(value, "vo"),
     caption: requireString(value, "caption"),
     beat,
@@ -108,6 +125,7 @@ function parseShortBeat(value: unknown, index: string): ShortBeat {
     id,
     still: requireString(value, "still"),
     altStill: optionalString(value, "altStill"),
+    holdStills: optionalStringArray(value, "holdStills"),
     vo: requireString(value, "vo"),
     caption: requireString(value, "caption"),
     durationSec: speechLedDurationSec(voDurationSec(voId)),
@@ -167,6 +185,24 @@ if (flagshipSec < FLAGSHIP_MIN_SEC || flagshipSec > FLAGSHIP_MAX_SEC) {
   throw new Error(
     `Flagship duration ${flagshipSec}s is outside the feel window (${FLAGSHIP_MIN_SEC}–${FLAGSHIP_MAX_SEC})`,
   );
+}
+
+for (const scene of episode.scenes) {
+  const stills = pictureStills(scene);
+  if (scene.durationSec > stills.length * MAX_HOLD_SEC + 1e-6) {
+    throw new Error(
+      `Scene ${scene.id} holds ${scene.durationSec.toFixed(2)}s with ${stills.length} pictures`,
+    );
+  }
+}
+
+for (const beat of episode.shorts.hook) {
+  const stills = pictureStills(beat);
+  if (beat.durationSec > stills.length * MAX_HOLD_SEC + 1e-6) {
+    throw new Error(
+      `Short beat ${beat.id} holds ${beat.durationSec.toFixed(2)}s with ${stills.length} pictures`,
+    );
+  }
 }
 
 const lockedCta =
